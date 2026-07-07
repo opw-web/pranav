@@ -135,6 +135,28 @@
       "community_name": "Refresh Hook Scripts"
     },
     {
+      "label": "index.py",
+      "file_type": "code",
+      "source_file": "lens/api/index.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 65,
+      "norm_label": "index.py",
+      "id": "lens_api_index",
+      "community_name": "routes.py"
+    },
+    {
+      "label": "Vercel serverless entrypoint. Vercel's @vercel/python runtime serves the ASGI `a",
+      "file_type": "rationale",
+      "source_file": "lens/api/index.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 65,
+      "norm_label": "vercel serverless entrypoint. vercel's @vercel/python runtime serves the asgi `a",
+      "id": "lens_api_index_rationale_1",
+      "community_name": "routes.py"
+    },
+    {
       "label": "__init__.py",
       "file_type": "code",
       "source_file": "lens/app/__init__.py",
@@ -316,10 +338,10 @@
       "source_file": "lens/app/auth/session.py",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 73,
+      "community": 65,
       "norm_label": "session.py",
       "id": "lens_app_auth_session",
-      "community_name": "session.py"
+      "community_name": "routes.py"
     },
     {
       "label": "_fetch_jwks()",
@@ -327,10 +349,10 @@
       "source_file": "lens/app/auth/session.py",
       "source_location": "L20",
       "_origin": "ast",
-      "community": 73,
+      "community": 65,
       "norm_label": "_fetch_jwks()",
       "id": "lens_app_auth_session_fetch_jwks",
-      "community_name": "session.py"
+      "community_name": "routes.py"
     },
     {
       "label": "verify_access_token()",
@@ -338,10 +360,10 @@
       "source_file": "lens/app/auth/session.py",
       "source_location": "L32",
       "_origin": "ast",
-      "community": 73,
+      "community": 65,
       "norm_label": "verify_access_token()",
       "id": "lens_app_auth_session_verify_access_token",
-      "community_name": "session.py"
+      "community_name": "routes.py"
     },
     {
       "label": "is_secure_request()",
@@ -349,10 +371,10 @@
       "source_file": "lens/app/auth/session.py",
       "source_location": "L51",
       "_origin": "ast",
-      "community": 73,
+      "community": 65,
       "norm_label": "is_secure_request()",
       "id": "lens_app_auth_session_is_secure_request",
-      "community_name": "session.py"
+      "community_name": "routes.py"
     },
     {
       "label": "set_session_cookies()",
@@ -360,10 +382,10 @@
       "source_file": "lens/app/auth/session.py",
       "source_location": "L55",
       "_origin": "ast",
-      "community": 73,
+      "community": 65,
       "norm_label": "set_session_cookies()",
       "id": "lens_app_auth_session_set_session_cookies",
-      "community_name": "session.py"
+      "community_name": "routes.py"
     },
     {
       "label": "clear_session_cookies()",
@@ -371,10 +393,10 @@
       "source_file": "lens/app/auth/session.py",
       "source_location": "L60",
       "_origin": "ast",
-      "community": 73,
+      "community": 65,
       "norm_label": "clear_session_cookies()",
       "id": "lens_app_auth_session_clear_session_cookies",
-      "community_name": "session.py"
+      "community_name": "routes.py"
     },
     {
       "label": "generate_pkce_pair()",
@@ -382,10 +404,10 @@
       "source_file": "lens/app/auth/session.py",
       "source_location": "L65",
       "_origin": "ast",
-      "community": 73,
+      "community": 65,
       "norm_label": "generate_pkce_pair()",
       "id": "lens_app_auth_session_generate_pkce_pair",
-      "community_name": "session.py"
+      "community_name": "routes.py"
     },
     {
       "label": "Verify a Supabase-issued JWT locally against the project's JWKS (ES256).     Rai",
@@ -393,10 +415,10 @@
       "source_file": "lens/app/auth/session.py",
       "source_location": "L33",
       "_origin": "ast",
-      "community": 73,
+      "community": 65,
       "norm_label": "verify a supabase-issued jwt locally against the project's jwks (es256).     rai",
       "id": "lens_app_auth_session_rationale_33",
-      "community_name": "session.py"
+      "community_name": "routes.py"
     },
     {
       "label": "config.py",
@@ -1136,6 +1158,50 @@
       "community_name": "transactions.py"
     },
     {
+      "label": "recap.py",
+      "file_type": "code",
+      "source_file": "lens/app/routers/recap.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 8,
+      "norm_label": "recap.py",
+      "id": "lens_app_routers_recap",
+      "community_name": "Build Script Entry Point"
+    },
+    {
+      "label": "recap_page()",
+      "file_type": "code",
+      "source_file": "lens/app/routers/recap.py",
+      "source_location": "L16",
+      "_origin": "ast",
+      "community": 8,
+      "norm_label": "recap_page()",
+      "id": "lens_app_routers_recap_recap_page",
+      "community_name": "Build Script Entry Point"
+    },
+    {
+      "label": "Request",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast",
+      "community": 8,
+      "norm_label": "request",
+      "id": "lens_app_routers_recap_py_request",
+      "community_name": "Build Script Entry Point"
+    },
+    {
+      "label": "AsyncSession",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast",
+      "community": 8,
+      "norm_label": "asyncsession",
+      "id": "lens_app_routers_recap_py_asyncsession",
+      "community_name": "Build Script Entry Point"
+    },
+    {
       "label": "recurring.py",
       "file_type": "code",
       "source_file": "lens/app/routers/recurring.py",
@@ -1277,6 +1343,83 @@
       "norm_label": "called when the user accepts 'always categorize <merchant> as <category>?'.",
       "id": "lens_app_routers_rules_rationale_49",
       "community_name": "Database Schema & Architecture"
+    },
+    {
+      "label": "settings.py",
+      "file_type": "code",
+      "source_file": "lens/app/routers/settings.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 73,
+      "norm_label": "settings.py",
+      "id": "lens_app_routers_settings",
+      "community_name": "session.py"
+    },
+    {
+      "label": "settings_page()",
+      "file_type": "code",
+      "source_file": "lens/app/routers/settings.py",
+      "source_location": "L45",
+      "_origin": "ast",
+      "community": 73,
+      "norm_label": "settings_page()",
+      "id": "lens_app_routers_settings_settings_page",
+      "community_name": "session.py"
+    },
+    {
+      "label": "Request",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast",
+      "community": 73,
+      "norm_label": "request",
+      "id": "lens_app_routers_settings_py_request",
+      "community_name": "session.py"
+    },
+    {
+      "label": "_fetch_rows()",
+      "file_type": "code",
+      "source_file": "lens/app/routers/settings.py",
+      "source_location": "L51",
+      "_origin": "ast",
+      "community": 73,
+      "norm_label": "_fetch_rows()",
+      "id": "lens_app_routers_settings_fetch_rows",
+      "community_name": "session.py"
+    },
+    {
+      "label": "AsyncSession",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast",
+      "community": 73,
+      "norm_label": "asyncsession",
+      "id": "lens_app_routers_settings_py_asyncsession",
+      "community_name": "session.py"
+    },
+    {
+      "label": "export_csv()",
+      "file_type": "code",
+      "source_file": "lens/app/routers/settings.py",
+      "source_location": "L56",
+      "_origin": "ast",
+      "community": 73,
+      "norm_label": "export_csv()",
+      "id": "lens_app_routers_settings_export_csv",
+      "community_name": "session.py"
+    },
+    {
+      "label": "export_json()",
+      "file_type": "code",
+      "source_file": "lens/app/routers/settings.py",
+      "source_location": "L76",
+      "_origin": "ast",
+      "community": 73,
+      "norm_label": "export_json()",
+      "id": "lens_app_routers_settings_export_json",
+      "community_name": "session.py"
     },
     {
       "label": "transactions.py",
@@ -5134,6 +5277,27 @@
       "target": "claude_graphify_refresh_sh__entry"
     },
     {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "lens/api/index.py",
+      "source_location": "L10",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lens_api_index",
+      "target": "lens_app_main"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "lens/api/index.py",
+      "source_location": "L1",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lens_api_index_rationale_1",
+      "target": "lens_api_index"
+    },
+    {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "lens/app/auth/deps.py",
@@ -5408,6 +5572,17 @@
       "relation": "references",
       "context": "parameter_type",
       "confidence": "EXTRACTED",
+      "source_file": "lens/app/routers/recap.py",
+      "source_location": "L16",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lens_app_routers_recap_recap_page",
+      "target": "lens_app_auth_deps_currentuser"
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
       "source_file": "lens/app/routers/recurring.py",
       "source_location": "L29",
       "weight": 1.0,
@@ -5457,6 +5632,39 @@
       "weight": 1.0,
       "confidence_score": 1.0,
       "source": "lens_app_routers_rules_rules_page",
+      "target": "lens_app_auth_deps_currentuser"
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "lens/app/routers/settings.py",
+      "source_location": "L56",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lens_app_routers_settings_export_csv",
+      "target": "lens_app_auth_deps_currentuser"
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "lens/app/routers/settings.py",
+      "source_location": "L76",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lens_app_routers_settings_export_json",
+      "target": "lens_app_auth_deps_currentuser"
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "lens/app/routers/settings.py",
+      "source_location": "L45",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lens_app_routers_settings_settings_page",
       "target": "lens_app_auth_deps_currentuser"
     },
     {
@@ -7101,6 +7309,49 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
+      "source_file": "lens/app/routers/recap.py",
+      "source_location": "L16",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lens_app_routers_recap",
+      "target": "lens_app_routers_recap_recap_page"
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "lens/app/routers/recap.py",
+      "source_location": "L16",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lens_app_routers_recap_recap_page",
+      "target": "lens_app_routers_recap_py_asyncsession"
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "lens/app/routers/recap.py",
+      "source_location": "L16",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lens_app_routers_recap_recap_page",
+      "target": "lens_app_routers_recap_py_request"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "lens/app/routers/recap.py",
+      "source_location": "L22",
+      "weight": 1.0,
+      "source": "lens_app_routers_recap_recap_page",
+      "target": "lens_app_services_recap_get_recap"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
       "source_file": "lens/app/routers/recurring.py",
       "source_location": "L29",
       "weight": 1.0,
@@ -7398,6 +7649,112 @@
       "confidence_score": 1.0,
       "source": "lens_app_routers_rules_rationale_49",
       "target": "lens_app_routers_rules_learn"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lens/app/routers/settings.py",
+      "source_location": "L56",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lens_app_routers_settings",
+      "target": "lens_app_routers_settings_export_csv"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lens/app/routers/settings.py",
+      "source_location": "L76",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lens_app_routers_settings",
+      "target": "lens_app_routers_settings_export_json"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lens/app/routers/settings.py",
+      "source_location": "L51",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lens_app_routers_settings",
+      "target": "lens_app_routers_settings_fetch_rows"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lens/app/routers/settings.py",
+      "source_location": "L45",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lens_app_routers_settings",
+      "target": "lens_app_routers_settings_settings_page"
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "lens/app/routers/settings.py",
+      "source_location": "L45",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lens_app_routers_settings_settings_page",
+      "target": "lens_app_routers_settings_py_request"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "lens/app/routers/settings.py",
+      "source_location": "L60",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lens_app_routers_settings_export_csv",
+      "target": "lens_app_routers_settings_fetch_rows"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "lens/app/routers/settings.py",
+      "source_location": "L80",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lens_app_routers_settings_export_json",
+      "target": "lens_app_routers_settings_fetch_rows"
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "lens/app/routers/settings.py",
+      "source_location": "L51",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lens_app_routers_settings_fetch_rows",
+      "target": "lens_app_routers_settings_py_asyncsession"
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "lens/app/routers/settings.py",
+      "source_location": "L56",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lens_app_routers_settings_export_csv",
+      "target": "lens_app_routers_settings_py_asyncsession"
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "lens/app/routers/settings.py",
+      "source_location": "L76",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lens_app_routers_settings_export_json",
+      "target": "lens_app_routers_settings_py_asyncsession"
     },
     {
       "relation": "contains",
@@ -11885,5 +12242,5 @@
       "source_file": "GRAPHIFY_SETUP_PROMPT.md"
     }
   ],
-  "built_at_commit": "27c3fc9953ce417a23bdd4364a01fb64f81fdd68"
+  "built_at_commit": "372f288d8755f74b4a03a362aac86b29a9564f3a"
 }

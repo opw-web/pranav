@@ -90,8 +90,8 @@
     "semantic_hash": ""
   },
   "lens/app/templates/base.html": {
-    "mtime": 1783426518.71235,
-    "ast_hash": "230a50f151a9c0f512270aa6d9fff596",
+    "mtime": 1783426642.9360414,
+    "ast_hash": "478678aa8b24206ad701dbad02b07dee",
     "semantic_hash": ""
   },
   "lens/app/auth/deps.py": {
@@ -422,6 +422,31 @@
   "lens/app/templates/insights.html": {
     "mtime": 1783426547.9968355,
     "ast_hash": "d54b663e615115974e6389454e79e412",
+    "semantic_hash": ""
+  },
+  "lens/api/index.py": {
+    "mtime": 1783426747.098844,
+    "ast_hash": "446e311498301a09e2561e5f766f840e",
+    "semantic_hash": ""
+  },
+  "lens/app/routers/recap.py": {
+    "mtime": 1783426577.6886654,
+    "ast_hash": "4fa1b5eafd56eb18914f6d37ada4ade8",
+    "semantic_hash": ""
+  },
+  "lens/app/routers/settings.py": {
+    "mtime": 1783426629.683002,
+    "ast_hash": "7b654047d5d27b4598c934f93a7093b1",
+    "semantic_hash": ""
+  },
+  "lens/app/templates/recap.html": {
+    "mtime": 1783426588.298653,
+    "ast_hash": "fc8cc6771b83460edabf3788437d86ad",
+    "semantic_hash": ""
+  },
+  "lens/app/templates/settings.html": {
+    "mtime": 1783426635.420654,
+    "ast_hash": "5118fe7ebdf39c55f113b8b8ce47ab58",
     "semantic_hash": ""
   }
 }

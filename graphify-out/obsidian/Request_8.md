@@ -1,17 +1,16 @@
 ---
 source_file: ""
 type: "code"
-community: "confirm"
+community: "Build Script Entry Point"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/confirm
+  - community/Build_Script_Entry_Point
 ---
 
 # Request
 
 ## Connections
-- [[confirm()]] - `references` [EXTRACTED]
-- [[recurring_page()]] - `references` [EXTRACTED]
+- [[recap_page()]] - `references` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/confirm
+#graphify/code #graphify/EXTRACTED #community/Build_Script_Entry_Point

@@ -12,7 +12,7 @@ tags:
 # update_transaction()
 
 ## Connections
-- [[AsyncSession_19]] - `references` [EXTRACTED]
+- [[AsyncSession_21]] - `references` [EXTRACTED]
 - [[patch_txn()]] - `calls` [INFERRED]
 - [[transactions.py_1]] - `contains` [EXTRACTED]
 

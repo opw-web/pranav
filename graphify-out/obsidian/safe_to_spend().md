@@ -12,7 +12,7 @@ tags:
 # safe_to_spend()
 
 ## Connections
-- [[AsyncSession_8]] - `references` [EXTRACTED]
+- [[AsyncSession_10]] - `references` [EXTRACTED]
 - [[_essential_category_ids()]] - `calls` [EXTRACTED]
 - [[analytics.py]] - `contains` [EXTRACTED]
 - [[category_normals()]] - `calls` [EXTRACTED]

@@ -12,7 +12,7 @@ tags:
 # get_transaction_tags()
 
 ## Connections
-- [[AsyncSession_18]] - `references` [EXTRACTED]
+- [[AsyncSession_20]] - `references` [EXTRACTED]
 - [[tags.py]] - `contains` [EXTRACTED]
 
 #graphify/code #graphify/EXTRACTED #community/CurrentUser

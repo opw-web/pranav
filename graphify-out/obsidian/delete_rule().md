@@ -12,9 +12,9 @@ tags:
 # delete_rule()
 
 ## Connections
-- [[AsyncSession_6]] - `references` [EXTRACTED]
+- [[AsyncSession_7]] - `references` [EXTRACTED]
 - [[CurrentUser]] - `references` [EXTRACTED]
-- [[Request_9]] - `references` [EXTRACTED]
+- [[Request_10]] - `references` [EXTRACTED]
 - [[_rules_with_names()]] - `calls` [EXTRACTED]
 - [[rules.py]] - `contains` [EXTRACTED]
 

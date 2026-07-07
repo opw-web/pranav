@@ -1,23 +1,19 @@
 ---
 source_file: ""
 type: "code"
-community: "CurrentUser"
+community: "confirm"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/CurrentUser
+  - community/confirm
 ---
 
 # AsyncSession
 
 ## Connections
-- [[bulk_delete()]] - `references` [EXTRACTED]
-- [[bulk_set_category()]] - `references` [EXTRACTED]
-- [[create_transaction()]] - `references` [EXTRACTED]
-- [[get_transaction()]] - `references` [EXTRACTED]
-- [[list_transactions()]] - `references` [EXTRACTED]
-- [[restore_transaction()]] - `references` [EXTRACTED]
-- [[soft_delete_transaction()]] - `references` [EXTRACTED]
-- [[update_transaction()]] - `references` [EXTRACTED]
+- [[confirm_series()]] - `references` [EXTRACTED]
+- [[list_series()]] - `references` [EXTRACTED]
+- [[scan_and_upsert()]] - `references` [EXTRACTED]
+- [[upcoming()]] - `references` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/CurrentUser
+#graphify/code #graphify/EXTRACTED #community/confirm

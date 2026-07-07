@@ -12,9 +12,9 @@ tags:
 # undo_delete_txn()
 
 ## Connections
-- [[AsyncSession_7]] - `references` [EXTRACTED]
+- [[AsyncSession_9]] - `references` [EXTRACTED]
 - [[CurrentUser]] - `references` [EXTRACTED]
-- [[Request_10]] - `references` [EXTRACTED]
+- [[Request_12]] - `references` [EXTRACTED]
 - [[get_transaction()]] - `calls` [INFERRED]
 - [[restore_transaction()]] - `calls` [INFERRED]
 - [[transactions.py]] - `contains` [EXTRACTED]

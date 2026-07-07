@@ -12,7 +12,7 @@ tags:
 # create_category()
 
 ## Connections
-- [[AsyncSession_10]] - `references` [EXTRACTED]
+- [[AsyncSession_12]] - `references` [EXTRACTED]
 - [[MaxDepthError]] - `calls` [EXTRACTED]
 - [[ValueError]] - `calls` [EXTRACTED]
 - [[categories.py_1]] - `contains` [EXTRACTED]

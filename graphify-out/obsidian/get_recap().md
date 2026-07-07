@@ -12,9 +12,10 @@ tags:
 # get_recap()
 
 ## Connections
-- [[AsyncSession_15]] - `references` [EXTRACTED]
+- [[AsyncSession_17]] - `references` [EXTRACTED]
 - [[Cache read-through. Past months cached in monthly_recaps; current month always f]] - `rationale_for` [EXTRACTED]
 - [[build_recap()]] - `calls` [EXTRACTED]
-- [[recap.py]] - `contains` [EXTRACTED]
+- [[recap.py_1]] - `contains` [EXTRACTED]
+- [[recap_page()]] - `calls` [INFERRED]
 
 #graphify/code #graphify/EXTRACTED #community/Build_Script_Entry_Point

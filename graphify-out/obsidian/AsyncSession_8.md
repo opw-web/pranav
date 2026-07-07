@@ -1,21 +1,18 @@
 ---
 source_file: ""
 type: "code"
-community: "transactions.py"
+community: "session.py"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/transactionspy
+  - community/sessionpy
 ---
 
 # AsyncSession
 
 ## Connections
-- [[_essential_category_ids()]] - `references` [EXTRACTED]
-- [[category_normals()]] - `references` [EXTRACTED]
-- [[safe_to_spend()]] - `references` [EXTRACTED]
-- [[spending_detective()]] - `references` [EXTRACTED]
-- [[trip_rollup()]] - `references` [EXTRACTED]
-- [[what_changed()]] - `references` [EXTRACTED]
+- [[_fetch_rows()]] - `references` [EXTRACTED]
+- [[export_csv()]] - `references` [EXTRACTED]
+- [[export_json()]] - `references` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/transactionspy
+#graphify/code #graphify/EXTRACTED #community/sessionpy

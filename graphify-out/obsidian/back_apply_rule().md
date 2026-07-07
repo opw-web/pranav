@@ -13,7 +13,7 @@ tags:
 
 ## Connections
 - [[Apply a freshly-learned rule to existing uncategorized transactions whose]] - `rationale_for` [EXTRACTED]
-- [[AsyncSession_11]] - `references` [EXTRACTED]
+- [[AsyncSession_13]] - `references` [EXTRACTED]
 - [[categorizer.py]] - `contains` [EXTRACTED]
 - [[learn()]] - `calls` [INFERRED]
 

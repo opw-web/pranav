@@ -1,12 +1,12 @@
 ---
 source_file: "lens/app/auth/session.py"
 type: "code"
-community: "session.py"
+community: "routes.py"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/sessionpy
+  - community/routespy
 ---
 
 # session.py
@@ -20,4 +20,4 @@ tags:
 - [[set_session_cookies()]] - `contains` [EXTRACTED]
 - [[verify_access_token()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/sessionpy
+#graphify/code #graphify/EXTRACTED #community/routespy

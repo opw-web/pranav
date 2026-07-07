@@ -12,9 +12,9 @@ tags:
 # recurring_page()
 
 ## Connections
-- [[AsyncSession_5]] - `references` [EXTRACTED]
+- [[AsyncSession_6]] - `references` [EXTRACTED]
 - [[CurrentUser]] - `references` [EXTRACTED]
-- [[Request_8]] - `references` [EXTRACTED]
+- [[Request_9]] - `references` [EXTRACTED]
 - [[list_series()]] - `calls` [INFERRED]
 - [[recurring.py]] - `contains` [EXTRACTED]
 - [[scan_and_upsert()]] - `calls` [INFERRED]

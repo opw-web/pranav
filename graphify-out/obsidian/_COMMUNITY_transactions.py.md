@@ -10,7 +10,7 @@ members: 28
 ## Members
 - [[AsyncSession_2]] - code
 - [[AsyncSession_4]] - code
-- [[AsyncSession_8]] - code
+- [[AsyncSession_10]] - code
 - [[Deterministic analytics — SQL-first (§2.6, §4.4). Python only orchestrates and t]] - rationale - lens/app/services/analytics.py
 - [[First day of d's month and first day of next month (half-open start, end)).]] - rationale - lens/app/services/analytics.py
 - [[Median monthly expense per category over the last 3 full months (PERCENTILE_CONT]] - rationale - lens/app/services/analytics.py

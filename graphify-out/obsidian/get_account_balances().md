@@ -12,7 +12,7 @@ tags:
 # get_account_balances()
 
 ## Connections
-- [[AsyncSession_9]] - `references` [EXTRACTED]
+- [[AsyncSession_11]] - `references` [EXTRACTED]
 - [[_resolve_account()]] - `calls` [INFERRED]
 - [[archive_account()]] - `calls` [INFERRED]
 - [[balances.py]] - `contains` [EXTRACTED]

@@ -12,6 +12,6 @@ tags:
 # Monthly recap builder (§4.4/§5). Template + numbers, cached in monthly_recaps so
 
 ## Connections
-- [[recap.py]] - `rationale_for` [EXTRACTED]
+- [[recap.py_1]] - `rationale_for` [EXTRACTED]
 
 #graphify/rationale #graphify/EXTRACTED #community/Build_Script_Entry_Point

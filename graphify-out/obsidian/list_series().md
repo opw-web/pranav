@@ -12,7 +12,7 @@ tags:
 # list_series()
 
 ## Connections
-- [[AsyncSession_17]] - `references` [EXTRACTED]
+- [[AsyncSession_19]] - `references` [EXTRACTED]
 - [[confirm()]] - `calls` [INFERRED]
 - [[recurring.py_1]] - `contains` [EXTRACTED]
 - [[recurring_page()]] - `calls` [INFERRED]

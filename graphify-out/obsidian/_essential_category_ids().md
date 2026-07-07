@@ -12,7 +12,7 @@ tags:
 # _essential_category_ids()
 
 ## Connections
-- [[AsyncSession_8]] - `references` [EXTRACTED]
+- [[AsyncSession_10]] - `references` [EXTRACTED]
 - [[analytics.py]] - `contains` [EXTRACTED]
 - [[safe_to_spend()]] - `calls` [EXTRACTED]
 

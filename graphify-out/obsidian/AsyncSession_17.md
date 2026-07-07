@@ -1,19 +1,17 @@
 ---
 source_file: ""
 type: "code"
-community: "confirm"
+community: "Build Script Entry Point"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/confirm
+  - community/Build_Script_Entry_Point
 ---
 
 # AsyncSession
 
 ## Connections
-- [[confirm_series()]] - `references` [EXTRACTED]
-- [[list_series()]] - `references` [EXTRACTED]
-- [[scan_and_upsert()]] - `references` [EXTRACTED]
-- [[upcoming()]] - `references` [EXTRACTED]
+- [[build_recap()]] - `references` [EXTRACTED]
+- [[get_recap()]] - `references` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/confirm
+#graphify/code #graphify/EXTRACTED #community/Build_Script_Entry_Point

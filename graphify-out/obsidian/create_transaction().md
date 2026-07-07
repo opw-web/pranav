@@ -12,7 +12,7 @@ tags:
 # create_transaction()
 
 ## Connections
-- [[AsyncSession_19]] - `references` [EXTRACTED]
+- [[AsyncSession_21]] - `references` [EXTRACTED]
 - [[create_txn()]] - `calls` [INFERRED]
 - [[find_possible_duplicate()]] - `calls` [EXTRACTED]
 - [[quickadd_commit()]] - `calls` [INFERRED]

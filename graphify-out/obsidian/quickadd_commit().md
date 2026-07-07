@@ -12,9 +12,9 @@ tags:
 # quickadd_commit()
 
 ## Connections
-- [[AsyncSession_7]] - `references` [EXTRACTED]
+- [[AsyncSession_9]] - `references` [EXTRACTED]
 - [[CurrentUser]] - `references` [EXTRACTED]
-- [[Request_10]] - `references` [EXTRACTED]
+- [[Request_12]] - `references` [EXTRACTED]
 - [[build_quickadd_preview()]] - `calls` [INFERRED]
 - [[create_transaction()]] - `calls` [INFERRED]
 - [[get_transaction()]] - `calls` [INFERRED]

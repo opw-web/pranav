@@ -12,7 +12,7 @@ tags:
 # spending_detective()
 
 ## Connections
-- [[AsyncSession_8]] - `references` [EXTRACTED]
+- [[AsyncSession_10]] - `references` [EXTRACTED]
 - [[Period-over-period attribution at category + merchant level. Returns ranked driv]] - `rationale_for` [EXTRACTED]
 - [[_deltas()]] - `calls` [EXTRACTED]
 - [[analytics.py]] - `contains` [EXTRACTED]

@@ -1,16 +1,17 @@
 ---
 source_file: ""
 type: "code"
-community: "UX Playbook Spec"
+community: "session.py"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/UX_Playbook_Spec
+  - community/sessionpy
 ---
 
 # AsyncSession
 
 ## Connections
-- [[reconcile_account()]] - `references` [EXTRACTED]
+- [[_resolve_account()]] - `references` [EXTRACTED]
+- [[build_quickadd_preview()]] - `references` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/UX_Playbook_Spec
+#graphify/code #graphify/EXTRACTED #community/sessionpy

@@ -1,28 +1,27 @@
 {% extends "base.html" %}
 {% block title %}Accounts — LENS{% endblock %}
+{% block topbar_title %}Accounts{% endblock %}
 {% block content %}
-<div class="max-w-3xl mx-auto">
-    <h1 class="text-lg font-semibold mb-4">Accounts</h1>
+<div class="max-w-3xl mx-auto space-y-5">
+    <h1 class="hidden md:block text-lg font-semibold text-ink">Accounts</h1>
 
-    <div class="bg-white border border-neutral-200 rounded-lg overflow-hidden mb-6">
-        {% include "partials/account_list.html" %}
-    </div>
+    {% include "partials/account_list.html" %}
 
-    <details class="bg-white border border-neutral-200 rounded-lg p-4">
-        <summary class="text-sm font-medium cursor-pointer">+ Add an account</summary>
-        <form hx-post="/accounts" hx-target="#accounts-table" hx-swap="outerHTML" class="mt-3 flex flex-wrap gap-2">
-            <input name="name" placeholder="Account name" required
-                   class="border border-neutral-300 rounded px-2 py-1 text-sm flex-1 min-w-[140px]" />
-            <select name="type" class="border border-neutral-300 rounded px-2 py-1 text-sm">
-                <option value="bank">Bank</option>
-                <option value="cash">Cash</option>
-                <option value="credit_card">Credit Card</option>
-                <option value="wallet">Wallet</option>
-            </select>
-            <input name="currency" value="INR" class="border border-neutral-300 rounded px-2 py-1 text-sm w-20" />
-            <input name="opening_balance" type="number" step="0.01" value="0" placeholder="Opening balance"
-                   class="border border-neutral-300 rounded px-2 py-1 text-sm w-32" />
-            <button type="submit" class="bg-neutral-800 text-white rounded px-3 py-1 text-sm">Add</button>
+    <details class="card p-4">
+        <summary class="text-sm font-medium text-ink cursor-pointer">+ Add an account</summary>
+        <form hx-post="/accounts" hx-target="#accounts-table" hx-swap="outerHTML" class="mt-3 space-y-2">
+            <input name="name" placeholder="Account name" required class="field" />
+            <div class="flex flex-wrap gap-2">
+                <select name="type" class="field flex-1 min-w-[8rem]">
+                    <option value="bank">Bank</option>
+                    <option value="cash">Cash</option>
+                    <option value="credit_card">Credit Card</option>
+                    <option value="wallet">Wallet</option>
+                </select>
+                <input name="currency" value="INR" class="field w-24 shrink-0" />
+            </div>
+            <input name="opening_balance" type="number" step="0.01" value="0" placeholder="Opening balance" class="field" />
+            <button type="submit" class="btn btn-primary w-full">Add account</button>
         </form>
     </details>
 </div>

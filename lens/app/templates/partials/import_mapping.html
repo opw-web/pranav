@@ -1,11 +1,15 @@
-<form hx-post="/import/preview" hx-target="#import-step" hx-swap="innerHTML"
-      class="bg-white border border-neutral-200 rounded-lg p-4">
+{% if recognized %}
+<div class="rounded-control bg-accent-green text-accent-green-ink text-sm px-3 py-2 mb-4">
+    ✓ Recognized this bank's format — mapping pre-filled.
+</div>
+{% else %}
+<p class="text-sm text-muted mb-4">Confirm the column roles below.</p>
+{% endif %}
 
-    {% if recognized %}
-    <p class="text-sm text-green-700 mb-3">✓ Recognized this bank's format — mapping pre-filled.</p>
-    {% else %}
-    <p class="text-sm text-neutral-600 mb-3">Confirm the column roles below.</p>
-    {% endif %}
+<form hx-post="/import/preview" hx-target="#import-step" hx-swap="innerHTML"
+      hx-disabled-elt="find button[type=submit]"
+      hx-on::after-request="if (event.detail.successful) lensWizStep(3)"
+      class="card p-5 space-y-4">
 
     <input type="hidden" name="account_id" value="{{ account_id }}" />
     <input type="hidden" name="filename" value="{{ filename }}" />
@@ -14,29 +18,70 @@
     <input type="hidden" name="header_idx" value="{{ info.header_idx }}" />
     <input type="hidden" name="date_format" value="{{ info.date_format or '' }}" />
 
-    <div class="grid grid-cols-2 gap-3 mb-4">
-        {% for role in roles %}
-        <label class="text-sm">{{ role|capitalize }}
-            <select name="map_{{ role }}" class="mt-1 block w-full border border-neutral-300 rounded px-2 py-1 text-sm">
-                <option value="">— none —</option>
-                {% for col in info.header %}
-                <option value="{{ col }}" {% if info.mapping.get(role) == col %}selected{% endif %}>{{ col }}</option>
-                {% endfor %}
-            </select>
-        </label>
-        {% endfor %}
+    <div>
+        <p class="text-sm font-medium text-ink mb-2">Map the columns</p>
+        <div class="grid grid-cols-2 gap-3">
+            {% for role in roles %}
+            <label class="block">
+                <span class="block text-xs text-muted mb-1">{{ role|capitalize }}</span>
+                <select name="map_{{ role }}" class="field text-sm" onchange="lensMapHighlight()">
+                    <option value="">— none —</option>
+                    {% for col in info.header %}
+                    <option value="{{ col }}" {% if info.mapping.get(role) == col %}selected{% endif %}>{{ col }}</option>
+                    {% endfor %}
+                </select>
+            </label>
+            {% endfor %}
+        </div>
     </div>
 
-    <div class="overflow-x-auto mb-4">
-        <table class="text-xs border-collapse">
-            <thead><tr>{% for col in info.header %}<th class="border border-neutral-200 px-2 py-1 text-left">{{ col }}</th>{% endfor %}</tr></thead>
-            <tbody>
-                {% for row in info.preview_rows %}
-                <tr>{% for cell in row %}<td class="border border-neutral-100 px-2 py-1 whitespace-nowrap">{{ cell }}</td>{% endfor %}</tr>
-                {% endfor %}
-            </tbody>
-        </table>
+    <div>
+        <p class="text-xs text-muted mb-2">Raw preview — mapped columns are highlighted.</p>
+        <div class="overflow-x-auto rounded-control border border-hair">
+            <table class="text-xs border-collapse w-full">
+                <thead>
+                    <tr>
+                        {% for col in info.header %}
+                        <th data-col-idx="{{ loop.index0 }}" class="border-b border-hair px-2 py-1.5 text-left font-medium text-muted whitespace-nowrap transition-colors">{{ col }}</th>
+                        {% endfor %}
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for row in info.preview_rows %}
+                    <tr>
+                        {% for cell in row %}
+                        <td data-col-idx="{{ loop.index0 }}" class="border-b border-hair px-2 py-1 whitespace-nowrap text-ink transition-colors">{{ cell }}</td>
+                        {% endfor %}
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
     </div>
 
-    <button type="submit" class="bg-neutral-800 text-white rounded px-3 py-1.5 text-sm">Preview import</button>
+    <button type="submit" class="btn btn-primary w-full">Preview import →</button>
 </form>
+
+<script>
+// Live-highlight the raw preview columns that match the current role
+// mapping selections. Re-runs on load (to reflect a recognized / recalled
+// mapping) and on every select change.
+(function () {
+    function lensMapHighlight() {
+        var cols = {{ info.header | tojson }};
+        var selected = new Set();
+        document.querySelectorAll('select[name^="map_"]').forEach(function (sel) {
+            var idx = cols.indexOf(sel.value);
+            if (idx > -1) selected.add(idx);
+        });
+        document.querySelectorAll('[data-col-idx]').forEach(function (el) {
+            var idx = parseInt(el.dataset.colIdx, 10);
+            var on = selected.has(idx);
+            el.classList.toggle('bg-accent-blue', on);
+            el.classList.toggle('text-accent-blue-ink', on);
+        });
+    }
+    window.lensMapHighlight = lensMapHighlight;
+    lensMapHighlight();
+})();
+</script>

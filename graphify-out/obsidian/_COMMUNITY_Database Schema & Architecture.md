@@ -41,7 +41,7 @@ SORT file.name ASC
 - 3 edges to [[_COMMUNITY_CurrentUser]]
 - 1 edge to [[_COMMUNITY_Backend Service Requirements]]
 - 1 edge to [[_COMMUNITY_main.py]]
-- 1 edge to [[_COMMUNITY_session.py_1]]
+- 1 edge to [[_COMMUNITY_session.py_2]]
 
 ## Top bridge nodes
 - [[categorize()]] - degree 5, connects to 2 communities

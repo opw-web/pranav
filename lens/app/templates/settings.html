@@ -1,26 +1,38 @@
 {% extends "base.html" %}
 {% block title %}Settings — LENS{% endblock %}
+{% block topbar_title %}Settings{% endblock %}
 {% block content %}
 <div class="max-w-lg mx-auto space-y-5">
-    <h1 class="text-lg font-semibold">Settings</h1>
+    <h1 class="hidden md:block text-lg font-semibold text-ink">Settings</h1>
 
-    <div class="bg-white border border-neutral-200 rounded-xl p-5">
-        <p class="text-sm font-medium mb-1">Export &amp; backup</p>
-        <p class="text-sm text-neutral-500 mb-3">
+    {# ================= Export & backup ================= #}
+    <div class="card p-5">
+        <p class="text-sm font-medium text-ink mb-1">Export &amp; backup</p>
+        <p class="text-sm text-muted mb-4">
             Download everything — every transaction with its account, category, and tag names. Re-importable.
         </p>
-        <div class="flex gap-2">
-            <a href="/settings/export" class="bg-neutral-900 text-white rounded-lg px-4 py-2 text-sm">Download CSV</a>
-            <a href="/settings/export.json" class="border border-neutral-300 rounded-lg px-4 py-2 text-sm">Download JSON</a>
+        <div class="flex flex-col sm:flex-row gap-2">
+            <a href="/settings/export" class="btn btn-primary flex-1 justify-center">Download CSV</a>
+            <a href="/settings/export.json" class="btn btn-secondary flex-1 justify-center">Download JSON</a>
         </div>
     </div>
 
-    <div class="bg-white border border-neutral-200 rounded-xl p-5">
-        <p class="text-sm font-medium mb-1">Manage</p>
-        <div class="flex flex-col gap-1 text-sm">
-            <a href="/rules" class="text-blue-600">Categorization rules</a>
-            <a href="/recurring" class="text-blue-600">Recurring &amp; subscriptions</a>
-            <a href="/recap/{{ current_period }}" class="text-blue-600">This month's recap</a>
+    {# ================= Manage ================= #}
+    <div class="card overflow-hidden p-0">
+        <p class="text-xs uppercase tracking-wide text-faint px-4 pt-4 pb-2">Manage</p>
+        <div class="flex flex-col divide-y divide-hair">
+            <a href="/rules" class="list-row">
+                <span class="flex-1 text-sm text-ink">Categorization rules</span>
+                <span class="text-faint" aria-hidden="true">›</span>
+            </a>
+            <a href="/recurring" class="list-row">
+                <span class="flex-1 text-sm text-ink">Recurring &amp; subscriptions</span>
+                <span class="text-faint" aria-hidden="true">›</span>
+            </a>
+            <a href="/recap/{{ current_period }}" class="list-row">
+                <span class="flex-1 text-sm text-ink">This month's recap</span>
+                <span class="text-faint" aria-hidden="true">›</span>
+            </a>
         </div>
     </div>
 </div>

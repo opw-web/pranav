@@ -1,20 +1,21 @@
 ---
 type: community
-members: 7
+members: 8
 ---
 
 # session.py
 
-**Members:** 7 nodes
+**Members:** 8 nodes
 
 ## Members
-- [[AsyncSession_8]] - code
-- [[Request_11]] - code
-- [[_fetch_rows()]] - code - lens/app/routers/settings.py
-- [[export_csv()]] - code - lens/app/routers/settings.py
-- [[export_json()]] - code - lens/app/routers/settings.py
-- [[settings.py]] - code - lens/app/routers/settings.py
-- [[settings_page()]] - code - lens/app/routers/settings.py
+- [[Verify a Supabase-issued JWT locally against the project's JWKS (ES256).     Rai]] - rationale - lens/app/auth/session.py
+- [[_fetch_jwks()]] - code - lens/app/auth/session.py
+- [[clear_session_cookies()]] - code - lens/app/auth/session.py
+- [[generate_pkce_pair()]] - code - lens/app/auth/session.py
+- [[is_secure_request()]] - code - lens/app/auth/session.py
+- [[session.py]] - code - lens/app/auth/session.py
+- [[set_session_cookies()]] - code - lens/app/auth/session.py
+- [[verify_access_token()]] - code - lens/app/auth/session.py
 
 ## Live Query (requires Dataview plugin)
 
@@ -24,9 +25,7 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-- 3 edges to [[_COMMUNITY_CurrentUser]]
+- 1 edge to [[_COMMUNITY_routes.py]]
 
 ## Top bridge nodes
-- [[export_csv()]] - degree 4, connects to 1 community
-- [[export_json()]] - degree 4, connects to 1 community
-- [[settings_page()]] - degree 3, connects to 1 community
+- [[session.py]] - degree 7, connects to 1 community

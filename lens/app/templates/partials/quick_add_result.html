@@ -1,14 +1,14 @@
 {% if mode == "error" %}
-<div class="text-xs text-red-600 py-1">
+<div class="rounded-control bg-accent-red text-accent-red-ink text-xs px-3 py-2 mt-1">
     {% if p.parsed.errors %}{{ p.parsed.errors[0] }}{% else %}Couldn't add that — check the amount and try again.{% endif %}
 </div>
 {% else %}
-<div class="text-xs text-neutral-500 py-1">
-    ₹{{ "%.2f"|format(p.parsed.amount) if p.parsed.amount is not none else "?" }}
-    · {{ p.merchant_clean or "no merchant" }}
-    · {{ p.category_label }}
-    · {{ p.parsed.txn_date }}
-    · {{ p.account.name if p.account else "no account" }}
-    {% if p.parsed.tags %} · {% for t in p.parsed.tags %}#{{ t }} {% endfor %}{% endif %}
+<div class="text-xs text-muted py-1 flex items-center gap-1 flex-wrap">
+    <span class="font-mono text-ink">₹{{ "%.2f"|format(p.parsed.amount) if p.parsed.amount is not none else "?" }}</span>
+    <span>· {{ p.merchant_clean or "no merchant" }}</span>
+    <span>· {{ p.category_label }}</span>
+    <span>· {{ p.parsed.txn_date }}</span>
+    <span>· {{ p.account.name if p.account else "no account" }}</span>
+    {% if p.parsed.tags %}<span>· {% for t in p.parsed.tags %}#{{ t }} {% endfor %}</span>{% endif %}
 </div>
 {% endif %}

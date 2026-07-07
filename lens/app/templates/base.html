@@ -2,29 +2,46 @@
 <html lang="en" class="h-full">
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <title>{% block title %}LENS{% endblock %}</title>
     <link rel="stylesheet" href="/static/css/app.css" />
     <style>[x-cloak]{display:none!important}</style>
     <script src="/static/js/htmx.min.js" defer></script>
     <script src="/static/js/alpine.min.js" defer></script>
 </head>
-<body class="h-full bg-neutral-50 text-neutral-900 antialiased" hx-headers='{"X-Requested-With": "htmx"}'>
+<body class="h-full bg-canvas text-ink antialiased" hx-headers='{"X-Requested-With": "htmx"}'>
 
 <div class="min-h-full flex flex-col">
-    <nav class="border-b border-neutral-200 bg-white">
-        <div class="mx-auto max-w-5xl px-4 py-3 flex items-center gap-4">
-            <a href="/" class="font-semibold text-lg tracking-tight">LENS</a>
 
-            <div class="flex-1 flex items-center">
-                <form hx-post="/txn/quickadd" hx-target="#quickadd-result" hx-swap="innerHTML" class="w-full max-w-xl">
+    {# ===================================================================
+       TOP APP BAR
+       Mobile: wordmark + contextual title + "+" quick-add affordance.
+       md:+  : wordmark + inline quick-add bar + full nav links.
+       =================================================================== #}
+    <header class="sticky top-0 z-30 bg-surface/90 backdrop-blur border-b border-hair">
+        <div class="mx-auto max-w-5xl w-full px-4 h-14 flex items-center gap-3">
+            <a href="/" class="font-display text-xl tracking-tight text-ink shrink-0">LENS</a>
+
+            {# Contextual title (mobile only). #}
+            <div class="flex-1 md:hidden text-sm font-medium text-ink truncate text-center">
+                {% block topbar_title %}{% endblock %}
+            </div>
+
+            {# --- Single quick-add form (ONE #quickadd-bar) ---------------
+               md:+ : shown inline in the bar (md:flex, occupies flex-1).
+               mobile: absolutely-positioned slide-up panel, hidden until the
+               "+" affordance / center tab calls lensToggleQuickadd(). #}
+            <div id="quickadd-shell"
+                 class="hidden md:flex md:flex-1 md:static md:top-auto md:z-auto md:border-0 md:shadow-none md:bg-transparent md:px-0 md:py-0
+                        absolute inset-x-0 top-14 z-20 bg-surface border-b border-hair shadow-pop px-4 py-3">
+                <form hx-post="/txn/quickadd" hx-target="#quickadd-result" hx-swap="innerHTML" class="w-full md:max-w-xl">
                     <input
                         id="quickadd-bar"
                         name="raw"
                         type="text"
                         autocomplete="off"
                         placeholder="Add a transaction… e.g. 450 swiggy lunch  (press 'a' to focus)"
-                        class="w-full rounded-lg border border-neutral-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-neutral-400"
+                        class="field"
                         hx-post="/txn/quickadd/preview"
                         hx-trigger="keyup changed delay:150ms"
                         hx-target="#quickadd-preview"
@@ -33,41 +50,101 @@
                 </form>
             </div>
 
-            <a href="/txn" class="text-sm text-neutral-600 hover:text-neutral-900">Transactions</a>
-            <a href="/categories" class="text-sm text-neutral-600 hover:text-neutral-900">Categories</a>
-            <a href="/accounts" class="text-sm text-neutral-600 hover:text-neutral-900">Accounts</a>
-            <a href="/import" class="text-sm text-neutral-600 hover:text-neutral-900">Import</a>
-            <a href="/recurring" class="text-sm text-neutral-600 hover:text-neutral-900">Recurring</a>
-            <a href="/insights" class="text-sm text-neutral-600 hover:text-neutral-900">Insights</a>
-            <a href="/settings" class="text-sm text-neutral-600 hover:text-neutral-900">Settings</a>
-            <a href="/logout" class="text-sm text-neutral-400 hover:text-neutral-700">Logout</a>
-        </div>
-        <div id="quickadd-preview" class="mx-auto max-w-5xl px-4 text-xs text-neutral-500"></div>
-    </nav>
+            {# Desktop nav links (md:+). #}
+            <nav class="hidden md:flex items-center gap-4 text-sm shrink-0">
+                <a href="/txn" class="text-muted hover:text-ink">Transactions</a>
+                <a href="/insights" class="text-muted hover:text-ink">Insights</a>
+                <a href="/categories" class="text-muted hover:text-ink">Categories</a>
+                <a href="/accounts" class="text-muted hover:text-ink">Accounts</a>
+                <a href="/import" class="text-muted hover:text-ink">Import</a>
+                <a href="/recurring" class="text-muted hover:text-ink">Recurring</a>
+                <a href="/settings" class="text-muted hover:text-ink">Settings</a>
+                <a href="/logout" class="text-faint hover:text-ink">Logout</a>
+            </nav>
 
-    <main class="flex-1 mx-auto max-w-5xl w-full px-4 py-6">
+            {# Mobile "+" affordance in the bar. #}
+            <button type="button" onclick="lensToggleQuickadd()" aria-label="Quick add"
+                    class="md:hidden shrink-0 h-9 w-9 flex items-center justify-center rounded-control text-xl text-muted hover:text-ink hover:bg-subtle">+</button>
+        </div>
+
+        {# Quick-add live preview region (shared by mobile + desktop). #}
+        <div id="quickadd-preview" class="mx-auto max-w-5xl w-full px-4 text-xs text-muted empty:hidden"></div>
+    </header>
+
+    {# ===================================================================
+       MAIN CONTENT — extra bottom padding clears the fixed tab bar on mobile.
+       =================================================================== #}
+    <main class="flex-1 mx-auto max-w-5xl w-full px-4 py-5 pb-28 md:pb-8">
         <div id="quickadd-result"></div>
         <div id="learn-offer-region"></div>
         {% block content %}{% endblock %}
     </main>
 
-    <div id="toast-region" class="fixed bottom-4 right-4 flex flex-col gap-2 z-50"></div>
+    {# ===================================================================
+       BOTTOM TAB BAR (mobile only)
+       Home · Transactions · center "+" · Insights · More(sheet)
+       =================================================================== #}
+    <nav class="tabbar md:hidden" aria-label="Primary">
+        <a href="/" class="tabbar-item {{ 'is-active' if active_tab == 'home' }}">
+            <span aria-hidden="true" class="text-lg leading-none">⌂</span>
+            <span>Home</span>
+        </a>
+        <a href="/txn" class="tabbar-item {{ 'is-active' if active_tab == 'txn' }}">
+            <span aria-hidden="true" class="text-lg leading-none">≣</span>
+            <span>Txns</span>
+        </a>
+        <button type="button" onclick="lensToggleQuickadd()" aria-label="Quick add" class="tabbar-item">
+            <span aria-hidden="true"
+                  class="flex items-center justify-center h-11 w-11 -mt-4 rounded-full bg-brand text-brand-ink text-2xl leading-none shadow-pop">+</span>
+        </button>
+        <a href="/insights" class="tabbar-item {{ 'is-active' if active_tab == 'insights' }}">
+            <span aria-hidden="true" class="text-lg leading-none">◔</span>
+            <span>Insights</span>
+        </a>
+        <button type="button" onclick="lensOpenSheet('more-sheet')" class="tabbar-item">
+            <span aria-hidden="true" class="text-lg leading-none">⋯</span>
+            <span>More</span>
+        </button>
+    </nav>
 
-    <div id="lens-cheatsheet" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/40"
+    {# ===================================================================
+       "MORE" BOTTOM SHEET (mobile nav overflow)
+       =================================================================== #}
+    <div id="more-sheet" x-cloak class="sheet-backdrop hidden"
+         onclick="if(event.target===this) lensCloseSheet('more-sheet')">
+        <div class="sheet" role="dialog" aria-label="More">
+            <div class="sheet-grabber"></div>
+            <p class="text-xs uppercase tracking-wide text-faint px-1 pb-2">Menu</p>
+            <div class="flex flex-col">
+                <a href="/categories" class="list-row" onclick="lensCloseSheet('more-sheet')">Categories</a>
+                <a href="/accounts"   class="list-row" onclick="lensCloseSheet('more-sheet')">Accounts</a>
+                <a href="/import"     class="list-row" onclick="lensCloseSheet('more-sheet')">Import</a>
+                <a href="/recurring"  class="list-row" onclick="lensCloseSheet('more-sheet')">Recurring</a>
+                <a href="/settings"   class="list-row" onclick="lensCloseSheet('more-sheet')">Settings</a>
+                <a href="/logout"     class="list-row text-accent-red-ink" onclick="lensCloseSheet('more-sheet')">Logout</a>
+            </div>
+        </div>
+    </div>
+
+    {# Toast region — above the tab bar on mobile, bottom-right on desktop. #}
+    <div id="toast-region" class="fixed bottom-24 md:bottom-4 right-4 flex flex-col gap-2 z-[60]"></div>
+
+    {# Keyboard cheatsheet modal (behavior unchanged). #}
+    <div id="lens-cheatsheet" class="hidden fixed inset-0 z-[70] flex items-center justify-center bg-black/40"
          onclick="this.classList.add('hidden')">
-        <div class="bg-white rounded-xl p-6 shadow-xl text-sm w-80" onclick="event.stopPropagation()">
-            <h3 class="font-semibold mb-3">Keyboard shortcuts</h3>
-            <dl class="grid grid-cols-[auto_1fr] gap-x-3 gap-y-1 text-neutral-600">
-                <dt class="font-mono text-neutral-900">a</dt><dd>Focus quick-add bar</dd>
-                <dt class="font-mono text-neutral-900">/</dt><dd>Search</dd>
-                <dt class="font-mono text-neutral-900">j / k</dt><dd>Move down / up</dd>
-                <dt class="font-mono text-neutral-900">e / c</dt><dd>Edit row / set category</dd>
-                <dt class="font-mono text-neutral-900">t</dt><dd>Tag row</dd>
-                <dt class="font-mono text-neutral-900">x</dt><dd>Select row</dd>
-                <dt class="font-mono text-neutral-900">u</dt><dd>Undo</dd>
-                <dt class="font-mono text-neutral-900">?</dt><dd>This cheatsheet</dd>
+        <div class="card p-6 text-sm w-80" onclick="event.stopPropagation()">
+            <h3 class="font-medium text-ink mb-3">Keyboard shortcuts</h3>
+            <dl class="grid grid-cols-[auto_1fr] gap-x-3 gap-y-1 text-muted">
+                <dt class="font-mono text-ink">a</dt><dd>Focus quick-add bar</dd>
+                <dt class="font-mono text-ink">/</dt><dd>Search</dd>
+                <dt class="font-mono text-ink">j / k</dt><dd>Move down / up</dd>
+                <dt class="font-mono text-ink">e / c</dt><dd>Edit row / set category</dd>
+                <dt class="font-mono text-ink">t</dt><dd>Tag row</dd>
+                <dt class="font-mono text-ink">x</dt><dd>Select row</dd>
+                <dt class="font-mono text-ink">u</dt><dd>Undo</dd>
+                <dt class="font-mono text-ink">?</dt><dd>This cheatsheet</dd>
             </dl>
-            <p class="text-xs text-neutral-400 mt-3">Press <span class="font-mono">Esc</span> or click outside to close.</p>
+            <p class="text-xs text-faint mt-3">Press <span class="font-mono">Esc</span> or click outside to close.</p>
         </div>
     </div>
 </div>

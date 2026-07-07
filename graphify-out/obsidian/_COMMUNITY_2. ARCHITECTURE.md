@@ -26,7 +26,7 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-- 1 edge to [[_COMMUNITY_Safe-to-Spend Core Concepts]]
+- 1 edge to [[_COMMUNITY_LENS — V1 THE EXPENSE APP THAT SHOWS YOU WHY]]
 
 ## Top bridge nodes
 - [[2. ARCHITECTURE]] - degree 8, connects to 1 community

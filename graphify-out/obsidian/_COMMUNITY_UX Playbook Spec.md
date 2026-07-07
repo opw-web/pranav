@@ -36,7 +36,7 @@ SORT file.name ASC
 ## Connections to other communities
 - 7 edges to [[_COMMUNITY_CurrentUser]]
 - 1 edge to [[_COMMUNITY_transactions.py]]
-- 1 edge to [[_COMMUNITY_session.py_1]]
+- 1 edge to [[_COMMUNITY_session.py_2]]
 
 ## Top bridge nodes
 - [[get_account_balances()]] - degree 10, connects to 3 communities

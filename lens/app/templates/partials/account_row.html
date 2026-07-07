@@ -1,30 +1,35 @@
-<tr id="account-row-{{ a.id }}" class="border-b border-neutral-100">
-    <td class="py-2 px-3">
-        <form hx-patch="/accounts/{{ a.id }}" hx-target="#account-row-{{ a.id }}" hx-swap="outerHTML">
+<div id="account-row-{{ a.id }}" role="row"
+     class="flex flex-wrap items-start gap-x-3 gap-y-2 px-3 py-3
+            md:grid md:grid-cols-[1.5fr_0.9fr_1fr_0.9fr_auto] md:items-center md:gap-3 md:py-2.5">
+    <div role="cell" class="min-w-0 basis-full md:basis-auto order-1 min-h-[44px] flex items-center">
+        <form hx-patch="/accounts/{{ a.id }}" hx-target="#account-row-{{ a.id }}" hx-swap="outerHTML" class="w-full">
             <input name="name" value="{{ a.name }}"
-                   class="bg-transparent border-none text-sm font-medium focus:outline-none focus:underline w-full" />
+                   class="bg-transparent border-none text-sm font-medium text-ink focus:outline-none focus:underline w-full p-0 min-h-0" />
         </form>
-    </td>
-    <td class="py-2 px-3 text-sm text-neutral-500 capitalize">{{ a.type.replace('_', ' ') }}</td>
-    <td class="py-2 px-3 text-sm text-right font-mono">{{ a.currency }} {{ "%.2f"|format(a.balance) }}</td>
-    <td class="py-2 px-3 text-sm text-neutral-500">{{ "Yes" if a.is_spendable else "No" }}</td>
-    <td class="py-2 px-3 text-right">
+    </div>
+    <div role="cell" class="text-xs text-muted capitalize order-3 md:order-2 flex items-center">{{ a.type.replace('_', ' ') }}</div>
+    <div role="cell" class="text-sm font-mono order-2 md:order-3 md:text-right ml-auto md:ml-0 flex items-center {{ 'text-faint' if a.is_archived else 'text-ink' }}">{{ a.currency }} {{ "%.2f"|format(a.balance) }}</div>
+    <div role="cell" class="order-4 flex items-center">
+        <span class="chip {{ 'bg-accent-green text-accent-green-ink' if a.is_spendable else 'bg-subtle text-faint' }}">
+            {{ "Spendable" if a.is_spendable else "Not spendable" }}
+        </span>
+    </div>
+    <div role="cell" class="order-5 basis-full md:basis-auto flex flex-wrap items-center justify-end gap-1">
         <details class="inline-block">
-            <summary class="text-xs text-neutral-400 cursor-pointer">Reconcile</summary>
+            <summary class="list-none min-h-[44px] px-3 flex items-center justify-center rounded-control text-xs text-muted hover:text-ink hover:bg-subtle cursor-pointer">Reconcile</summary>
             <form hx-post="/accounts/{{ a.id }}/reconcile" hx-target="#account-row-{{ a.id }}" hx-swap="outerHTML"
-                  class="mt-1 flex gap-1">
-                <input name="actual_balance" type="number" step="0.01" placeholder="Actual balance"
-                       class="text-xs border border-neutral-300 rounded px-1 py-0.5 w-28" />
-                <button type="submit" class="text-xs bg-neutral-800 text-white rounded px-2 py-0.5">Set</button>
+                  class="mt-2 flex flex-wrap gap-2 basis-full">
+                <input name="actual_balance" type="number" step="0.01" placeholder="Actual balance" class="field flex-1 min-w-[9rem]" />
+                <button type="submit" class="btn btn-primary">Set</button>
             </form>
         </details>
-        <form hx-post="/accounts/{{ a.id }}/archive" hx-target="closest table" hx-swap="outerHTML" class="inline">
-            <button type="submit" class="text-xs text-neutral-400 hover:text-red-600 ml-2">
+        <form hx-post="/accounts/{{ a.id }}/archive" hx-target="#accounts-table" hx-swap="outerHTML" class="inline">
+            <button type="submit" class="min-h-[44px] px-3 flex items-center justify-center rounded-control text-xs text-muted hover:text-accent-red-ink hover:bg-subtle">
                 {{ "Unarchive" if a.is_archived else "Archive" }}
             </button>
         </form>
-    </td>
-</tr>
+    </div>
+</div>
 {% if reconciled and reconciled.created %}
-<tr><td colspan="5" class="text-xs text-green-700 px-3 py-1">Adjustment of {{ "%.2f"|format(reconciled.diff) }} recorded.</td></tr>
+<div class="mx-3 mb-2 rounded-control bg-accent-green text-accent-green-ink text-xs px-3 py-2">Adjustment of {{ "%.2f"|format(reconciled.diff) }} recorded.</div>
 {% endif %}

@@ -125,3 +125,49 @@ document.addEventListener("keydown", (e) => {
             break;
     }
 });
+
+// ============================================================================
+// Mobile shell helpers (added for the mobile-first redesign; everything above
+// is unchanged). Bottom-sheet open/close + the slide-up quick-add.
+// ============================================================================
+
+// Reveal a bottom sheet / dialog by id (removes the `hidden` class).
+function lensOpenSheet(id) {
+    document.getElementById(id)?.classList.remove("hidden");
+}
+
+// Hide a bottom sheet / dialog by id.
+function lensCloseSheet(id) {
+    document.getElementById(id)?.classList.add("hidden");
+}
+
+// Reveal the mobile slide-up quick-add panel and focus the input.
+// On md:+ the panel is always visible (Tailwind `md:flex` wins over `hidden`),
+// so this simply focuses the bar.
+function lensToggleQuickadd() {
+    document.getElementById("quickadd-shell")?.classList.remove("hidden");
+    const bar = document.getElementById("quickadd-bar");
+    if (bar) { bar.focus(); bar.select?.(); }
+}
+
+// Ensure the keyboard `a` shortcut also un-hides the mobile quick-add panel
+// BEFORE the existing focus handler runs (capture phase). Augments — does not
+// replace — the main keydown listener above.
+document.addEventListener("keydown", (e) => {
+    if (e.key !== "a") return;
+    const tag = (e.target.tagName || "").toLowerCase();
+    const typing = tag === "input" || tag === "textarea" || tag === "select" || e.target.isContentEditable;
+    if (typing) return;
+    document.getElementById("quickadd-shell")?.classList.remove("hidden");
+}, true);
+
+// Esc closes the "More" sheet and, on mobile, collapses an empty quick-add panel.
+document.addEventListener("keydown", (e) => {
+    if (e.key !== "Escape") return;
+    document.getElementById("more-sheet")?.classList.add("hidden");
+    const shell = document.getElementById("quickadd-shell");
+    const bar = document.getElementById("quickadd-bar");
+    if (shell && bar && window.matchMedia("(max-width: 767px)").matches && !bar.value) {
+        shell.classList.add("hidden");
+    }
+});

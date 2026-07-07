@@ -1,8 +1,8 @@
-<div class="text-xs text-green-700 py-1">
-    Added ₹{{ "%.2f"|format(p.parsed.amount) }} · {{ p.merchant_clean or "—" }} · {{ p.category_label }}
-    · {{ p.parsed.txn_date }} · {{ p.account.name }}
-    {% if is_duplicate_warning %}<span class="text-amber-700 ml-2">(looks similar to another transaction today)</span>{% endif %}
-    <button hx-post="/txn/{{ txn_id }}/undo" hx-target="#txn-row-{{ txn_id }}" hx-swap="outerHTML" class="ml-2 underline">Undo</button>
+<div class="rounded-control bg-accent-green text-accent-green-ink text-xs px-3 py-2 mt-1 flex items-center gap-2 flex-wrap">
+    <span>Added <span class="font-mono">₹{{ "%.2f"|format(p.parsed.amount) }}</span> · {{ p.merchant_clean or "—" }} · {{ p.category_label }}
+    · {{ p.parsed.txn_date }} · {{ p.account.name }}</span>
+    {% if is_duplicate_warning %}<span class="text-accent-amber-ink">(looks similar to another transaction today)</span>{% endif %}
+    <button hx-post="/txn/{{ txn_id }}/undo" hx-target="#txn-row-{{ txn_id }}" hx-swap="outerHTML" class="underline shrink-0">Undo</button>
 </div>
 <script>
     (function () {

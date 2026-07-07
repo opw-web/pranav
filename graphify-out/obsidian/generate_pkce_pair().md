@@ -1,12 +1,12 @@
 ---
 source_file: "lens/app/auth/session.py"
 type: "code"
-community: "routes.py"
+community: "session.py"
 location: "L65"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/routespy
+  - community/sessionpy
 ---
 
 # generate_pkce_pair()
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[session.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/routespy
+#graphify/code #graphify/EXTRACTED #community/sessionpy

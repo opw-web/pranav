@@ -1,11 +1,13 @@
-<div class="bg-white border border-neutral-200 rounded-lg p-4">
+<div class="card p-5">
     {% if not done %}
-    <p class="text-sm mb-2">Importing… {{ processed }} / {{ total }}</p>
-    <div class="w-full bg-neutral-100 rounded h-2 mb-3">
-        <div class="bg-blue-600 h-2 rounded" style="width: {{ (processed / total * 100) if total else 100 }}%"></div>
+    <p class="text-sm text-ink mb-2">Importing… <span class="font-mono">{{ processed }} / {{ total }}</span></p>
+    <div class="w-full bg-subtle rounded-full h-2 mb-1 overflow-hidden">
+        <div class="bg-ink h-2 rounded-full transition-all" style="width: {{ (processed / total * 100) if total else 100 }}%"></div>
     </div>
+    <p class="text-xs text-faint">Hang tight — large files import in chunks.</p>
 
-    <!-- auto-fire the next chunk on load -->
+    {# Auto-fire the next chunk on load — keeps each request small enough
+       to stay under serverless time limits (§2.7). Do not remove hx-trigger="load". #}
     <form id="next-chunk" hx-post="/import/commit?page={{ next_page }}" hx-target="#import-step" hx-swap="innerHTML"
           hx-trigger="load">
         <input type="hidden" name="batch_id" value="{{ batch_id }}" />
@@ -22,19 +24,19 @@
         <input type="hidden" name="running_review" value="{{ needs_review }}" />
     </form>
     {% else %}
-    <p class="text-sm font-medium mb-2">Import complete.</p>
-    <p class="text-sm text-neutral-600 mb-3">
-        Imported <strong>{{ imported }}</strong> ·
-        Skipped <strong>{{ skipped }}</strong> duplicates ·
-        <strong>{{ needs_review }}</strong> need a category.
+    <p class="font-display text-xl text-ink mb-1">Import complete</p>
+    <p class="text-sm text-muted mb-5">
+        Imported <strong class="text-ink">{{ imported }}</strong> ·
+        Skipped <strong class="text-ink">{{ skipped }}</strong> duplicates ·
+        <strong class="text-ink">{{ needs_review }}</strong> need a category.
     </p>
-    <div class="flex gap-2">
+    <div class="flex flex-col sm:flex-row gap-2">
         {% if needs_review %}
-        <a href="/txn?uncategorized=1" class="bg-neutral-800 text-white rounded px-3 py-1.5 text-sm">
+        <a href="/txn?uncategorized=1" class="btn btn-primary w-full sm:w-auto">
             Review {{ needs_review }} uncategorized →
         </a>
         {% endif %}
-        <a href="/txn?account_id={{ account_id }}" class="border border-neutral-300 rounded px-3 py-1.5 text-sm">
+        <a href="/txn?account_id={{ account_id }}" class="btn btn-secondary w-full sm:w-auto">
             View imported
         </a>
     </div>

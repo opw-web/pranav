@@ -1,33 +1,78 @@
-<div class="bg-white border border-neutral-200 rounded-lg p-4">
-    <div class="flex gap-4 text-sm mb-3">
-        <span><strong>{{ preview.to_import }}</strong> to import</span>
-        <span class="text-amber-600"><strong>{{ preview.duplicates }}</strong> duplicates (skipped)</span>
-        <span class="text-blue-600"><strong>{{ preview.transfers }}</strong> transfers (linked)</span>
+<div class="space-y-4">
+    <div class="card p-4">
+        <div class="grid grid-cols-3 gap-2 text-center">
+            <div>
+                <p class="font-display text-2xl text-ink">{{ preview.to_import }}</p>
+                <p class="text-xs text-muted mt-0.5">to import</p>
+            </div>
+            <div>
+                <p class="font-display text-2xl text-accent-amber-ink">{{ preview.duplicates }}</p>
+                <p class="text-xs text-muted mt-0.5">duplicates skipped</p>
+            </div>
+            <div>
+                <p class="font-display text-2xl text-accent-blue-ink">{{ preview.transfers }}</p>
+                <p class="text-xs text-muted mt-0.5">transfers linked</p>
+            </div>
+        </div>
     </div>
 
-    <div class="overflow-x-auto max-h-64 overflow-y-auto mb-4 border border-neutral-100 rounded">
-        <table class="text-xs w-full border-collapse">
-            <thead class="sticky top-0 bg-neutral-50">
-                <tr><th class="px-2 py-1 text-left">Date</th><th class="px-2 py-1 text-left">Description</th>
-                    <th class="px-2 py-1 text-right">Amount</th><th class="px-2 py-1">Flag</th></tr>
-            </thead>
-            <tbody>
-                {% for r in preview.rows[:100] %}
-                <tr class="{% if r.is_duplicate %}text-neutral-400 line-through{% endif %}">
-                    <td class="px-2 py-1">{{ r.txn_date }}</td>
-                    <td class="px-2 py-1">{{ r.merchant_raw or '' }}</td>
-                    <td class="px-2 py-1 text-right">{{ "%.2f"|format(r.amount) }} {{ 'CR' if r.type=='income' else '' }}</td>
-                    <td class="px-2 py-1 text-center">
-                        {% if r.is_duplicate %}<span class="text-amber-600">dup</span>
-                        {% elif r.is_transfer %}<span class="text-blue-600">↔</span>{% endif %}
-                    </td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+    <div>
+        {# Mobile: list-cards #}
+        <div class="md:hidden card divide-y divide-hair max-h-80 overflow-y-auto">
+            {% for r in preview.rows[:100] %}
+            {% set sign_cls = 'text-muted' if r.is_transfer else ('text-accent-green-ink' if r.type == 'income' else 'text-accent-red-ink') %}
+            {% set sign_prefix = '' if r.is_transfer else ('+' if r.type == 'income' else '-') %}
+            <div class="list-row {{ 'opacity-40' if r.is_duplicate }}">
+                <div class="min-w-0 flex-1">
+                    <p class="text-sm text-ink truncate">{{ r.merchant_raw or '—' }}</p>
+                    <p class="text-xs text-muted truncate">{{ r.txn_date }}</p>
+                </div>
+                {% if r.is_duplicate %}
+                <span class="chip bg-accent-amber text-accent-amber-ink shrink-0">dup</span>
+                {% elif r.is_transfer %}
+                <span class="chip bg-accent-blue text-accent-blue-ink shrink-0">↔ transfer</span>
+                {% endif %}
+                <span class="font-mono text-sm whitespace-nowrap shrink-0 {{ sign_cls }}">{{ sign_prefix }}{{ "%.2f"|format(r.amount) }}</span>
+            </div>
+            {% endfor %}
+        </div>
+
+        {# Desktop: table #}
+        <div class="hidden md:block card overflow-x-auto max-h-80 overflow-y-auto">
+            <table class="text-sm w-full">
+                <thead class="sticky top-0 bg-surface">
+                    <tr class="border-b border-hair">
+                        <th class="px-3 py-2 text-left text-xs text-muted font-medium">Date</th>
+                        <th class="px-3 py-2 text-left text-xs text-muted font-medium">Description</th>
+                        <th class="px-3 py-2 text-right text-xs text-muted font-medium">Amount</th>
+                        <th class="px-3 py-2 text-center text-xs text-muted font-medium">Flag</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-hair">
+                    {% for r in preview.rows[:100] %}
+                    {% set sign_cls = 'text-muted' if r.is_transfer else ('text-accent-green-ink' if r.type == 'income' else 'text-accent-red-ink') %}
+                    {% set sign_prefix = '' if r.is_transfer else ('+' if r.type == 'income' else '-') %}
+                    <tr class="{{ 'opacity-40' if r.is_duplicate }}">
+                        <td class="px-3 py-1.5 text-ink">{{ r.txn_date }}</td>
+                        <td class="px-3 py-1.5 text-ink">{{ r.merchant_raw or '—' }}</td>
+                        <td class="px-3 py-1.5 text-right font-mono {{ sign_cls }}">{{ sign_prefix }}{{ "%.2f"|format(r.amount) }}</td>
+                        <td class="px-3 py-1.5 text-center">
+                            {% if r.is_duplicate %}<span class="chip bg-accent-amber text-accent-amber-ink">dup</span>
+                            {% elif r.is_transfer %}<span class="chip bg-accent-blue text-accent-blue-ink">↔</span>{% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% if preview.rows|length > 100 %}
+        <p class="text-xs text-faint mt-2 text-center">Showing first 100 of {{ preview.rows|length }} rows.</p>
+        {% endif %}
     </div>
 
-    <form hx-post="/import/commit?page=0" hx-target="#import-step" hx-swap="innerHTML">
+    <form hx-post="/import/commit?page=0" hx-target="#import-step" hx-swap="innerHTML"
+          hx-disabled-elt="find button[type=submit]"
+          hx-on::after-request="if (event.detail.successful) lensWizStep(4)">
         <input type="hidden" name="account_id" value="{{ account_id }}" />
         <input type="hidden" name="file_b64" value="{{ file_b64 }}" />
         <input type="hidden" name="delimiter" value="{{ delimiter }}" />
@@ -36,8 +81,8 @@
         <input type="hidden" name="mapping_json" value="{{ mapping_json }}" />
         <input type="hidden" name="amount_convention" value="{{ amount_convention }}" />
         <input type="hidden" name="signature" value="{{ signature }}" />
-        <button type="submit" class="bg-neutral-800 text-white rounded px-3 py-1.5 text-sm">
-            Import {{ preview.to_import }} transactions
+        <button type="submit" class="btn btn-primary w-full">
+            Import {{ preview.to_import }} transaction{{ 's' if preview.to_import != 1 }}
         </button>
     </form>
 </div>

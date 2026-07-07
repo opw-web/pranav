@@ -1,33 +1,60 @@
 <div id="rules-table-wrapper">
 {% if rules %}
-<table class="w-full border-collapse text-sm">
-    <thead>
-        <tr class="text-left text-xs uppercase text-neutral-400 border-b border-neutral-200">
-            <th class="py-2 px-3">When merchant</th>
-            <th class="py-2 px-3">Matches</th>
-            <th class="py-2 px-3">Set category</th>
-            <th class="py-2 px-3 text-right">Used</th>
-            <th class="py-2 px-3"></th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for r in rules %}
-        <tr class="border-b border-neutral-100">
-            <td class="py-2 px-3 text-neutral-500">{{ r.match_type }}</td>
-            <td class="py-2 px-3 font-mono">{{ r.pattern }}</td>
-            <td class="py-2 px-3">{{ r.category_icon or '🏷️' }} {{ r.category_name or 'Uncategorized' }}</td>
-            <td class="py-2 px-3 text-right text-neutral-400">{{ r.times_applied }}×</td>
-            <td class="py-2 px-3 text-right">
-                <button hx-delete="/rules/{{ r.id }}" hx-target="#rules-table-wrapper" hx-swap="outerHTML"
-                        class="text-xs text-neutral-400 hover:text-red-600">Delete</button>
-            </td>
-        </tr>
-        {% endfor %}
-    </tbody>
-</table>
+{# Mobile: stacked list-cards #}
+<div class="md:hidden divide-y divide-hair">
+    {% for r in rules %}
+    <div class="flex items-center gap-3 px-4 py-3 min-h-[44px]">
+        <div class="min-w-0 flex-1">
+            <div class="flex items-center gap-2 mb-1">
+                <span class="chip bg-subtle text-muted">{{ r.match_type }}</span>
+                <span class="text-xs text-faint">{{ r.times_applied }}×</span>
+            </div>
+            <p class="text-sm font-mono text-ink truncate">{{ r.pattern }}</p>
+            <p class="text-xs text-muted mt-0.5">→ {{ r.category_icon or '🏷️' }} {{ r.category_name or 'Uncategorized' }}</p>
+        </div>
+        <button hx-delete="/rules/{{ r.id }}" hx-target="#rules-table-wrapper" hx-swap="outerHTML"
+                aria-label="Delete rule"
+                class="shrink-0 h-11 w-11 flex items-center justify-center rounded-control text-faint hover:text-accent-red-ink hover:bg-subtle">
+            ✕
+        </button>
+    </div>
+    {% endfor %}
+</div>
+
+{# Desktop: table #}
+<div class="hidden md:block overflow-x-auto">
+    <table class="w-full text-sm">
+        <thead>
+            <tr class="text-left text-xs uppercase text-faint border-b border-hair">
+                <th class="py-2 px-3">When merchant</th>
+                <th class="py-2 px-3">Matches</th>
+                <th class="py-2 px-3">Set category</th>
+                <th class="py-2 px-3 text-right">Used</th>
+                <th class="py-2 px-3"></th>
+            </tr>
+        </thead>
+        <tbody class="divide-y divide-hair">
+            {% for r in rules %}
+            <tr>
+                <td class="py-2.5 px-3 text-muted">{{ r.match_type }}</td>
+                <td class="py-2.5 px-3 font-mono text-ink">{{ r.pattern }}</td>
+                <td class="py-2.5 px-3 text-ink">{{ r.category_icon or '🏷️' }} {{ r.category_name or 'Uncategorized' }}</td>
+                <td class="py-2.5 px-3 text-right font-mono text-faint">{{ r.times_applied }}×</td>
+                <td class="py-2.5 px-3 text-right">
+                    <button hx-delete="/rules/{{ r.id }}" hx-target="#rules-table-wrapper" hx-swap="outerHTML"
+                            class="text-xs text-faint hover:text-accent-red-ink">Delete</button>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
 {% else %}
-<p class="text-sm text-neutral-400 px-3 py-4">
-    No rules yet. Recategorize a transaction and accept “Always categorize …” to teach one.
-</p>
+<div class="text-center py-16 max-w-sm mx-auto">
+    <p class="font-display text-xl text-ink mb-1">No rules yet</p>
+    <p class="text-sm text-muted">
+        Recategorize a transaction and accept "Always categorize …" to teach one.
+    </p>
+</div>
 {% endif %}
 </div>

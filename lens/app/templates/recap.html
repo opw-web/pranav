@@ -1,35 +1,47 @@
 {% extends "base.html" %}
 {% block title %}Recap {{ period }} — LENS{% endblock %}
+{% block topbar_title %}Recap{% endblock %}
 {% block content %}
 <div class="max-w-xl mx-auto space-y-5">
-    <h1 class="text-lg font-semibold">Monthly recap · {{ period }}</h1>
+    <div class="flex items-center justify-between">
+        <h1 class="hidden md:block text-lg font-semibold text-ink">Monthly recap</h1>
+        <span class="chip bg-subtle text-muted">{{ period }}</span>
+    </div>
 
+    {# ================= Stat tiles: Spent / Income / Net ================= #}
     <div class="grid grid-cols-3 gap-3">
-        <div class="bg-white border border-neutral-200 rounded-xl p-4 text-center">
-            <p class="text-xs uppercase text-neutral-400">Spent</p>
-            <p class="text-xl font-semibold">₹{{ "{:,.0f}".format(stats.expense) }}</p>
+        <div class="card p-4 text-center">
+            <p class="text-xs uppercase tracking-wide text-faint">Spent</p>
+            <p class="font-display text-2xl text-accent-red-ink mt-1">₹{{ "{:,.0f}".format(stats.expense) }}</p>
         </div>
-        <div class="bg-white border border-neutral-200 rounded-xl p-4 text-center">
-            <p class="text-xs uppercase text-neutral-400">Income</p>
-            <p class="text-xl font-semibold">₹{{ "{:,.0f}".format(stats.income) }}</p>
+        <div class="card p-4 text-center">
+            <p class="text-xs uppercase tracking-wide text-faint">Income</p>
+            <p class="font-display text-2xl text-accent-green-ink mt-1">₹{{ "{:,.0f}".format(stats.income) }}</p>
         </div>
-        <div class="bg-white border border-neutral-200 rounded-xl p-4 text-center">
-            <p class="text-xs uppercase text-neutral-400">Net</p>
-            <p class="text-xl font-semibold {{ 'text-red-600' if stats.net < 0 else 'text-green-700' }}">
-                ₹{{ "{:,.0f}".format(stats.net) }}</p>
+        <div class="card p-4 text-center">
+            <p class="text-xs uppercase tracking-wide text-faint">Net</p>
+            {% set net_abs = stats.net if stats.net >= 0 else -stats.net %}
+            <p class="font-display text-2xl {{ 'text-accent-red-ink' if stats.net < 0 else 'text-accent-green-ink' }} mt-1">
+                {{ '-' if stats.net < 0 else '+' }}₹{{ "{:,.0f}".format(net_abs) }}
+            </p>
         </div>
     </div>
 
-    <div class="bg-white border border-neutral-200 rounded-xl p-5">
-        <p class="text-sm text-neutral-700">{{ stats.headline }}</p>
-        <p class="text-xs text-neutral-400 mt-1">{{ stats.expense_count }} expenses recorded</p>
+    {# ================= Headline card — the shareable one-liner ================= #}
+    <div class="card p-6 text-center">
+        <p class="font-display text-xl text-ink leading-snug">{{ stats.headline }}</p>
+        <p class="text-xs text-faint mt-3">{{ stats.expense_count }} expense{{ 's' if stats.expense_count != 1 else '' }} recorded</p>
     </div>
 
-    <div class="bg-white border border-neutral-200 rounded-xl p-5">
-        <p class="text-sm font-medium mb-2">Top categories</p>
-        <div class="space-y-1 text-sm text-neutral-600">
+    {# ================= Top categories ================= #}
+    <div class="card p-5">
+        <p class="text-sm font-medium text-ink mb-2">Top categories</p>
+        <div class="divide-y divide-hair">
             {% for c in stats.top_categories %}
-            <div class="flex justify-between"><span>{{ c.category }}</span><span>₹{{ "{:,.0f}".format(c.total) }}</span></div>
+            <div class="flex items-center justify-between py-2.5">
+                <span class="text-sm text-ink">{{ c.category }}</span>
+                <span class="font-mono text-sm text-muted">₹{{ "{:,.0f}".format(c.total) }}</span>
+            </div>
             {% endfor %}
         </div>
     </div>

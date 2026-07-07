@@ -1,12 +1,12 @@
 ---
 source_file: "LENS_V1_BUILD_PLAN.md"
 type: "document"
-community: "Safe-to-Spend Core Concepts"
+community: "LENS — V1: THE EXPENSE APP THAT SHOWS YOU *WHY*"
 location: "L1"
 tags:
   - graphify/document
   - graphify/EXTRACTED
-  - community/Safe-to-Spend_Core_Concepts
+  - community/LENS__V1_THE_EXPENSE_APP_THAT_SHOWS_YOU_WHY
 ---
 
 # LENS_V1_BUILD_PLAN.md
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[LENS — V1 THE EXPENSE APP THAT SHOWS YOU WHY]] - `contains` [EXTRACTED]
 
-#graphify/document #graphify/EXTRACTED #community/Safe-to-Spend_Core_Concepts
+#graphify/document #graphify/EXTRACTED #community/LENS__V1_THE_EXPENSE_APP_THAT_SHOWS_YOU_WHY

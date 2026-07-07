@@ -1,11 +1,12 @@
 {% from "partials/_category_macros.html" import option_row %}
-<ul id="category-options" class="max-h-72 overflow-y-auto divide-y divide-neutral-50 border border-neutral-200 rounded-lg bg-white shadow-sm">
+<ul id="category-options" class="max-h-[55vh] overflow-y-auto -mx-1">
     {% if query and not exact_match %}
     <li>
         <form hx-post="/categories" hx-target="#category-options" hx-swap="afterbegin">
             <input type="hidden" name="name" value="{{ query }}" />
-            <button type="submit" class="w-full text-left px-3 py-1.5 text-sm text-blue-600 hover:bg-blue-50">
-                ➕ Create "{{ query }}"
+            <button type="submit" class="list-row w-full text-left text-accent-blue-ink font-medium hover:bg-subtle">
+                <span aria-hidden="true" class="text-base">➕</span>
+                <span class="truncate">Create &ldquo;{{ query }}&rdquo;</span>
             </button>
         </form>
     </li>
@@ -14,15 +15,18 @@
     {% if query %}
         {% for c in results %}{{ option_row(c) }}{% endfor %}
         {% if not results and exact_match %}
-        <li class="px-3 py-1.5 text-sm text-neutral-400">No matches.</li>
+        <li class="px-2 py-6 text-sm text-faint text-center">No matches.</li>
         {% endif %}
     {% else %}
+        {% if groups %}
+        <li class="px-2 pt-1 pb-1 text-xs uppercase tracking-wide text-faint">Frequent</li>
+        {% endif %}
         {% for g in groups %}
             {{ option_row(g) }}
             {% for child in g.children %}{{ option_row(child) }}{% endfor %}
         {% endfor %}
         {% if not groups %}
-        <li class="px-3 py-1.5 text-sm text-neutral-400">No categories yet — type a name to create one.</li>
+        <li class="px-2 py-6 text-sm text-faint text-center">No categories yet — type a name to create one.</li>
         {% endif %}
     {% endif %}
 </ul>

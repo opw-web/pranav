@@ -1,6 +1,6 @@
 {% set toast_id = "toast-" ~ range(100000, 999999) | random %}
 <div id="{{ toast_id }}"
-     class="rounded-lg px-4 py-2 text-sm shadow-lg text-white {{ 'bg-red-600' if kind == 'error' else 'bg-neutral-800' }}"
+     class="rounded-control px-4 py-2.5 text-sm shadow-pop {{ 'bg-accent-red text-accent-red-ink' if kind == 'error' else 'bg-ink text-brand-ink' }}"
      hx-swap-oob="beforeend:#toast-region">
     {{ message }}
     {% if undo_url %}

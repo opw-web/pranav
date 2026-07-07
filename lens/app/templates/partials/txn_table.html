@@ -1,22 +1,28 @@
-<table class="w-full border-collapse text-sm" id="txn-table">
-    <thead>
-        <tr class="text-left text-xs uppercase text-neutral-400 border-b border-neutral-200">
-            <th class="py-2 px-2"></th>
-            <th class="py-2 px-3">Date</th>
-            <th class="py-2 px-3">Account</th>
-            <th class="py-2 px-3">Merchant</th>
-            <th class="py-2 px-3">Category</th>
-            <th class="py-2 px-3 text-right">Amount</th>
-            <th class="py-2 px-3">Notes / Tags</th>
-            <th class="py-2 px-3"></th>
-        </tr>
-    </thead>
-    <tbody id="txn-tbody">
-        {% for t in txns %}
-            {% include "partials/txn_row.html" %}
-        {% endfor %}
-        {% if not txns %}
-        <tr><td colspan="8" class="text-center text-sm text-neutral-400 py-8">No transactions yet.</td></tr>
-        {% endif %}
-    </tbody>
-</table>
+<div class="card overflow-hidden md:overflow-x-auto" id="txn-table">
+    <table class="w-full block md:table text-sm">
+        <thead class="hidden md:table-header-group">
+            <tr class="text-left text-xs uppercase tracking-wide text-faint border-b border-hair">
+                <th class="py-2 px-2 font-medium"></th>
+                <th class="py-2 px-3 font-medium">Date</th>
+                <th class="py-2 px-3 font-medium">Account</th>
+                <th class="py-2 px-3 font-medium">Merchant</th>
+                <th class="py-2 px-3 font-medium">Category</th>
+                <th class="py-2 px-3 font-medium text-right">Amount</th>
+                <th class="py-2 px-3 font-medium">Notes / Tags</th>
+                <th class="py-2 px-2 font-medium"></th>
+            </tr>
+        </thead>
+        <tbody id="txn-tbody" class="block md:table-row-group">
+            {% for t in txns %}
+                {% include "partials/txn_row.html" %}
+            {% endfor %}
+            {% if not txns %}
+            <tr class="block md:table-row">
+                <td colspan="8" class="block md:table-cell text-center text-sm text-faint py-16">
+                    No transactions yet. Try <span class="font-mono">a</span> to quick-add.
+                </td>
+            </tr>
+            {% endif %}
+        </tbody>
+    </table>
+</div>

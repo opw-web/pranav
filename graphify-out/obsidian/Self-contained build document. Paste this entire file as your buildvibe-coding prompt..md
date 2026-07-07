@@ -1,12 +1,12 @@
 ---
 source_file: "LENS_V1_BUILD_PLAN.md"
 type: "document"
-community: "Safe-to-Spend Core Concepts"
+community: "LENS — V1: THE EXPENSE APP THAT SHOWS YOU *WHY*"
 location: "L2"
 tags:
   - graphify/document
   - graphify/EXTRACTED
-  - community/Safe-to-Spend_Core_Concepts
+  - community/LENS__V1_THE_EXPENSE_APP_THAT_SHOWS_YOU_WHY
 ---
 
 # Self-contained build document. Paste this entire file as your build/vibe-coding prompt.
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[LENS — V1 THE EXPENSE APP THAT SHOWS YOU WHY]] - `contains` [EXTRACTED]
 
-#graphify/document #graphify/EXTRACTED #community/Safe-to-Spend_Core_Concepts
+#graphify/document #graphify/EXTRACTED #community/LENS__V1_THE_EXPENSE_APP_THAT_SHOWS_YOU_WHY

@@ -1,12 +1,12 @@
 ---
 source_file: "lens/app/auth/session.py"
 type: "rationale"
-community: "routes.py"
+community: "session.py"
 location: "L33"
 tags:
   - graphify/rationale
   - graphify/EXTRACTED
-  - community/routespy
+  - community/sessionpy
 ---
 
 # Verify a Supabase-issued JWT locally against the project's JWKS (ES256).     Rai
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[verify_access_token()]] - `rationale_for` [EXTRACTED]
 
-#graphify/rationale #graphify/EXTRACTED #community/routespy
+#graphify/rationale #graphify/EXTRACTED #community/sessionpy

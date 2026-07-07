@@ -1,59 +1,62 @@
 {% extends "base.html" %}
 {% block title %}Dashboard — LENS{% endblock %}
+{% set active_tab = 'home' %}
+{% block topbar_title %}Home{% endblock %}
 {% block content %}
 {% if empty %}
-<div class="max-w-lg mx-auto text-center py-16">
-    <h1 class="text-2xl font-semibold mb-2">Welcome to LENS</h1>
-    <p class="text-neutral-500 mb-8">Let's get your money in. Two ways to start:</p>
-    <div class="flex flex-col sm:flex-row gap-3 justify-center">
-        <a href="/import" class="bg-neutral-900 text-white rounded-lg px-5 py-3 text-sm font-medium">Import a bank statement</a>
-        <button onclick="document.getElementById('quickadd-bar').focus()"
-                class="border border-neutral-300 rounded-lg px-5 py-3 text-sm font-medium">Add your first transaction</button>
+<div class="text-center py-16 max-w-sm mx-auto">
+    <p class="font-display text-2xl text-ink mb-1">Welcome to LENS</p>
+    <p class="text-sm text-muted mb-8">Let's get your money in. Two ways to start:</p>
+    <div class="flex flex-col gap-3">
+        <a href="/import" class="btn btn-primary w-full">Import a bank statement</a>
+        <button type="button" onclick="lensToggleQuickadd()" class="btn btn-secondary w-full">Add your first transaction</button>
     </div>
-    <p class="text-xs text-neutral-400 mt-6">Tip: press <span class="font-mono">a</span> anywhere to quick-add.</p>
+    <p class="text-xs text-faint mt-6">Tip: press <span class="font-mono">a</span> anywhere to quick-add.</p>
 </div>
 {% else %}
-<div class="max-w-3xl mx-auto space-y-5">
+<div class="space-y-5">
 
-    <!-- Hero: safe-to-spend with tap-to-see breakdown (never a naked number) -->
-    <div x-data="{ open: false }" class="bg-white border border-neutral-200 rounded-xl p-6">
-        <div class="flex items-baseline justify-between cursor-pointer" @click="open = !open">
-            <div>
-                <p class="text-xs uppercase tracking-wide text-neutral-400">Safe to spend · rest of month</p>
-                <p class="text-4xl font-semibold mt-1 {{ 'text-red-600' if sts.safe_to_spend < 0 else '' }}">
+    <!-- Hero: safe-to-spend — tap to reveal the breakdown (never a naked number) -->
+    <div x-data="{ open: false }" class="card p-6">
+        <button type="button" class="w-full flex items-baseline justify-between gap-3 text-left" @click="open = !open" :aria-expanded="open.toString()">
+            <div class="min-w-0">
+                <p class="text-xs uppercase tracking-wide text-faint">Safe to spend · rest of month</p>
+                <p class="font-display text-5xl leading-none mt-2 {{ 'text-accent-red-ink' if sts.safe_to_spend < 0 else 'text-ink' }}">
                     ₹{{ "{:,.0f}".format(sts.safe_to_spend) }}
                 </p>
             </div>
-            <span class="text-xs text-neutral-400" x-text="open ? 'hide breakdown' : 'how?'"></span>
-        </div>
-        <div x-show="open" x-cloak class="mt-4 pt-4 border-t border-neutral-100 text-sm space-y-1 text-neutral-600">
-            <div class="flex justify-between"><span>Spendable balance</span><span>₹{{ "{:,.0f}".format(sts.spendable_balance) }}</span></div>
-            <div class="flex justify-between"><span>− Upcoming committed (bills/subs)</span><span>₹{{ "{:,.0f}".format(sts.upcoming_committed) }}</span></div>
-            <div class="flex justify-between"><span>− Essential spend still expected</span><span>₹{{ "{:,.0f}".format(sts.essential_remaining) }}</span></div>
-            <div class="flex justify-between font-medium text-neutral-900 pt-1 border-t border-neutral-100">
-                <span>= Safe to spend</span><span>₹{{ "{:,.0f}".format(sts.safe_to_spend) }}</span></div>
+            <span class="shrink-0 text-xs text-muted underline decoration-hair" x-text="open ? 'hide breakdown' : 'how?'"></span>
+        </button>
+        <div x-show="open" x-cloak class="mt-4 pt-4 border-t border-hair text-sm space-y-1.5 text-muted">
+            <div class="flex justify-between"><span>Spendable balance</span><span class="font-mono text-ink">₹{{ "{:,.0f}".format(sts.spendable_balance) }}</span></div>
+            <div class="flex justify-between"><span>− Upcoming committed (bills/subs)</span><span class="font-mono text-ink">₹{{ "{:,.0f}".format(sts.upcoming_committed) }}</span></div>
+            <div class="flex justify-between"><span>− Essential spend still expected</span><span class="font-mono text-ink">₹{{ "{:,.0f}".format(sts.essential_remaining) }}</span></div>
+            <div class="flex justify-between font-medium text-ink pt-1.5 border-t border-hair">
+                <span>= Safe to spend</span><span class="font-mono">₹{{ "{:,.0f}".format(sts.safe_to_spend) }}</span>
+            </div>
         </div>
     </div>
 
     <!-- This month vs normal: templated Detective callout -->
-    <div class="bg-white border border-neutral-200 rounded-xl p-5">
+    <div class="card p-5">
         <div class="flex items-center justify-between mb-1">
-            <p class="text-sm font-medium">This month vs your normal</p>
-            <a href="/insights" class="text-xs text-blue-600">what changed →</a>
+            <h2 class="text-sm font-medium text-ink">This month vs your normal</h2>
+            <a href="/insights" class="text-xs text-accent-blue-ink">what changed →</a>
         </div>
-        <p class="text-sm text-neutral-600">{{ detective.headline }}</p>
-        <p class="text-xs text-neutral-400 mt-1">
+        <p class="text-sm text-muted">{{ detective.headline }}</p>
+        <p class="text-xs text-faint mt-1">
             ₹{{ "{:,.0f}".format(detective.cur_total) }} spent so far · ₹{{ "{:,.0f}".format(detective.prev_total) }} last month
         </p>
     </div>
 
     {% if upcoming %}
-    <div class="bg-white border border-neutral-200 rounded-xl p-5">
-        <p class="text-sm font-medium mb-2">Upcoming committed payments</p>
-        <div class="space-y-1">
+    <div class="card p-5">
+        <h2 class="text-sm font-medium text-ink mb-1">Upcoming committed payments</h2>
+        <div class="divide-y divide-hair -mx-5">
             {% for s in upcoming %}
-            <div class="flex justify-between text-sm text-neutral-600">
-                <span>{{ s.merchant_clean }}</span><span>due {{ s.next_due_date }} · ₹{{ "%.0f"|format(s.expected_amount or 0) }}</span>
+            <div class="flex items-center justify-between gap-3 px-5 py-2.5 text-sm">
+                <span class="text-ink truncate">{{ s.merchant_clean }}</span>
+                <span class="text-muted font-mono text-xs whitespace-nowrap">due {{ s.next_due_date }} · ₹{{ "%.0f"|format(s.expected_amount or 0) }}</span>
             </div>
             {% endfor %}
         </div>
@@ -61,14 +64,22 @@
     {% endif %}
 
     <!-- Recent activity (inline-editable rows) -->
-    <div class="bg-white border border-neutral-200 rounded-xl p-5">
+    <div class="card p-5">
         <div class="flex items-center justify-between mb-2">
-            <p class="text-sm font-medium">Recent activity</p>
-            <a href="/txn" class="text-xs text-blue-600">all transactions →</a>
+            <h2 class="text-sm font-medium text-ink">Recent activity</h2>
+            <a href="/txn" class="text-xs text-accent-blue-ink">all transactions →</a>
         </div>
-        <table class="w-full"><tbody id="txn-tbody">
-            {% for t in recent %}{% include "partials/txn_row.html" %}{% endfor %}
-        </tbody></table>
+        {% if recent %}
+        <div class="overflow-hidden md:overflow-x-auto -mx-5 px-5">
+            <table class="w-full block md:table text-sm">
+                <tbody id="txn-tbody" class="block md:table-row-group">
+                {% for t in recent %}{% include "partials/txn_row.html" %}{% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% else %}
+        <p class="text-sm text-muted text-center py-6">No transactions yet.</p>
+        {% endif %}
     </div>
 </div>
 {% endif %}

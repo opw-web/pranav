@@ -3938,6 +3938,72 @@
       "community_name": "test_recurring.py"
     },
     {
+      "label": "vercel.json",
+      "file_type": "code",
+      "source_file": "lens/vercel.json",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 81,
+      "norm_label": "vercel.json",
+      "id": "lens_vercel",
+      "community_name": "vercel.json"
+    },
+    {
+      "label": "$schema",
+      "file_type": "code",
+      "source_file": "lens/vercel.json",
+      "source_location": "L2",
+      "_origin": "ast",
+      "community": 81,
+      "norm_label": "$schema",
+      "id": "lens_vercel_schema",
+      "community_name": "vercel.json"
+    },
+    {
+      "label": "version",
+      "file_type": "code",
+      "source_file": "lens/vercel.json",
+      "source_location": "L3",
+      "_origin": "ast",
+      "community": 81,
+      "norm_label": "version",
+      "id": "lens_vercel_version",
+      "community_name": "vercel.json"
+    },
+    {
+      "label": "builds",
+      "file_type": "code",
+      "source_file": "lens/vercel.json",
+      "source_location": "L4",
+      "_origin": "ast",
+      "community": 81,
+      "norm_label": "builds",
+      "id": "lens_vercel_builds",
+      "community_name": "vercel.json"
+    },
+    {
+      "label": "routes",
+      "file_type": "code",
+      "source_file": "lens/vercel.json",
+      "source_location": "L8",
+      "_origin": "ast",
+      "community": 81,
+      "norm_label": "routes",
+      "id": "lens_vercel_routes",
+      "community_name": "vercel.json"
+    },
+    {
+      "label": "crons",
+      "file_type": "code",
+      "source_file": "lens/vercel.json",
+      "source_location": "L12",
+      "_origin": "ast",
+      "community": 81,
+      "norm_label": "crons",
+      "id": "lens_vercel_crons",
+      "community_name": "vercel.json"
+    },
+    {
       "label": "CLAUDE.md",
       "file_type": "document",
       "source_file": "CLAUDE.md",
@@ -4530,6 +4596,72 @@
       "norm_label": "8. v1 goal (definition of done)",
       "id": "lens_v1_build_plan_8_v1_goal_definition_of_done",
       "community_name": "Safe-to-Spend Core Concepts"
+    },
+    {
+      "label": "README.md",
+      "file_type": "document",
+      "source_file": "lens/README.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 80,
+      "norm_label": "readme.md",
+      "id": "lens_readme",
+      "community_name": "LENS \u2014 the expense app that shows you *why*"
+    },
+    {
+      "label": "LENS \u2014 the expense app that shows you *why*",
+      "file_type": "document",
+      "source_file": "lens/README.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 80,
+      "norm_label": "lens \u2014 the expense app that shows you *why*",
+      "id": "lens_readme_lens_the_expense_app_that_shows_you_why",
+      "community_name": "LENS \u2014 the expense app that shows you *why*"
+    },
+    {
+      "label": "Local development",
+      "file_type": "document",
+      "source_file": "lens/README.md",
+      "source_location": "L5",
+      "_origin": "ast",
+      "community": 80,
+      "norm_label": "local development",
+      "id": "lens_readme_local_development",
+      "community_name": "LENS \u2014 the expense app that shows you *why*"
+    },
+    {
+      "label": "Environment variables",
+      "file_type": "document",
+      "source_file": "lens/README.md",
+      "source_location": "L19",
+      "_origin": "ast",
+      "community": 80,
+      "norm_label": "environment variables",
+      "id": "lens_readme_environment_variables",
+      "community_name": "LENS \u2014 the expense app that shows you *why*"
+    },
+    {
+      "label": "Database setup",
+      "file_type": "document",
+      "source_file": "lens/README.md",
+      "source_location": "L31",
+      "_origin": "ast",
+      "community": 80,
+      "norm_label": "database setup",
+      "id": "lens_readme_database_setup",
+      "community_name": "LENS \u2014 the expense app that shows you *why*"
+    },
+    {
+      "label": "Deploy (Vercel)",
+      "file_type": "document",
+      "source_file": "lens/README.md",
+      "source_location": "L37",
+      "_origin": "ast",
+      "community": 80,
+      "norm_label": "deploy (vercel)",
+      "id": "lens_readme_deploy_vercel",
+      "community_name": "LENS \u2014 the expense app that shows you *why*"
     },
     {
       "label": "Graphify Project Setup",
@@ -11690,6 +11822,56 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
+      "source_file": "lens/vercel.json",
+      "source_location": "L4",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lens_vercel",
+      "target": "lens_vercel_builds"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lens/vercel.json",
+      "source_location": "L12",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lens_vercel",
+      "target": "lens_vercel_crons"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lens/vercel.json",
+      "source_location": "L8",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lens_vercel",
+      "target": "lens_vercel_routes"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lens/vercel.json",
+      "source_location": "L2",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lens_vercel",
+      "target": "lens_vercel_schema"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lens/vercel.json",
+      "source_location": "L3",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lens_vercel",
+      "target": "lens_vercel_version"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
       "source_file": "CLAUDE.md",
       "source_location": "L1",
       "weight": 1.0,
@@ -12196,6 +12378,56 @@
       "confidence_score": 1.0,
       "source": "lens_v1_build_plan_7_developer_evaluation_checklist_beginner_friendly_follow_every_step",
       "target": "lens_v1_build_plan_check_9_safe_to_spend_math_is_correct_hand_compute_once"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lens/README.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lens_readme",
+      "target": "lens_readme_lens_the_expense_app_that_shows_you_why"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lens/README.md",
+      "source_location": "L31",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lens_readme_lens_the_expense_app_that_shows_you_why",
+      "target": "lens_readme_database_setup"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lens/README.md",
+      "source_location": "L37",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lens_readme_lens_the_expense_app_that_shows_you_why",
+      "target": "lens_readme_deploy_vercel"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lens/README.md",
+      "source_location": "L19",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lens_readme_lens_the_expense_app_that_shows_you_why",
+      "target": "lens_readme_environment_variables"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lens/README.md",
+      "source_location": "L5",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lens_readme_lens_the_expense_app_that_shows_you_why",
+      "target": "lens_readme_local_development"
     }
   ],
   "hyperedges": [
@@ -12242,5 +12474,5 @@
       "source_file": "GRAPHIFY_SETUP_PROMPT.md"
     }
   ],
-  "built_at_commit": "372f288d8755f74b4a03a362aac86b29a9564f3a"
+  "built_at_commit": "7408665dcff17cb987053ee4b96c0b45ea7154f1"
 }

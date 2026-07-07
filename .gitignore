@@ -29,3 +29,6 @@ lens/scripts/tailwindcss
 
 # Logs / scratch
 *.log
+
+# Vercel local project link
+lens/.vercel/

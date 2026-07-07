@@ -559,6 +559,20 @@
         "a": 1,
         "rgb": 12234924
       }
+    },
+    {
+      "query": "tag:#community/LENS_\u2014_the_expense_app_that_shows_you_*why*",
+      "color": {
+        "a": 1,
+        "rgb": 5142951
+      }
+    },
+    {
+      "query": "tag:#community/vercel.json",
+      "color": {
+        "a": 1,
+        "rgb": 15896107
+      }
     }
   ]
 }

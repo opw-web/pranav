@@ -448,5 +448,25 @@
     "mtime": 1783426635.420654,
     "ast_hash": "5118fe7ebdf39c55f113b8b8ce47ab58",
     "semantic_hash": ""
+  },
+  "lens/.vercel/project.json": {
+    "mtime": 1783426889.4308846,
+    "ast_hash": "8a17e458527e22570887dcb290ade3b2",
+    "semantic_hash": ""
+  },
+  "lens/vercel.json": {
+    "mtime": 1783426753.5640147,
+    "ast_hash": "a0fb8a46b94ebdf40a73e0e06bda5dde",
+    "semantic_hash": ""
+  },
+  "lens/.vercel/README.txt": {
+    "mtime": 1783426889.4313083,
+    "ast_hash": "2b13c79d37d6ed82a3255b83b6815034",
+    "semantic_hash": ""
+  },
+  "lens/README.md": {
+    "mtime": 1783426863.3631475,
+    "ast_hash": "eefea15d63c5f9ac9801d9b38578373f",
+    "semantic_hash": ""
   }
 }

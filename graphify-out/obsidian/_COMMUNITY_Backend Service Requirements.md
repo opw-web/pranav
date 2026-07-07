@@ -43,7 +43,7 @@ SORT file.name ASC
 ## Connections to other communities
 - 7 edges to [[_COMMUNITY_CurrentUser]]
 - 1 edge to [[_COMMUNITY_Database Schema & Architecture]]
-- 1 edge to [[_COMMUNITY_session.py]]
+- 1 edge to [[_COMMUNITY_session.py_1]]
 
 ## Top bridge nodes
 - [[get_grouped_tree()]] - degree 13, connects to 3 communities

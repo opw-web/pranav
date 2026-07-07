@@ -51,7 +51,7 @@ SORT file.name ASC
 - 3 edges to [[_COMMUNITY_routes.py]]
 - 3 edges to [[_COMMUNITY_Database Schema & Architecture]]
 - 3 edges to [[_COMMUNITY_transactions.py]]
-- 2 edges to [[_COMMUNITY_session.py]]
+- 2 edges to [[_COMMUNITY_session.py_1]]
 - 1 edge to [[_COMMUNITY_main.py]]
 
 ## Top bridge nodes

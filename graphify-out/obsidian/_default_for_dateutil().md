@@ -13,7 +13,7 @@ tags:
 
 ## Connections
 - [[_try_parse_date()]] - `calls` [EXTRACTED]
-- [[date_1]] - `references` [EXTRACTED]
+- [[date_2]] - `references` [EXTRACTED]
 - [[quickadd_parser.py]] - `contains` [EXTRACTED]
 
 #graphify/code #graphify/EXTRACTED #community/sessionpy

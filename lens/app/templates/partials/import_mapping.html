@@ -1,0 +1,42 @@
+<form hx-post="/import/preview" hx-target="#import-step" hx-swap="innerHTML"
+      class="bg-white border border-neutral-200 rounded-lg p-4">
+
+    {% if recognized %}
+    <p class="text-sm text-green-700 mb-3">✓ Recognized this bank's format — mapping pre-filled.</p>
+    {% else %}
+    <p class="text-sm text-neutral-600 mb-3">Confirm the column roles below.</p>
+    {% endif %}
+
+    <input type="hidden" name="account_id" value="{{ account_id }}" />
+    <input type="hidden" name="filename" value="{{ filename }}" />
+    <input type="hidden" name="file_b64" value="{{ file_b64 }}" />
+    <input type="hidden" name="delimiter" value="{{ info.delimiter }}" />
+    <input type="hidden" name="header_idx" value="{{ info.header_idx }}" />
+    <input type="hidden" name="date_format" value="{{ info.date_format or '' }}" />
+
+    <div class="grid grid-cols-2 gap-3 mb-4">
+        {% for role in roles %}
+        <label class="text-sm">{{ role|capitalize }}
+            <select name="map_{{ role }}" class="mt-1 block w-full border border-neutral-300 rounded px-2 py-1 text-sm">
+                <option value="">— none —</option>
+                {% for col in info.header %}
+                <option value="{{ col }}" {% if info.mapping.get(role) == col %}selected{% endif %}>{{ col }}</option>
+                {% endfor %}
+            </select>
+        </label>
+        {% endfor %}
+    </div>
+
+    <div class="overflow-x-auto mb-4">
+        <table class="text-xs border-collapse">
+            <thead><tr>{% for col in info.header %}<th class="border border-neutral-200 px-2 py-1 text-left">{{ col }}</th>{% endfor %}</tr></thead>
+            <tbody>
+                {% for row in info.preview_rows %}
+                <tr>{% for cell in row %}<td class="border border-neutral-100 px-2 py-1 whitespace-nowrap">{{ cell }}</td>{% endfor %}</tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <button type="submit" class="bg-neutral-800 text-white rounded px-3 py-1.5 text-sm">Preview import</button>
+</form>

@@ -1,0 +1,43 @@
+<div class="bg-white border border-neutral-200 rounded-lg p-4">
+    <div class="flex gap-4 text-sm mb-3">
+        <span><strong>{{ preview.to_import }}</strong> to import</span>
+        <span class="text-amber-600"><strong>{{ preview.duplicates }}</strong> duplicates (skipped)</span>
+        <span class="text-blue-600"><strong>{{ preview.transfers }}</strong> transfers (linked)</span>
+    </div>
+
+    <div class="overflow-x-auto max-h-64 overflow-y-auto mb-4 border border-neutral-100 rounded">
+        <table class="text-xs w-full border-collapse">
+            <thead class="sticky top-0 bg-neutral-50">
+                <tr><th class="px-2 py-1 text-left">Date</th><th class="px-2 py-1 text-left">Description</th>
+                    <th class="px-2 py-1 text-right">Amount</th><th class="px-2 py-1">Flag</th></tr>
+            </thead>
+            <tbody>
+                {% for r in preview.rows[:100] %}
+                <tr class="{% if r.is_duplicate %}text-neutral-400 line-through{% endif %}">
+                    <td class="px-2 py-1">{{ r.txn_date }}</td>
+                    <td class="px-2 py-1">{{ r.merchant_raw or '' }}</td>
+                    <td class="px-2 py-1 text-right">{{ "%.2f"|format(r.amount) }} {{ 'CR' if r.type=='income' else '' }}</td>
+                    <td class="px-2 py-1 text-center">
+                        {% if r.is_duplicate %}<span class="text-amber-600">dup</span>
+                        {% elif r.is_transfer %}<span class="text-blue-600">↔</span>{% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <form hx-post="/import/commit?page=0" hx-target="#import-step" hx-swap="innerHTML">
+        <input type="hidden" name="account_id" value="{{ account_id }}" />
+        <input type="hidden" name="file_b64" value="{{ file_b64 }}" />
+        <input type="hidden" name="delimiter" value="{{ delimiter }}" />
+        <input type="hidden" name="header_idx" value="{{ header_idx }}" />
+        <input type="hidden" name="date_format" value="{{ date_format }}" />
+        <input type="hidden" name="mapping_json" value="{{ mapping_json }}" />
+        <input type="hidden" name="amount_convention" value="{{ amount_convention }}" />
+        <input type="hidden" name="signature" value="{{ signature }}" />
+        <button type="submit" class="bg-neutral-800 text-white rounded px-3 py-1.5 text-sm">
+            Import {{ preview.to_import }} transactions
+        </button>
+    </form>
+</div>

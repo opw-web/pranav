@@ -1,0 +1,42 @@
+<div class="bg-white border border-neutral-200 rounded-lg p-4">
+    {% if not done %}
+    <p class="text-sm mb-2">Importing… {{ processed }} / {{ total }}</p>
+    <div class="w-full bg-neutral-100 rounded h-2 mb-3">
+        <div class="bg-blue-600 h-2 rounded" style="width: {{ (processed / total * 100) if total else 100 }}%"></div>
+    </div>
+
+    <!-- auto-fire the next chunk on load -->
+    <form id="next-chunk" hx-post="/import/commit?page={{ next_page }}" hx-target="#import-step" hx-swap="innerHTML"
+          hx-trigger="load">
+        <input type="hidden" name="batch_id" value="{{ batch_id }}" />
+        <input type="hidden" name="account_id" value="{{ account_id }}" />
+        <input type="hidden" name="file_b64" value="{{ file_b64 }}" />
+        <input type="hidden" name="delimiter" value="{{ delimiter }}" />
+        <input type="hidden" name="header_idx" value="{{ header_idx }}" />
+        <input type="hidden" name="date_format" value="{{ date_format }}" />
+        <input type="hidden" name="mapping_json" value="{{ mapping_json }}" />
+        <input type="hidden" name="amount_convention" value="{{ amount_convention }}" />
+        <input type="hidden" name="signature" value="{{ signature }}" />
+        <input type="hidden" name="running_imported" value="{{ imported }}" />
+        <input type="hidden" name="running_skipped" value="{{ skipped }}" />
+        <input type="hidden" name="running_review" value="{{ needs_review }}" />
+    </form>
+    {% else %}
+    <p class="text-sm font-medium mb-2">Import complete.</p>
+    <p class="text-sm text-neutral-600 mb-3">
+        Imported <strong>{{ imported }}</strong> ·
+        Skipped <strong>{{ skipped }}</strong> duplicates ·
+        <strong>{{ needs_review }}</strong> need a category.
+    </p>
+    <div class="flex gap-2">
+        {% if needs_review %}
+        <a href="/txn?uncategorized=1" class="bg-neutral-800 text-white rounded px-3 py-1.5 text-sm">
+            Review {{ needs_review }} uncategorized →
+        </a>
+        {% endif %}
+        <a href="/txn?account_id={{ account_id }}" class="border border-neutral-300 rounded px-3 py-1.5 text-sm">
+            View imported
+        </a>
+    </div>
+    {% endif %}
+</div>

@@ -8,14 +8,14 @@ members: 8
 **Members:** 8 nodes
 
 ## Members
-- [[Verify a Supabase-issued JWT locally against the project's JWKS (ES256).     Rai]] - rationale - lens/app/auth/session.py
-- [[_fetch_jwks()]] - code - lens/app/auth/session.py
-- [[clear_session_cookies()]] - code - lens/app/auth/session.py
-- [[generate_pkce_pair()]] - code - lens/app/auth/session.py
-- [[is_secure_request()]] - code - lens/app/auth/session.py
-- [[session.py]] - code - lens/app/auth/session.py
-- [[set_session_cookies()]] - code - lens/app/auth/session.py
-- [[verify_access_token()]] - code - lens/app/auth/session.py
+- [[Arbitrary SQL over 443 via the Management API. Needs SUPABASE_ACCESS_TOKEN.]] - rationale - lens/scripts/db_http.py
+- [[DB access over HTTPS (port 443) — a workaround for dev networks that firewall th]] - rationale - lens/scripts/db_http.py
+- [[_call()]] - code - lens/scripts/db_http.py
+- [[db_http.py]] - code - lens/scripts/db_http.py
+- [[rest_delete()]] - code - lens/scripts/db_http.py
+- [[rest_insert()]] - code - lens/scripts/db_http.py
+- [[rest_select()]] - code - lens/scripts/db_http.py
+- [[run_sql()]] - code - lens/scripts/db_http.py
 
 ## Live Query (requires Dataview plugin)
 
@@ -23,9 +23,3 @@ members: 8
 TABLE source_file, type FROM #community/quickadd_parserpy
 SORT file.name ASC
 ```
-
-## Connections to other communities
-- 1 edge to [[_COMMUNITY_routes.py]]
-
-## Top bridge nodes
-- [[session.py]] - degree 7, connects to 1 community

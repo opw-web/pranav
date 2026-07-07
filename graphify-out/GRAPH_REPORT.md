@@ -1,13 +1,17 @@
-# Graph Report - LENS project  (2026-07-07)
+# Graph Report - .  (2026-07-07)
 
 ## Corpus Check
-- 41 files · ~20,585 words
-- Verdict: corpus is large enough that graph structure adds value.
+- cluster-only mode — file stats not available
 
 ## Summary
-- 287 nodes · 393 edges · 72 communities (20 shown, 52 thin omitted)
-- Extraction: 86% EXTRACTED · 14% INFERRED · 0% AMBIGUOUS · INFERRED: 56 edges (avg confidence: 0.78)
+- 330 nodes · 449 edges · 75 communities (22 shown, 53 thin omitted)
+- Extraction: 88% EXTRACTED · 12% INFERRED · 0% AMBIGUOUS · INFERRED: 56 edges (avg confidence: 0.78)
 - Token cost: 0 input · 0 output
+
+## Graph Freshness
+- Built from commit: `8fe9f422`
+- Run `git rev-parse HEAD` and compare to check if the graph is stale.
+- Run `graphify update .` after code changes (no API cost).
 
 ## Community Hubs (Navigation)
 - [[_COMMUNITY_Safe-to-Spend Core Concepts|Safe-to-Spend Core Concepts]]
@@ -77,6 +81,9 @@
 - [[_COMMUNITY_main.py|main.py]]
 - [[_COMMUNITY_CurrentUser|CurrentUser]]
 - [[_COMMUNITY_quickadd_parser.py|quickadd_parser.py]]
+- [[_COMMUNITY_importer.py|importer.py]]
+- [[_COMMUNITY_session.py|session.py]]
+- [[_COMMUNITY_test_importer.py|test_importer.py]]
 
 ## God Nodes (most connected - your core abstractions)
 1. `CurrentUser` - 28 edges
@@ -84,11 +91,11 @@
 3. `get_grouped_tree()` - 13 edges
 4. `build_quickadd_preview()` - 11 edges
 5. `LENS — V1: THE EXPENSE APP THAT SHOWS YOU *WHY*` - 11 edges
-6. `create_txn()` - 9 edges
-7. `patch_txn()` - 9 edges
-8. `bulk_action()` - 9 edges
-9. `get_account_balances()` - 9 edges
-10. `quickadd_commit()` - 8 edges
+6. `analyze()` - 10 edges
+7. `create_txn()` - 9 edges
+8. `patch_txn()` - 9 edges
+9. `bulk_action()` - 9 edges
+10. `get_account_balances()` - 9 edges
 
 ## Surprising Connections (you probably didn't know these)
 - `Account` --uses--> `Base`  [INFERRED]
@@ -110,7 +117,7 @@
 - **Money-Movement Semantics (Transfer/Refund/Safe-to-Spend)** — lens_v1_build_plan_transfer, lens_v1_build_plan_refund, lens_v1_build_plan_safe_to_spend, lens_v1_build_plan_transactions_table [INFERRED 0.85]
 - **Graphify Auto-Refresh Pipeline** — graphify_setup_prompt_posttooluse_hook, graphify_setup_prompt_refresh_sh, graphify_setup_prompt_make_vault_py, graphify_setup_prompt_community_labeling [EXTRACTED 1.00]
 
-## Communities (72 total, 52 thin omitted)
+## Communities (75 total, 53 thin omitted)
 
 ### Community 0 - "Safe-to-Spend Core Concepts"
 Cohesion: 0.06
@@ -169,28 +176,36 @@ Cohesion: 0.21
 Nodes (27): CurrentUser, bulk_action(), create_txn(), delete_txn(), edit_txn_row(), _flat_categories(), get_txn_row(), list_txn_page() (+19 more)
 
 ### Community 71 - "quickadd_parser.py"
+Cohesion: 0.39
+Nodes (7): _call(), DB access over HTTPS (port 443) — a workaround for dev networks that firewall th, Arbitrary SQL over 443 via the Management API. Needs SUPABASE_ACCESS_TOKEN., rest_delete(), rest_insert(), rest_select(), run_sql()
+
+### Community 72 - "importer.py"
+Cohesion: 0.11
+Nodes (26): analyze(), bank_signature(), chunk_bounds(), _clean_amount(), decode_bytes(), dedupe_hash(), detect_amount_convention(), detect_date_format() (+18 more)
+
+### Community 73 - "session.py"
 Cohesion: 0.29
 Nodes (3): _fetch_jwks(), Verify a Supabase-issued JWT locally against the project's JWKS (ES256).     Rai, verify_access_token()
 
 ## Knowledge Gaps
 - **87 isolated node(s):** `refresh.sh script`, `OBJC_DISABLE_INITIALIZE_FORK_SAFETY`, `GRAPHIFY_NO_BACKUP`, `Settings`, `build_css.sh script` (+82 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **52 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **53 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `CurrentUser` connect `CurrentUser` to `routes.py`, `main.py`, `Database Schema & Architecture`, `Backend Service Requirements`, `UX Playbook Spec`?**
-  _High betweenness centrality (0.178) - this node is a cross-community bridge._
+  _High betweenness centrality (0.135) - this node is a cross-community bridge._
 - **Why does `build_quickadd_preview()` connect `session.py` to `Database Schema & Architecture`, `Backend Service Requirements`, `CurrentUser`?**
-  _High betweenness centrality (0.052) - this node is a cross-community bridge._
+  _High betweenness centrality (0.039) - this node is a cross-community bridge._
 - **Why does `get_grouped_tree()` connect `Backend Service Requirements` to `session.py`, `Database Schema & Architecture`, `CurrentUser`?**
-  _High betweenness centrality (0.033) - this node is a cross-community bridge._
+  _High betweenness centrality (0.025) - this node is a cross-community bridge._
 - **Are the 9 inferred relationships involving `get_grouped_tree()` (e.g. with `categories_page()` and `category_picker()`) actually correct?**
   _`get_grouped_tree()` has 9 INFERRED edges - model-reasoned connections that need verification._
 - **Are the 5 inferred relationships involving `build_quickadd_preview()` (e.g. with `quickadd_commit()` and `quickadd_preview()`) actually correct?**
   _`build_quickadd_preview()` has 5 INFERRED edges - model-reasoned connections that need verification._
 - **What connects `refresh.sh script`, `OBJC_DISABLE_INITIALIZE_FORK_SAFETY`, `GRAPHIFY_NO_BACKUP` to the rest of the system?**
-  _120 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _132 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Safe-to-Spend Core Concepts` be split into smaller, more focused modules?**
   _Cohesion score 0.0625 - nodes in this community are weakly interconnected._

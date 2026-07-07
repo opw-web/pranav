@@ -1,12 +1,12 @@
 ---
 source_file: "lens/app/auth/session.py"
 type: "code"
-community: "quickadd_parser.py"
+community: "session.py"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/quickadd_parserpy
+  - community/sessionpy
 ---
 
 # session.py
@@ -20,4 +20,4 @@ tags:
 - [[set_session_cookies()]] - `contains` [EXTRACTED]
 - [[verify_access_token()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/quickadd_parserpy
+#graphify/code #graphify/EXTRACTED #community/sessionpy

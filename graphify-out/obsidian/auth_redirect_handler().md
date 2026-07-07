@@ -2,7 +2,7 @@
 source_file: "lens/app/main.py"
 type: "code"
 community: "main.py"
-location: "L29"
+location: "L31"
 tags:
   - graphify/code
   - graphify/EXTRACTED

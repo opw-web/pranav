@@ -1,0 +1,35 @@
+[
+  {"name": "Food", "kind": "expense", "color": "#F59E0B", "icon": "🍽️", "children": [
+    {"name": "Restaurants", "kind": "expense", "color": "#F59E0B", "icon": "🍴"},
+    {"name": "Groceries", "kind": "expense", "color": "#F59E0B", "icon": "🧺"},
+    {"name": "Coffee", "kind": "expense", "color": "#F59E0B", "icon": "☕"}
+  ]},
+  {"name": "Transport", "kind": "expense", "color": "#3B82F6", "icon": "🚕", "children": [
+    {"name": "Fuel", "kind": "expense", "color": "#3B82F6", "icon": "⛽"},
+    {"name": "Public Transit", "kind": "expense", "color": "#3B82F6", "icon": "🚇"}
+  ]},
+  {"name": "Shopping", "kind": "expense", "color": "#EC4899", "icon": "🛒", "children": [
+    {"name": "Clothing", "kind": "expense", "color": "#EC4899", "icon": "👕"},
+    {"name": "Electronics", "kind": "expense", "color": "#EC4899", "icon": "📱"}
+  ]},
+  {"name": "Entertainment", "kind": "expense", "color": "#8B5CF6", "icon": "🎬", "children": [
+    {"name": "Subscriptions", "kind": "expense", "color": "#8B5CF6", "icon": "📺"}
+  ]},
+  {"name": "Health", "kind": "expense", "color": "#10B981", "icon": "🏥", "children": [
+    {"name": "Pharmacy", "kind": "expense", "color": "#10B981", "icon": "💊"},
+    {"name": "Fitness", "kind": "expense", "color": "#10B981", "icon": "🏋️"}
+  ]},
+  {"name": "Travel", "kind": "expense", "color": "#06B6D4", "icon": "✈️", "children": [
+    {"name": "Flights", "kind": "expense", "color": "#06B6D4", "icon": "🛩️"},
+    {"name": "Stay", "kind": "expense", "color": "#06B6D4", "icon": "🏨"}
+  ]},
+  {"name": "Bills", "kind": "expense", "color": "#EF4444", "icon": "🧾", "children": [
+    {"name": "Electricity", "kind": "expense", "color": "#EF4444", "icon": "💡"},
+    {"name": "Internet & Mobile", "kind": "expense", "color": "#EF4444", "icon": "📶"},
+    {"name": "Rent", "kind": "expense", "color": "#EF4444", "icon": "🏠"}
+  ]},
+  {"name": "Income", "kind": "income", "color": "#22C55E", "icon": "💰", "children": [
+    {"name": "Salary", "kind": "income", "color": "#22C55E", "icon": "💼"},
+    {"name": "Other Income", "kind": "income", "color": "#22C55E", "icon": "🪙"}
+  ]}
+]

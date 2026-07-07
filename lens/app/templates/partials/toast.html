@@ -1,0 +1,13 @@
+{% set toast_id = "toast-" ~ range(100000, 999999) | random %}
+<div id="{{ toast_id }}"
+     class="rounded-lg px-4 py-2 text-sm shadow-lg text-white {{ 'bg-red-600' if kind == 'error' else 'bg-neutral-800' }}"
+     hx-swap-oob="beforeend:#toast-region">
+    {{ message }}
+    {% if undo_url %}
+    <button class="ml-3 underline" hx-post="{{ undo_url }}"
+            {% if undo_target %}hx-target="{{ undo_target }}" hx-swap="outerHTML"{% else %}hx-swap="none"{% endif %}>
+        Undo
+    </button>
+    {% endif %}
+</div>
+<script>setTimeout(() => document.getElementById({{ toast_id | tojson }})?.remove(), 8000);</script>

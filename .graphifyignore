@@ -1,0 +1,15 @@
+# Keep the knowledge graph to real source — exclude backups, vendored code,
+# minified/compiled bundles, and generated output.
+**/*.min.js
+**/*.min.css
+**/*_compiled.js
+**/*.bundle.js
+**/dist/
+**/build/
+**/out/
+**/.next/
+**/coverage/
+**/vendor/
+**/__generated__/
+**/*.generated.*
+graphify-out/

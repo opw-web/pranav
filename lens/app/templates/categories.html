@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block title %}Categories — LENS{% endblock %}
+{% block content %}
+<div class="max-w-2xl mx-auto">
+    <h1 class="text-lg font-semibold mb-1">Categories</h1>
+    <p class="text-sm text-neutral-500 mb-4">Search, or type a new name and create it without leaving this page.</p>
+
+    <input
+        type="text"
+        name="q"
+        placeholder="Search or create a category…"
+        autocomplete="off"
+        class="w-full rounded-lg border border-neutral-300 px-3 py-2 text-sm mb-1 focus:outline-none focus:ring-2 focus:ring-neutral-400"
+        hx-get="/category-picker"
+        hx-trigger="keyup changed delay:150ms, focus"
+        hx-target="#category-options-wrapper"
+        hx-swap="innerHTML"
+    />
+    <div id="category-picker-selection" class="text-xs text-neutral-500 mb-4 h-4"></div>
+
+    <div id="category-options-wrapper" class="mb-8">
+        {% include "partials/category_picker.html" %}
+    </div>
+
+    <h2 class="text-sm font-semibold text-neutral-700 mb-2">All categories</h2>
+    <div class="bg-white border border-neutral-200 rounded-lg overflow-hidden mb-6">
+        {% include "partials/category_tree.html" %}
+    </div>
+
+    <details class="bg-white border border-neutral-200 rounded-lg p-4">
+        <summary class="text-sm font-medium cursor-pointer">Merge two categories</summary>
+        <form hx-post="/categories/merge" hx-target="#category-tree-wrapper" hx-swap="outerHTML"
+              class="mt-3 flex flex-wrap items-center gap-2 text-sm">
+            <span>Merge</span>
+            <select name="source_id" class="border border-neutral-300 rounded px-2 py-1">
+                {% for g in tree %}
+                <option value="{{ g.id }}">{{ g.name }}</option>
+                {% for child in g.children %}<option value="{{ child.id }}">&nbsp;&nbsp;{{ g.name }} › {{ child.name }}</option>{% endfor %}
+                {% endfor %}
+            </select>
+            <span>into</span>
+            <select name="target_id" class="border border-neutral-300 rounded px-2 py-1">
+                {% for g in tree %}
+                <option value="{{ g.id }}">{{ g.name }}</option>
+                {% for child in g.children %}<option value="{{ child.id }}">&nbsp;&nbsp;{{ g.name }} › {{ child.name }}</option>{% endfor %}
+                {% endfor %}
+            </select>
+            <button type="submit" class="bg-neutral-800 text-white rounded px-3 py-1">Merge</button>
+        </form>
+    </details>
+</div>
+{% endblock %}

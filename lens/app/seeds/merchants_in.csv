@@ -1,0 +1,71 @@
+pattern,merchant_clean,category_key
+swiggy,Swiggy,food.restaurants
+zomato,Zomato,food.restaurants
+dominos,Domino's Pizza,food.restaurants
+dominos pizza,Domino's Pizza,food.restaurants
+mcdonald,McDonald's,food.restaurants
+kfc,KFC,food.restaurants
+starbucks,Starbucks,food.coffee
+cafe coffee day,Cafe Coffee Day,food.coffee
+ccd,Cafe Coffee Day,food.coffee
+chaayos,Chaayos,food.coffee
+bigbasket,BigBasket,food.groceries
+blinkit,Blinkit,food.groceries
+zepto,Zepto,food.groceries
+grofers,Blinkit,food.groceries
+dmart,DMart,food.groceries
+reliance fresh,Reliance Fresh,food.groceries
+more supermarket,More Supermarket,food.groceries
+uber,Uber,transport.fuel
+ola,Ola,transport.fuel
+rapido,Rapido,transport.fuel
+irctc,IRCTC,transport.public_transit
+redbus,RedBus,transport.public_transit
+indianoil,Indian Oil,transport.fuel
+hpcl,HP Petrol Pump,transport.fuel
+bpcl,Bharat Petroleum,transport.fuel
+amazon,Amazon,shopping.electronics
+amzn,Amazon,shopping.electronics
+flipkart,Flipkart,shopping.electronics
+myntra,Myntra,shopping.clothing
+ajio,Ajio,shopping.clothing
+nykaa,Nykaa,shopping.clothing
+croma,Croma,shopping.electronics
+reliance digital,Reliance Digital,shopping.electronics
+netflix,Netflix,entertainment.subscriptions
+spotify,Spotify,entertainment.subscriptions
+hotstar,Disney+ Hotstar,entertainment.subscriptions
+disney+ hotstar,Disney+ Hotstar,entertainment.subscriptions
+prime video,Amazon Prime Video,entertainment.subscriptions
+amazon prime,Amazon Prime,entertainment.subscriptions
+youtube premium,YouTube Premium,entertainment.subscriptions
+sonyliv,SonyLIV,entertainment.subscriptions
+pvr,PVR Cinemas,entertainment.subscriptions
+inox,INOX,entertainment.subscriptions
+bookmyshow,BookMyShow,entertainment.subscriptions
+jio,Jio,bills.internet_mobile
+airtel,Airtel,bills.internet_mobile
+vi,Vodafone Idea,bills.internet_mobile
+vodafone idea,Vodafone Idea,bills.internet_mobile
+bsnl,BSNL,bills.internet_mobile
+act fibernet,ACT Fibernet,bills.internet_mobile
+bses,BSES Electricity,bills.electricity
+tata power,Tata Power,bills.electricity
+adani electricity,Adani Electricity,bills.electricity
+apollo pharmacy,Apollo Pharmacy,health.pharmacy
+medplus,MedPlus,health.pharmacy
+pharmeasy,PharmEasy,health.pharmacy
+1mg,Tata 1mg,health.pharmacy
+cult.fit,Cult.fit,health.fitness
+cultfit,Cult.fit,health.fitness
+practo,Practo,health.pharmacy
+phonepe,PhonePe,shopping.electronics
+gpay,Google Pay,shopping.electronics
+google pay,Google Pay,shopping.electronics
+paytm,Paytm,shopping.electronics
+makemytrip,MakeMyTrip,travel.flights
+goibibo,Goibibo,travel.flights
+indigo,IndiGo,travel.flights
+air india,Air India,travel.flights
+oyo,OYO Rooms,travel.stay
+airbnb,Airbnb,travel.stay

@@ -1,0 +1,28 @@
+{% from "partials/_category_macros.html" import option_row %}
+<ul id="category-options" class="max-h-72 overflow-y-auto divide-y divide-neutral-50 border border-neutral-200 rounded-lg bg-white shadow-sm">
+    {% if query and not exact_match %}
+    <li>
+        <form hx-post="/categories" hx-target="#category-options" hx-swap="afterbegin">
+            <input type="hidden" name="name" value="{{ query }}" />
+            <button type="submit" class="w-full text-left px-3 py-1.5 text-sm text-blue-600 hover:bg-blue-50">
+                ➕ Create "{{ query }}"
+            </button>
+        </form>
+    </li>
+    {% endif %}
+
+    {% if query %}
+        {% for c in results %}{{ option_row(c) }}{% endfor %}
+        {% if not results and exact_match %}
+        <li class="px-3 py-1.5 text-sm text-neutral-400">No matches.</li>
+        {% endif %}
+    {% else %}
+        {% for g in groups %}
+            {{ option_row(g) }}
+            {% for child in g.children %}{{ option_row(child) }}{% endfor %}
+        {% endfor %}
+        {% if not groups %}
+        <li class="px-3 py-1.5 text-sm text-neutral-400">No categories yet — type a name to create one.</li>
+        {% endif %}
+    {% endif %}
+</ul>

@@ -1,0 +1,16 @@
+<table class="w-full border-collapse" id="accounts-table">
+    <thead>
+        <tr class="text-left text-xs uppercase text-neutral-400 border-b border-neutral-200">
+            <th class="py-2 px-3">Name</th>
+            <th class="py-2 px-3">Type</th>
+            <th class="py-2 px-3 text-right">Balance</th>
+            <th class="py-2 px-3">Spendable</th>
+            <th class="py-2 px-3"></th>
+        </tr>
+    </thead>
+    <tbody id="accounts-list">
+        {% for a in accounts %}
+            {% include "partials/account_row.html" %}
+        {% endfor %}
+    </tbody>
+</table>

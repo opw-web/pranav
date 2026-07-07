@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en" class="h-full">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Sign in — LENS</title>
+    <link rel="stylesheet" href="/static/css/app.css" />
+</head>
+<body class="h-full bg-neutral-50 text-neutral-900 antialiased flex items-center justify-center">
+    <div class="w-full max-w-sm rounded-xl border border-neutral-200 bg-white p-8 shadow-sm text-center">
+        <h1 class="text-xl font-semibold mb-1">LENS</h1>
+        <p class="text-sm text-neutral-500 mb-6">A lens on your money.</p>
+
+        {% if error %}
+        <p class="mb-4 text-sm text-red-600">Sign-in failed: {{ error }}</p>
+        {% endif %}
+
+        <a href="/auth/google"
+           class="inline-flex w-full items-center justify-center gap-2 rounded-lg border border-neutral-300 px-4 py-2 text-sm font-medium hover:bg-neutral-50">
+            Continue with Google
+        </a>
+    </div>
+</body>
+</html>

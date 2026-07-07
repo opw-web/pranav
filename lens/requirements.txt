@@ -1,0 +1,13 @@
+fastapi
+uvicorn[standard]
+jinja2
+sqlalchemy[asyncio]
+asyncpg
+supabase
+alembic
+charset-normalizer
+python-dateutil
+rapidfuzz
+python-dotenv
+pyjwt[crypto]
+python-multipart

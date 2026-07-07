@@ -1,0 +1,6 @@
+{% from "partials/_category_macros.html" import option_row %}
+{{ option_row(c) }}
+<script>lensApplyCategorySelection("{{ c.id }}", {{ (c.label or c.name) | tojson }});</script>
+
+{% set oob = true %}
+{% include "partials/category_tree.html" %}

@@ -1,0 +1,18 @@
+{% if learn_offer %}
+<div id="learn-offer" hx-swap-oob="innerHTML:#learn-offer-region">
+    <div class="rounded-lg bg-blue-50 border border-blue-200 px-4 py-2 text-sm text-blue-900 flex items-center gap-3">
+        <span>Always categorize <strong>{{ learn_offer.merchant }}</strong> as
+            <strong>{{ learn_offer.category_name }}</strong>?</span>
+        <form hx-post="/rules/learn" hx-swap="none" class="flex items-center gap-2"
+              hx-on::after-request="document.getElementById('learn-offer')?.remove()">
+            <input type="hidden" name="txn_id" value="{{ learn_offer.txn_id }}" />
+            <input type="hidden" name="category_id" value="{{ learn_offer.category_id }}" />
+            <label class="flex items-center gap-1 text-xs">
+                <input type="checkbox" name="back_apply" checked /> also fix past matches
+            </label>
+            <button type="submit" class="bg-blue-600 text-white rounded px-2 py-0.5 text-xs">Yes</button>
+        </form>
+        <button class="text-xs text-blue-500" onclick="document.getElementById('learn-offer').remove()">No</button>
+    </div>
+</div>
+{% endif %}

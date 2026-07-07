@@ -1,0 +1,38 @@
+<tr id="txn-row-{{ t.id }}" class="border-b border-neutral-100 text-sm hover:bg-neutral-50">
+    <td class="py-2 px-2"><input type="checkbox" name="txn_ids" value="{{ t.id }}" /></td>
+    <td class="py-2 px-3 cursor-pointer whitespace-nowrap" hx-get="/txn/{{ t.id }}/edit" hx-target="#txn-row-{{ t.id }}" hx-swap="outerHTML">
+        {{ t.txn_date }}
+    </td>
+    <td class="py-2 px-3 text-neutral-500">{{ t.account_name }}</td>
+    <td class="py-2 px-3 cursor-pointer" hx-get="/txn/{{ t.id }}/edit" hx-target="#txn-row-{{ t.id }}" hx-swap="outerHTML">
+        {{ t.merchant_clean or t.merchant_raw or '—' }}
+    </td>
+    <td class="py-2 px-3 cursor-pointer" hx-get="/txn/{{ t.id }}/edit" hx-target="#txn-row-{{ t.id }}" hx-swap="outerHTML">
+        {% if t.category_name %}
+        <span class="px-2 py-0.5 rounded text-xs" style="background: {{ t.category_color }}22; color: {{ t.category_color }}">
+            {{ (t.parent_category_name ~ ' › ') if t.parent_category_name else '' }}{{ t.category_name }}
+        </span>
+        {% else %}
+        <span class="px-2 py-0.5 rounded text-xs bg-neutral-100 text-neutral-400">Uncategorized</span>
+        {% endif %}
+    </td>
+    <td class="py-2 px-3 text-right font-mono whitespace-nowrap
+        {{ 'text-red-600' if t.type == 'expense' else ('text-green-600' if t.type in ('income', 'refund') else 'text-neutral-500') }}">
+        {{ '-' if t.type == 'expense' else ('+' if t.type in ('income', 'refund') else '') }}{{ t.currency }} {{ "%.2f"|format(t.amount) }}
+        {% if t.type == 'transfer' %}<span class="text-xs text-neutral-400 block">→ {{ t.transfer_account_name }}</span>{% endif %}
+    </td>
+    <td class="py-2 px-3 cursor-pointer text-neutral-500" hx-get="/txn/{{ t.id }}/edit" hx-target="#txn-row-{{ t.id }}" hx-swap="outerHTML">
+        {% if t.tags_csv %}{% for tag in t.tags_csv.split(',') %}<span class="text-xs bg-neutral-100 rounded px-1.5 py-0.5 mr-1">#{{ tag }}</span>{% endfor %}{% endif %}
+        {{ t.notes or '' }}
+    </td>
+    <td class="py-2 px-3 text-right">
+        <button hx-delete="/txn/{{ t.id }}" hx-target="#txn-row-{{ t.id }}" hx-swap="outerHTML"
+                class="text-xs text-neutral-400 hover:text-red-600">Delete</button>
+    </td>
+</tr>
+{% if is_duplicate_warning %}
+<tr id="txn-row-{{ t.id }}-dupwarn"><td colspan="7" class="text-xs text-amber-700 bg-amber-50 px-3 py-1">
+    Looks similar to another transaction on the same day — added anyway.
+</td></tr>
+{% endif %}
+{% include "partials/learn_offer.html" %}

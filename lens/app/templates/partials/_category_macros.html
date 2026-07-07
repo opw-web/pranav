@@ -1,0 +1,8 @@
+{% macro option_row(c) %}
+<li class="px-3 py-1.5 text-sm hover:bg-neutral-100 cursor-pointer flex items-center gap-2 {{ 'pl-7' if c.is_child else '' }}"
+    data-category-id="{{ c.id }}" data-category-name="{{ c.label if c.label else c.name }}"
+    onclick="lensSelectCategory(this)">
+    <span>{{ c.icon if c.icon else '🏷️' }}</span>
+    <span style="color: {{ c.color if c.color else '#525252' }}">{{ c.label if c.label else c.name }}</span>
+</li>
+{% endmacro %}

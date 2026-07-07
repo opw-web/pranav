@@ -1,0 +1,42 @@
+<div id="category-tree-wrapper"{% if oob %} hx-swap-oob="true"{% endif %}>
+<table class="w-full border-collapse">
+    <tbody>
+    {% for g in tree %}
+        <tr class="border-b border-neutral-100">
+            <td class="py-1.5 px-3 w-6">{{ g.icon if g.icon else '🏷️' }}</td>
+            <td class="py-1.5 px-3">
+                <form hx-patch="/categories/{{ g.id }}" hx-target="#category-tree-wrapper" hx-swap="outerHTML">
+                    <input name="name" value="{{ g.name }}"
+                           class="bg-transparent border-none text-sm font-medium focus:outline-none focus:underline"
+                           style="color: {{ g.color if g.color else '#171717' }}" />
+                </form>
+            </td>
+            <td class="py-1.5 px-3 text-xs text-neutral-400">{{ g.usage_count }} txns</td>
+            <td class="py-1.5 px-3 text-right">
+                <button hx-delete="/categories/{{ g.id }}" hx-target="#category-tree-wrapper" hx-swap="outerHTML"
+                        hx-confirm="Delete '{{ g.name }}'? Its transactions become Uncategorized."
+                        class="text-xs text-neutral-400 hover:text-red-600">Delete</button>
+            </td>
+        </tr>
+        {% for child in g.children %}
+        <tr class="border-b border-neutral-50">
+            <td class="py-1 px-3 pl-8 w-6 text-xs">{{ child.icon if child.icon else '🏷️' }}</td>
+            <td class="py-1 px-3">
+                <form hx-patch="/categories/{{ child.id }}" hx-target="#category-tree-wrapper" hx-swap="outerHTML">
+                    <input name="name" value="{{ child.name }}"
+                           class="bg-transparent border-none text-sm focus:outline-none focus:underline"
+                           style="color: {{ child.color if child.color else '#525252' }}" />
+                </form>
+            </td>
+            <td class="py-1 px-3 text-xs text-neutral-400">{{ child.usage_count }} txns</td>
+            <td class="py-1 px-3 text-right">
+                <button hx-delete="/categories/{{ child.id }}" hx-target="#category-tree-wrapper" hx-swap="outerHTML"
+                        hx-confirm="Delete '{{ child.name }}'? Its transactions become Uncategorized."
+                        class="text-xs text-neutral-400 hover:text-red-600">Delete</button>
+            </td>
+        </tr>
+        {% endfor %}
+    {% endfor %}
+    </tbody>
+</table>
+</div>

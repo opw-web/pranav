@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en" class="h-full">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{% block title %}LENS{% endblock %}</title>
+    <link rel="stylesheet" href="/static/css/app.css" />
+    <script src="/static/js/htmx.min.js" defer></script>
+    <script src="/static/js/alpine.min.js" defer></script>
+</head>
+<body class="h-full bg-neutral-50 text-neutral-900 antialiased" hx-headers='{"X-Requested-With": "htmx"}'>
+
+<div class="min-h-full flex flex-col">
+    <nav class="border-b border-neutral-200 bg-white">
+        <div class="mx-auto max-w-5xl px-4 py-3 flex items-center gap-4">
+            <a href="/" class="font-semibold text-lg tracking-tight">LENS</a>
+
+            <div class="flex-1 flex items-center">
+                <form hx-post="/txn/quickadd" hx-target="#quickadd-result" hx-swap="innerHTML" class="w-full max-w-xl">
+                    <input
+                        id="quickadd-bar"
+                        name="raw"
+                        type="text"
+                        autocomplete="off"
+                        placeholder="Add a transaction… e.g. 450 swiggy lunch  (press 'a' to focus)"
+                        class="w-full rounded-lg border border-neutral-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-neutral-400"
+                        hx-post="/txn/quickadd/preview"
+                        hx-trigger="keyup changed delay:150ms"
+                        hx-target="#quickadd-preview"
+                        hx-swap="innerHTML"
+                    />
+                </form>
+            </div>
+
+            <a href="/txn" class="text-sm text-neutral-600 hover:text-neutral-900">Transactions</a>
+            <a href="/categories" class="text-sm text-neutral-600 hover:text-neutral-900">Categories</a>
+            <a href="/accounts" class="text-sm text-neutral-600 hover:text-neutral-900">Accounts</a>
+            <a href="/insights" class="text-sm text-neutral-600 hover:text-neutral-900">Insights</a>
+            <a href="/logout" class="text-sm text-neutral-400 hover:text-neutral-700">Logout</a>
+        </div>
+        <div id="quickadd-preview" class="mx-auto max-w-5xl px-4 text-xs text-neutral-500"></div>
+    </nav>
+
+    <main class="flex-1 mx-auto max-w-5xl w-full px-4 py-6">
+        <div id="quickadd-result"></div>
+        <div id="learn-offer-region"></div>
+        {% block content %}{% endblock %}
+    </main>
+
+    <div id="toast-region" class="fixed bottom-4 right-4 flex flex-col gap-2 z-50"></div>
+
+    <div id="lens-cheatsheet" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/40"
+         onclick="this.classList.add('hidden')">
+        <div class="bg-white rounded-xl p-6 shadow-xl text-sm w-80" onclick="event.stopPropagation()">
+            <h3 class="font-semibold mb-3">Keyboard shortcuts</h3>
+            <dl class="grid grid-cols-[auto_1fr] gap-x-3 gap-y-1 text-neutral-600">
+                <dt class="font-mono text-neutral-900">a</dt><dd>Focus quick-add bar</dd>
+                <dt class="font-mono text-neutral-900">/</dt><dd>Search</dd>
+                <dt class="font-mono text-neutral-900">j / k</dt><dd>Move down / up</dd>
+                <dt class="font-mono text-neutral-900">e / c</dt><dd>Edit row / set category</dd>
+                <dt class="font-mono text-neutral-900">t</dt><dd>Tag row</dd>
+                <dt class="font-mono text-neutral-900">x</dt><dd>Select row</dd>
+                <dt class="font-mono text-neutral-900">u</dt><dd>Undo</dd>
+                <dt class="font-mono text-neutral-900">?</dt><dd>This cheatsheet</dd>
+            </dl>
+            <p class="text-xs text-neutral-400 mt-3">Press <span class="font-mono">Esc</span> or click outside to close.</p>
+        </div>
+    </div>
+</div>
+
+<script src="/static/js/app.js" defer></script>
+</body>
+</html>

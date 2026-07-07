@@ -1,0 +1,936 @@
+{
+  "nodes": [
+    {
+      "id": "g0",
+      "type": "group",
+      "label": "Safe-to-Spend Core Concepts",
+      "x": 0,
+      "y": 0,
+      "width": 880,
+      "height": 420,
+      "color": "1"
+    },
+    {
+      "id": "n_lens_v1_build_plan_dashboard",
+      "type": "file",
+      "file": "Dashboard (Hero Number + Support).md",
+      "x": 20,
+      "y": 80,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_lens_v1_build_plan_evaluation_checklist",
+      "type": "file",
+      "file": "Developer Evaluation Checklist.md",
+      "x": 220,
+      "y": 80,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_lens_v1_build_plan_effortless_input",
+      "type": "file",
+      "file": "Effortless Delightful Input.md",
+      "x": 420,
+      "y": 80,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_lens_v1_build_plan_lens_app",
+      "type": "file",
+      "file": "LENS Expense App.md",
+      "x": 620,
+      "y": 80,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_lens_v1_build_plan",
+      "type": "file",
+      "file": "LENS V1 Build Plan.md",
+      "x": 20,
+      "y": 160,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_lens_v1_build_plan_no_pandas_rule",
+      "type": "file",
+      "file": "No Pandas in Request Path (SQL-first analytics).md",
+      "x": 220,
+      "y": 160,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_lens_v1_build_plan_normal_baseline",
+      "type": "file",
+      "file": "Normal  Baseline Spending.md",
+      "x": 420,
+      "y": 160,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_graphify_setup_prompt_serial_parallel_crash",
+      "type": "file",
+      "file": "Parallel AST Extraction Crash on macOS.md",
+      "x": 620,
+      "y": 160,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_lens_v1_build_plan_safe_to_spend",
+      "type": "file",
+      "file": "Safe-to-Spend Number.md",
+      "x": 20,
+      "y": 240,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_lens_v1_build_plan_spending_detective",
+      "type": "file",
+      "file": "Spending Detective.md",
+      "x": 220,
+      "y": 240,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_lens_v1_build_plan_folder_structure",
+      "type": "file",
+      "file": "lens Folder Structure.md",
+      "x": 420,
+      "y": 240,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_lens_v1_build_plan_analytics_service",
+      "type": "file",
+      "file": "servicesanalytics.py.md",
+      "x": 620,
+      "y": 240,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "g1",
+      "type": "group",
+      "label": "Graphify Setup Pipeline",
+      "x": 960,
+      "y": 0,
+      "width": 880,
+      "height": 420,
+      "color": "2"
+    },
+    {
+      "id": "n_graphify_setup_prompt_graphifyignore",
+      "type": "file",
+      "file": ".graphifyignore Junk Exclusion.md",
+      "x": 980,
+      "y": 80,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_graphify_setup_prompt_community_labeling",
+      "type": "file",
+      "file": "Community Labeling via claude-cli backend.md",
+      "x": 1180,
+      "y": 80,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_graphify_setup_prompt_no_backup_flag",
+      "type": "file",
+      "file": "GRAPHIFY_NO_BACKUP Environment Flag.md",
+      "x": 1380,
+      "y": 80,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_claude_md_graphify",
+      "type": "file",
+      "file": "Graphify Project Setup.md",
+      "x": 1580,
+      "y": 80,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_graphify_setup_prompt",
+      "type": "file",
+      "file": "Graphify Setup Prompt.md",
+      "x": 980,
+      "y": 160,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_graphify_setup_prompt_posttooluse_hook",
+      "type": "file",
+      "file": "PostToolUse Auto-Refresh Hook Registration.md",
+      "x": 1180,
+      "y": 160,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_graphify_setup_prompt_pretooluse_hook",
+      "type": "file",
+      "file": "PreToolUse Consult-Graph Hook.md",
+      "x": 1380,
+      "y": 160,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_graphify_setup_prompt_build_graph_py",
+      "type": "file",
+      "file": "build_graph.py Serial Build Script.md",
+      "x": 1580,
+      "y": 160,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_graphify_setup_prompt_make_vault_py",
+      "type": "file",
+      "file": "make_vault.py Obsidian Vault Builder.md",
+      "x": 980,
+      "y": 240,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_graphify_setup_prompt_refresh_sh",
+      "type": "file",
+      "file": "refresh.sh Auto-Refresh Hook Script.md",
+      "x": 1180,
+      "y": 240,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "g2",
+      "type": "group",
+      "label": "Auth, DB & Security Foundation",
+      "x": 1920,
+      "y": 0,
+      "width": 660,
+      "height": 400,
+      "color": "3"
+    },
+    {
+      "id": "n_lens_v1_build_plan_google_oauth",
+      "type": "file",
+      "file": "Google OAuth via Supabase Auth.md",
+      "x": 1940,
+      "y": 80,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_lens_v1_build_plan_rls",
+      "type": "file",
+      "file": "Row-Level Security (RLS).md",
+      "x": 2140,
+      "y": 80,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_lens_v1_build_plan_sqlalchemy",
+      "type": "file",
+      "file": "SQLAlchemy 2 + asyncpg.md",
+      "x": 2340,
+      "y": 80,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_lens_v1_build_plan_supabase",
+      "type": "file",
+      "file": "Supabase (Postgres + Auth).md",
+      "x": 1940,
+      "y": 160,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_lens_v1_build_plan_accounts_table",
+      "type": "file",
+      "file": "accounts Table.md",
+      "x": 2140,
+      "y": 160,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_lens_v1_build_plan_transactions_table",
+      "type": "file",
+      "file": "transactions Table.md",
+      "x": 2340,
+      "y": 160,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "g3",
+      "type": "group",
+      "label": "Web Stack (FastAPI/HTMX/Alpine)",
+      "x": 0,
+      "y": 500,
+      "width": 660,
+      "height": 400,
+      "color": "4"
+    },
+    {
+      "id": "n_lens_v1_build_plan_alpinejs",
+      "type": "file",
+      "file": "Alpine.js.md",
+      "x": 20,
+      "y": 580,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_lens_v1_build_plan_fastapi",
+      "type": "file",
+      "file": "FastAPI.md",
+      "x": 220,
+      "y": 580,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_lens_v1_build_plan_htmx",
+      "type": "file",
+      "file": "HTMX.md",
+      "x": 420,
+      "y": 580,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_lens_v1_build_plan_jinja2",
+      "type": "file",
+      "file": "Jinja2 Templating.md",
+      "x": 20,
+      "y": 660,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_lens_v1_build_plan_tailwind_css",
+      "type": "file",
+      "file": "Tailwind CSS (standalone CLI).md",
+      "x": 220,
+      "y": 660,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_lens_v1_build_plan_vercel",
+      "type": "file",
+      "file": "Vercel Serverless Deployment.md",
+      "x": 420,
+      "y": 660,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "g4",
+      "type": "group",
+      "label": "Categorization Rules Engine",
+      "x": 960,
+      "y": 500,
+      "width": 660,
+      "height": 400,
+      "color": "5"
+    },
+    {
+      "id": "n_lens_v1_build_plan_rules_engine",
+      "type": "file",
+      "file": "Categorization Rules Engine.md",
+      "x": 980,
+      "y": 580,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_lens_v1_build_plan_quick_add_bar",
+      "type": "file",
+      "file": "Keyboard-First Quick-Add Bar.md",
+      "x": 1180,
+      "y": 580,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_lens_v1_build_plan_rapidfuzz",
+      "type": "file",
+      "file": "RapidFuzz Fuzzy Matching.md",
+      "x": 1380,
+      "y": 580,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_lens_v1_build_plan_categorization_rules_table",
+      "type": "file",
+      "file": "categorization_rules Table.md",
+      "x": 980,
+      "y": 660,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_lens_v1_build_plan_categorizer_service",
+      "type": "file",
+      "file": "servicescategorizer.py.md",
+      "x": 1180,
+      "y": 660,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_lens_v1_build_plan_quickadd_parser_service",
+      "type": "file",
+      "file": "servicesquickadd_parser.py.md",
+      "x": 1380,
+      "y": 660,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "g5",
+      "type": "group",
+      "label": "Import & Transfer Handling",
+      "x": 1920,
+      "y": 500,
+      "width": 660,
+      "height": 400,
+      "color": "6"
+    },
+    {
+      "id": "n_lens_v1_build_plan_import_wizard",
+      "type": "file",
+      "file": "Bank CSV Import Wizard.md",
+      "x": 1940,
+      "y": 580,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_lens_v1_build_plan_chunked_commit",
+      "type": "file",
+      "file": "Chunked Import Commit.md",
+      "x": 2140,
+      "y": 580,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_lens_v1_build_plan_refund",
+      "type": "file",
+      "file": "Refund Transaction Type.md",
+      "x": 2340,
+      "y": 580,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_lens_v1_build_plan_transfer",
+      "type": "file",
+      "file": "Transfer Transaction Type.md",
+      "x": 1940,
+      "y": 660,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_lens_v1_build_plan_column_mappings_table",
+      "type": "file",
+      "file": "column_mappings Table.md",
+      "x": 2140,
+      "y": 660,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_lens_v1_build_plan_importer_service",
+      "type": "file",
+      "file": "servicesimporter.py.md",
+      "x": 2340,
+      "y": 660,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "g6",
+      "type": "group",
+      "label": "Recurring Transaction Detection",
+      "x": 0,
+      "y": 980,
+      "width": 600,
+      "height": 400,
+      "color": "1"
+    },
+    {
+      "id": "n_lens_v1_build_plan_recurring_series",
+      "type": "file",
+      "file": "Recurring Series Detection.md",
+      "x": 20,
+      "y": 1060,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_lens_v1_build_plan_recurring_series_table",
+      "type": "file",
+      "file": "recurring_series Table.md",
+      "x": 220,
+      "y": 1060,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_lens_v1_build_plan_recurring_detector_service",
+      "type": "file",
+      "file": "servicesrecurring_detector.py.md",
+      "x": 20,
+      "y": 1140,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "g7",
+      "type": "group",
+      "label": "Category Picker UX",
+      "x": 960,
+      "y": 980,
+      "width": 600,
+      "height": 400,
+      "color": "2"
+    },
+    {
+      "id": "n_lens_v1_build_plan_category_picker",
+      "type": "file",
+      "file": "Create-on-the-Fly Category Picker.md",
+      "x": 980,
+      "y": 1060,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "n_lens_v1_build_plan_categories_table",
+      "type": "file",
+      "file": "categories Table.md",
+      "x": 1180,
+      "y": 1060,
+      "width": 180,
+      "height": 60
+    },
+    {
+      "id": "g8",
+      "type": "group",
+      "label": "Build Script Entry Point",
+      "x": 1920,
+      "y": 980,
+      "width": 600,
+      "height": 400,
+      "color": "3"
+    },
+    {
+      "id": "n_build_graph",
+      "type": "file",
+      "file": "build_graph.py.md",
+      "x": 1940,
+      "y": 1060,
+      "width": 180,
+      "height": 60
+    }
+  ],
+  "edges": [
+    {
+      "id": "e_claude_md_graphify_graphify_setup_prompt",
+      "fromNode": "n_claude_md_graphify",
+      "toNode": "n_graphify_setup_prompt",
+      "label": "references [INFERRED]"
+    },
+    {
+      "id": "e_claude_md_graphify_graphify_setup_prompt_pretooluse_hook",
+      "fromNode": "n_claude_md_graphify",
+      "toNode": "n_graphify_setup_prompt_pretooluse_hook",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_graphify_setup_prompt_graphify_setup_prompt_build_graph_py",
+      "fromNode": "n_graphify_setup_prompt",
+      "toNode": "n_graphify_setup_prompt_build_graph_py",
+      "label": "implements [EXTRACTED]"
+    },
+    {
+      "id": "e_graphify_setup_prompt_graphify_setup_prompt_community_labeling",
+      "fromNode": "n_graphify_setup_prompt",
+      "toNode": "n_graphify_setup_prompt_community_labeling",
+      "label": "implements [EXTRACTED]"
+    },
+    {
+      "id": "e_graphify_setup_prompt_graphify_setup_prompt_graphifyignore",
+      "fromNode": "n_graphify_setup_prompt",
+      "toNode": "n_graphify_setup_prompt_graphifyignore",
+      "label": "implements [EXTRACTED]"
+    },
+    {
+      "id": "e_graphify_setup_prompt_graphify_setup_prompt_make_vault_py",
+      "fromNode": "n_graphify_setup_prompt",
+      "toNode": "n_graphify_setup_prompt_make_vault_py",
+      "label": "implements [EXTRACTED]"
+    },
+    {
+      "id": "e_graphify_setup_prompt_graphifyignore_graphify_setup_prompt_build_graph_py",
+      "fromNode": "n_graphify_setup_prompt_graphifyignore",
+      "toNode": "n_graphify_setup_prompt_build_graph_py",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_graphify_setup_prompt_build_graph_py_graphify_setup_prompt_serial_parallel_crash",
+      "fromNode": "n_graphify_setup_prompt_build_graph_py",
+      "toNode": "n_graphify_setup_prompt_serial_parallel_crash",
+      "label": "rationale_for [EXTRACTED]"
+    },
+    {
+      "id": "e_graphify_setup_prompt_serial_parallel_crash_lens_v1_build_plan_no_pandas_rule",
+      "fromNode": "n_graphify_setup_prompt_serial_parallel_crash",
+      "toNode": "n_lens_v1_build_plan_no_pandas_rule",
+      "label": "semantically_similar_to [INFERRED]"
+    },
+    {
+      "id": "e_graphify_setup_prompt_make_vault_py_graphify_setup_prompt_refresh_sh",
+      "fromNode": "n_graphify_setup_prompt_make_vault_py",
+      "toNode": "n_graphify_setup_prompt_refresh_sh",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_graphify_setup_prompt_refresh_sh_graphify_setup_prompt_posttooluse_hook",
+      "fromNode": "n_graphify_setup_prompt_refresh_sh",
+      "toNode": "n_graphify_setup_prompt_posttooluse_hook",
+      "label": "implements [EXTRACTED]"
+    },
+    {
+      "id": "e_graphify_setup_prompt_posttooluse_hook_graphify_setup_prompt_pretooluse_hook",
+      "fromNode": "n_graphify_setup_prompt_posttooluse_hook",
+      "toNode": "n_graphify_setup_prompt_pretooluse_hook",
+      "label": "conceptually_related_to [EXTRACTED]"
+    },
+    {
+      "id": "e_graphify_setup_prompt_community_labeling_graphify_setup_prompt_no_backup_flag",
+      "fromNode": "n_graphify_setup_prompt_community_labeling",
+      "toNode": "n_graphify_setup_prompt_no_backup_flag",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_lens_v1_build_plan_lens_v1_build_plan_lens_app",
+      "fromNode": "n_lens_v1_build_plan",
+      "toNode": "n_lens_v1_build_plan_lens_app",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_lens_v1_build_plan_lens_app_lens_v1_build_plan_effortless_input",
+      "fromNode": "n_lens_v1_build_plan_lens_app",
+      "toNode": "n_lens_v1_build_plan_effortless_input",
+      "label": "implements [EXTRACTED]"
+    },
+    {
+      "id": "e_lens_v1_build_plan_lens_app_lens_v1_build_plan_evaluation_checklist",
+      "fromNode": "n_lens_v1_build_plan_lens_app",
+      "toNode": "n_lens_v1_build_plan_evaluation_checklist",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_lens_v1_build_plan_lens_app_lens_v1_build_plan_fastapi",
+      "fromNode": "n_lens_v1_build_plan_lens_app",
+      "toNode": "n_lens_v1_build_plan_fastapi",
+      "label": "implements [EXTRACTED]"
+    },
+    {
+      "id": "e_lens_v1_build_plan_lens_app_lens_v1_build_plan_folder_structure",
+      "fromNode": "n_lens_v1_build_plan_lens_app",
+      "toNode": "n_lens_v1_build_plan_folder_structure",
+      "label": "implements [EXTRACTED]"
+    },
+    {
+      "id": "e_lens_v1_build_plan_lens_app_lens_v1_build_plan_rules_engine",
+      "fromNode": "n_lens_v1_build_plan_lens_app",
+      "toNode": "n_lens_v1_build_plan_rules_engine",
+      "label": "implements [EXTRACTED]"
+    },
+    {
+      "id": "e_lens_v1_build_plan_lens_app_lens_v1_build_plan_spending_detective",
+      "fromNode": "n_lens_v1_build_plan_lens_app",
+      "toNode": "n_lens_v1_build_plan_spending_detective",
+      "label": "implements [EXTRACTED]"
+    },
+    {
+      "id": "e_lens_v1_build_plan_lens_app_lens_v1_build_plan_supabase",
+      "fromNode": "n_lens_v1_build_plan_lens_app",
+      "toNode": "n_lens_v1_build_plan_supabase",
+      "label": "implements [EXTRACTED]"
+    },
+    {
+      "id": "e_lens_v1_build_plan_spending_detective_lens_v1_build_plan_analytics_service",
+      "fromNode": "n_lens_v1_build_plan_spending_detective",
+      "toNode": "n_lens_v1_build_plan_analytics_service",
+      "label": "implements [EXTRACTED]"
+    },
+    {
+      "id": "e_lens_v1_build_plan_spending_detective_lens_v1_build_plan_dashboard",
+      "fromNode": "n_lens_v1_build_plan_spending_detective",
+      "toNode": "n_lens_v1_build_plan_dashboard",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_lens_v1_build_plan_spending_detective_lens_v1_build_plan_normal_baseline",
+      "fromNode": "n_lens_v1_build_plan_spending_detective",
+      "toNode": "n_lens_v1_build_plan_normal_baseline",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_lens_v1_build_plan_safe_to_spend_lens_v1_build_plan_analytics_service",
+      "fromNode": "n_lens_v1_build_plan_safe_to_spend",
+      "toNode": "n_lens_v1_build_plan_analytics_service",
+      "label": "implements [EXTRACTED]"
+    },
+    {
+      "id": "e_lens_v1_build_plan_safe_to_spend_lens_v1_build_plan_dashboard",
+      "fromNode": "n_lens_v1_build_plan_safe_to_spend",
+      "toNode": "n_lens_v1_build_plan_dashboard",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_lens_v1_build_plan_safe_to_spend_lens_v1_build_plan_evaluation_checklist",
+      "fromNode": "n_lens_v1_build_plan_safe_to_spend",
+      "toNode": "n_lens_v1_build_plan_evaluation_checklist",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_lens_v1_build_plan_safe_to_spend_lens_v1_build_plan_normal_baseline",
+      "fromNode": "n_lens_v1_build_plan_safe_to_spend",
+      "toNode": "n_lens_v1_build_plan_normal_baseline",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_lens_v1_build_plan_safe_to_spend_lens_v1_build_plan_recurring_series",
+      "fromNode": "n_lens_v1_build_plan_safe_to_spend",
+      "toNode": "n_lens_v1_build_plan_recurring_series",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_lens_v1_build_plan_safe_to_spend_lens_v1_build_plan_transfer",
+      "fromNode": "n_lens_v1_build_plan_safe_to_spend",
+      "toNode": "n_lens_v1_build_plan_transfer",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_lens_v1_build_plan_transfer_lens_v1_build_plan_importer_service",
+      "fromNode": "n_lens_v1_build_plan_transfer",
+      "toNode": "n_lens_v1_build_plan_importer_service",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_lens_v1_build_plan_transfer_lens_v1_build_plan_refund",
+      "fromNode": "n_lens_v1_build_plan_transfer",
+      "toNode": "n_lens_v1_build_plan_refund",
+      "label": "conceptually_related_to [EXTRACTED]"
+    },
+    {
+      "id": "e_lens_v1_build_plan_recurring_series_lens_v1_build_plan_recurring_detector_service",
+      "fromNode": "n_lens_v1_build_plan_recurring_series",
+      "toNode": "n_lens_v1_build_plan_recurring_detector_service",
+      "label": "implements [EXTRACTED]"
+    },
+    {
+      "id": "e_lens_v1_build_plan_recurring_series_lens_v1_build_plan_recurring_series_table",
+      "fromNode": "n_lens_v1_build_plan_recurring_series",
+      "toNode": "n_lens_v1_build_plan_recurring_series_table",
+      "label": "shares_data_with [EXTRACTED]"
+    },
+    {
+      "id": "e_lens_v1_build_plan_rules_engine_lens_v1_build_plan_categorizer_service",
+      "fromNode": "n_lens_v1_build_plan_rules_engine",
+      "toNode": "n_lens_v1_build_plan_categorizer_service",
+      "label": "implements [EXTRACTED]"
+    },
+    {
+      "id": "e_lens_v1_build_plan_rules_engine_lens_v1_build_plan_no_pandas_rule",
+      "fromNode": "n_lens_v1_build_plan_rules_engine",
+      "toNode": "n_lens_v1_build_plan_no_pandas_rule",
+      "label": "semantically_similar_to [INFERRED]"
+    },
+    {
+      "id": "e_lens_v1_build_plan_fastapi_lens_v1_build_plan_htmx",
+      "fromNode": "n_lens_v1_build_plan_fastapi",
+      "toNode": "n_lens_v1_build_plan_htmx",
+      "label": "conceptually_related_to [EXTRACTED]"
+    },
+    {
+      "id": "e_lens_v1_build_plan_fastapi_lens_v1_build_plan_jinja2",
+      "fromNode": "n_lens_v1_build_plan_fastapi",
+      "toNode": "n_lens_v1_build_plan_jinja2",
+      "label": "conceptually_related_to [EXTRACTED]"
+    },
+    {
+      "id": "e_lens_v1_build_plan_fastapi_lens_v1_build_plan_tailwind_css",
+      "fromNode": "n_lens_v1_build_plan_fastapi",
+      "toNode": "n_lens_v1_build_plan_tailwind_css",
+      "label": "conceptually_related_to [EXTRACTED]"
+    },
+    {
+      "id": "e_lens_v1_build_plan_fastapi_lens_v1_build_plan_vercel",
+      "fromNode": "n_lens_v1_build_plan_fastapi",
+      "toNode": "n_lens_v1_build_plan_vercel",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_lens_v1_build_plan_htmx_lens_v1_build_plan_alpinejs",
+      "fromNode": "n_lens_v1_build_plan_htmx",
+      "toNode": "n_lens_v1_build_plan_alpinejs",
+      "label": "conceptually_related_to [EXTRACTED]"
+    },
+    {
+      "id": "e_lens_v1_build_plan_supabase_lens_v1_build_plan_google_oauth",
+      "fromNode": "n_lens_v1_build_plan_supabase",
+      "toNode": "n_lens_v1_build_plan_google_oauth",
+      "label": "implements [EXTRACTED]"
+    },
+    {
+      "id": "e_lens_v1_build_plan_supabase_lens_v1_build_plan_rls",
+      "fromNode": "n_lens_v1_build_plan_supabase",
+      "toNode": "n_lens_v1_build_plan_rls",
+      "label": "implements [EXTRACTED]"
+    },
+    {
+      "id": "e_lens_v1_build_plan_supabase_lens_v1_build_plan_sqlalchemy",
+      "fromNode": "n_lens_v1_build_plan_supabase",
+      "toNode": "n_lens_v1_build_plan_sqlalchemy",
+      "label": "conceptually_related_to [EXTRACTED]"
+    },
+    {
+      "id": "e_lens_v1_build_plan_rapidfuzz_lens_v1_build_plan_categorizer_service",
+      "fromNode": "n_lens_v1_build_plan_rapidfuzz",
+      "toNode": "n_lens_v1_build_plan_categorizer_service",
+      "label": "calls [EXTRACTED]"
+    },
+    {
+      "id": "e_lens_v1_build_plan_no_pandas_rule_lens_v1_build_plan_analytics_service",
+      "fromNode": "n_lens_v1_build_plan_no_pandas_rule",
+      "toNode": "n_lens_v1_build_plan_analytics_service",
+      "label": "rationale_for [EXTRACTED]"
+    },
+    {
+      "id": "e_lens_v1_build_plan_no_pandas_rule_lens_v1_build_plan_evaluation_checklist",
+      "fromNode": "n_lens_v1_build_plan_no_pandas_rule",
+      "toNode": "n_lens_v1_build_plan_evaluation_checklist",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_lens_v1_build_plan_rls_lens_v1_build_plan_evaluation_checklist",
+      "fromNode": "n_lens_v1_build_plan_rls",
+      "toNode": "n_lens_v1_build_plan_evaluation_checklist",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_lens_v1_build_plan_rls_lens_v1_build_plan_accounts_table",
+      "fromNode": "n_lens_v1_build_plan_rls",
+      "toNode": "n_lens_v1_build_plan_accounts_table",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_lens_v1_build_plan_rls_lens_v1_build_plan_transactions_table",
+      "fromNode": "n_lens_v1_build_plan_rls",
+      "toNode": "n_lens_v1_build_plan_transactions_table",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_lens_v1_build_plan_folder_structure_lens_v1_build_plan_analytics_service",
+      "fromNode": "n_lens_v1_build_plan_folder_structure",
+      "toNode": "n_lens_v1_build_plan_analytics_service",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_lens_v1_build_plan_folder_structure_lens_v1_build_plan_categorizer_service",
+      "fromNode": "n_lens_v1_build_plan_folder_structure",
+      "toNode": "n_lens_v1_build_plan_categorizer_service",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_lens_v1_build_plan_folder_structure_lens_v1_build_plan_importer_service",
+      "fromNode": "n_lens_v1_build_plan_folder_structure",
+      "toNode": "n_lens_v1_build_plan_importer_service",
+      "label": "references [EXTRACTED]"
+    },
+    {
+      "id": "e_lens_v1_build_plan_categorizer_service_lens_v1_build_plan_categorization_rules_table",
+      "fromNode": "n_lens_v1_build_plan_categorizer_service",
+      "toNode": "n_lens_v1_build_plan_categorization_rules_table",
+      "label": "shares_data_with [EXTRACTED]"
+    },
+    {
+      "id": "e_lens_v1_build_plan_categorizer_service_lens_v1_build_plan_importer_service",
+      "fromNode": "n_lens_v1_build_plan_categorizer_service",
+      "toNode": "n_lens_v1_build_plan_importer_service",
+      "label": "calls [EXTRACTED]"
+    },
+    {
+      "id": "e_lens_v1_build_plan_categorizer_service_lens_v1_build_plan_quickadd_parser_service",
+      "fromNode": "n_lens_v1_build_plan_categorizer_service",
+      "toNode": "n_lens_v1_build_plan_quickadd_parser_service",
+      "label": "calls [EXTRACTED]"
+    },
+    {
+      "id": "e_lens_v1_build_plan_importer_service_lens_v1_build_plan_import_wizard",
+      "fromNode": "n_lens_v1_build_plan_importer_service",
+      "toNode": "n_lens_v1_build_plan_import_wizard",
+      "label": "implements [EXTRACTED]"
+    },
+    {
+      "id": "e_lens_v1_build_plan_importer_service_lens_v1_build_plan_chunked_commit",
+      "fromNode": "n_lens_v1_build_plan_importer_service",
+      "toNode": "n_lens_v1_build_plan_chunked_commit",
+      "label": "implements [EXTRACTED]"
+    },
+    {
+      "id": "e_lens_v1_build_plan_importer_service_lens_v1_build_plan_column_mappings_table",
+      "fromNode": "n_lens_v1_build_plan_importer_service",
+      "toNode": "n_lens_v1_build_plan_column_mappings_table",
+      "label": "shares_data_with [EXTRACTED]"
+    },
+    {
+      "id": "e_lens_v1_build_plan_analytics_service_lens_v1_build_plan_transactions_table",
+      "fromNode": "n_lens_v1_build_plan_analytics_service",
+      "toNode": "n_lens_v1_build_plan_transactions_table",
+      "label": "shares_data_with [EXTRACTED]"
+    },
+    {
+      "id": "e_lens_v1_build_plan_quickadd_parser_service_lens_v1_build_plan_quick_add_bar",
+      "fromNode": "n_lens_v1_build_plan_quickadd_parser_service",
+      "toNode": "n_lens_v1_build_plan_quick_add_bar",
+      "label": "implements [EXTRACTED]"
+    },
+    {
+      "id": "e_lens_v1_build_plan_category_picker_lens_v1_build_plan_categories_table",
+      "fromNode": "n_lens_v1_build_plan_category_picker",
+      "toNode": "n_lens_v1_build_plan_categories_table",
+      "label": "shares_data_with [EXTRACTED]"
+    }
+  ]
+}

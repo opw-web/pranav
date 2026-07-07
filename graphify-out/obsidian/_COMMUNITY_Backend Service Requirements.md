@@ -9,7 +9,7 @@ members: 24
 
 ## Members
 - [[AsyncSession_1]] - code
-- [[AsyncSession_6]] - code
+- [[AsyncSession_8]] - code
 - [[Category tree, fuzzy picker search, and createrenamemerge — reused by the mana]] - rationale - lens/app/services/categories.py
 - [[Default (no-query) picker view top-level groups ranked by their own +     child]] - rationale - lens/app/services/categories.py
 - [[Flat, ranked results across the whole tree for a non-empty query (§5.2).]] - rationale - lens/app/services/categories.py

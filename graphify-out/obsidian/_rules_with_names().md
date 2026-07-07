@@ -12,7 +12,7 @@ tags:
 # _rules_with_names()
 
 ## Connections
-- [[AsyncSession_3]] - `references` [EXTRACTED]
+- [[AsyncSession_4]] - `references` [EXTRACTED]
 - [[delete_rule()]] - `calls` [EXTRACTED]
 - [[rules.py]] - `contains` [EXTRACTED]
 - [[rules_page()]] - `calls` [EXTRACTED]

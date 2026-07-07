@@ -9,8 +9,8 @@ members: 17
 
 ## Members
 - [[AsyncSession]] - code
-- [[AsyncSession_5]] - code
-- [[AsyncSession_11]] - code
+- [[AsyncSession_7]] - code
+- [[AsyncSession_13]] - code
 - [[Creates a visible adjustment transaction closing the gap between the computed]] - rationale - lens/app/services/reconcile.py
 - [[Request_3]] - code
 - [[Shared account-balance query, used by the accounts router, reconcile, and (later]] - rationale - lens/app/services/balances.py
@@ -35,10 +35,11 @@ SORT file.name ASC
 
 ## Connections to other communities
 - 7 edges to [[_COMMUNITY_CurrentUser]]
+- 1 edge to [[_COMMUNITY_transactions.py]]
 - 1 edge to [[_COMMUNITY_session.py_1]]
 
 ## Top bridge nodes
-- [[get_account_balances()]] - degree 9, connects to 2 communities
+- [[get_account_balances()]] - degree 10, connects to 3 communities
 - [[reconcile()]] - degree 6, connects to 1 community
 - [[list_accounts()]] - degree 5, connects to 1 community
 - [[create_account()]] - degree 5, connects to 1 community

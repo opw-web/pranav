@@ -12,7 +12,7 @@ tags:
 # parse_date()
 
 ## Connections
-- [[date_1]] - `references` [EXTRACTED]
+- [[date_2]] - `references` [EXTRACTED]
 - [[extract_transactions()]] - `calls` [EXTRACTED]
 - [[importer.py]] - `contains` [EXTRACTED]
 

@@ -12,7 +12,7 @@ tags:
 # get_transaction()
 
 ## Connections
-- [[AsyncSession_13]] - `references` [EXTRACTED]
+- [[AsyncSession_16]] - `references` [EXTRACTED]
 - [[create_txn()]] - `calls` [INFERRED]
 - [[edit_txn_row()]] - `calls` [INFERRED]
 - [[get_txn_row()]] - `calls` [INFERRED]

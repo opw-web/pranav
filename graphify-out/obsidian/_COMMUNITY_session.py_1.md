@@ -8,7 +8,7 @@ members: 15
 **Members:** 15 nodes
 
 ## Members
-- [[AsyncSession_10]] - code
+- [[AsyncSession_12]] - code
 - [[Deterministic tokenizer for the Quick-Add bar (§5.1). NOT AI — pure pattern matc]] - rationale - lens/app/services/quickadd_parser.py
 - [[ParsedQuickAdd]] - code - lens/app/services/quickadd_parser.py
 - [[Ties the deterministic parser + categorizer + accountcategory token resolution]] - rationale - lens/app/services/quickadd.py
@@ -19,7 +19,7 @@ members: 15
 - [[_resolve_forced_category()]] - code - lens/app/services/quickadd.py
 - [[_try_parse_date()]] - code - lens/app/services/quickadd_parser.py
 - [[build_quickadd_preview()]] - code - lens/app/services/quickadd.py
-- [[date_2]] - code
+- [[date_3]] - code
 - [[parse_quickadd()]] - code - lens/app/services/quickadd_parser.py
 - [[quickadd.py]] - code - lens/app/services/quickadd.py
 - [[quickadd_parser.py]] - code - lens/app/services/quickadd_parser.py

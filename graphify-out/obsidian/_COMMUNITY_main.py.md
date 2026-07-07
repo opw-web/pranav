@@ -10,7 +10,7 @@ members: 23
 ## Members
 - [[Annotate parsed rows with dedupe + transfer flags for the preview table (§5.3 st]] - rationale - lens/app/services/import_commit.py
 - [[AsyncSession_2]] - code
-- [[AsyncSession_8]] - code
+- [[AsyncSession_10]] - code
 - [[DB-touching import steps dedupe lookup, per-row categorize, transfer-link, chun]] - rationale - lens/app/services/import_commit.py
 - [[Insert rows startend) skip duplicates, categorize each, link transfer legs.]] - rationale - lens/app/services/import_commit.py
 - [[Remember this bank's format so the next import skips straight to preview (§5.3 s]] - rationale - lens/app/services/import_commit.py

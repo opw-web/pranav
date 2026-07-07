@@ -12,7 +12,7 @@ tags:
 # get_grouped_tree()
 
 ## Connections
-- [[AsyncSession_6]] - `references` [EXTRACTED]
+- [[AsyncSession_8]] - `references` [EXTRACTED]
 - [[Default (no-query) picker view top-level groups ranked by their own +     child]] - `rationale_for` [EXTRACTED]
 - [[_all_categories_with_usage()]] - `calls` [EXTRACTED]
 - [[_flat_categories()]] - `calls` [INFERRED]

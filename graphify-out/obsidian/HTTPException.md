@@ -11,6 +11,7 @@ tags:
 # HTTPException
 
 ## Connections
+- [[_authorize()]] - `calls` [INFERRED]
 - [[auth_redirect_handler()]] - `references` [EXTRACTED]
 - [[get_current_user()]] - `calls` [INFERRED]
 

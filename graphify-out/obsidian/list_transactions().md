@@ -12,7 +12,7 @@ tags:
 # list_transactions()
 
 ## Connections
-- [[AsyncSession_13]] - `references` [EXTRACTED]
+- [[AsyncSession_16]] - `references` [EXTRACTED]
 - [[bulk_action()]] - `calls` [INFERRED]
 - [[list_txn_page()]] - `calls` [INFERRED]
 - [[transactions.py_1]] - `contains` [EXTRACTED]

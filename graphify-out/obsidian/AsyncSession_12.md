@@ -1,18 +1,17 @@
 ---
 source_file: ""
 type: "code"
-community: "transactions.py"
+community: "session.py"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/transactionspy
+  - community/sessionpy
 ---
 
 # AsyncSession
 
 ## Connections
-- [[get_or_create_tag()]] - `references` [EXTRACTED]
-- [[get_transaction_tags()]] - `references` [EXTRACTED]
-- [[set_transaction_tags()]] - `references` [EXTRACTED]
+- [[_resolve_account()]] - `references` [EXTRACTED]
+- [[build_quickadd_preview()]] - `references` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/transactionspy
+#graphify/code #graphify/EXTRACTED #community/sessionpy

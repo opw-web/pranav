@@ -15,7 +15,7 @@ tags:
 - [[ParsedQuickAdd]] - `references` [EXTRACTED]
 - [[_try_parse_date()]] - `calls` [EXTRACTED]
 - [[build_quickadd_preview()]] - `calls` [INFERRED]
-- [[date_2]] - `references` [EXTRACTED]
+- [[date_3]] - `references` [EXTRACTED]
 - [[quickadd_parser.py]] - `contains` [EXTRACTED]
 
 #graphify/code #graphify/EXTRACTED #community/sessionpy

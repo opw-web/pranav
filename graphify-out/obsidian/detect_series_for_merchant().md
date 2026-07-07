@@ -15,7 +15,7 @@ tags:
 - [[DetectedSeries]] - `references` [EXTRACTED]
 - [[_amount_is_stable()]] - `calls` [EXTRACTED]
 - [[_classify_cadence()]] - `calls` [EXTRACTED]
-- [[date_3]] - `references` [EXTRACTED]
+- [[date_4]] - `references` [EXTRACTED]
 - [[detect_all()]] - `calls` [EXTRACTED]
 - [[points = (date, amount), ... for one merchant. Returns a series if a regular]] - `rationale_for` [EXTRACTED]
 - [[recurring_detector.py]] - `contains` [EXTRACTED]

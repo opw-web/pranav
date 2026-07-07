@@ -13,9 +13,10 @@ tags:
 
 ## Connections
 - [[DetectedSeries]] - `references` [EXTRACTED]
-- [[date_3]] - `references` [EXTRACTED]
+- [[date_4]] - `references` [EXTRACTED]
 - [[detect_series_for_merchant()]] - `calls` [EXTRACTED]
 - [[grouped = {merchant_clean (date, amount), ...}. Returns all detected series.]] - `rationale_for` [EXTRACTED]
 - [[recurring_detector.py]] - `contains` [EXTRACTED]
+- [[scan_and_upsert()]] - `calls` [INFERRED]
 
 #graphify/code #graphify/EXTRACTED #community/detect_series_for_merchant

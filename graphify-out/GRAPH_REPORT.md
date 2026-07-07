@@ -4,12 +4,12 @@
 - cluster-only mode — file stats not available
 
 ## Summary
-- 365 nodes · 511 edges · 76 communities (23 shown, 53 thin omitted)
-- Extraction: 88% EXTRACTED · 12% INFERRED · 0% AMBIGUOUS · INFERRED: 61 edges (avg confidence: 0.78)
+- 416 nodes · 609 edges · 78 communities (25 shown, 53 thin omitted)
+- Extraction: 89% EXTRACTED · 11% INFERRED · 0% AMBIGUOUS · INFERRED: 70 edges (avg confidence: 0.78)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `527a037e`
+- Built from commit: `4ed6cefc`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -85,18 +85,20 @@
 - [[_COMMUNITY_session.py|session.py]]
 - [[_COMMUNITY_test_importer.py|test_importer.py]]
 - [[_COMMUNITY_detect_series_for_merchant|detect_series_for_merchant]]
+- [[_COMMUNITY_confirm|confirm]]
+- [[_COMMUNITY_test_recurring.py|test_recurring.py]]
 
 ## God Nodes (most connected - your core abstractions)
-1. `CurrentUser` - 32 edges
+1. `CurrentUser` - 34 edges
 2. `7. DEVELOPER EVALUATION CHECKLIST (beginner-friendly — follow every step)` - 18 edges
 3. `get_grouped_tree()` - 13 edges
 4. `build_quickadd_preview()` - 11 edges
 5. `LENS — V1: THE EXPENSE APP THAT SHOWS YOU *WHY*` - 11 edges
-6. `analyze()` - 10 edges
-7. `create_txn()` - 9 edges
-8. `patch_txn()` - 9 edges
-9. `bulk_action()` - 9 edges
-10. `get_account_balances()` - 9 edges
+6. `get_account_balances()` - 10 edges
+7. `analyze()` - 10 edges
+8. `create_txn()` - 9 edges
+9. `patch_txn()` - 9 edges
+10. `bulk_action()` - 9 edges
 
 ## Surprising Connections (you probably didn't know these)
 - `Account` --uses--> `Base`  [INFERRED]
@@ -118,7 +120,7 @@
 - **Money-Movement Semantics (Transfer/Refund/Safe-to-Spend)** — lens_v1_build_plan_transfer, lens_v1_build_plan_refund, lens_v1_build_plan_safe_to_spend, lens_v1_build_plan_transactions_table [INFERRED 0.85]
 - **Graphify Auto-Refresh Pipeline** — graphify_setup_prompt_posttooluse_hook, graphify_setup_prompt_refresh_sh, graphify_setup_prompt_make_vault_py, graphify_setup_prompt_community_labeling [EXTRACTED 1.00]
 
-## Communities (76 total, 53 thin omitted)
+## Communities (78 total, 53 thin omitted)
 
 ### Community 0 - "Safe-to-Spend Core Concepts"
 Cohesion: 0.06
@@ -145,8 +147,8 @@ Cohesion: 0.23
 Nodes (14): archive_account(), create_account(), list_accounts(), AsyncSession, Request, reconcile(), rename_account(), get_account_balances() (+6 more)
 
 ### Community 13 - "transactions.py"
-Cohesion: 0.70
-Nodes (4): get_or_create_tag(), get_transaction_tags(), AsyncSession, set_transaction_tags()
+Cohesion: 0.23
+Nodes (19): category_normals(), _deltas(), _essential_category_ids(), last_n_full_months(), month_bounds(), prev_month_bounds(), AsyncSession, date (+11 more)
 
 ### Community 59 - "Merchant Seed Loader"
 Cohesion: 0.67
@@ -165,16 +167,16 @@ Cohesion: 0.23
 Nodes (13): build_quickadd_preview(), _flatten_tree(), _label_for(), _default_for_dateutil(), parse_quickadd(), ParsedQuickAdd, date, Deterministic tokenizer for the Quick-Add bar (§5.1). NOT AI — pure pattern matc (+5 more)
 
 ### Community 65 - "routes.py"
-Cohesion: 0.08
-Nodes (24): HTTPException, get_current_user(), get_scoped_session(), Request, Verifies the Supabase JWT and extracts user_id (= auth.uid()), per §2.3 step 4., DB session for the current request: app-level scope (user.id) is layered     on, _refresh_access_token(), auth_callback() (+16 more)
+Cohesion: 0.07
+Nodes (28): HTTPException, get_current_user(), get_scoped_session(), Request, Verifies the Supabase JWT and extracts user_id (= auth.uid()), per §2.3 step 4., DB session for the current request: app-level scope (user.id) is layered     on, _refresh_access_token(), auth_callback() (+20 more)
 
 ### Community 66 - "main.py"
 Cohesion: 0.16
 Nodes (21): _accounts(), _b64(), commit(), import_page(), _parse_form_mapping(), preview(), AsyncSession, Request (+13 more)
 
 ### Community 70 - "CurrentUser"
-Cohesion: 0.21
-Nodes (27): CurrentUser, bulk_action(), create_txn(), delete_txn(), edit_txn_row(), _flat_categories(), get_txn_row(), list_txn_page() (+19 more)
+Cohesion: 0.17
+Nodes (31): CurrentUser, bulk_action(), create_txn(), delete_txn(), edit_txn_row(), _flat_categories(), get_txn_row(), list_txn_page() (+23 more)
 
 ### Community 71 - "quickadd_parser.py"
 Cohesion: 0.39
@@ -192,6 +194,14 @@ Nodes (3): _fetch_jwks(), Verify a Supabase-issued JWT locally against the proje
 Cohesion: 0.29
 Nodes (10): _amount_is_stable(), _classify_cadence(), detect_all(), detect_series_for_merchant(), DetectedSeries, date, Recurring-series detection (§4.3). The cadence/amount-stability analysis is pure, All amounts within ±tolerance of the median (subscriptions wobble a little). (+2 more)
 
+### Community 76 - "confirm"
+Cohesion: 0.23
+Nodes (13): confirm(), AsyncSession, Request, recurring_page(), confirm_series(), list_series(), AsyncSession, DB-facing recurring-series operations: scan history -> upsert detected series, c (+5 more)
+
+### Community 77 - "test_recurring.py"
+Cohesion: 0.36
+Nodes (10): _monthly(), date, Pure-Python recurring-detection tests — no DB (§4.3, §7 recurring behavior)., test_detect_all_skips_empty_merchant(), test_detects_monthly_subscription(), test_detects_weekly(), test_rejects_irregular_interval(), test_rejects_wild_amount_variation() (+2 more)
+
 ## Knowledge Gaps
 - **87 isolated node(s):** `refresh.sh script`, `OBJC_DISABLE_INITIALIZE_FORK_SAFETY`, `GRAPHIFY_NO_BACKUP`, `Settings`, `build_css.sh script` (+82 more)
   These have ≤1 connection - possible missing edges or undocumented components.
@@ -200,17 +210,17 @@ Nodes (10): _amount_is_stable(), _classify_cadence(), detect_all(), detect_serie
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `CurrentUser` connect `CurrentUser` to `routes.py`, `main.py`, `Database Schema & Architecture`, `Backend Service Requirements`, `UX Playbook Spec`?**
-  _High betweenness centrality (0.157) - this node is a cross-community bridge._
-- **Why does `build_quickadd_preview()` connect `session.py` to `Database Schema & Architecture`, `Backend Service Requirements`, `CurrentUser`?**
-  _High betweenness centrality (0.037) - this node is a cross-community bridge._
-- **Why does `quickadd_commit()` connect `CurrentUser` to `session.py`, `transactions.py`?**
-  _High betweenness centrality (0.022) - this node is a cross-community bridge._
+- **Why does `CurrentUser` connect `CurrentUser` to `routes.py`, `main.py`, `Database Schema & Architecture`, `Backend Service Requirements`, `UX Playbook Spec`, `confirm`?**
+  _High betweenness centrality (0.212) - this node is a cross-community bridge._
+- **Why does `get_account_balances()` connect `UX Playbook Spec` to `session.py`, `transactions.py`, `CurrentUser`?**
+  _High betweenness centrality (0.056) - this node is a cross-community bridge._
+- **Why does `safe_to_spend()` connect `transactions.py` to `UX Playbook Spec`?**
+  _High betweenness centrality (0.045) - this node is a cross-community bridge._
 - **Are the 9 inferred relationships involving `get_grouped_tree()` (e.g. with `categories_page()` and `category_picker()`) actually correct?**
   _`get_grouped_tree()` has 9 INFERRED edges - model-reasoned connections that need verification._
 - **Are the 5 inferred relationships involving `build_quickadd_preview()` (e.g. with `quickadd_commit()` and `quickadd_preview()`) actually correct?**
   _`build_quickadd_preview()` has 5 INFERRED edges - model-reasoned connections that need verification._
 - **What connects `refresh.sh script`, `OBJC_DISABLE_INITIALIZE_FORK_SAFETY`, `GRAPHIFY_NO_BACKUP` to the rest of the system?**
-  _140 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _154 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Safe-to-Spend Core Concepts` be split into smaller, more focused modules?**
   _Cohesion score 0.0625 - nodes in this community are weakly interconnected._

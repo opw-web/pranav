@@ -490,7 +490,7 @@
       "label": "auth_redirect_handler()",
       "file_type": "code",
       "source_file": "lens/app/main.py",
-      "source_location": "L33",
+      "source_location": "L37",
       "_origin": "ast",
       "community": 65,
       "norm_label": "auth_redirect_handler()",
@@ -523,7 +523,7 @@
       "label": "healthz()",
       "file_type": "code",
       "source_file": "lens/app/main.py",
-      "source_location": "L40",
+      "source_location": "L44",
       "_origin": "ast",
       "community": 65,
       "norm_label": "healthz()",
@@ -534,7 +534,7 @@
       "label": "root()",
       "file_type": "code",
       "source_file": "lens/app/main.py",
-      "source_location": "L45",
+      "source_location": "L49",
       "_origin": "ast",
       "community": 65,
       "norm_label": "root()",
@@ -872,6 +872,61 @@
       "community_name": "Backend Service Requirements"
     },
     {
+      "label": "cron.py",
+      "file_type": "code",
+      "source_file": "lens/app/routers/cron.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 65,
+      "norm_label": "cron.py",
+      "id": "lens_app_routers_cron",
+      "community_name": "routes.py"
+    },
+    {
+      "label": "_authorize()",
+      "file_type": "code",
+      "source_file": "lens/app/routers/cron.py",
+      "source_location": "L18",
+      "_origin": "ast",
+      "community": 65,
+      "norm_label": "_authorize()",
+      "id": "lens_app_routers_cron_authorize",
+      "community_name": "routes.py"
+    },
+    {
+      "label": "recurring_reminders()",
+      "file_type": "code",
+      "source_file": "lens/app/routers/cron.py",
+      "source_location": "L25",
+      "_origin": "ast",
+      "community": 65,
+      "norm_label": "recurring_reminders()",
+      "id": "lens_app_routers_cron_recurring_reminders",
+      "community_name": "routes.py"
+    },
+    {
+      "label": "Scheduled jobs invoked by Vercel Cron (\u00a74.3). Not user-facing: protected by a sh",
+      "file_type": "rationale",
+      "source_file": "lens/app/routers/cron.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 65,
+      "norm_label": "scheduled jobs invoked by vercel cron (\u00a74.3). not user-facing: protected by a sh",
+      "id": "lens_app_routers_cron_rationale_1",
+      "community_name": "routes.py"
+    },
+    {
+      "label": "Find active series due within 3 days, and flag renewals that came in higher than",
+      "file_type": "rationale",
+      "source_file": "lens/app/routers/cron.py",
+      "source_location": "L26",
+      "_origin": "ast",
+      "community": 65,
+      "norm_label": "find active series due within 3 days, and flag renewals that came in higher than",
+      "id": "lens_app_routers_cron_rationale_26",
+      "community_name": "routes.py"
+    },
+    {
       "label": "import_.py",
       "file_type": "code",
       "source_file": "lens/app/routers/import_.py",
@@ -1002,6 +1057,61 @@
       "norm_label": "commit()",
       "id": "lens_app_routers_import_commit",
       "community_name": "main.py"
+    },
+    {
+      "label": "recurring.py",
+      "file_type": "code",
+      "source_file": "lens/app/routers/recurring.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 76,
+      "norm_label": "recurring.py",
+      "id": "lens_app_routers_recurring",
+      "community_name": "confirm"
+    },
+    {
+      "label": "recurring_page()",
+      "file_type": "code",
+      "source_file": "lens/app/routers/recurring.py",
+      "source_location": "L15",
+      "_origin": "ast",
+      "community": 76,
+      "norm_label": "recurring_page()",
+      "id": "lens_app_routers_recurring_recurring_page",
+      "community_name": "confirm"
+    },
+    {
+      "label": "Request",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast",
+      "community": 76,
+      "norm_label": "request",
+      "id": "lens_app_routers_recurring_py_request",
+      "community_name": "confirm"
+    },
+    {
+      "label": "AsyncSession",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast",
+      "community": 76,
+      "norm_label": "asyncsession",
+      "id": "lens_app_routers_recurring_py_asyncsession",
+      "community_name": "confirm"
+    },
+    {
+      "label": "confirm()",
+      "file_type": "code",
+      "source_file": "lens/app/routers/recurring.py",
+      "source_location": "L29",
+      "_origin": "ast",
+      "community": 76,
+      "norm_label": "confirm()",
+      "id": "lens_app_routers_recurring_confirm",
+      "community_name": "confirm"
     },
     {
       "label": "rules.py",
@@ -1277,6 +1387,226 @@
       "norm_label": "__init__.py",
       "id": "lens_app_schemas_init",
       "community_name": "__init__.py"
+    },
+    {
+      "label": "analytics.py",
+      "file_type": "code",
+      "source_file": "lens/app/services/analytics.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 13,
+      "norm_label": "analytics.py",
+      "id": "lens_app_services_analytics",
+      "community_name": "transactions.py"
+    },
+    {
+      "label": "month_bounds()",
+      "file_type": "code",
+      "source_file": "lens/app/services/analytics.py",
+      "source_location": "L24",
+      "_origin": "ast",
+      "community": 13,
+      "norm_label": "month_bounds()",
+      "id": "lens_app_services_analytics_month_bounds",
+      "community_name": "transactions.py"
+    },
+    {
+      "label": "date",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast",
+      "community": 13,
+      "norm_label": "date",
+      "id": "lens_app_services_analytics_py_date",
+      "community_name": "transactions.py"
+    },
+    {
+      "label": "prev_month_bounds()",
+      "file_type": "code",
+      "source_file": "lens/app/services/analytics.py",
+      "source_location": "L34",
+      "_origin": "ast",
+      "community": 13,
+      "norm_label": "prev_month_bounds()",
+      "id": "lens_app_services_analytics_prev_month_bounds",
+      "community_name": "transactions.py"
+    },
+    {
+      "label": "last_n_full_months()",
+      "file_type": "code",
+      "source_file": "lens/app/services/analytics.py",
+      "source_location": "L44",
+      "_origin": "ast",
+      "community": 13,
+      "norm_label": "last_n_full_months()",
+      "id": "lens_app_services_analytics_last_n_full_months",
+      "community_name": "transactions.py"
+    },
+    {
+      "label": "category_normals()",
+      "file_type": "code",
+      "source_file": "lens/app/services/analytics.py",
+      "source_location": "L56",
+      "_origin": "ast",
+      "community": 13,
+      "norm_label": "category_normals()",
+      "id": "lens_app_services_analytics_category_normals",
+      "community_name": "transactions.py"
+    },
+    {
+      "label": "AsyncSession",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast",
+      "community": 13,
+      "norm_label": "asyncsession",
+      "id": "lens_app_services_analytics_py_asyncsession",
+      "community_name": "transactions.py"
+    },
+    {
+      "label": "safe_to_spend()",
+      "file_type": "code",
+      "source_file": "lens/app/services/analytics.py",
+      "source_location": "L85",
+      "_origin": "ast",
+      "community": 13,
+      "norm_label": "safe_to_spend()",
+      "id": "lens_app_services_analytics_safe_to_spend",
+      "community_name": "transactions.py"
+    },
+    {
+      "label": "_essential_category_ids()",
+      "file_type": "code",
+      "source_file": "lens/app/services/analytics.py",
+      "source_location": "L137",
+      "_origin": "ast",
+      "community": 13,
+      "norm_label": "_essential_category_ids()",
+      "id": "lens_app_services_analytics_essential_category_ids",
+      "community_name": "transactions.py"
+    },
+    {
+      "label": "_deltas()",
+      "file_type": "code",
+      "source_file": "lens/app/services/analytics.py",
+      "source_location": "L179",
+      "_origin": "ast",
+      "community": 13,
+      "norm_label": "_deltas()",
+      "id": "lens_app_services_analytics_deltas",
+      "community_name": "transactions.py"
+    },
+    {
+      "label": "spending_detective()",
+      "file_type": "code",
+      "source_file": "lens/app/services/analytics.py",
+      "source_location": "L191",
+      "_origin": "ast",
+      "community": 13,
+      "norm_label": "spending_detective()",
+      "id": "lens_app_services_analytics_spending_detective",
+      "community_name": "transactions.py"
+    },
+    {
+      "label": "what_changed()",
+      "file_type": "code",
+      "source_file": "lens/app/services/analytics.py",
+      "source_location": "L248",
+      "_origin": "ast",
+      "community": 13,
+      "norm_label": "what_changed()",
+      "id": "lens_app_services_analytics_what_changed",
+      "community_name": "transactions.py"
+    },
+    {
+      "label": "trip_rollup()",
+      "file_type": "code",
+      "source_file": "lens/app/services/analytics.py",
+      "source_location": "L308",
+      "_origin": "ast",
+      "community": 13,
+      "norm_label": "trip_rollup()",
+      "id": "lens_app_services_analytics_trip_rollup",
+      "community_name": "transactions.py"
+    },
+    {
+      "label": "Deterministic analytics \u2014 SQL-first (\u00a72.6, \u00a74.4). Python only orchestrates and t",
+      "file_type": "rationale",
+      "source_file": "lens/app/services/analytics.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 13,
+      "norm_label": "deterministic analytics \u2014 sql-first (\u00a72.6, \u00a74.4). python only orchestrates and t",
+      "id": "lens_app_services_analytics_rationale_1",
+      "community_name": "transactions.py"
+    },
+    {
+      "label": "First day of d's month and first day of next month (half-open [start, end)).",
+      "file_type": "rationale",
+      "source_file": "lens/app/services/analytics.py",
+      "source_location": "L25",
+      "_origin": "ast",
+      "community": 13,
+      "norm_label": "first day of d's month and first day of next month (half-open [start, end)).",
+      "id": "lens_app_services_analytics_rationale_25",
+      "community_name": "transactions.py"
+    },
+    {
+      "label": "[start, end) covering the n full calendar months before d's month.",
+      "file_type": "rationale",
+      "source_file": "lens/app/services/analytics.py",
+      "source_location": "L45",
+      "_origin": "ast",
+      "community": 13,
+      "norm_label": "[start, end) covering the n full calendar months before d's month.",
+      "id": "lens_app_services_analytics_rationale_45",
+      "community_name": "transactions.py"
+    },
+    {
+      "label": "Median monthly expense per category over the last 3 full months (PERCENTILE_CONT",
+      "file_type": "rationale",
+      "source_file": "lens/app/services/analytics.py",
+      "source_location": "L57",
+      "_origin": "ast",
+      "community": 13,
+      "norm_label": "median monthly expense per category over the last 3 full months (percentile_cont",
+      "id": "lens_app_services_analytics_rationale_57",
+      "community_name": "transactions.py"
+    },
+    {
+      "label": "spendable_balance \u2212 upcoming_committed \u2212 essential_remaining, with the breakdown",
+      "file_type": "rationale",
+      "source_file": "lens/app/services/analytics.py",
+      "source_location": "L86",
+      "_origin": "ast",
+      "community": 13,
+      "norm_label": "spendable_balance \u2212 upcoming_committed \u2212 essential_remaining, with the breakdown",
+      "id": "lens_app_services_analytics_rationale_86",
+      "community_name": "transactions.py"
+    },
+    {
+      "label": "Period-over-period attribution at category + merchant level. Returns ranked driv",
+      "file_type": "rationale",
+      "source_file": "lens/app/services/analytics.py",
+      "source_location": "L192",
+      "_origin": "ast",
+      "community": 13,
+      "norm_label": "period-over-period attribution at category + merchant level. returns ranked driv",
+      "id": "lens_app_services_analytics_rationale_192",
+      "community_name": "transactions.py"
+    },
+    {
+      "label": "SUM(amount) WHERE tag GROUP BY category. Transfers excluded (they aren't spend).",
+      "file_type": "rationale",
+      "source_file": "lens/app/services/analytics.py",
+      "source_location": "L309",
+      "_origin": "ast",
+      "community": 13,
+      "norm_label": "sum(amount) where tag group by category. transfers excluded (they aren't spend).",
+      "id": "lens_app_services_analytics_rationale_309",
+      "community_name": "transactions.py"
     },
     {
       "label": "balances.py",
@@ -2313,6 +2643,116 @@
       "community_name": "UX Playbook Spec"
     },
     {
+      "label": "recurring.py",
+      "file_type": "code",
+      "source_file": "lens/app/services/recurring.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 76,
+      "norm_label": "recurring.py",
+      "id": "lens_app_services_recurring",
+      "community_name": "confirm"
+    },
+    {
+      "label": "scan_and_upsert()",
+      "file_type": "code",
+      "source_file": "lens/app/services/recurring.py",
+      "source_location": "L14",
+      "_origin": "ast",
+      "community": 76,
+      "norm_label": "scan_and_upsert()",
+      "id": "lens_app_services_recurring_scan_and_upsert",
+      "community_name": "confirm"
+    },
+    {
+      "label": "AsyncSession",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast",
+      "community": 76,
+      "norm_label": "asyncsession",
+      "id": "lens_app_services_recurring_py_asyncsession",
+      "community_name": "confirm"
+    },
+    {
+      "label": "list_series()",
+      "file_type": "code",
+      "source_file": "lens/app/services/recurring.py",
+      "source_location": "L67",
+      "_origin": "ast",
+      "community": 76,
+      "norm_label": "list_series()",
+      "id": "lens_app_services_recurring_list_series",
+      "community_name": "confirm"
+    },
+    {
+      "label": "confirm_series()",
+      "file_type": "code",
+      "source_file": "lens/app/services/recurring.py",
+      "source_location": "L89",
+      "_origin": "ast",
+      "community": 76,
+      "norm_label": "confirm_series()",
+      "id": "lens_app_services_recurring_confirm_series",
+      "community_name": "confirm"
+    },
+    {
+      "label": "upcoming()",
+      "file_type": "code",
+      "source_file": "lens/app/services/recurring.py",
+      "source_location": "L109",
+      "_origin": "ast",
+      "community": 76,
+      "norm_label": "upcoming()",
+      "id": "lens_app_services_recurring_upcoming",
+      "community_name": "confirm"
+    },
+    {
+      "label": "DB-facing recurring-series operations: scan history -> upsert detected series, c",
+      "file_type": "rationale",
+      "source_file": "lens/app/services/recurring.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 76,
+      "norm_label": "db-facing recurring-series operations: scan history -> upsert detected series, c",
+      "id": "lens_app_services_recurring_rationale_1",
+      "community_name": "confirm"
+    },
+    {
+      "label": "Group the user's expense history by merchant_clean, detect series, and upsert",
+      "file_type": "rationale",
+      "source_file": "lens/app/services/recurring.py",
+      "source_location": "L15",
+      "_origin": "ast",
+      "community": 76,
+      "norm_label": "group the user's expense history by merchant_clean, detect series, and upsert",
+      "id": "lens_app_services_recurring_rationale_15",
+      "community_name": "confirm"
+    },
+    {
+      "label": "Activate a detected series; recompute next_due_date from last_seen + cadence (\u00a74",
+      "file_type": "rationale",
+      "source_file": "lens/app/services/recurring.py",
+      "source_location": "L90",
+      "_origin": "ast",
+      "community": 76,
+      "norm_label": "activate a detected series; recompute next_due_date from last_seen + cadence (\u00a74",
+      "id": "lens_app_services_recurring_rationale_90",
+      "community_name": "confirm"
+    },
+    {
+      "label": "Active series due between today and today+within_days \u2014 feeds the dashboard and",
+      "file_type": "rationale",
+      "source_file": "lens/app/services/recurring.py",
+      "source_location": "L110",
+      "_origin": "ast",
+      "community": 76,
+      "norm_label": "active series due between today and today+within_days \u2014 feeds the dashboard and",
+      "id": "lens_app_services_recurring_rationale_110",
+      "community_name": "confirm"
+    },
+    {
       "label": "recurring_detector.py",
       "file_type": "code",
       "source_file": "lens/app/services/recurring_detector.py",
@@ -2439,10 +2879,10 @@
       "source_file": "lens/app/services/tags.py",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 13,
+      "community": 70,
       "norm_label": "tags.py",
       "id": "lens_app_services_tags",
-      "community_name": "transactions.py"
+      "community_name": "CurrentUser"
     },
     {
       "label": "get_or_create_tag()",
@@ -2450,10 +2890,10 @@
       "source_file": "lens/app/services/tags.py",
       "source_location": "L7",
       "_origin": "ast",
-      "community": 13,
+      "community": 70,
       "norm_label": "get_or_create_tag()",
       "id": "lens_app_services_tags_get_or_create_tag",
-      "community_name": "transactions.py"
+      "community_name": "CurrentUser"
     },
     {
       "label": "AsyncSession",
@@ -2461,10 +2901,10 @@
       "source_file": "",
       "source_location": "",
       "_origin": "ast",
-      "community": 13,
+      "community": 70,
       "norm_label": "asyncsession",
       "id": "lens_app_services_tags_py_asyncsession",
-      "community_name": "transactions.py"
+      "community_name": "CurrentUser"
     },
     {
       "label": "set_transaction_tags()",
@@ -2472,10 +2912,10 @@
       "source_file": "lens/app/services/tags.py",
       "source_location": "L25",
       "_origin": "ast",
-      "community": 13,
+      "community": 70,
       "norm_label": "set_transaction_tags()",
       "id": "lens_app_services_tags_set_transaction_tags",
-      "community_name": "transactions.py"
+      "community_name": "CurrentUser"
     },
     {
       "label": "get_transaction_tags()",
@@ -2483,10 +2923,10 @@
       "source_file": "lens/app/services/tags.py",
       "source_location": "L44",
       "_origin": "ast",
-      "community": 13,
+      "community": 70,
       "norm_label": "get_transaction_tags()",
       "id": "lens_app_services_tags_get_transaction_tags",
-      "community_name": "transactions.py"
+      "community_name": "CurrentUser"
     },
     {
       "label": "transactions.py",
@@ -2957,6 +3397,127 @@
       "norm_label": "pure-python importer tests \u2014 no db needed. covers \u00a74.2 detection + \u00a77 checks 6/7",
       "id": "lens_tests_test_importer_rationale_1",
       "community_name": "test_importer.py"
+    },
+    {
+      "label": "test_recurring.py",
+      "file_type": "code",
+      "source_file": "lens/tests/test_recurring.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 77,
+      "norm_label": "test_recurring.py",
+      "id": "lens_tests_test_recurring",
+      "community_name": "test_recurring.py"
+    },
+    {
+      "label": "_monthly()",
+      "file_type": "code",
+      "source_file": "lens/tests/test_recurring.py",
+      "source_location": "L10",
+      "_origin": "ast",
+      "community": 77,
+      "norm_label": "_monthly()",
+      "id": "lens_tests_test_recurring_monthly",
+      "community_name": "test_recurring.py"
+    },
+    {
+      "label": "date",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast",
+      "community": 77,
+      "norm_label": "date",
+      "id": "lens_tests_test_recurring_py_date",
+      "community_name": "test_recurring.py"
+    },
+    {
+      "label": "test_detects_monthly_subscription()",
+      "file_type": "code",
+      "source_file": "lens/tests/test_recurring.py",
+      "source_location": "L24",
+      "_origin": "ast",
+      "community": 77,
+      "norm_label": "test_detects_monthly_subscription()",
+      "id": "lens_tests_test_recurring_test_detects_monthly_subscription",
+      "community_name": "test_recurring.py"
+    },
+    {
+      "label": "test_tolerates_small_amount_wobble()",
+      "file_type": "code",
+      "source_file": "lens/tests/test_recurring.py",
+      "source_location": "L35",
+      "_origin": "ast",
+      "community": 77,
+      "norm_label": "test_tolerates_small_amount_wobble()",
+      "id": "lens_tests_test_recurring_test_tolerates_small_amount_wobble",
+      "community_name": "test_recurring.py"
+    },
+    {
+      "label": "test_rejects_wild_amount_variation()",
+      "file_type": "code",
+      "source_file": "lens/tests/test_recurring.py",
+      "source_location": "L41",
+      "_origin": "ast",
+      "community": 77,
+      "norm_label": "test_rejects_wild_amount_variation()",
+      "id": "lens_tests_test_recurring_test_rejects_wild_amount_variation",
+      "community_name": "test_recurring.py"
+    },
+    {
+      "label": "test_rejects_irregular_interval()",
+      "file_type": "code",
+      "source_file": "lens/tests/test_recurring.py",
+      "source_location": "L46",
+      "_origin": "ast",
+      "community": 77,
+      "norm_label": "test_rejects_irregular_interval()",
+      "id": "lens_tests_test_recurring_test_rejects_irregular_interval",
+      "community_name": "test_recurring.py"
+    },
+    {
+      "label": "test_requires_min_occurrences()",
+      "file_type": "code",
+      "source_file": "lens/tests/test_recurring.py",
+      "source_location": "L51",
+      "_origin": "ast",
+      "community": 77,
+      "norm_label": "test_requires_min_occurrences()",
+      "id": "lens_tests_test_recurring_test_requires_min_occurrences",
+      "community_name": "test_recurring.py"
+    },
+    {
+      "label": "test_detects_weekly()",
+      "file_type": "code",
+      "source_file": "lens/tests/test_recurring.py",
+      "source_location": "L56",
+      "_origin": "ast",
+      "community": 77,
+      "norm_label": "test_detects_weekly()",
+      "id": "lens_tests_test_recurring_test_detects_weekly",
+      "community_name": "test_recurring.py"
+    },
+    {
+      "label": "test_detect_all_skips_empty_merchant()",
+      "file_type": "code",
+      "source_file": "lens/tests/test_recurring.py",
+      "source_location": "L62",
+      "_origin": "ast",
+      "community": 77,
+      "norm_label": "test_detect_all_skips_empty_merchant()",
+      "id": "lens_tests_test_recurring_test_detect_all_skips_empty_merchant",
+      "community_name": "test_recurring.py"
+    },
+    {
+      "label": "Pure-Python recurring-detection tests \u2014 no DB (\u00a74.3, \u00a77 recurring behavior).",
+      "file_type": "rationale",
+      "source_file": "lens/tests/test_recurring.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 77,
+      "norm_label": "pure-python recurring-detection tests \u2014 no db (\u00a74.3, \u00a77 recurring behavior).",
+      "id": "lens_tests_test_recurring_rationale_1",
+      "community_name": "test_recurring.py"
     },
     {
       "label": "CLAUDE.md",
@@ -4386,7 +4947,7 @@
       "context": "parameter_type",
       "confidence": "EXTRACTED",
       "source_file": "lens/app/main.py",
-      "source_location": "L45",
+      "source_location": "L49",
       "weight": 1.0,
       "confidence_score": 1.0,
       "source": "lens_app_main_root",
@@ -4555,6 +5116,28 @@
       "weight": 1.0,
       "confidence_score": 1.0,
       "source": "lens_app_routers_import_upload",
+      "target": "lens_app_auth_deps_currentuser"
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "lens/app/routers/recurring.py",
+      "source_location": "L29",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lens_app_routers_recurring_confirm",
+      "target": "lens_app_auth_deps_currentuser"
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "lens/app/routers/recurring.py",
+      "source_location": "L15",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lens_app_routers_recurring_recurring_page",
       "target": "lens_app_auth_deps_currentuser"
     },
     {
@@ -5037,6 +5620,17 @@
       "target": "lens_app_database_get_scoped_db"
     },
     {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "lens/app/routers/cron.py",
+      "source_location": "L11",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lens_app_routers_cron",
+      "target": "lens_app_database"
+    },
+    {
       "relation": "rationale_for",
       "confidence": "EXTRACTED",
       "source_file": "lens/app/database.py",
@@ -5060,7 +5654,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "lens/app/main.py",
-      "source_location": "L33",
+      "source_location": "L37",
       "weight": 1.0,
       "confidence_score": 1.0,
       "source": "lens_app_main",
@@ -5070,7 +5664,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "lens/app/main.py",
-      "source_location": "L40",
+      "source_location": "L44",
       "weight": 1.0,
       "confidence_score": 1.0,
       "source": "lens_app_main",
@@ -5080,7 +5674,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "lens/app/main.py",
-      "source_location": "L45",
+      "source_location": "L49",
       "weight": 1.0,
       "confidence_score": 1.0,
       "source": "lens_app_main",
@@ -5091,7 +5685,7 @@
       "context": "parameter_type",
       "confidence": "EXTRACTED",
       "source_file": "lens/app/main.py",
-      "source_location": "L33",
+      "source_location": "L37",
       "weight": 1.0,
       "confidence_score": 1.0,
       "source": "lens_app_main_auth_redirect_handler",
@@ -5102,7 +5696,7 @@
       "context": "parameter_type",
       "confidence": "EXTRACTED",
       "source_file": "lens/app/main.py",
-      "source_location": "L33",
+      "source_location": "L37",
       "weight": 1.0,
       "confidence_score": 1.0,
       "source": "lens_app_main_auth_redirect_handler",
@@ -5113,11 +5707,22 @@
       "context": "parameter_type",
       "confidence": "EXTRACTED",
       "source_file": "lens/app/main.py",
-      "source_location": "L45",
+      "source_location": "L49",
       "weight": 1.0,
       "confidence_score": 1.0,
       "source": "lens_app_main_root",
       "target": "lens_app_main_py_request"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "lens/app/routers/cron.py",
+      "source_location": "L21",
+      "weight": 1.0,
+      "source": "lens_app_routers_cron_authorize",
+      "target": "httpexception"
     },
     {
       "relation": "contains",
@@ -5761,6 +6366,57 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
+      "source_file": "lens/app/routers/cron.py",
+      "source_location": "L18",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lens_app_routers_cron",
+      "target": "lens_app_routers_cron_authorize"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lens/app/routers/cron.py",
+      "source_location": "L25",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lens_app_routers_cron",
+      "target": "lens_app_routers_cron_recurring_reminders"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "lens/app/routers/cron.py",
+      "source_location": "L1",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lens_app_routers_cron_rationale_1",
+      "target": "lens_app_routers_cron"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "lens/app/routers/cron.py",
+      "source_location": "L29",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lens_app_routers_cron_recurring_reminders",
+      "target": "lens_app_routers_cron_authorize"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "lens/app/routers/cron.py",
+      "source_location": "L26",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lens_app_routers_cron_rationale_26",
+      "target": "lens_app_routers_cron_recurring_reminders"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
       "source_file": "lens/app/routers/import_.py",
       "source_location": "L34",
       "weight": 1.0,
@@ -6035,6 +6691,136 @@
       "weight": 1.0,
       "source": "lens_app_routers_import_commit",
       "target": "lens_app_services_import_commit_save_column_mapping"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lens/app/routers/recurring.py",
+      "source_location": "L29",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lens_app_routers_recurring",
+      "target": "lens_app_routers_recurring_confirm"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lens/app/routers/recurring.py",
+      "source_location": "L15",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lens_app_routers_recurring",
+      "target": "lens_app_routers_recurring_recurring_page"
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "lens/app/routers/recurring.py",
+      "source_location": "L15",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lens_app_routers_recurring_recurring_page",
+      "target": "lens_app_routers_recurring_py_asyncsession"
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "lens/app/routers/recurring.py",
+      "source_location": "L15",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lens_app_routers_recurring_recurring_page",
+      "target": "lens_app_routers_recurring_py_request"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "lens/app/routers/recurring.py",
+      "source_location": "L21",
+      "weight": 1.0,
+      "source": "lens_app_routers_recurring_recurring_page",
+      "target": "lens_app_services_recurring_list_series"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "lens/app/routers/recurring.py",
+      "source_location": "L20",
+      "weight": 1.0,
+      "source": "lens_app_routers_recurring_recurring_page",
+      "target": "lens_app_services_recurring_scan_and_upsert"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "lens/app/routers/recurring.py",
+      "source_location": "L22",
+      "weight": 1.0,
+      "source": "lens_app_routers_recurring_recurring_page",
+      "target": "lens_app_services_recurring_upcoming"
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "lens/app/routers/recurring.py",
+      "source_location": "L29",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lens_app_routers_recurring_confirm",
+      "target": "lens_app_routers_recurring_py_request"
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "lens/app/routers/recurring.py",
+      "source_location": "L29",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lens_app_routers_recurring_confirm",
+      "target": "lens_app_routers_recurring_py_asyncsession"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "lens/app/routers/recurring.py",
+      "source_location": "L35",
+      "weight": 1.0,
+      "source": "lens_app_routers_recurring_confirm",
+      "target": "lens_app_services_recurring_confirm_series"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "lens/app/routers/recurring.py",
+      "source_location": "L36",
+      "weight": 1.0,
+      "source": "lens_app_routers_recurring_confirm",
+      "target": "lens_app_services_recurring_list_series"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "lens/app/routers/recurring.py",
+      "source_location": "L37",
+      "weight": 1.0,
+      "source": "lens_app_routers_recurring_confirm",
+      "target": "lens_app_services_recurring_upcoming"
     },
     {
       "relation": "contains",
@@ -6876,6 +7662,473 @@
       "weight": 1.0,
       "source": "lens_app_routers_transactions_quickadd_commit",
       "target": "lens_app_services_transactions_get_transaction"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lens/app/services/analytics.py",
+      "source_location": "L56",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lens_app_services_analytics",
+      "target": "lens_app_services_analytics_category_normals"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lens/app/services/analytics.py",
+      "source_location": "L179",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lens_app_services_analytics",
+      "target": "lens_app_services_analytics_deltas"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lens/app/services/analytics.py",
+      "source_location": "L137",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lens_app_services_analytics",
+      "target": "lens_app_services_analytics_essential_category_ids"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lens/app/services/analytics.py",
+      "source_location": "L44",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lens_app_services_analytics",
+      "target": "lens_app_services_analytics_last_n_full_months"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lens/app/services/analytics.py",
+      "source_location": "L24",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lens_app_services_analytics",
+      "target": "lens_app_services_analytics_month_bounds"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lens/app/services/analytics.py",
+      "source_location": "L34",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lens_app_services_analytics",
+      "target": "lens_app_services_analytics_prev_month_bounds"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lens/app/services/analytics.py",
+      "source_location": "L85",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lens_app_services_analytics",
+      "target": "lens_app_services_analytics_safe_to_spend"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lens/app/services/analytics.py",
+      "source_location": "L191",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lens_app_services_analytics",
+      "target": "lens_app_services_analytics_spending_detective"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lens/app/services/analytics.py",
+      "source_location": "L308",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lens_app_services_analytics",
+      "target": "lens_app_services_analytics_trip_rollup"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lens/app/services/analytics.py",
+      "source_location": "L248",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lens_app_services_analytics",
+      "target": "lens_app_services_analytics_what_changed"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "lens/app/services/analytics.py",
+      "source_location": "L1",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lens_app_services_analytics_rationale_1",
+      "target": "lens_app_services_analytics"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "lens/app/services/analytics.py",
+      "source_location": "L46",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lens_app_services_analytics_last_n_full_months",
+      "target": "lens_app_services_analytics_month_bounds"
+    },
+    {
+      "relation": "references",
+      "context": "generic_arg",
+      "confidence": "EXTRACTED",
+      "source_file": "lens/app/services/analytics.py",
+      "source_location": "L24",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lens_app_services_analytics_month_bounds",
+      "target": "lens_app_services_analytics_py_date"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "lens/app/services/analytics.py",
+      "source_location": "L35",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lens_app_services_analytics_prev_month_bounds",
+      "target": "lens_app_services_analytics_month_bounds"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "lens/app/services/analytics.py",
+      "source_location": "L25",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lens_app_services_analytics_rationale_25",
+      "target": "lens_app_services_analytics_month_bounds"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "lens/app/services/analytics.py",
+      "source_location": "L89",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lens_app_services_analytics_safe_to_spend",
+      "target": "lens_app_services_analytics_month_bounds"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "lens/app/services/analytics.py",
+      "source_location": "L195",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lens_app_services_analytics_spending_detective",
+      "target": "lens_app_services_analytics_month_bounds"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "lens/app/services/analytics.py",
+      "source_location": "L250",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lens_app_services_analytics_what_changed",
+      "target": "lens_app_services_analytics_month_bounds"
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "lens/app/services/analytics.py",
+      "source_location": "L56",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lens_app_services_analytics_category_normals",
+      "target": "lens_app_services_analytics_py_date"
+    },
+    {
+      "relation": "references",
+      "context": "generic_arg",
+      "confidence": "EXTRACTED",
+      "source_file": "lens/app/services/analytics.py",
+      "source_location": "L44",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lens_app_services_analytics_last_n_full_months",
+      "target": "lens_app_services_analytics_py_date"
+    },
+    {
+      "relation": "references",
+      "context": "generic_arg",
+      "confidence": "EXTRACTED",
+      "source_file": "lens/app/services/analytics.py",
+      "source_location": "L34",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lens_app_services_analytics_prev_month_bounds",
+      "target": "lens_app_services_analytics_py_date"
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "lens/app/services/analytics.py",
+      "source_location": "L85",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lens_app_services_analytics_safe_to_spend",
+      "target": "lens_app_services_analytics_py_date"
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "lens/app/services/analytics.py",
+      "source_location": "L191",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lens_app_services_analytics_spending_detective",
+      "target": "lens_app_services_analytics_py_date"
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "lens/app/services/analytics.py",
+      "source_location": "L248",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lens_app_services_analytics_what_changed",
+      "target": "lens_app_services_analytics_py_date"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "lens/app/services/analytics.py",
+      "source_location": "L50",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lens_app_services_analytics_last_n_full_months",
+      "target": "lens_app_services_analytics_prev_month_bounds"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "lens/app/services/analytics.py",
+      "source_location": "L196",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lens_app_services_analytics_spending_detective",
+      "target": "lens_app_services_analytics_prev_month_bounds"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "lens/app/services/analytics.py",
+      "source_location": "L251",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lens_app_services_analytics_what_changed",
+      "target": "lens_app_services_analytics_prev_month_bounds"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "lens/app/services/analytics.py",
+      "source_location": "L60",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lens_app_services_analytics_category_normals",
+      "target": "lens_app_services_analytics_last_n_full_months"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "lens/app/services/analytics.py",
+      "source_location": "L45",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lens_app_services_analytics_rationale_45",
+      "target": "lens_app_services_analytics_last_n_full_months"
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "lens/app/services/analytics.py",
+      "source_location": "L56",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lens_app_services_analytics_category_normals",
+      "target": "lens_app_services_analytics_py_asyncsession"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "lens/app/services/analytics.py",
+      "source_location": "L57",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lens_app_services_analytics_rationale_57",
+      "target": "lens_app_services_analytics_category_normals"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "lens/app/services/analytics.py",
+      "source_location": "L108",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lens_app_services_analytics_safe_to_spend",
+      "target": "lens_app_services_analytics_category_normals"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "lens/app/services/analytics.py",
+      "source_location": "L269",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lens_app_services_analytics_what_changed",
+      "target": "lens_app_services_analytics_category_normals"
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "lens/app/services/analytics.py",
+      "source_location": "L137",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lens_app_services_analytics_essential_category_ids",
+      "target": "lens_app_services_analytics_py_asyncsession"
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "lens/app/services/analytics.py",
+      "source_location": "L85",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lens_app_services_analytics_safe_to_spend",
+      "target": "lens_app_services_analytics_py_asyncsession"
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "lens/app/services/analytics.py",
+      "source_location": "L191",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lens_app_services_analytics_spending_detective",
+      "target": "lens_app_services_analytics_py_asyncsession"
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "lens/app/services/analytics.py",
+      "source_location": "L308",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lens_app_services_analytics_trip_rollup",
+      "target": "lens_app_services_analytics_py_asyncsession"
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "lens/app/services/analytics.py",
+      "source_location": "L248",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lens_app_services_analytics_what_changed",
+      "target": "lens_app_services_analytics_py_asyncsession"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "lens/app/services/analytics.py",
+      "source_location": "L86",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lens_app_services_analytics_rationale_86",
+      "target": "lens_app_services_analytics_safe_to_spend"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "lens/app/services/analytics.py",
+      "source_location": "L109",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lens_app_services_analytics_safe_to_spend",
+      "target": "lens_app_services_analytics_essential_category_ids"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "lens/app/services/analytics.py",
+      "source_location": "L91",
+      "weight": 1.0,
+      "source": "lens_app_services_analytics_safe_to_spend",
+      "target": "lens_app_services_balances_get_account_balances"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "lens/app/services/analytics.py",
+      "source_location": "L198",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lens_app_services_analytics_spending_detective",
+      "target": "lens_app_services_analytics_deltas"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "lens/app/services/analytics.py",
+      "source_location": "L192",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lens_app_services_analytics_rationale_192",
+      "target": "lens_app_services_analytics_spending_detective"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "lens/app/services/analytics.py",
+      "source_location": "L309",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lens_app_services_analytics_rationale_309",
+      "target": "lens_app_services_analytics_trip_rollup"
     },
     {
       "relation": "contains",
@@ -8322,6 +9575,141 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
+      "source_file": "lens/app/services/recurring.py",
+      "source_location": "L89",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lens_app_services_recurring",
+      "target": "lens_app_services_recurring_confirm_series"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lens/app/services/recurring.py",
+      "source_location": "L67",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lens_app_services_recurring",
+      "target": "lens_app_services_recurring_list_series"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lens/app/services/recurring.py",
+      "source_location": "L14",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lens_app_services_recurring",
+      "target": "lens_app_services_recurring_scan_and_upsert"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lens/app/services/recurring.py",
+      "source_location": "L109",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lens_app_services_recurring",
+      "target": "lens_app_services_recurring_upcoming"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "lens/app/services/recurring.py",
+      "source_location": "L1",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lens_app_services_recurring_rationale_1",
+      "target": "lens_app_services_recurring"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "lens/app/services/recurring.py",
+      "source_location": "L15",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lens_app_services_recurring_rationale_15",
+      "target": "lens_app_services_recurring_scan_and_upsert"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "lens/app/services/recurring.py",
+      "source_location": "L32",
+      "weight": 1.0,
+      "source": "lens_app_services_recurring_scan_and_upsert",
+      "target": "lens_app_services_recurring_detector_detect_all"
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "lens/app/services/recurring.py",
+      "source_location": "L14",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lens_app_services_recurring_scan_and_upsert",
+      "target": "lens_app_services_recurring_py_asyncsession"
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "lens/app/services/recurring.py",
+      "source_location": "L89",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lens_app_services_recurring_confirm_series",
+      "target": "lens_app_services_recurring_py_asyncsession"
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "lens/app/services/recurring.py",
+      "source_location": "L67",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lens_app_services_recurring_list_series",
+      "target": "lens_app_services_recurring_py_asyncsession"
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "lens/app/services/recurring.py",
+      "source_location": "L109",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lens_app_services_recurring_upcoming",
+      "target": "lens_app_services_recurring_py_asyncsession"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "lens/app/services/recurring.py",
+      "source_location": "L90",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lens_app_services_recurring_rationale_90",
+      "target": "lens_app_services_recurring_confirm_series"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "lens/app/services/recurring.py",
+      "source_location": "L110",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lens_app_services_recurring_rationale_110",
+      "target": "lens_app_services_recurring_upcoming"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
       "source_file": "lens/app/services/recurring_detector.py",
       "source_location": "L40",
       "weight": 1.0,
@@ -9122,6 +10510,217 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
+      "source_file": "lens/tests/test_recurring.py",
+      "source_location": "L10",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lens_tests_test_recurring",
+      "target": "lens_tests_test_recurring_monthly"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lens/tests/test_recurring.py",
+      "source_location": "L62",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lens_tests_test_recurring",
+      "target": "lens_tests_test_recurring_test_detect_all_skips_empty_merchant"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lens/tests/test_recurring.py",
+      "source_location": "L24",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lens_tests_test_recurring",
+      "target": "lens_tests_test_recurring_test_detects_monthly_subscription"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lens/tests/test_recurring.py",
+      "source_location": "L56",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lens_tests_test_recurring",
+      "target": "lens_tests_test_recurring_test_detects_weekly"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lens/tests/test_recurring.py",
+      "source_location": "L46",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lens_tests_test_recurring",
+      "target": "lens_tests_test_recurring_test_rejects_irregular_interval"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lens/tests/test_recurring.py",
+      "source_location": "L41",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lens_tests_test_recurring",
+      "target": "lens_tests_test_recurring_test_rejects_wild_amount_variation"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lens/tests/test_recurring.py",
+      "source_location": "L51",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lens_tests_test_recurring",
+      "target": "lens_tests_test_recurring_test_requires_min_occurrences"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lens/tests/test_recurring.py",
+      "source_location": "L35",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lens_tests_test_recurring",
+      "target": "lens_tests_test_recurring_test_tolerates_small_amount_wobble"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "lens/tests/test_recurring.py",
+      "source_location": "L1",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lens_tests_test_recurring_rationale_1",
+      "target": "lens_tests_test_recurring"
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "lens/tests/test_recurring.py",
+      "source_location": "L10",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lens_tests_test_recurring_monthly",
+      "target": "lens_tests_test_recurring_py_date"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "lens/tests/test_recurring.py",
+      "source_location": "L63",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lens_tests_test_recurring_test_detect_all_skips_empty_merchant",
+      "target": "lens_tests_test_recurring_monthly"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "lens/tests/test_recurring.py",
+      "source_location": "L25",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lens_tests_test_recurring_test_detects_monthly_subscription",
+      "target": "lens_tests_test_recurring_monthly"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "lens/tests/test_recurring.py",
+      "source_location": "L36",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lens_tests_test_recurring_test_tolerates_small_amount_wobble",
+      "target": "lens_tests_test_recurring_monthly"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "lens/tests/test_recurring.py",
+      "source_location": "L63",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lens_tests_test_recurring_test_detect_all_skips_empty_merchant",
+      "target": "lens_tests_test_recurring_py_date"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "lens/tests/test_recurring.py",
+      "source_location": "L25",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lens_tests_test_recurring_test_detects_monthly_subscription",
+      "target": "lens_tests_test_recurring_py_date"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "lens/tests/test_recurring.py",
+      "source_location": "L57",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lens_tests_test_recurring_test_detects_weekly",
+      "target": "lens_tests_test_recurring_py_date"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "lens/tests/test_recurring.py",
+      "source_location": "L47",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lens_tests_test_recurring_test_rejects_irregular_interval",
+      "target": "lens_tests_test_recurring_py_date"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "lens/tests/test_recurring.py",
+      "source_location": "L42",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lens_tests_test_recurring_test_rejects_wild_amount_variation",
+      "target": "lens_tests_test_recurring_py_date"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "lens/tests/test_recurring.py",
+      "source_location": "L52",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lens_tests_test_recurring_test_requires_min_occurrences",
+      "target": "lens_tests_test_recurring_py_date"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "lens/tests/test_recurring.py",
+      "source_location": "L36",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lens_tests_test_recurring_test_tolerates_small_amount_wobble",
+      "target": "lens_tests_test_recurring_py_date"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
       "source_file": "CLAUDE.md",
       "source_location": "L1",
       "weight": 1.0,
@@ -9674,5 +11273,5 @@
       "source_file": "GRAPHIFY_SETUP_PROMPT.md"
     }
   ],
-  "built_at_commit": "527a037ea4047eccf93c3b861f1abb3c731349fd"
+  "built_at_commit": "4ed6cefc37ed23b36a6b982e7fbe4ab6a041f4f4"
 }

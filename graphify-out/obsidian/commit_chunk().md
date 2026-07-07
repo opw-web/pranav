@@ -12,7 +12,7 @@ tags:
 # commit_chunk()
 
 ## Connections
-- [[AsyncSession_8]] - `references` [EXTRACTED]
+- [[AsyncSession_10]] - `references` [EXTRACTED]
 - [[Insert rows startend) skip duplicates, categorize each, link transfer legs.]] - `rationale_for` [EXTRACTED]
 - [[categorize()]] - `calls` [INFERRED]
 - [[commit()]] - `calls` [INFERRED]

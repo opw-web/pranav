@@ -21,7 +21,7 @@ members: 27
 - [[analyze()]] - code - lens/app/services/importer.py
 - [[bank_signature()]] - code - lens/app/services/importer.py
 - [[chunk_bounds()]] - code - lens/app/services/importer.py
-- [[date_1]] - code
+- [[date_2]] - code
 - [[decode_bytes()]] - code - lens/app/services/importer.py
 - [[dedupe_hash()]] - code - lens/app/services/importer.py
 - [[detect_amount_convention()]] - code - lens/app/services/importer.py

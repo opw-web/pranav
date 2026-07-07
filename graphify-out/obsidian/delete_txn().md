@@ -12,9 +12,9 @@ tags:
 # delete_txn()
 
 ## Connections
-- [[AsyncSession_4]] - `references` [EXTRACTED]
+- [[AsyncSession_5]] - `references` [EXTRACTED]
 - [[CurrentUser]] - `references` [EXTRACTED]
-- [[Request_7]] - `references` [EXTRACTED]
+- [[Request_8]] - `references` [EXTRACTED]
 - [[soft_delete_transaction()]] - `calls` [INFERRED]
 - [[transactions.py]] - `contains` [EXTRACTED]
 

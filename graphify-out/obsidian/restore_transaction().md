@@ -12,7 +12,7 @@ tags:
 # restore_transaction()
 
 ## Connections
-- [[AsyncSession_13]] - `references` [EXTRACTED]
+- [[AsyncSession_16]] - `references` [EXTRACTED]
 - [[transactions.py_1]] - `contains` [EXTRACTED]
 - [[undo_delete_txn()]] - `calls` [INFERRED]
 

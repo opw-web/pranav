@@ -12,9 +12,9 @@ tags:
 # list_txn_page()
 
 ## Connections
-- [[AsyncSession_4]] - `references` [EXTRACTED]
+- [[AsyncSession_5]] - `references` [EXTRACTED]
 - [[CurrentUser]] - `references` [EXTRACTED]
-- [[Request_7]] - `references` [EXTRACTED]
+- [[Request_8]] - `references` [EXTRACTED]
 - [[_flat_categories()]] - `calls` [EXTRACTED]
 - [[get_account_balances()]] - `calls` [INFERRED]
 - [[list_transactions()]] - `calls` [INFERRED]

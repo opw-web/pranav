@@ -1,15 +1,16 @@
 ---
 type: community
-members: 31
+members: 36
 ---
 
 # routes.py
 
-**Members:** 31 nodes
+**Members:** 36 nodes
 
 ## Members
-- [[AsyncSession_9]] - code
+- [[AsyncSession_11]] - code
 - [[DB session for the current request app-level scope (user.id) is layered     on]] - rationale - lens/app/auth/deps.py
+- [[Find active series due within 3 days, and flag renewals that came in higher than]] - rationale - lens/app/routers/cron.py
 - [[First-login seed (§4.6) starter category tree + a default Cash account.     Ide]] - rationale - lens/app/services/onboarding.py
 - [[HTTPException]] - code
 - [[Plain session, no RLS context. Only for adminglobal reads (e.g. merchant_seed).]] - rationale - lens/app/database.py
@@ -17,14 +18,17 @@ members: 31
 - [[Request_1]] - code
 - [[Request_2]] - code
 - [[Response]] - code
+- [[Scheduled jobs invoked by Vercel Cron (§4.3). Not user-facing protected by a sh]] - rationale - lens/app/routers/cron.py
 - [[Session scoped to a specific user for the duration of one transaction.      Our]] - rationale - lens/app/database.py
 - [[Settings]] - code - lens/app/config.py
 - [[Verifies the Supabase JWT and extracts user_id (= auth.uid()), per §2.3 step 4.]] - rationale - lens/app/auth/deps.py
+- [[_authorize()]] - code - lens/app/routers/cron.py
 - [[_refresh_access_token()]] - code - lens/app/auth/deps.py
 - [[auth_callback()]] - code - lens/app/auth/routes.py
 - [[auth_google_start()]] - code - lens/app/auth/routes.py
 - [[auth_redirect_handler()]] - code - lens/app/main.py
 - [[config.py]] - code - lens/app/config.py
+- [[cron.py]] - code - lens/app/routers/cron.py
 - [[database.py]] - code - lens/app/database.py
 - [[deps.py]] - code - lens/app/auth/deps.py
 - [[ensure_onboarded()]] - code - lens/app/services/onboarding.py
@@ -37,6 +41,7 @@ members: 31
 - [[logout()]] - code - lens/app/auth/routes.py
 - [[main.py]] - code - lens/app/main.py
 - [[onboarding.py]] - code - lens/app/services/onboarding.py
+- [[recurring_reminders()]] - code - lens/app/routers/cron.py
 - [[root()]] - code - lens/app/main.py
 - [[routes.py]] - code - lens/app/auth/routes.py
 

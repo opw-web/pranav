@@ -1,19 +1,19 @@
 ---
 source_file: "lens/app/services/tags.py"
 type: "code"
-community: "transactions.py"
+community: "CurrentUser"
 location: "L7"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/transactionspy
+  - community/CurrentUser
 ---
 
 # get_or_create_tag()
 
 ## Connections
-- [[AsyncSession_12]] - `references` [EXTRACTED]
+- [[AsyncSession_15]] - `references` [EXTRACTED]
 - [[set_transaction_tags()]] - `calls` [EXTRACTED]
 - [[tags.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/transactionspy
+#graphify/code #graphify/EXTRACTED #community/CurrentUser

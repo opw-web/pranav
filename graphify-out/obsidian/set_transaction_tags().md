@@ -1,22 +1,22 @@
 ---
 source_file: "lens/app/services/tags.py"
 type: "code"
-community: "transactions.py"
+community: "CurrentUser"
 location: "L25"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/transactionspy
+  - community/CurrentUser
 ---
 
 # set_transaction_tags()
 
 ## Connections
-- [[AsyncSession_12]] - `references` [EXTRACTED]
+- [[AsyncSession_15]] - `references` [EXTRACTED]
 - [[create_txn()]] - `calls` [INFERRED]
 - [[get_or_create_tag()]] - `calls` [EXTRACTED]
 - [[patch_txn()]] - `calls` [INFERRED]
 - [[quickadd_commit()]] - `calls` [INFERRED]
 - [[tags.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/INFERRED #community/transactionspy
+#graphify/code #graphify/INFERRED #community/CurrentUser

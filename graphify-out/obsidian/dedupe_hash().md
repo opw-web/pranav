@@ -12,7 +12,7 @@ tags:
 # dedupe_hash()
 
 ## Connections
-- [[date_1]] - `references` [EXTRACTED]
+- [[date_2]] - `references` [EXTRACTED]
 - [[importer.py]] - `contains` [EXTRACTED]
 
 #graphify/code #graphify/EXTRACTED #community/importerpy

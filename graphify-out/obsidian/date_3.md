@@ -1,17 +1,18 @@
 ---
 source_file: ""
 type: "code"
-community: "detect_series_for_merchant"
+community: "session.py"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/detect_series_for_merchant
+  - community/sessionpy
 ---
 
 # date
 
 ## Connections
-- [[detect_all()]] - `references` [EXTRACTED]
-- [[detect_series_for_merchant()]] - `references` [EXTRACTED]
+- [[_default_for_dateutil()]] - `references` [EXTRACTED]
+- [[_try_parse_date()]] - `references` [EXTRACTED]
+- [[parse_quickadd()]] - `references` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/detect_series_for_merchant
+#graphify/code #graphify/EXTRACTED #community/sessionpy

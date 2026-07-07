@@ -1,12 +1,12 @@
 ---
 source_file: "lens/app/services/tags.py"
 type: "code"
-community: "transactions.py"
+community: "CurrentUser"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/transactionspy
+  - community/CurrentUser
 ---
 
 # tags.py
@@ -16,4 +16,4 @@ tags:
 - [[get_transaction_tags()]] - `contains` [EXTRACTED]
 - [[set_transaction_tags()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/transactionspy
+#graphify/code #graphify/EXTRACTED #community/CurrentUser

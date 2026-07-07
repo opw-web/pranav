@@ -12,7 +12,7 @@ tags:
 # delete_category()
 
 ## Connections
-- [[AsyncSession_6]] - `references` [EXTRACTED]
+- [[AsyncSession_8]] - `references` [EXTRACTED]
 - [[categories.py_1]] - `contains` [EXTRACTED]
 - [[delete_category_route()]] - `calls` [INFERRED]
 

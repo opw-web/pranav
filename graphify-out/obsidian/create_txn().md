@@ -12,9 +12,9 @@ tags:
 # create_txn()
 
 ## Connections
-- [[AsyncSession_4]] - `references` [EXTRACTED]
+- [[AsyncSession_5]] - `references` [EXTRACTED]
 - [[CurrentUser]] - `references` [EXTRACTED]
-- [[Request_7]] - `references` [EXTRACTED]
+- [[Request_8]] - `references` [EXTRACTED]
 - [[_parse_tags()]] - `calls` [EXTRACTED]
 - [[create_transaction()]] - `calls` [INFERRED]
 - [[date]] - `references` [EXTRACTED]

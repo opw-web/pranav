@@ -1,22 +1,21 @@
 ---
 source_file: ""
 type: "code"
-community: "Backend Service Requirements"
+community: "transactions.py"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Backend_Service_Requirements
+  - community/transactionspy
 ---
 
 # AsyncSession
 
 ## Connections
-- [[_all_categories_with_usage()]] - `references` [EXTRACTED]
-- [[create_category()]] - `references` [EXTRACTED]
-- [[delete_category()]] - `references` [EXTRACTED]
-- [[fuzzy_search()]] - `references` [EXTRACTED]
-- [[get_grouped_tree()]] - `references` [EXTRACTED]
-- [[merge_categories()]] - `references` [EXTRACTED]
-- [[rename_category()]] - `references` [EXTRACTED]
+- [[_essential_category_ids()]] - `references` [EXTRACTED]
+- [[category_normals()]] - `references` [EXTRACTED]
+- [[safe_to_spend()]] - `references` [EXTRACTED]
+- [[spending_detective()]] - `references` [EXTRACTED]
+- [[trip_rollup()]] - `references` [EXTRACTED]
+- [[what_changed()]] - `references` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Backend_Service_Requirements
+#graphify/code #graphify/EXTRACTED #community/transactionspy

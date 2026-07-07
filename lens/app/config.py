@@ -12,6 +12,7 @@ class Settings:
     database_url: str = os.environ["DATABASE_URL"]
     session_secret: str = os.environ["SESSION_SECRET"]
     google_redirect_url: str = os.environ.get("GOOGLE_REDIRECT_URL", "http://localhost:8000/auth/callback")
+    cron_secret: str = os.environ.get("CRON_SECRET", "")
 
 
 settings = Settings()

@@ -1,12 +1,12 @@
 ---
 source_file: "lens/app/main.py"
 type: "code"
-community: "main.py"
-location: "L31"
+community: "routes.py"
+location: "L33"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/mainpy
+  - community/routespy
 ---
 
 # auth_redirect_handler()
@@ -16,4 +16,4 @@ tags:
 - [[Request_2]] - `references` [EXTRACTED]
 - [[main.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/mainpy
+#graphify/code #graphify/EXTRACTED #community/routespy

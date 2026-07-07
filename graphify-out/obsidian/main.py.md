@@ -1,12 +1,12 @@
 ---
 source_file: "lens/app/main.py"
 type: "code"
-community: "main.py"
+community: "routes.py"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/mainpy
+  - community/routespy
 ---
 
 # main.py
@@ -16,4 +16,4 @@ tags:
 - [[healthz()]] - `contains` [EXTRACTED]
 - [[root()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/mainpy
+#graphify/code #graphify/EXTRACTED #community/routespy

@@ -12,10 +12,10 @@ tags:
 # learn()
 
 ## Connections
-- [[AsyncSession_2]] - `references` [EXTRACTED]
+- [[AsyncSession_3]] - `references` [EXTRACTED]
 - [[Called when the user accepts 'Always categorize merchant as category'.]] - `rationale_for` [EXTRACTED]
 - [[CurrentUser]] - `references` [EXTRACTED]
-- [[Request_5]] - `references` [EXTRACTED]
+- [[Request_6]] - `references` [EXTRACTED]
 - [[back_apply_rule()]] - `calls` [INFERRED]
 - [[learn_rule()]] - `calls` [INFERRED]
 - [[rules.py]] - `contains` [EXTRACTED]

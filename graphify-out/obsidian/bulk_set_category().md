@@ -12,7 +12,7 @@ tags:
 # bulk_set_category()
 
 ## Connections
-- [[AsyncSession_11]] - `references` [EXTRACTED]
+- [[AsyncSession_13]] - `references` [EXTRACTED]
 - [[bulk_action()]] - `calls` [INFERRED]
 - [[transactions.py_1]] - `contains` [EXTRACTED]
 

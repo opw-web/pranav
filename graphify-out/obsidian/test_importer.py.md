@@ -15,6 +15,7 @@ tags:
 - [[Pure-Python importer tests — no DB needed. Covers §4.2 detection + §7 Checks 67]] - `rationale_for` [EXTRACTED]
 - [[test_amount_cleaning()]] - `contains` [EXTRACTED]
 - [[test_bank_signature_stable_and_distinct()]] - `contains` [EXTRACTED]
+- [[test_chunk_bounds()]] - `contains` [EXTRACTED]
 - [[test_dedupe_hash_identical_rows()]] - `contains` [EXTRACTED]
 - [[test_hdfc_debit_credit_detection()]] - `contains` [EXTRACTED]
 - [[test_icici_signed_semicolon()]] - `contains` [EXTRACTED]

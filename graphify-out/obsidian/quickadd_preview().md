@@ -12,9 +12,9 @@ tags:
 # quickadd_preview()
 
 ## Connections
-- [[AsyncSession_3]] - `references` [EXTRACTED]
+- [[AsyncSession_4]] - `references` [EXTRACTED]
 - [[CurrentUser]] - `references` [EXTRACTED]
-- [[Request_6]] - `references` [EXTRACTED]
+- [[Request_7]] - `references` [EXTRACTED]
 - [[build_quickadd_preview()]] - `calls` [INFERRED]
 - [[transactions.py]] - `contains` [EXTRACTED]
 

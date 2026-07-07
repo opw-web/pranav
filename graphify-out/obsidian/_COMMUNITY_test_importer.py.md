@@ -1,16 +1,17 @@
 ---
 type: community
-members: 8
+members: 9
 ---
 
 # test_importer.py
 
-**Members:** 8 nodes
+**Members:** 9 nodes
 
 ## Members
 - [[Pure-Python importer tests — no DB needed. Covers §4.2 detection + §7 Checks 67]] - rationale - lens/tests/test_importer.py
 - [[test_amount_cleaning()]] - code - lens/tests/test_importer.py
 - [[test_bank_signature_stable_and_distinct()]] - code - lens/tests/test_importer.py
+- [[test_chunk_bounds()]] - code - lens/tests/test_importer.py
 - [[test_dedupe_hash_identical_rows()]] - code - lens/tests/test_importer.py
 - [[test_hdfc_debit_credit_detection()]] - code - lens/tests/test_importer.py
 - [[test_icici_signed_semicolon()]] - code - lens/tests/test_importer.py

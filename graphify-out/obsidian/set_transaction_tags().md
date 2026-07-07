@@ -12,7 +12,7 @@ tags:
 # set_transaction_tags()
 
 ## Connections
-- [[AsyncSession_10]] - `references` [EXTRACTED]
+- [[AsyncSession_12]] - `references` [EXTRACTED]
 - [[create_txn()]] - `calls` [INFERRED]
 - [[get_or_create_tag()]] - `calls` [EXTRACTED]
 - [[patch_txn()]] - `calls` [INFERRED]

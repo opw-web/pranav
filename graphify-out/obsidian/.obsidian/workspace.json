@@ -178,5 +178,32 @@
     }
   },
   "active": "729e10bce56bc9ad",
-  "lastOpenFiles": []
+  "lastOpenFiles": [
+    "_COMMUNITY_detect_series_for_merchant.md",
+    "test_chunk_bounds().md",
+    "AsyncSession_13.md",
+    "AsyncSession_12.md",
+    "grouped = {merchant_clean (date, amount), ...}. Returns all detected series..md",
+    "points = (date, amount), ... for one merchant. Returns a series if a regular.md",
+    "All amounts within ±tolerance of the median (subscriptions wobble a little)..md",
+    "Recurring-series detection (§4.3). The cadenceamount-stability analysis is pure.md",
+    "detect_all().md",
+    "date_3.md",
+    "detect_series_for_merchant().md",
+    "_amount_is_stable().md",
+    "_classify_cadence().md",
+    "DetectedSeries.md",
+    "recurring_detector.py.md",
+    "Remember this bank's format so the next import skips straight to preview (§5.3 s.md",
+    "Insert rows startend) skip duplicates, categorize each, link transfer legs..md",
+    "Annotate parsed rows with dedupe + transfer flags for the preview table (§5.3 st.md",
+    "DB-touching import steps dedupe lookup, per-row categorize, transfer-link, chun.md",
+    "recall_column_mapping().md",
+    "save_column_mapping().md",
+    "commit_chunk().md",
+    "build_preview().md",
+    "existing_dedupe_hashes().md",
+    "import_commit.py.md",
+    "Request_7.md"
+  ]
 }

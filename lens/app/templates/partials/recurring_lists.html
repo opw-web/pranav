@@ -1,0 +1,53 @@
+<div id="recurring-lists">
+    {% if detected %}
+    <section class="mb-6">
+        <h2 class="text-sm font-semibold text-neutral-700 mb-2">Detected — confirm to track</h2>
+        <div class="bg-white border border-neutral-200 rounded-lg divide-y divide-neutral-100">
+            {% for s in detected %}
+            <div class="flex items-center justify-between px-4 py-2 text-sm">
+                <div>
+                    <span class="font-medium">{{ s.merchant_clean }}</span>
+                    <span class="text-neutral-500">· {{ s.cadence }} · ~₹{{ "%.0f"|format(s.expected_amount) }}</span>
+                    <span class="text-neutral-400 text-xs">last seen {{ s.last_seen_date }}</span>
+                </div>
+                <form hx-post="/recurring/{{ s.id }}/confirm" hx-target="#recurring-lists" hx-swap="outerHTML">
+                    <button class="bg-neutral-800 text-white rounded px-3 py-1 text-xs">Confirm</button>
+                </form>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+    {% endif %}
+
+    <section class="mb-6">
+        <h2 class="text-sm font-semibold text-neutral-700 mb-2">Upcoming</h2>
+        {% if upcoming %}
+        <div class="bg-white border border-neutral-200 rounded-lg divide-y divide-neutral-100">
+            {% for s in upcoming %}
+            <div class="flex items-center justify-between px-4 py-2 text-sm">
+                <span class="font-medium">{{ s.merchant_clean }}</span>
+                <span class="text-neutral-500">due {{ s.next_due_date }} · ₹{{ "%.0f"|format(s.expected_amount) }}</span>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <p class="text-sm text-neutral-400">Nothing due soon.</p>
+        {% endif %}
+    </section>
+
+    <section>
+        <h2 class="text-sm font-semibold text-neutral-700 mb-2">Active</h2>
+        {% if active %}
+        <div class="bg-white border border-neutral-200 rounded-lg divide-y divide-neutral-100">
+            {% for s in active %}
+            <div class="flex items-center justify-between px-4 py-2 text-sm">
+                <span class="font-medium">{{ s.merchant_clean }}</span>
+                <span class="text-neutral-500">{{ s.cadence }} · next {{ s.next_due_date }}</span>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <p class="text-sm text-neutral-400">No active subscriptions yet.</p>
+        {% endif %}
+    </section>
+</div>

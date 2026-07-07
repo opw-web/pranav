@@ -12,7 +12,7 @@ tags:
 # ensure_onboarded()
 
 ## Connections
-- [[AsyncSession_7]] - `references` [EXTRACTED]
+- [[AsyncSession_9]] - `references` [EXTRACTED]
 - [[First-login seed (§4.6) starter category tree + a default Cash account.     Ide]] - `rationale_for` [EXTRACTED]
 - [[auth_callback()]] - `calls` [INFERRED]
 - [[onboarding.py]] - `contains` [EXTRACTED]

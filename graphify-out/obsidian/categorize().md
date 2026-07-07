@@ -12,9 +12,10 @@ tags:
 # categorize()
 
 ## Connections
-- [[AsyncSession_6]] - `references` [EXTRACTED]
+- [[AsyncSession_7]] - `references` [EXTRACTED]
 - [[build_quickadd_preview()]] - `calls` [INFERRED]
 - [[categorizer.py]] - `contains` [EXTRACTED]
+- [[commit_chunk()]] - `calls` [INFERRED]
 - [[resolve_category_key()]] - `calls` [EXTRACTED]
 
 #graphify/code #graphify/EXTRACTED #community/Database_Schema__Architecture

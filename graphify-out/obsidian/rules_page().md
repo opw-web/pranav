@@ -12,9 +12,9 @@ tags:
 # rules_page()
 
 ## Connections
-- [[AsyncSession_2]] - `references` [EXTRACTED]
+- [[AsyncSession_3]] - `references` [EXTRACTED]
 - [[CurrentUser]] - `references` [EXTRACTED]
-- [[Request_5]] - `references` [EXTRACTED]
+- [[Request_6]] - `references` [EXTRACTED]
 - [[_rules_with_names()]] - `calls` [EXTRACTED]
 - [[rules.py]] - `contains` [EXTRACTED]
 

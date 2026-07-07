@@ -12,9 +12,9 @@ tags:
 # bulk_action()
 
 ## Connections
-- [[AsyncSession_3]] - `references` [EXTRACTED]
+- [[AsyncSession_4]] - `references` [EXTRACTED]
 - [[CurrentUser]] - `references` [EXTRACTED]
-- [[Request_6]] - `references` [EXTRACTED]
+- [[Request_7]] - `references` [EXTRACTED]
 - [[_flat_categories()]] - `calls` [EXTRACTED]
 - [[bulk_delete()]] - `calls` [INFERRED]
 - [[bulk_set_category()]] - `calls` [INFERRED]

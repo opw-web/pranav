@@ -10,7 +10,9 @@ from app.auth.deps import CurrentUser, get_current_user
 from app.auth.routes import router as auth_router
 from app.routers.accounts import router as accounts_router
 from app.routers.categories import router as categories_router
+from app.routers.cron import router as cron_router
 from app.routers.import_ import router as import_router
+from app.routers.recurring import router as recurring_router
 from app.routers.rules import router as rules_router
 from app.routers.transactions import router as transactions_router
 
@@ -25,6 +27,8 @@ app.include_router(categories_router)
 app.include_router(transactions_router)
 app.include_router(rules_router)
 app.include_router(import_router)
+app.include_router(recurring_router)
+app.include_router(cron_router)
 
 templates = Jinja2Templates(directory=BASE_DIR / "templates")
 

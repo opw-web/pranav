@@ -12,7 +12,7 @@ tags:
 # _flat_categories()
 
 ## Connections
-- [[AsyncSession_3]] - `references` [EXTRACTED]
+- [[AsyncSession_4]] - `references` [EXTRACTED]
 - [[bulk_action()]] - `calls` [EXTRACTED]
 - [[get_grouped_tree()]] - `calls` [INFERRED]
 - [[list_txn_page()]] - `calls` [EXTRACTED]

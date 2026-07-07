@@ -8,7 +8,7 @@ members: 5
 **Members:** 5 nodes
 
 ## Members
-- [[AsyncSession_10]] - code
+- [[AsyncSession_12]] - code
 - [[get_or_create_tag()]] - code - lens/app/services/tags.py
 - [[get_transaction_tags()]] - code - lens/app/services/tags.py
 - [[set_transaction_tags()]] - code - lens/app/services/tags.py

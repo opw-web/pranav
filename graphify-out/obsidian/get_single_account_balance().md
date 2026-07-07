@@ -12,7 +12,7 @@ tags:
 # get_single_account_balance()
 
 ## Connections
-- [[AsyncSession_4]] - `references` [EXTRACTED]
+- [[AsyncSession_5]] - `references` [EXTRACTED]
 - [[balances.py]] - `contains` [EXTRACTED]
 - [[get_account_balances()]] - `calls` [EXTRACTED]
 - [[reconcile()]] - `calls` [INFERRED]

@@ -1,23 +1,16 @@
 ---
 source_file: ""
 type: "code"
-community: "CurrentUser"
+community: "UX Playbook Spec"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/CurrentUser
+  - community/UX_Playbook_Spec
 ---
 
 # AsyncSession
 
 ## Connections
-- [[bulk_delete()]] - `references` [EXTRACTED]
-- [[bulk_set_category()]] - `references` [EXTRACTED]
-- [[create_transaction()]] - `references` [EXTRACTED]
-- [[get_transaction()]] - `references` [EXTRACTED]
-- [[list_transactions()]] - `references` [EXTRACTED]
-- [[restore_transaction()]] - `references` [EXTRACTED]
-- [[soft_delete_transaction()]] - `references` [EXTRACTED]
-- [[update_transaction()]] - `references` [EXTRACTED]
+- [[reconcile_account()]] - `references` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/CurrentUser
+#graphify/code #graphify/EXTRACTED #community/UX_Playbook_Spec

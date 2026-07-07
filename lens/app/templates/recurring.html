@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block title %}Recurring — LENS{% endblock %}
+{% block content %}
+<div class="max-w-2xl mx-auto">
+    <h1 class="text-lg font-semibold mb-1">Recurring & subscriptions</h1>
+    <p class="text-sm text-neutral-500 mb-4">Detected from your history. Confirm the ones you want tracked — nothing is auto-added.</p>
+    {% include "partials/recurring_lists.html" %}
+</div>
+{% endblock %}

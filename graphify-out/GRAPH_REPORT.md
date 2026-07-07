@@ -4,12 +4,12 @@
 - cluster-only mode — file stats not available
 
 ## Summary
-- 330 nodes · 449 edges · 75 communities (22 shown, 53 thin omitted)
-- Extraction: 88% EXTRACTED · 12% INFERRED · 0% AMBIGUOUS · INFERRED: 56 edges (avg confidence: 0.78)
+- 365 nodes · 511 edges · 76 communities (23 shown, 53 thin omitted)
+- Extraction: 88% EXTRACTED · 12% INFERRED · 0% AMBIGUOUS · INFERRED: 61 edges (avg confidence: 0.78)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `8fe9f422`
+- Built from commit: `527a037e`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -84,9 +84,10 @@
 - [[_COMMUNITY_importer.py|importer.py]]
 - [[_COMMUNITY_session.py|session.py]]
 - [[_COMMUNITY_test_importer.py|test_importer.py]]
+- [[_COMMUNITY_detect_series_for_merchant|detect_series_for_merchant]]
 
 ## God Nodes (most connected - your core abstractions)
-1. `CurrentUser` - 28 edges
+1. `CurrentUser` - 32 edges
 2. `7. DEVELOPER EVALUATION CHECKLIST (beginner-friendly — follow every step)` - 18 edges
 3. `get_grouped_tree()` - 13 edges
 4. `build_quickadd_preview()` - 11 edges
@@ -106,8 +107,8 @@
   lens/app/models/tag.py → lens/app/models/base.py
 - `Transaction` --uses--> `Base`  [INFERRED]
   lens/app/models/transaction.py → lens/app/models/base.py
-- `_flat_categories()` --calls--> `get_grouped_tree()`  [INFERRED]
-  lens/app/routers/transactions.py → lens/app/services/categories.py
+- `upload()` --calls--> `recall_column_mapping()`  [INFERRED]
+  lens/app/routers/import_.py → lens/app/services/import_commit.py
 
 ## Import Cycles
 - None detected.
@@ -117,7 +118,7 @@
 - **Money-Movement Semantics (Transfer/Refund/Safe-to-Spend)** — lens_v1_build_plan_transfer, lens_v1_build_plan_refund, lens_v1_build_plan_safe_to_spend, lens_v1_build_plan_transactions_table [INFERRED 0.85]
 - **Graphify Auto-Refresh Pipeline** — graphify_setup_prompt_posttooluse_hook, graphify_setup_prompt_refresh_sh, graphify_setup_prompt_make_vault_py, graphify_setup_prompt_community_labeling [EXTRACTED 1.00]
 
-## Communities (75 total, 53 thin omitted)
+## Communities (76 total, 53 thin omitted)
 
 ### Community 0 - "Safe-to-Spend Core Concepts"
 Cohesion: 0.06
@@ -164,12 +165,12 @@ Cohesion: 0.23
 Nodes (13): build_quickadd_preview(), _flatten_tree(), _label_for(), _default_for_dateutil(), parse_quickadd(), ParsedQuickAdd, date, Deterministic tokenizer for the Quick-Add bar (§5.1). NOT AI — pure pattern matc (+5 more)
 
 ### Community 65 - "routes.py"
-Cohesion: 0.11
-Nodes (20): get_current_user(), get_scoped_session(), Request, Verifies the Supabase JWT and extracts user_id (= auth.uid()), per §2.3 step 4., DB session for the current request: app-level scope (user.id) is layered     on, _refresh_access_token(), auth_callback(), auth_google_start() (+12 more)
+Cohesion: 0.08
+Nodes (24): HTTPException, get_current_user(), get_scoped_session(), Request, Verifies the Supabase JWT and extracts user_id (= auth.uid()), per §2.3 step 4., DB session for the current request: app-level scope (user.id) is layered     on, _refresh_access_token(), auth_callback() (+16 more)
 
 ### Community 66 - "main.py"
-Cohesion: 0.40
-Nodes (4): HTTPException, auth_redirect_handler(), Request, root()
+Cohesion: 0.16
+Nodes (21): _accounts(), _b64(), commit(), import_page(), _parse_form_mapping(), preview(), AsyncSession, Request (+13 more)
 
 ### Community 70 - "CurrentUser"
 Cohesion: 0.21
@@ -187,6 +188,10 @@ Nodes (26): analyze(), bank_signature(), chunk_bounds(), _clean_amount(), decode
 Cohesion: 0.29
 Nodes (3): _fetch_jwks(), Verify a Supabase-issued JWT locally against the project's JWKS (ES256).     Rai, verify_access_token()
 
+### Community 75 - "detect_series_for_merchant"
+Cohesion: 0.29
+Nodes (10): _amount_is_stable(), _classify_cadence(), detect_all(), detect_series_for_merchant(), DetectedSeries, date, Recurring-series detection (§4.3). The cadence/amount-stability analysis is pure, All amounts within ±tolerance of the median (subscriptions wobble a little). (+2 more)
+
 ## Knowledge Gaps
 - **87 isolated node(s):** `refresh.sh script`, `OBJC_DISABLE_INITIALIZE_FORK_SAFETY`, `GRAPHIFY_NO_BACKUP`, `Settings`, `build_css.sh script` (+82 more)
   These have ≤1 connection - possible missing edges or undocumented components.
@@ -196,16 +201,16 @@ Nodes (3): _fetch_jwks(), Verify a Supabase-issued JWT locally against the proje
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `CurrentUser` connect `CurrentUser` to `routes.py`, `main.py`, `Database Schema & Architecture`, `Backend Service Requirements`, `UX Playbook Spec`?**
-  _High betweenness centrality (0.135) - this node is a cross-community bridge._
+  _High betweenness centrality (0.157) - this node is a cross-community bridge._
 - **Why does `build_quickadd_preview()` connect `session.py` to `Database Schema & Architecture`, `Backend Service Requirements`, `CurrentUser`?**
-  _High betweenness centrality (0.039) - this node is a cross-community bridge._
-- **Why does `get_grouped_tree()` connect `Backend Service Requirements` to `session.py`, `Database Schema & Architecture`, `CurrentUser`?**
-  _High betweenness centrality (0.025) - this node is a cross-community bridge._
+  _High betweenness centrality (0.037) - this node is a cross-community bridge._
+- **Why does `quickadd_commit()` connect `CurrentUser` to `session.py`, `transactions.py`?**
+  _High betweenness centrality (0.022) - this node is a cross-community bridge._
 - **Are the 9 inferred relationships involving `get_grouped_tree()` (e.g. with `categories_page()` and `category_picker()`) actually correct?**
   _`get_grouped_tree()` has 9 INFERRED edges - model-reasoned connections that need verification._
 - **Are the 5 inferred relationships involving `build_quickadd_preview()` (e.g. with `quickadd_commit()` and `quickadd_preview()`) actually correct?**
   _`build_quickadd_preview()` has 5 INFERRED edges - model-reasoned connections that need verification._
 - **What connects `refresh.sh script`, `OBJC_DISABLE_INITIALIZE_FORK_SAFETY`, `GRAPHIFY_NO_BACKUP` to the rest of the system?**
-  _132 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _140 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Safe-to-Spend Core Concepts` be split into smaller, more focused modules?**
   _Cohesion score 0.0625 - nodes in this community are weakly interconnected._

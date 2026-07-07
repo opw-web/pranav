@@ -12,7 +12,7 @@ tags:
 # soft_delete_transaction()
 
 ## Connections
-- [[AsyncSession_11]] - `references` [EXTRACTED]
+- [[AsyncSession_13]] - `references` [EXTRACTED]
 - [[bulk_delete()]] - `calls` [EXTRACTED]
 - [[delete_txn()]] - `calls` [INFERRED]
 - [[transactions.py_1]] - `contains` [EXTRACTED]

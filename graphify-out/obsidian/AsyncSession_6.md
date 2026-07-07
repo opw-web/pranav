@@ -1,19 +1,22 @@
 ---
 source_file: ""
 type: "code"
-community: "Database Schema & Architecture"
+community: "Backend Service Requirements"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Database_Schema__Architecture
+  - community/Backend_Service_Requirements
 ---
 
 # AsyncSession
 
 ## Connections
-- [[back_apply_rule()]] - `references` [EXTRACTED]
-- [[categorize()]] - `references` [EXTRACTED]
-- [[learn_rule()]] - `references` [EXTRACTED]
-- [[resolve_category_key()]] - `references` [EXTRACTED]
+- [[_all_categories_with_usage()]] - `references` [EXTRACTED]
+- [[create_category()]] - `references` [EXTRACTED]
+- [[delete_category()]] - `references` [EXTRACTED]
+- [[fuzzy_search()]] - `references` [EXTRACTED]
+- [[get_grouped_tree()]] - `references` [EXTRACTED]
+- [[merge_categories()]] - `references` [EXTRACTED]
+- [[rename_category()]] - `references` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Database_Schema__Architecture
+#graphify/code #graphify/EXTRACTED #community/Backend_Service_Requirements

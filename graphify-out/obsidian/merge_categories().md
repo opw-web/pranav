@@ -12,7 +12,7 @@ tags:
 # merge_categories()
 
 ## Connections
-- [[AsyncSession_5]] - `references` [EXTRACTED]
+- [[AsyncSession_6]] - `references` [EXTRACTED]
 - [[Reassign all of source's transactions (and children) to target, then delete sour]] - `rationale_for` [EXTRACTED]
 - [[ValueError]] - `calls` [EXTRACTED]
 - [[categories.py_1]] - `contains` [EXTRACTED]

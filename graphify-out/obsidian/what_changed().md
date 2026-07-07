@@ -12,10 +12,11 @@ tags:
 # what_changed()
 
 ## Connections
-- [[AsyncSession_6]] - `references` [EXTRACTED]
+- [[AsyncSession_8]] - `references` [EXTRACTED]
 - [[analytics.py]] - `contains` [EXTRACTED]
 - [[category_normals()]] - `calls` [EXTRACTED]
 - [[date_1]] - `references` [EXTRACTED]
+- [[insights_page()]] - `calls` [INFERRED]
 - [[month_bounds()]] - `calls` [EXTRACTED]
 - [[prev_month_bounds()]] - `calls` [EXTRACTED]
 

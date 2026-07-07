@@ -8,11 +8,11 @@ members: 34
 **Members:** 34 nodes
 
 ## Members
-- [[AsyncSession_5]] - code
-- [[AsyncSession_15]] - code
-- [[AsyncSession_16]] - code
+- [[AsyncSession_7]] - code
+- [[AsyncSession_18]] - code
+- [[AsyncSession_19]] - code
 - [[CurrentUser]] - code - lens/app/auth/deps.py
-- [[Request_8]] - code
+- [[Request_10]] - code
 - [[_flat_categories()]] - code - lens/app/routers/transactions.py
 - [[_parse_tags()]] - code - lens/app/routers/transactions.py
 - [[bulk_action()]] - code - lens/app/routers/transactions.py
@@ -53,14 +53,15 @@ SORT file.name ASC
 ## Connections to other communities
 - 7 edges to [[_COMMUNITY_UX Playbook Spec]]
 - 7 edges to [[_COMMUNITY_Backend Service Requirements]]
-- 4 edges to [[_COMMUNITY_routes.py]]
 - 4 edges to [[_COMMUNITY_main.py]]
+- 3 edges to [[_COMMUNITY_routes.py]]
+- 3 edges to [[_COMMUNITY_transactions.py]]
 - 3 edges to [[_COMMUNITY_Database Schema & Architecture]]
 - 2 edges to [[_COMMUNITY_confirm]]
 - 2 edges to [[_COMMUNITY_session.py_1]]
 
 ## Top bridge nodes
-- [[CurrentUser]] - degree 34, connects to 6 communities
+- [[CurrentUser]] - degree 35, connects to 7 communities
 - [[bulk_action()]] - degree 9, connects to 1 community
 - [[quickadd_commit()]] - degree 8, connects to 1 community
 - [[list_txn_page()]] - degree 7, connects to 1 community

@@ -12,10 +12,11 @@ tags:
 # safe_to_spend()
 
 ## Connections
-- [[AsyncSession_6]] - `references` [EXTRACTED]
+- [[AsyncSession_8]] - `references` [EXTRACTED]
 - [[_essential_category_ids()]] - `calls` [EXTRACTED]
 - [[analytics.py]] - `contains` [EXTRACTED]
 - [[category_normals()]] - `calls` [EXTRACTED]
+- [[dashboard()]] - `calls` [INFERRED]
 - [[date_1]] - `references` [EXTRACTED]
 - [[get_account_balances()]] - `calls` [INFERRED]
 - [[month_bounds()]] - `calls` [EXTRACTED]

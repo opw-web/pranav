@@ -75,8 +75,8 @@
     "semantic_hash": ""
   },
   "lens/app/main.py": {
-    "mtime": 1783426264.7215514,
-    "ast_hash": "2a871a02c0059b225b1a6c7b2db8732d",
+    "mtime": 1783426511.0710173,
+    "ast_hash": "1ae8b7024266138bdcc1317fa8cc60a9",
     "semantic_hash": ""
   },
   "lens/app/static/js/app.js": {
@@ -90,8 +90,8 @@
     "semantic_hash": ""
   },
   "lens/app/templates/base.html": {
-    "mtime": 1783426283.1359935,
-    "ast_hash": "56412d116985292bb598ad600ad54438",
+    "mtime": 1783426518.71235,
+    "ast_hash": "230a50f151a9c0f512270aa6d9fff596",
     "semantic_hash": ""
   },
   "lens/app/auth/deps.py": {
@@ -392,6 +392,36 @@
   "lens/app/templates/recurring.html": {
     "mtime": 1783426225.8950214,
     "ast_hash": "0560d00c10cb9dd30c6c715dae5f4197",
+    "semantic_hash": ""
+  },
+  "lens/app/routers/dashboard.py": {
+    "mtime": 1783426461.4229832,
+    "ast_hash": "b1fbe08d394ea9e2610dedbd03be41c6",
+    "semantic_hash": ""
+  },
+  "lens/app/routers/insights.py": {
+    "mtime": 1783426529.3931227,
+    "ast_hash": "4d78cfc89721a49ad77706e81df60892",
+    "semantic_hash": ""
+  },
+  "lens/app/services/recap.py": {
+    "mtime": 1783426567.181616,
+    "ast_hash": "a9c74d29ffb14357c599ea4a0dc8a7ce",
+    "semantic_hash": ""
+  },
+  "lens/tests/test_analytics_periods.py": {
+    "mtime": 1783426403.3621035,
+    "ast_hash": "cd231953e9f77ea985c29f75ae0c57e2",
+    "semantic_hash": ""
+  },
+  "lens/app/templates/dashboard.html": {
+    "mtime": 1783426482.3396504,
+    "ast_hash": "02771b4b5b8670ee754bd2394adaa36f",
+    "semantic_hash": ""
+  },
+  "lens/app/templates/insights.html": {
+    "mtime": 1783426547.9968355,
+    "ast_hash": "d54b663e615115974e6389454e79e412",
     "semantic_hash": ""
   }
 }

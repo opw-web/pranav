@@ -13,7 +13,7 @@ members: 11
 - [[Recurring-series detection (§4.3). The cadenceamount-stability analysis is pure]] - rationale - lens/app/services/recurring_detector.py
 - [[_amount_is_stable()]] - code - lens/app/services/recurring_detector.py
 - [[_classify_cadence()]] - code - lens/app/services/recurring_detector.py
-- [[date_4]] - code
+- [[date_5]] - code
 - [[detect_all()]] - code - lens/app/services/recurring_detector.py
 - [[detect_series_for_merchant()]] - code - lens/app/services/recurring_detector.py
 - [[grouped = {merchant_clean (date, amount), ...}. Returns all detected series.]] - rationale - lens/app/services/recurring_detector.py

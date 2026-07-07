@@ -545,6 +545,20 @@
         "a": 1,
         "rgb": 16752039
       }
+    },
+    {
+      "query": "tag:#community/test_analytics_periods.py",
+      "color": {
+        "a": 1,
+        "rgb": 10253663
+      }
+    },
+    {
+      "query": "tag:#community/2._ARCHITECTURE",
+      "color": {
+        "a": 1,
+        "rgb": 12234924
+      }
     }
   ]
 }

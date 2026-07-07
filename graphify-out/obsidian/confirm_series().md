@@ -13,7 +13,7 @@ tags:
 
 ## Connections
 - [[Activate a detected series; recompute next_due_date from last_seen + cadence (§4]] - `rationale_for` [EXTRACTED]
-- [[AsyncSession_14]] - `references` [EXTRACTED]
+- [[AsyncSession_17]] - `references` [EXTRACTED]
 - [[confirm()]] - `calls` [INFERRED]
 - [[recurring.py_1]] - `contains` [EXTRACTED]
 

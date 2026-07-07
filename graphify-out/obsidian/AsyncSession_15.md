@@ -1,18 +1,17 @@
 ---
 source_file: ""
 type: "code"
-community: "CurrentUser"
+community: "Build Script Entry Point"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/CurrentUser
+  - community/Build_Script_Entry_Point
 ---
 
 # AsyncSession
 
 ## Connections
-- [[get_or_create_tag()]] - `references` [EXTRACTED]
-- [[get_transaction_tags()]] - `references` [EXTRACTED]
-- [[set_transaction_tags()]] - `references` [EXTRACTED]
+- [[build_recap()]] - `references` [EXTRACTED]
+- [[get_recap()]] - `references` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/CurrentUser
+#graphify/code #graphify/EXTRACTED #community/Build_Script_Entry_Point

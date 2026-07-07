@@ -12,7 +12,7 @@ tags:
 # test_rejects_wild_amount_variation()
 
 ## Connections
-- [[date_5]] - `calls` [EXTRACTED]
+- [[date_6]] - `calls` [EXTRACTED]
 - [[test_recurring.py]] - `contains` [EXTRACTED]
 
 #graphify/code #graphify/EXTRACTED #community/test_recurringpy

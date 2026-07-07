@@ -490,7 +490,7 @@
       "label": "auth_redirect_handler()",
       "file_type": "code",
       "source_file": "lens/app/main.py",
-      "source_location": "L37",
+      "source_location": "L41",
       "_origin": "ast",
       "community": 65,
       "norm_label": "auth_redirect_handler()",
@@ -523,22 +523,11 @@
       "label": "healthz()",
       "file_type": "code",
       "source_file": "lens/app/main.py",
-      "source_location": "L44",
+      "source_location": "L48",
       "_origin": "ast",
       "community": 65,
       "norm_label": "healthz()",
       "id": "lens_app_main_healthz",
-      "community_name": "routes.py"
-    },
-    {
-      "label": "root()",
-      "file_type": "code",
-      "source_file": "lens/app/main.py",
-      "source_location": "L49",
-      "_origin": "ast",
-      "community": 65,
-      "norm_label": "root()",
-      "id": "lens_app_main_root",
       "community_name": "routes.py"
     },
     {
@@ -927,6 +916,50 @@
       "community_name": "routes.py"
     },
     {
+      "label": "dashboard.py",
+      "file_type": "code",
+      "source_file": "lens/app/routers/dashboard.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 13,
+      "norm_label": "dashboard.py",
+      "id": "lens_app_routers_dashboard",
+      "community_name": "transactions.py"
+    },
+    {
+      "label": "dashboard()",
+      "file_type": "code",
+      "source_file": "lens/app/routers/dashboard.py",
+      "source_location": "L18",
+      "_origin": "ast",
+      "community": 13,
+      "norm_label": "dashboard()",
+      "id": "lens_app_routers_dashboard_dashboard",
+      "community_name": "transactions.py"
+    },
+    {
+      "label": "Request",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast",
+      "community": 13,
+      "norm_label": "request",
+      "id": "lens_app_routers_dashboard_py_request",
+      "community_name": "transactions.py"
+    },
+    {
+      "label": "AsyncSession",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast",
+      "community": 13,
+      "norm_label": "asyncsession",
+      "id": "lens_app_routers_dashboard_py_asyncsession",
+      "community_name": "transactions.py"
+    },
+    {
       "label": "import_.py",
       "file_type": "code",
       "source_file": "lens/app/routers/import_.py",
@@ -1057,6 +1090,50 @@
       "norm_label": "commit()",
       "id": "lens_app_routers_import_commit",
       "community_name": "main.py"
+    },
+    {
+      "label": "insights.py",
+      "file_type": "code",
+      "source_file": "lens/app/routers/insights.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 13,
+      "norm_label": "insights.py",
+      "id": "lens_app_routers_insights",
+      "community_name": "transactions.py"
+    },
+    {
+      "label": "insights_page()",
+      "file_type": "code",
+      "source_file": "lens/app/routers/insights.py",
+      "source_location": "L16",
+      "_origin": "ast",
+      "community": 13,
+      "norm_label": "insights_page()",
+      "id": "lens_app_routers_insights_insights_page",
+      "community_name": "transactions.py"
+    },
+    {
+      "label": "Request",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast",
+      "community": 13,
+      "norm_label": "request",
+      "id": "lens_app_routers_insights_py_request",
+      "community_name": "transactions.py"
+    },
+    {
+      "label": "AsyncSession",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast",
+      "community": 13,
+      "norm_label": "asyncsession",
+      "id": "lens_app_routers_insights_py_asyncsession",
+      "community_name": "transactions.py"
     },
     {
       "label": "recurring.py",
@@ -2599,6 +2676,105 @@
       "community_name": "session.py"
     },
     {
+      "label": "recap.py",
+      "file_type": "code",
+      "source_file": "lens/app/services/recap.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 8,
+      "norm_label": "recap.py",
+      "id": "lens_app_services_recap",
+      "community_name": "Build Script Entry Point"
+    },
+    {
+      "label": "_period_bounds()",
+      "file_type": "code",
+      "source_file": "lens/app/services/recap.py",
+      "source_location": "L13",
+      "_origin": "ast",
+      "community": 8,
+      "norm_label": "_period_bounds()",
+      "id": "lens_app_services_recap_period_bounds",
+      "community_name": "Build Script Entry Point"
+    },
+    {
+      "label": "date",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast",
+      "community": 8,
+      "norm_label": "date",
+      "id": "lens_app_services_recap_py_date",
+      "community_name": "Build Script Entry Point"
+    },
+    {
+      "label": "build_recap()",
+      "file_type": "code",
+      "source_file": "lens/app/services/recap.py",
+      "source_location": "L20",
+      "_origin": "ast",
+      "community": 8,
+      "norm_label": "build_recap()",
+      "id": "lens_app_services_recap_build_recap",
+      "community_name": "Build Script Entry Point"
+    },
+    {
+      "label": "AsyncSession",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast",
+      "community": 8,
+      "norm_label": "asyncsession",
+      "id": "lens_app_services_recap_py_asyncsession",
+      "community_name": "Build Script Entry Point"
+    },
+    {
+      "label": "get_recap()",
+      "file_type": "code",
+      "source_file": "lens/app/services/recap.py",
+      "source_location": "L68",
+      "_origin": "ast",
+      "community": 8,
+      "norm_label": "get_recap()",
+      "id": "lens_app_services_recap_get_recap",
+      "community_name": "Build Script Entry Point"
+    },
+    {
+      "label": "Monthly recap builder (\u00a74.4/\u00a75). Template + numbers, cached in monthly_recaps so",
+      "file_type": "rationale",
+      "source_file": "lens/app/services/recap.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 8,
+      "norm_label": "monthly recap builder (\u00a74.4/\u00a75). template + numbers, cached in monthly_recaps so",
+      "id": "lens_app_services_recap_rationale_1",
+      "community_name": "Build Script Entry Point"
+    },
+    {
+      "label": "period = 'YYYY-MM'. Returns totals + top categories + Detective headline for tha",
+      "file_type": "rationale",
+      "source_file": "lens/app/services/recap.py",
+      "source_location": "L21",
+      "_origin": "ast",
+      "community": 8,
+      "norm_label": "period = 'yyyy-mm'. returns totals + top categories + detective headline for tha",
+      "id": "lens_app_services_recap_rationale_21",
+      "community_name": "Build Script Entry Point"
+    },
+    {
+      "label": "Cache read-through. Past months cached in monthly_recaps; current month always f",
+      "file_type": "rationale",
+      "source_file": "lens/app/services/recap.py",
+      "source_location": "L69",
+      "_origin": "ast",
+      "community": 8,
+      "norm_label": "cache read-through. past months cached in monthly_recaps; current month always f",
+      "id": "lens_app_services_recap_rationale_69",
+      "community_name": "Build Script Entry Point"
+    },
+    {
       "label": "reconcile.py",
       "file_type": "code",
       "source_file": "lens/app/services/reconcile.py",
@@ -3300,6 +3476,105 @@
       "community_name": "Merchant Seed Loader"
     },
     {
+      "label": "test_analytics_periods.py",
+      "file_type": "code",
+      "source_file": "lens/tests/test_analytics_periods.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 78,
+      "norm_label": "test_analytics_periods.py",
+      "id": "lens_tests_test_analytics_periods",
+      "community_name": "test_analytics_periods.py"
+    },
+    {
+      "label": "test_month_bounds_mid_year()",
+      "file_type": "code",
+      "source_file": "lens/tests/test_analytics_periods.py",
+      "source_location": "L11",
+      "_origin": "ast",
+      "community": 78,
+      "norm_label": "test_month_bounds_mid_year()",
+      "id": "lens_tests_test_analytics_periods_test_month_bounds_mid_year",
+      "community_name": "test_analytics_periods.py"
+    },
+    {
+      "label": "test_month_bounds_december_rolls_year()",
+      "file_type": "code",
+      "source_file": "lens/tests/test_analytics_periods.py",
+      "source_location": "L15",
+      "_origin": "ast",
+      "community": 78,
+      "norm_label": "test_month_bounds_december_rolls_year()",
+      "id": "lens_tests_test_analytics_periods_test_month_bounds_december_rolls_year",
+      "community_name": "test_analytics_periods.py"
+    },
+    {
+      "label": "test_prev_month_bounds_january_rolls_back()",
+      "file_type": "code",
+      "source_file": "lens/tests/test_analytics_periods.py",
+      "source_location": "L19",
+      "_origin": "ast",
+      "community": 78,
+      "norm_label": "test_prev_month_bounds_january_rolls_back()",
+      "id": "lens_tests_test_analytics_periods_test_prev_month_bounds_january_rolls_back",
+      "community_name": "test_analytics_periods.py"
+    },
+    {
+      "label": "test_prev_month_bounds_mid_year()",
+      "file_type": "code",
+      "source_file": "lens/tests/test_analytics_periods.py",
+      "source_location": "L23",
+      "_origin": "ast",
+      "community": 78,
+      "norm_label": "test_prev_month_bounds_mid_year()",
+      "id": "lens_tests_test_analytics_periods_test_prev_month_bounds_mid_year",
+      "community_name": "test_analytics_periods.py"
+    },
+    {
+      "label": "test_last_3_full_months_excludes_current()",
+      "file_type": "code",
+      "source_file": "lens/tests/test_analytics_periods.py",
+      "source_location": "L27",
+      "_origin": "ast",
+      "community": 78,
+      "norm_label": "test_last_3_full_months_excludes_current()",
+      "id": "lens_tests_test_analytics_periods_test_last_3_full_months_excludes_current",
+      "community_name": "test_analytics_periods.py"
+    },
+    {
+      "label": "test_last_3_full_months_crosses_year()",
+      "file_type": "code",
+      "source_file": "lens/tests/test_analytics_periods.py",
+      "source_location": "L32",
+      "_origin": "ast",
+      "community": 78,
+      "norm_label": "test_last_3_full_months_crosses_year()",
+      "id": "lens_tests_test_analytics_periods_test_last_3_full_months_crosses_year",
+      "community_name": "test_analytics_periods.py"
+    },
+    {
+      "label": "test_cur_and_prev_are_contiguous_and_non_overlapping()",
+      "file_type": "code",
+      "source_file": "lens/tests/test_analytics_periods.py",
+      "source_location": "L37",
+      "_origin": "ast",
+      "community": 78,
+      "norm_label": "test_cur_and_prev_are_contiguous_and_non_overlapping()",
+      "id": "lens_tests_test_analytics_periods_test_cur_and_prev_are_contiguous_and_non_overlapping",
+      "community_name": "test_analytics_periods.py"
+    },
+    {
+      "label": "Pure period-boundary math for analytics (\u00a74.4). A wrong boundary silently corrup",
+      "file_type": "rationale",
+      "source_file": "lens/tests/test_analytics_periods.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 78,
+      "norm_label": "pure period-boundary math for analytics (\u00a74.4). a wrong boundary silently corrup",
+      "id": "lens_tests_test_analytics_periods_rationale_1",
+      "community_name": "test_analytics_periods.py"
+    },
+    {
       "label": "test_importer.py",
       "file_type": "code",
       "source_file": "lens/tests/test_importer.py",
@@ -3657,10 +3932,10 @@
       "source_file": "LENS_V1_BUILD_PLAN.md",
       "source_location": "L43",
       "_origin": "ast",
-      "community": 0,
+      "community": 79,
       "norm_label": "2. architecture",
       "id": "lens_v1_build_plan_2_architecture",
-      "community_name": "Safe-to-Spend Core Concepts"
+      "community_name": "2. ARCHITECTURE"
     },
     {
       "label": "2.1 Tech stack (install these exactly)",
@@ -3668,10 +3943,10 @@
       "source_file": "LENS_V1_BUILD_PLAN.md",
       "source_location": "L45",
       "_origin": "ast",
-      "community": 0,
+      "community": 79,
       "norm_label": "2.1 tech stack (install these exactly)",
       "id": "lens_v1_build_plan_2_1_tech_stack_install_these_exactly",
-      "community_name": "Safe-to-Spend Core Concepts"
+      "community_name": "2. ARCHITECTURE"
     },
     {
       "label": "2.2 Accounts & keys you need",
@@ -3679,10 +3954,10 @@
       "source_file": "LENS_V1_BUILD_PLAN.md",
       "source_location": "L71",
       "_origin": "ast",
-      "community": 0,
+      "community": 79,
       "norm_label": "2.2 accounts & keys you need",
       "id": "lens_v1_build_plan_2_2_accounts_keys_you_need",
-      "community_name": "Safe-to-Spend Core Concepts"
+      "community_name": "2. ARCHITECTURE"
     },
     {
       "label": "2.3 Auth flow (Google via Supabase)",
@@ -3690,10 +3965,10 @@
       "source_file": "LENS_V1_BUILD_PLAN.md",
       "source_location": "L77",
       "_origin": "ast",
-      "community": 0,
+      "community": 79,
       "norm_label": "2.3 auth flow (google via supabase)",
       "id": "lens_v1_build_plan_2_3_auth_flow_google_via_supabase",
-      "community_name": "Safe-to-Spend Core Concepts"
+      "community_name": "2. ARCHITECTURE"
     },
     {
       "label": "2.4 Folder structure (create this now)",
@@ -3701,10 +3976,10 @@
       "source_file": "LENS_V1_BUILD_PLAN.md",
       "source_location": "L85",
       "_origin": "ast",
-      "community": 0,
+      "community": 79,
       "norm_label": "2.4 folder structure (create this now)",
       "id": "lens_v1_build_plan_2_4_folder_structure_create_this_now",
-      "community_name": "Safe-to-Spend Core Concepts"
+      "community_name": "2. ARCHITECTURE"
     },
     {
       "label": "2.5 Database schema (run this SQL; adjust types as you like)",
@@ -3712,10 +3987,10 @@
       "source_file": "LENS_V1_BUILD_PLAN.md",
       "source_location": "L158",
       "_origin": "ast",
-      "community": 0,
+      "community": 79,
       "norm_label": "2.5 database schema (run this sql; adjust types as you like)",
       "id": "lens_v1_build_plan_2_5_database_schema_run_this_sql_adjust_types_as_you_like",
-      "community_name": "Safe-to-Spend Core Concepts"
+      "community_name": "2. ARCHITECTURE"
     },
     {
       "label": "2.5.1 RLS policies (MANDATORY \u2014 do not skip)",
@@ -3723,10 +3998,10 @@
       "source_file": "LENS_V1_BUILD_PLAN.md",
       "source_location": "L326",
       "_origin": "ast",
-      "community": 0,
+      "community": 79,
       "norm_label": "2.5.1 rls policies (mandatory \u2014 do not skip)",
       "id": "lens_v1_build_plan_2_5_1_rls_policies_mandatory_do_not_skip",
-      "community_name": "Safe-to-Spend Core Concepts"
+      "community_name": "2. ARCHITECTURE"
     },
     {
       "label": "2.6 The SQL-first analytics rule (why no pandas)",
@@ -3734,10 +4009,10 @@
       "source_file": "LENS_V1_BUILD_PLAN.md",
       "source_location": "L354",
       "_origin": "ast",
-      "community": 0,
+      "community": 79,
       "norm_label": "2.6 the sql-first analytics rule (why no pandas)",
       "id": "lens_v1_build_plan_2_6_the_sql_first_analytics_rule_why_no_pandas",
-      "community_name": "Safe-to-Spend Core Concepts"
+      "community_name": "2. ARCHITECTURE"
     },
     {
       "label": "2.7 Deployment notes (Vercel + serverless reality)",
@@ -3745,10 +4020,10 @@
       "source_file": "LENS_V1_BUILD_PLAN.md",
       "source_location": "L386",
       "_origin": "ast",
-      "community": 0,
+      "community": 79,
       "norm_label": "2.7 deployment notes (vercel + serverless reality)",
       "id": "lens_v1_build_plan_2_7_deployment_notes_vercel_serverless_reality",
-      "community_name": "Safe-to-Spend Core Concepts"
+      "community_name": "2. ARCHITECTURE"
     },
     {
       "label": "3. GOALS",
@@ -3910,10 +4185,10 @@
       "source_file": "LENS_V1_BUILD_PLAN.md",
       "source_location": "L567",
       "_origin": "ast",
-      "community": 8,
+      "community": 0,
       "norm_label": "7. developer evaluation checklist (beginner-friendly \u2014 follow every step)",
       "id": "lens_v1_build_plan_7_developer_evaluation_checklist_beginner_friendly_follow_every_step",
-      "community_name": "Build Script Entry Point"
+      "community_name": "Safe-to-Spend Core Concepts"
     },
     {
       "label": "Check 1: RLS actually isolates users (do this FIRST \u2014 it's a security check)",
@@ -3921,10 +4196,10 @@
       "source_file": "LENS_V1_BUILD_PLAN.md",
       "source_location": "L571",
       "_origin": "ast",
-      "community": 8,
+      "community": 0,
       "norm_label": "check 1: rls actually isolates users (do this first \u2014 it's a security check)",
       "id": "lens_v1_build_plan_check_1_rls_actually_isolates_users_do_this_first_it_s_a_security_check",
-      "community_name": "Build Script Entry Point"
+      "community_name": "Safe-to-Spend Core Concepts"
     },
     {
       "label": "Check 2: Transfers never count as spending",
@@ -3932,10 +4207,10 @@
       "source_file": "LENS_V1_BUILD_PLAN.md",
       "source_location": "L576",
       "_origin": "ast",
-      "community": 8,
+      "community": 0,
       "norm_label": "check 2: transfers never count as spending",
       "id": "lens_v1_build_plan_check_2_transfers_never_count_as_spending",
-      "community_name": "Build Script Entry Point"
+      "community_name": "Safe-to-Spend Core Concepts"
     },
     {
       "label": "Check 3: Refunds reduce the right category",
@@ -3943,10 +4218,10 @@
       "source_file": "LENS_V1_BUILD_PLAN.md",
       "source_location": "L581",
       "_origin": "ast",
-      "community": 8,
+      "community": 0,
       "norm_label": "check 3: refunds reduce the right category",
       "id": "lens_v1_build_plan_check_3_refunds_reduce_the_right_category",
-      "community_name": "Build Script Entry Point"
+      "community_name": "Safe-to-Spend Core Concepts"
     },
     {
       "label": "Check 4: Quick-add is genuinely fast",
@@ -3954,10 +4229,10 @@
       "source_file": "LENS_V1_BUILD_PLAN.md",
       "source_location": "L585",
       "_origin": "ast",
-      "community": 8,
+      "community": 0,
       "norm_label": "check 4: quick-add is genuinely fast",
       "id": "lens_v1_build_plan_check_4_quick_add_is_genuinely_fast",
-      "community_name": "Build Script Entry Point"
+      "community_name": "Safe-to-Spend Core Concepts"
     },
     {
       "label": "Check 5: Create-a-category-on-the-fly works",
@@ -3965,10 +4240,10 @@
       "source_file": "LENS_V1_BUILD_PLAN.md",
       "source_location": "L589",
       "_origin": "ast",
-      "community": 8,
+      "community": 0,
       "norm_label": "check 5: create-a-category-on-the-fly works",
       "id": "lens_v1_build_plan_check_5_create_a_category_on_the_fly_works",
-      "community_name": "Build Script Entry Point"
+      "community_name": "Safe-to-Spend Core Concepts"
     },
     {
       "label": "Check 6: Import mapping is remembered",
@@ -3976,10 +4251,10 @@
       "source_file": "LENS_V1_BUILD_PLAN.md",
       "source_location": "L593",
       "_origin": "ast",
-      "community": 8,
+      "community": 0,
       "norm_label": "check 6: import mapping is remembered",
       "id": "lens_v1_build_plan_check_6_import_mapping_is_remembered",
-      "community_name": "Build Script Entry Point"
+      "community_name": "Safe-to-Spend Core Concepts"
     },
     {
       "label": "Check 7: Import dedupe",
@@ -3987,10 +4262,10 @@
       "source_file": "LENS_V1_BUILD_PLAN.md",
       "source_location": "L597",
       "_origin": "ast",
-      "community": 8,
+      "community": 0,
       "norm_label": "check 7: import dedupe",
       "id": "lens_v1_build_plan_check_7_import_dedupe",
-      "community_name": "Build Script Entry Point"
+      "community_name": "Safe-to-Spend Core Concepts"
     },
     {
       "label": "Check 8: The categorizer learns",
@@ -3998,10 +4273,10 @@
       "source_file": "LENS_V1_BUILD_PLAN.md",
       "source_location": "L601",
       "_origin": "ast",
-      "community": 8,
+      "community": 0,
       "norm_label": "check 8: the categorizer learns",
       "id": "lens_v1_build_plan_check_8_the_categorizer_learns",
-      "community_name": "Build Script Entry Point"
+      "community_name": "Safe-to-Spend Core Concepts"
     },
     {
       "label": "Check 9: Safe-to-spend math is correct (hand-compute once)",
@@ -4009,10 +4284,10 @@
       "source_file": "LENS_V1_BUILD_PLAN.md",
       "source_location": "L605",
       "_origin": "ast",
-      "community": 8,
+      "community": 0,
       "norm_label": "check 9: safe-to-spend math is correct (hand-compute once)",
       "id": "lens_v1_build_plan_check_9_safe_to_spend_math_is_correct_hand_compute_once",
-      "community_name": "Build Script Entry Point"
+      "community_name": "Safe-to-Spend Core Concepts"
     },
     {
       "label": "Check 10: The Detective points at the real driver",
@@ -4020,10 +4295,10 @@
       "source_file": "LENS_V1_BUILD_PLAN.md",
       "source_location": "L609",
       "_origin": "ast",
-      "community": 8,
+      "community": 0,
       "norm_label": "check 10: the detective points at the real driver",
       "id": "lens_v1_build_plan_check_10_the_detective_points_at_the_real_driver",
-      "community_name": "Build Script Entry Point"
+      "community_name": "Safe-to-Spend Core Concepts"
     },
     {
       "label": "Check 11: Trip rollup is correct",
@@ -4031,10 +4306,10 @@
       "source_file": "LENS_V1_BUILD_PLAN.md",
       "source_location": "L613",
       "_origin": "ast",
-      "community": 8,
+      "community": 0,
       "norm_label": "check 11: trip rollup is correct",
       "id": "lens_v1_build_plan_check_11_trip_rollup_is_correct",
-      "community_name": "Build Script Entry Point"
+      "community_name": "Safe-to-Spend Core Concepts"
     },
     {
       "label": "Check 12: Balances reconcile",
@@ -4042,10 +4317,10 @@
       "source_file": "LENS_V1_BUILD_PLAN.md",
       "source_location": "L617",
       "_origin": "ast",
-      "community": 8,
+      "community": 0,
       "norm_label": "check 12: balances reconcile",
       "id": "lens_v1_build_plan_check_12_balances_reconcile",
-      "community_name": "Build Script Entry Point"
+      "community_name": "Safe-to-Spend Core Concepts"
     },
     {
       "label": "Check 13: Import stays within serverless limits",
@@ -4053,10 +4328,10 @@
       "source_file": "LENS_V1_BUILD_PLAN.md",
       "source_location": "L621",
       "_origin": "ast",
-      "community": 8,
+      "community": 0,
       "norm_label": "check 13: import stays within serverless limits",
       "id": "lens_v1_build_plan_check_13_import_stays_within_serverless_limits",
-      "community_name": "Build Script Entry Point"
+      "community_name": "Safe-to-Spend Core Concepts"
     },
     {
       "label": "Check 14: Cold start is acceptable",
@@ -4064,10 +4339,10 @@
       "source_file": "LENS_V1_BUILD_PLAN.md",
       "source_location": "L625",
       "_origin": "ast",
-      "community": 8,
+      "community": 0,
       "norm_label": "check 14: cold start is acceptable",
       "id": "lens_v1_build_plan_check_14_cold_start_is_acceptable",
-      "community_name": "Build Script Entry Point"
+      "community_name": "Safe-to-Spend Core Concepts"
     },
     {
       "label": "Check 15: Export round-trips (backup integrity)",
@@ -4075,10 +4350,10 @@
       "source_file": "LENS_V1_BUILD_PLAN.md",
       "source_location": "L629",
       "_origin": "ast",
-      "community": 8,
+      "community": 0,
       "norm_label": "check 15: export round-trips (backup integrity)",
       "id": "lens_v1_build_plan_check_15_export_round_trips_backup_integrity",
-      "community_name": "Build Script Entry Point"
+      "community_name": "Safe-to-Spend Core Concepts"
     },
     {
       "label": "Check 16: Timezone / date correctness",
@@ -4086,10 +4361,10 @@
       "source_file": "LENS_V1_BUILD_PLAN.md",
       "source_location": "L633",
       "_origin": "ast",
-      "community": 8,
+      "community": 0,
       "norm_label": "check 16: timezone / date correctness",
       "id": "lens_v1_build_plan_check_16_timezone_date_correctness",
-      "community_name": "Build Script Entry Point"
+      "community_name": "Safe-to-Spend Core Concepts"
     },
     {
       "label": "Check 17: First-run is never a blank void",
@@ -4097,10 +4372,10 @@
       "source_file": "LENS_V1_BUILD_PLAN.md",
       "source_location": "L637",
       "_origin": "ast",
-      "community": 8,
+      "community": 0,
       "norm_label": "check 17: first-run is never a blank void",
       "id": "lens_v1_build_plan_check_17_first_run_is_never_a_blank_void",
-      "community_name": "Build Script Entry Point"
+      "community_name": "Safe-to-Spend Core Concepts"
     },
     {
       "label": "8. V1 GOAL (definition of done)",
@@ -4946,17 +5221,6 @@
       "relation": "references",
       "context": "parameter_type",
       "confidence": "EXTRACTED",
-      "source_file": "lens/app/main.py",
-      "source_location": "L49",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lens_app_main_root",
-      "target": "lens_app_auth_deps_currentuser"
-    },
-    {
-      "relation": "references",
-      "context": "parameter_type",
-      "confidence": "EXTRACTED",
       "source_file": "lens/app/routers/accounts.py",
       "source_location": "L74",
       "weight": 1.0,
@@ -5078,6 +5342,17 @@
       "relation": "references",
       "context": "parameter_type",
       "confidence": "EXTRACTED",
+      "source_file": "lens/app/routers/dashboard.py",
+      "source_location": "L18",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lens_app_routers_dashboard_dashboard",
+      "target": "lens_app_auth_deps_currentuser"
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
       "source_file": "lens/app/routers/import_.py",
       "source_location": "L132",
       "weight": 1.0,
@@ -5116,6 +5391,17 @@
       "weight": 1.0,
       "confidence_score": 1.0,
       "source": "lens_app_routers_import_upload",
+      "target": "lens_app_auth_deps_currentuser"
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "lens/app/routers/insights.py",
+      "source_location": "L16",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lens_app_routers_insights_insights_page",
       "target": "lens_app_auth_deps_currentuser"
     },
     {
@@ -5654,7 +5940,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "lens/app/main.py",
-      "source_location": "L37",
+      "source_location": "L41",
       "weight": 1.0,
       "confidence_score": 1.0,
       "source": "lens_app_main",
@@ -5664,28 +5950,18 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "lens/app/main.py",
-      "source_location": "L44",
+      "source_location": "L48",
       "weight": 1.0,
       "confidence_score": 1.0,
       "source": "lens_app_main",
       "target": "lens_app_main_healthz"
     },
     {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "lens/app/main.py",
-      "source_location": "L49",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lens_app_main",
-      "target": "lens_app_main_root"
-    },
-    {
       "relation": "references",
       "context": "parameter_type",
       "confidence": "EXTRACTED",
       "source_file": "lens/app/main.py",
-      "source_location": "L37",
+      "source_location": "L41",
       "weight": 1.0,
       "confidence_score": 1.0,
       "source": "lens_app_main_auth_redirect_handler",
@@ -5696,21 +5972,10 @@
       "context": "parameter_type",
       "confidence": "EXTRACTED",
       "source_file": "lens/app/main.py",
-      "source_location": "L37",
+      "source_location": "L41",
       "weight": 1.0,
       "confidence_score": 1.0,
       "source": "lens_app_main_auth_redirect_handler",
-      "target": "lens_app_main_py_request"
-    },
-    {
-      "relation": "references",
-      "context": "parameter_type",
-      "confidence": "EXTRACTED",
-      "source_file": "lens/app/main.py",
-      "source_location": "L49",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lens_app_main_root",
       "target": "lens_app_main_py_request"
     },
     {
@@ -6417,6 +6682,82 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
+      "source_file": "lens/app/routers/dashboard.py",
+      "source_location": "L18",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lens_app_routers_dashboard",
+      "target": "lens_app_routers_dashboard_dashboard"
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "lens/app/routers/dashboard.py",
+      "source_location": "L18",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lens_app_routers_dashboard_dashboard",
+      "target": "lens_app_routers_dashboard_py_asyncsession"
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "lens/app/routers/dashboard.py",
+      "source_location": "L18",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lens_app_routers_dashboard_dashboard",
+      "target": "lens_app_routers_dashboard_py_request"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "lens/app/routers/dashboard.py",
+      "source_location": "L34",
+      "weight": 1.0,
+      "source": "lens_app_routers_dashboard_dashboard",
+      "target": "lens_app_services_analytics_safe_to_spend"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "lens/app/routers/dashboard.py",
+      "source_location": "L35",
+      "weight": 1.0,
+      "source": "lens_app_routers_dashboard_dashboard",
+      "target": "lens_app_services_analytics_spending_detective"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "lens/app/routers/dashboard.py",
+      "source_location": "L36",
+      "weight": 1.0,
+      "source": "lens_app_routers_dashboard_dashboard",
+      "target": "lens_app_services_recurring_upcoming"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "lens/app/routers/dashboard.py",
+      "source_location": "L37",
+      "weight": 1.0,
+      "source": "lens_app_routers_dashboard_dashboard",
+      "target": "lens_app_services_transactions_list_transactions"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
       "source_file": "lens/app/routers/import_.py",
       "source_location": "L34",
       "weight": 1.0,
@@ -6691,6 +7032,71 @@
       "weight": 1.0,
       "source": "lens_app_routers_import_commit",
       "target": "lens_app_services_import_commit_save_column_mapping"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lens/app/routers/insights.py",
+      "source_location": "L16",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lens_app_routers_insights",
+      "target": "lens_app_routers_insights_insights_page"
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "lens/app/routers/insights.py",
+      "source_location": "L16",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lens_app_routers_insights_insights_page",
+      "target": "lens_app_routers_insights_py_asyncsession"
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "lens/app/routers/insights.py",
+      "source_location": "L16",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lens_app_routers_insights_insights_page",
+      "target": "lens_app_routers_insights_py_request"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "lens/app/routers/insights.py",
+      "source_location": "L22",
+      "weight": 1.0,
+      "source": "lens_app_routers_insights_insights_page",
+      "target": "lens_app_services_analytics_spending_detective"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "lens/app/routers/insights.py",
+      "source_location": "L31",
+      "weight": 1.0,
+      "source": "lens_app_routers_insights_insights_page",
+      "target": "lens_app_services_analytics_trip_rollup"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "lens/app/routers/insights.py",
+      "source_location": "L23",
+      "weight": 1.0,
+      "source": "lens_app_routers_insights_insights_page",
+      "target": "lens_app_services_analytics_what_changed"
     },
     {
       "relation": "contains",
@@ -8121,6 +8527,17 @@
       "target": "lens_app_services_analytics_spending_detective"
     },
     {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "lens/app/services/recap.py",
+      "source_location": "L54",
+      "weight": 1.0,
+      "source": "lens_app_services_recap_build_recap",
+      "target": "lens_app_services_analytics_spending_detective"
+    },
+    {
       "relation": "rationale_for",
       "confidence": "EXTRACTED",
       "source_file": "lens/app/services/analytics.py",
@@ -9544,6 +9961,121 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
+      "source_file": "lens/app/services/recap.py",
+      "source_location": "L20",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lens_app_services_recap",
+      "target": "lens_app_services_recap_build_recap"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lens/app/services/recap.py",
+      "source_location": "L68",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lens_app_services_recap",
+      "target": "lens_app_services_recap_get_recap"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lens/app/services/recap.py",
+      "source_location": "L13",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lens_app_services_recap",
+      "target": "lens_app_services_recap_period_bounds"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "lens/app/services/recap.py",
+      "source_location": "L1",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lens_app_services_recap_rationale_1",
+      "target": "lens_app_services_recap"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "lens/app/services/recap.py",
+      "source_location": "L22",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lens_app_services_recap_build_recap",
+      "target": "lens_app_services_recap_period_bounds"
+    },
+    {
+      "relation": "references",
+      "context": "generic_arg",
+      "confidence": "EXTRACTED",
+      "source_file": "lens/app/services/recap.py",
+      "source_location": "L13",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lens_app_services_recap_period_bounds",
+      "target": "lens_app_services_recap_py_date"
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "lens/app/services/recap.py",
+      "source_location": "L20",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lens_app_services_recap_build_recap",
+      "target": "lens_app_services_recap_py_asyncsession"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "lens/app/services/recap.py",
+      "source_location": "L81",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lens_app_services_recap_get_recap",
+      "target": "lens_app_services_recap_build_recap"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "lens/app/services/recap.py",
+      "source_location": "L21",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lens_app_services_recap_rationale_21",
+      "target": "lens_app_services_recap_build_recap"
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "lens/app/services/recap.py",
+      "source_location": "L68",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lens_app_services_recap_get_recap",
+      "target": "lens_app_services_recap_py_asyncsession"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "lens/app/services/recap.py",
+      "source_location": "L69",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lens_app_services_recap_rationale_69",
+      "target": "lens_app_services_recap_get_recap"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
       "source_file": "lens/app/services/reconcile.py",
       "source_location": "L9",
       "weight": 1.0,
@@ -10430,6 +10962,86 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
+      "source_file": "lens/tests/test_analytics_periods.py",
+      "source_location": "L37",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lens_tests_test_analytics_periods",
+      "target": "lens_tests_test_analytics_periods_test_cur_and_prev_are_contiguous_and_non_overlapping"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lens/tests/test_analytics_periods.py",
+      "source_location": "L32",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lens_tests_test_analytics_periods",
+      "target": "lens_tests_test_analytics_periods_test_last_3_full_months_crosses_year"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lens/tests/test_analytics_periods.py",
+      "source_location": "L27",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lens_tests_test_analytics_periods",
+      "target": "lens_tests_test_analytics_periods_test_last_3_full_months_excludes_current"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lens/tests/test_analytics_periods.py",
+      "source_location": "L15",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lens_tests_test_analytics_periods",
+      "target": "lens_tests_test_analytics_periods_test_month_bounds_december_rolls_year"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lens/tests/test_analytics_periods.py",
+      "source_location": "L11",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lens_tests_test_analytics_periods",
+      "target": "lens_tests_test_analytics_periods_test_month_bounds_mid_year"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lens/tests/test_analytics_periods.py",
+      "source_location": "L19",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lens_tests_test_analytics_periods",
+      "target": "lens_tests_test_analytics_periods_test_prev_month_bounds_january_rolls_back"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lens/tests/test_analytics_periods.py",
+      "source_location": "L23",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lens_tests_test_analytics_periods",
+      "target": "lens_tests_test_analytics_periods_test_prev_month_bounds_mid_year"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "lens/tests/test_analytics_periods.py",
+      "source_location": "L1",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lens_tests_test_analytics_periods_rationale_1",
+      "target": "lens_tests_test_analytics_periods"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
       "source_file": "lens/tests/test_importer.py",
       "source_location": "L86",
       "weight": 1.0,
@@ -11273,5 +11885,5 @@
       "source_file": "GRAPHIFY_SETUP_PROMPT.md"
     }
   ],
-  "built_at_commit": "4ed6cefc37ed23b36a6b982e7fbe4ab6a041f4f4"
+  "built_at_commit": "27c3fc9953ce417a23bdd4364a01fb64f81fdd68"
 }

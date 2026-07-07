@@ -12,9 +12,9 @@ tags:
 # confirm()
 
 ## Connections
-- [[AsyncSession_3]] - `references` [EXTRACTED]
+- [[AsyncSession_5]] - `references` [EXTRACTED]
 - [[CurrentUser]] - `references` [EXTRACTED]
-- [[Request_6]] - `references` [EXTRACTED]
+- [[Request_8]] - `references` [EXTRACTED]
 - [[confirm_series()]] - `calls` [INFERRED]
 - [[list_series()]] - `calls` [INFERRED]
 - [[recurring.py]] - `contains` [EXTRACTED]

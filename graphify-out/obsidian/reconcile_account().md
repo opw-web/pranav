@@ -12,7 +12,7 @@ tags:
 # reconcile_account()
 
 ## Connections
-- [[AsyncSession_13]] - `references` [EXTRACTED]
+- [[AsyncSession_16]] - `references` [EXTRACTED]
 - [[Creates a visible adjustment transaction closing the gap between the computed]] - `rationale_for` [EXTRACTED]
 - [[get_single_account_balance()]] - `calls` [INFERRED]
 - [[reconcile()]] - `calls` [INFERRED]

@@ -12,7 +12,7 @@ tags:
 # categorize()
 
 ## Connections
-- [[AsyncSession_9]] - `references` [EXTRACTED]
+- [[AsyncSession_11]] - `references` [EXTRACTED]
 - [[build_quickadd_preview()]] - `calls` [INFERRED]
 - [[categorizer.py]] - `contains` [EXTRACTED]
 - [[commit_chunk()]] - `calls` [INFERRED]

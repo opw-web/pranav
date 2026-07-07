@@ -5,7 +5,7 @@ community: "confirm"
 location: "L109"
 tags:
   - graphify/code
-  - graphify/EXTRACTED
+  - graphify/INFERRED
   - community/confirm
 ---
 
@@ -13,9 +13,10 @@ tags:
 
 ## Connections
 - [[Active series due between today and today+within_days — feeds the dashboard and]] - `rationale_for` [EXTRACTED]
-- [[AsyncSession_14]] - `references` [EXTRACTED]
+- [[AsyncSession_17]] - `references` [EXTRACTED]
 - [[confirm()]] - `calls` [INFERRED]
+- [[dashboard()]] - `calls` [INFERRED]
 - [[recurring.py_1]] - `contains` [EXTRACTED]
 - [[recurring_page()]] - `calls` [INFERRED]
 
-#graphify/code #graphify/EXTRACTED #community/confirm
+#graphify/code #graphify/INFERRED #community/confirm

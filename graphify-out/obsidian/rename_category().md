@@ -12,7 +12,7 @@ tags:
 # rename_category()
 
 ## Connections
-- [[AsyncSession_8]] - `references` [EXTRACTED]
+- [[AsyncSession_10]] - `references` [EXTRACTED]
 - [[ValueError]] - `calls` [EXTRACTED]
 - [[categories.py_1]] - `contains` [EXTRACTED]
 - [[rename_category_route()]] - `calls` [INFERRED]

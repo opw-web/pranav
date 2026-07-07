@@ -1,17 +1,26 @@
 ---
 source_file: ""
 type: "code"
-community: "UX Playbook Spec"
+community: "CurrentUser"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/UX_Playbook_Spec
+  - community/CurrentUser
 ---
 
 # AsyncSession
 
 ## Connections
-- [[get_account_balances()]] - `references` [EXTRACTED]
-- [[get_single_account_balance()]] - `references` [EXTRACTED]
+- [[_flat_categories()]] - `references` [EXTRACTED]
+- [[bulk_action()]] - `references` [EXTRACTED]
+- [[create_txn()]] - `references` [EXTRACTED]
+- [[delete_txn()]] - `references` [EXTRACTED]
+- [[edit_txn_row()]] - `references` [EXTRACTED]
+- [[get_txn_row()]] - `references` [EXTRACTED]
+- [[list_txn_page()]] - `references` [EXTRACTED]
+- [[patch_txn()]] - `references` [EXTRACTED]
+- [[quickadd_commit()]] - `references` [EXTRACTED]
+- [[quickadd_preview()]] - `references` [EXTRACTED]
+- [[undo_delete_txn()]] - `references` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/UX_Playbook_Spec
+#graphify/code #graphify/EXTRACTED #community/CurrentUser

@@ -1,19 +1,16 @@
 ---
 source_file: ""
 type: "code"
-community: "Database Schema & Architecture"
+community: "transactions.py"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Database_Schema__Architecture
+  - community/transactionspy
 ---
 
 # AsyncSession
 
 ## Connections
-- [[_rules_with_names()]] - `references` [EXTRACTED]
-- [[delete_rule()]] - `references` [EXTRACTED]
-- [[learn()]] - `references` [EXTRACTED]
-- [[rules_page()]] - `references` [EXTRACTED]
+- [[insights_page()]] - `references` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Database_Schema__Architecture
+#graphify/code #graphify/EXTRACTED #community/transactionspy

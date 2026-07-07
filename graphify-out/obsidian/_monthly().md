@@ -12,7 +12,7 @@ tags:
 # _monthly()
 
 ## Connections
-- [[date_5]] - `references` [EXTRACTED]
+- [[date_6]] - `references` [EXTRACTED]
 - [[test_detect_all_skips_empty_merchant()]] - `calls` [EXTRACTED]
 - [[test_detects_monthly_subscription()]] - `calls` [EXTRACTED]
 - [[test_recurring.py]] - `contains` [EXTRACTED]

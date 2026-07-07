@@ -1,14 +1,14 @@
 ---
 type: community
-members: 36
+members: 35
 ---
 
 # routes.py
 
-**Members:** 36 nodes
+**Members:** 35 nodes
 
 ## Members
-- [[AsyncSession_11]] - code
+- [[AsyncSession_13]] - code
 - [[DB session for the current request app-level scope (user.id) is layered     on]] - rationale - lens/app/auth/deps.py
 - [[Find active series due within 3 days, and flag renewals that came in higher than]] - rationale - lens/app/routers/cron.py
 - [[First-login seed (§4.6) starter category tree + a default Cash account.     Ide]] - rationale - lens/app/services/onboarding.py
@@ -42,7 +42,6 @@ members: 36
 - [[main.py]] - code - lens/app/main.py
 - [[onboarding.py]] - code - lens/app/services/onboarding.py
 - [[recurring_reminders()]] - code - lens/app/routers/cron.py
-- [[root()]] - code - lens/app/main.py
 - [[routes.py]] - code - lens/app/auth/routes.py
 
 ## Live Query (requires Dataview plugin)
@@ -53,7 +52,7 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-- 4 edges to [[_COMMUNITY_CurrentUser]]
+- 3 edges to [[_COMMUNITY_CurrentUser]]
 - 1 edge to [[_COMMUNITY_session.py]]
 
 ## Top bridge nodes
@@ -61,4 +60,3 @@ SORT file.name ASC
 - [[deps.py]] - degree 6, connects to 1 community
 - [[config.py]] - degree 5, connects to 1 community
 - [[get_scoped_session()]] - degree 4, connects to 1 community
-- [[root()]] - degree 3, connects to 1 community

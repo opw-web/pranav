@@ -12,7 +12,7 @@ tags:
 # resolve_category_key()
 
 ## Connections
-- [[AsyncSession_9]] - `references` [EXTRACTED]
+- [[AsyncSession_11]] - `references` [EXTRACTED]
 - [[Maps a shipped seed's 'food.restaurants' key to this user's actual category id,]] - `rationale_for` [EXTRACTED]
 - [[categorize()]] - `calls` [EXTRACTED]
 - [[categorizer.py]] - `contains` [EXTRACTED]

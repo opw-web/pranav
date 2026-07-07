@@ -12,9 +12,9 @@ tags:
 # upload()
 
 ## Connections
-- [[AsyncSession_2]] - `references` [EXTRACTED]
+- [[AsyncSession_3]] - `references` [EXTRACTED]
 - [[CurrentUser]] - `references` [EXTRACTED]
-- [[Request_5]] - `references` [EXTRACTED]
+- [[Request_6]] - `references` [EXTRACTED]
 - [[UploadFile]] - `references` [EXTRACTED]
 - [[_b64()]] - `calls` [EXTRACTED]
 - [[import_.py]] - `contains` [EXTRACTED]

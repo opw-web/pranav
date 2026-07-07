@@ -1,25 +1,33 @@
 ---
 type: community
-members: 20
+members: 28
 ---
 
 # transactions.py
 
-**Members:** 20 nodes
+**Members:** 28 nodes
 
 ## Members
-- [[AsyncSession_6]] - code
+- [[AsyncSession_2]] - code
+- [[AsyncSession_4]] - code
+- [[AsyncSession_8]] - code
 - [[Deterministic analytics — SQL-first (§2.6, §4.4). Python only orchestrates and t]] - rationale - lens/app/services/analytics.py
 - [[First day of d's month and first day of next month (half-open start, end)).]] - rationale - lens/app/services/analytics.py
 - [[Median monthly expense per category over the last 3 full months (PERCENTILE_CONT]] - rationale - lens/app/services/analytics.py
 - [[Period-over-period attribution at category + merchant level. Returns ranked driv]] - rationale - lens/app/services/analytics.py
+- [[Request_5]] - code
+- [[Request_7]] - code
 - [[SUM(amount) WHERE tag GROUP BY category. Transfers excluded (they aren't spend).]] - rationale - lens/app/services/analytics.py
 - [[start, end) covering the n full calendar months before d's month.]] - rationale - lens/app/services/analytics.py
 - [[_deltas()]] - code - lens/app/services/analytics.py
 - [[_essential_category_ids()]] - code - lens/app/services/analytics.py
 - [[analytics.py]] - code - lens/app/services/analytics.py
 - [[category_normals()]] - code - lens/app/services/analytics.py
+- [[dashboard()]] - code - lens/app/routers/dashboard.py
+- [[dashboard.py]] - code - lens/app/routers/dashboard.py
 - [[date_1]] - code
+- [[insights.py]] - code - lens/app/routers/insights.py
+- [[insights_page()]] - code - lens/app/routers/insights.py
 - [[last_n_full_months()]] - code - lens/app/services/analytics.py
 - [[month_bounds()]] - code - lens/app/services/analytics.py
 - [[prev_month_bounds()]] - code - lens/app/services/analytics.py
@@ -37,7 +45,13 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
+- 3 edges to [[_COMMUNITY_CurrentUser]]
+- 1 edge to [[_COMMUNITY_confirm]]
 - 1 edge to [[_COMMUNITY_UX Playbook Spec]]
+- 1 edge to [[_COMMUNITY_Build Script Entry Point]]
 
 ## Top bridge nodes
-- [[safe_to_spend()]] - degree 8, connects to 1 community
+- [[dashboard()]] - degree 8, connects to 2 communities
+- [[spending_detective()]] - degree 10, connects to 1 community
+- [[safe_to_spend()]] - degree 9, connects to 1 community
+- [[insights_page()]] - degree 7, connects to 1 community

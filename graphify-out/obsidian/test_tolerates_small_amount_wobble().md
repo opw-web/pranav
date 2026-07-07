@@ -13,7 +13,7 @@ tags:
 
 ## Connections
 - [[_monthly()]] - `calls` [EXTRACTED]
-- [[date_5]] - `calls` [EXTRACTED]
+- [[date_6]] - `calls` [EXTRACTED]
 - [[test_recurring.py]] - `contains` [EXTRACTED]
 
 #graphify/code #graphify/EXTRACTED #community/test_recurringpy

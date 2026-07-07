@@ -12,8 +12,9 @@ tags:
 # trip_rollup()
 
 ## Connections
-- [[AsyncSession_6]] - `references` [EXTRACTED]
+- [[AsyncSession_8]] - `references` [EXTRACTED]
 - [[SUM(amount) WHERE tag GROUP BY category. Transfers excluded (they aren't spend).]] - `rationale_for` [EXTRACTED]
 - [[analytics.py]] - `contains` [EXTRACTED]
+- [[insights_page()]] - `calls` [INFERRED]
 
 #graphify/code #graphify/EXTRACTED #community/transactionspy

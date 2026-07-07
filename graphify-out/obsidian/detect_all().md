@@ -13,7 +13,7 @@ tags:
 
 ## Connections
 - [[DetectedSeries]] - `references` [EXTRACTED]
-- [[date_4]] - `references` [EXTRACTED]
+- [[date_5]] - `references` [EXTRACTED]
 - [[detect_series_for_merchant()]] - `calls` [EXTRACTED]
 - [[grouped = {merchant_clean (date, amount), ...}. Returns all detected series.]] - `rationale_for` [EXTRACTED]
 - [[recurring_detector.py]] - `contains` [EXTRACTED]

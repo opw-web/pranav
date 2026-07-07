@@ -12,7 +12,7 @@ tags:
 # learn_rule()
 
 ## Connections
-- [[AsyncSession_9]] - `references` [EXTRACTED]
+- [[AsyncSession_11]] - `references` [EXTRACTED]
 - [[Create (or update) a user categorization rule from a correction (§4.1 step 4).]] - `rationale_for` [EXTRACTED]
 - [[_learn_pattern()]] - `calls` [EXTRACTED]
 - [[categorizer.py]] - `contains` [EXTRACTED]

@@ -1,17 +1,16 @@
 ---
 source_file: ""
 type: "code"
-community: "detect_series_for_merchant"
+community: "Build Script Entry Point"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/detect_series_for_merchant
+  - community/Build_Script_Entry_Point
 ---
 
 # date
 
 ## Connections
-- [[detect_all()]] - `references` [EXTRACTED]
-- [[detect_series_for_merchant()]] - `references` [EXTRACTED]
+- [[_period_bounds()]] - `references` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/detect_series_for_merchant
+#graphify/code #graphify/EXTRACTED #community/Build_Script_Entry_Point

@@ -12,6 +12,5 @@ tags:
 
 ## Connections
 - [[auth_redirect_handler()]] - `references` [EXTRACTED]
-- [[root()]] - `references` [EXTRACTED]
 
 #graphify/code #graphify/EXTRACTED #community/routespy

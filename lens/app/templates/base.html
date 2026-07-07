@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{% block title %}LENS{% endblock %}</title>
     <link rel="stylesheet" href="/static/css/app.css" />
+    <style>[x-cloak]{display:none!important}</style>
     <script src="/static/js/htmx.min.js" defer></script>
     <script src="/static/js/alpine.min.js" defer></script>
 </head>
@@ -38,6 +39,7 @@
             <a href="/import" class="text-sm text-neutral-600 hover:text-neutral-900">Import</a>
             <a href="/recurring" class="text-sm text-neutral-600 hover:text-neutral-900">Recurring</a>
             <a href="/insights" class="text-sm text-neutral-600 hover:text-neutral-900">Insights</a>
+            <a href="/settings" class="text-sm text-neutral-600 hover:text-neutral-900">Settings</a>
             <a href="/logout" class="text-sm text-neutral-400 hover:text-neutral-700">Logout</a>
         </div>
         <div id="quickadd-preview" class="mx-auto max-w-5xl px-4 text-xs text-neutral-500"></div>

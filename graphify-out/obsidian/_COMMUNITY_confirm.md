@@ -10,11 +10,11 @@ members: 15
 ## Members
 - [[Activate a detected series; recompute next_due_date from last_seen + cadence (§4]] - rationale - lens/app/services/recurring.py
 - [[Active series due between today and today+within_days — feeds the dashboard and]] - rationale - lens/app/services/recurring.py
-- [[AsyncSession_3]] - code
-- [[AsyncSession_14]] - code
+- [[AsyncSession_5]] - code
+- [[AsyncSession_17]] - code
 - [[DB-facing recurring-series operations scan history - upsert detected series, c]] - rationale - lens/app/services/recurring.py
 - [[Group the user's expense history by merchant_clean, detect series, and upsert]] - rationale - lens/app/services/recurring.py
-- [[Request_6]] - code
+- [[Request_8]] - code
 - [[confirm()]] - code - lens/app/routers/recurring.py
 - [[confirm_series()]] - code - lens/app/services/recurring.py
 - [[list_series()]] - code - lens/app/services/recurring.py
@@ -33,9 +33,11 @@ SORT file.name ASC
 
 ## Connections to other communities
 - 2 edges to [[_COMMUNITY_CurrentUser]]
+- 1 edge to [[_COMMUNITY_transactions.py]]
 - 1 edge to [[_COMMUNITY_detect_series_for_merchant]]
 
 ## Top bridge nodes
 - [[recurring_page()]] - degree 7, connects to 1 community
 - [[confirm()]] - degree 7, connects to 1 community
+- [[upcoming()]] - degree 6, connects to 1 community
 - [[scan_and_upsert()]] - degree 5, connects to 1 community

@@ -1,19 +1,17 @@
 ---
 source_file: ""
 type: "code"
-community: "Database Schema & Architecture"
+community: "UX Playbook Spec"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Database_Schema__Architecture
+  - community/UX_Playbook_Spec
 ---
 
 # AsyncSession
 
 ## Connections
-- [[back_apply_rule()]] - `references` [EXTRACTED]
-- [[categorize()]] - `references` [EXTRACTED]
-- [[learn_rule()]] - `references` [EXTRACTED]
-- [[resolve_category_key()]] - `references` [EXTRACTED]
+- [[get_account_balances()]] - `references` [EXTRACTED]
+- [[get_single_account_balance()]] - `references` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Database_Schema__Architecture
+#graphify/code #graphify/EXTRACTED #community/UX_Playbook_Spec

@@ -10,7 +10,7 @@ members: 11
 ## Members
 - [[Pure-Python recurring-detection tests — no DB (§4.3, §7 recurring behavior).]] - rationale - lens/tests/test_recurring.py
 - [[_monthly()]] - code - lens/tests/test_recurring.py
-- [[date_5]] - code
+- [[date_6]] - code
 - [[test_detect_all_skips_empty_merchant()]] - code - lens/tests/test_recurring.py
 - [[test_detects_monthly_subscription()]] - code - lens/tests/test_recurring.py
 - [[test_detects_weekly()]] - code - lens/tests/test_recurring.py

@@ -12,9 +12,9 @@ tags:
 # import_page()
 
 ## Connections
-- [[AsyncSession_2]] - `references` [EXTRACTED]
+- [[AsyncSession_3]] - `references` [EXTRACTED]
 - [[CurrentUser]] - `references` [EXTRACTED]
-- [[Request_5]] - `references` [EXTRACTED]
+- [[Request_6]] - `references` [EXTRACTED]
 - [[_accounts()]] - `calls` [EXTRACTED]
 - [[import_.py]] - `contains` [EXTRACTED]
 

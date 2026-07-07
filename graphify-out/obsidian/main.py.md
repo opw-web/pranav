@@ -14,6 +14,5 @@ tags:
 ## Connections
 - [[auth_redirect_handler()]] - `contains` [EXTRACTED]
 - [[healthz()]] - `contains` [EXTRACTED]
-- [[root()]] - `contains` [EXTRACTED]
 
 #graphify/code #graphify/EXTRACTED #community/routespy

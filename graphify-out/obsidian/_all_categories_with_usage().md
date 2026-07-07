@@ -12,7 +12,7 @@ tags:
 # _all_categories_with_usage()
 
 ## Connections
-- [[AsyncSession_8]] - `references` [EXTRACTED]
+- [[AsyncSession_10]] - `references` [EXTRACTED]
 - [[categories.py_1]] - `contains` [EXTRACTED]
 - [[fuzzy_search()]] - `calls` [EXTRACTED]
 - [[get_grouped_tree()]] - `calls` [EXTRACTED]

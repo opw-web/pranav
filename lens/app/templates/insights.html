@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% block title %}Insights — LENS{% endblock %}
+{% block content %}
+<div class="max-w-3xl mx-auto space-y-5">
+    <h1 class="text-lg font-semibold">Insights</h1>
+
+    <!-- Spending Detective -->
+    <div class="bg-white border border-neutral-200 rounded-xl p-5">
+        <p class="text-sm font-medium mb-1">Why spending changed</p>
+        <p class="text-sm text-neutral-700 mb-3">{{ detective.headline }}</p>
+        {% if detective.category_drivers %}
+        <table class="w-full text-sm">
+            <thead><tr class="text-xs uppercase text-neutral-400 text-left">
+                <th class="py-1">Category</th><th class="py-1 text-right">This month</th><th class="py-1 text-right">Δ vs last</th></tr></thead>
+            <tbody>
+            {% for d in detective.category_drivers %}
+            <tr class="border-t border-neutral-100">
+                <td class="py-1">{{ d.name }}</td>
+                <td class="py-1 text-right">₹{{ "{:,.0f}".format(d.cur) }}</td>
+                <td class="py-1 text-right text-red-600">+₹{{ "{:,.0f}".format(d.delta) }}</td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        {% endif %}
+    </div>
+
+    <!-- What changed vs normal -->
+    <div class="bg-white border border-neutral-200 rounded-xl p-5">
+        <p class="text-sm font-medium mb-2">What changed vs your normal</p>
+        <div class="grid sm:grid-cols-3 gap-4 text-sm">
+            <div>
+                <p class="text-xs uppercase text-neutral-400 mb-1">New merchants</p>
+                {% if diff.new_merchants %}<ul class="text-neutral-600 space-y-0.5">
+                    {% for m in diff.new_merchants[:6] %}<li>{{ m }}</li>{% endfor %}</ul>
+                {% else %}<p class="text-neutral-400">None</p>{% endif %}
+            </div>
+            <div>
+                <p class="text-xs uppercase text-neutral-400 mb-1">Above normal</p>
+                {% if diff.above_normal %}<ul class="text-neutral-600 space-y-0.5">
+                    {% for a in diff.above_normal[:6] %}<li>₹{{ "{:,.0f}".format(a.spend) }} (vs ₹{{ "{:,.0f}".format(a.normal) }})</li>{% endfor %}</ul>
+                {% else %}<p class="text-neutral-400">None</p>{% endif %}
+            </div>
+            <div>
+                <p class="text-xs uppercase text-neutral-400 mb-1">Newly recurring</p>
+                {% if diff.newly_recurring %}<ul class="text-neutral-600 space-y-0.5">
+                    {% for r in diff.newly_recurring[:6] %}<li>{{ r.merchant_clean }}</li>{% endfor %}</ul>
+                {% else %}<p class="text-neutral-400">None</p>{% endif %}
+            </div>
+        </div>
+    </div>
+
+    <!-- Trip / event rollup -->
+    <div class="bg-white border border-neutral-200 rounded-xl p-5">
+        <p class="text-sm font-medium mb-2">Trip / event rollup</p>
+        <form hx-get="/insights" hx-target="body" hx-push-url="true" class="mb-3">
+            <select name="tag" onchange="this.form.requestSubmit()"
+                    class="border border-neutral-300 rounded px-2 py-1 text-sm">
+                <option value="">Choose a tag…</option>
+                {% for t in tags %}<option value="{{ t }}" {% if t == selected_tag %}selected{% endif %}>#{{ t }}</option>{% endfor %}
+            </select>
+        </form>
+        {% if rollup %}
+        <p class="text-sm mb-2"><strong>#{{ rollup.tag }}: ₹{{ "{:,.0f}".format(rollup.total) }} total</strong></p>
+        <div class="space-y-1 text-sm text-neutral-600">
+            {% for b in rollup.breakdown %}
+            <div class="flex justify-between"><span>{{ b.category }}</span><span>₹{{ "{:,.0f}".format(b.total) }}</span></div>
+            {% endfor %}
+        </div>
+        {% elif selected_tag %}
+        <p class="text-sm text-neutral-400">No spending tagged #{{ selected_tag }}.</p>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

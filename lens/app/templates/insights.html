@@ -1,125 +1,132 @@
 {% extends "base.html" %}
 {% block title %}Insights — LENS{% endblock %}
+{% set active_tab = 'insights' %}
 {% block topbar_title %}Insights{% endblock %}
 {% block content %}
 <div class="max-w-3xl mx-auto space-y-5">
     <h1 class="hidden md:block text-lg font-semibold text-ink">Insights</h1>
 
     {# ================= Spending Detective — the "aha" moment ================= #}
-    <section class="card p-5">
-        {% set pct_abs = detective.pct_change if detective.pct_change >= 0 else -detective.pct_change %}
-        <div class="flex items-center justify-between gap-3 mb-2">
-            <p class="text-xs uppercase tracking-wide text-faint">Why spending changed</p>
-            <span class="chip {{ 'bg-accent-red text-accent-red-ink' if detective.pct_change >= 0 else 'bg-accent-green text-accent-green-ink' }}">
-                {{ '▲' if detective.pct_change >= 0 else '▼' }} {{ "%.0f"|format(pct_abs) }}%
-            </span>
-        </div>
-        <p class="font-display text-2xl text-ink leading-snug mb-4">{{ detective.headline }}</p>
-
-        {% if detective.category_drivers %}
-        {# Mobile: stacked rows #}
-        <div class="md:hidden divide-y divide-hair">
-            {% for d in detective.category_drivers %}
-            <div class="flex items-center justify-between gap-3 py-3">
-                <div class="min-w-0 flex-1">
-                    <p class="text-sm text-ink truncate">{{ d.name }}</p>
-                    <p class="text-xs text-muted">₹{{ "{:,.0f}".format(d.cur) }} this month</p>
-                </div>
-                <span class="font-mono text-sm text-accent-red-ink whitespace-nowrap">+₹{{ "{:,.0f}".format(d.delta) }}</span>
-            </div>
-            {% endfor %}
-        </div>
-
-        {# Desktop: table #}
-        <div class="hidden md:block overflow-x-auto">
-            <table class="w-full text-sm">
-                <thead>
-                    <tr class="text-left text-xs uppercase text-faint">
-                        <th class="py-2">Category</th>
-                        <th class="py-2 text-right">This month</th>
-                        <th class="py-2 text-right">Δ vs last</th>
-                    </tr>
-                </thead>
-                <tbody class="divide-y divide-hair">
-                    {% for d in detective.category_drivers %}
-                    <tr>
-                        <td class="py-2 text-ink">{{ d.name }}</td>
-                        <td class="py-2 text-right font-mono text-ink">₹{{ "{:,.0f}".format(d.cur) }}</td>
-                        <td class="py-2 text-right font-mono text-accent-red-ink">+₹{{ "{:,.0f}".format(d.delta) }}</td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-        </div>
-        {% endif %}
-
-        {% if detective.merchant_drivers %}
-        <div class="mt-4 pt-4 border-t border-hair">
-            <p class="text-xs uppercase tracking-wide text-faint mb-2">Top merchants driving it</p>
-            <div class="flex flex-wrap gap-2">
-                {% for m in detective.merchant_drivers %}
-                <span class="chip bg-subtle text-ink-soft">
-                    {{ m.name }}
-                    <span class="font-mono text-accent-red-ink ml-1">+₹{{ "{:,.0f}".format(m.delta) }}</span>
+    <section class="reveal shell">
+        <div class="core p-5">
+            {% set pct_abs = detective.pct_change if detective.pct_change >= 0 else -detective.pct_change %}
+            <div class="flex items-center justify-between gap-3 mb-2">
+                <p class="eyebrow flex items-center gap-1.5">{{ icon('sparkle', 'h-3.5 w-3.5') }} Why spending changed</p>
+                <span class="chip {{ 'bg-accent-red text-accent-red-ink' if detective.pct_change >= 0 else 'bg-accent-green text-accent-green-ink' }}">
+                    {{ icon('arrow-up-right', 'h-3 w-3' + (' rotate-90' if detective.pct_change < 0 else '')) }}
+                    {{ "%.0f"|format(pct_abs) }}%
                 </span>
+            </div>
+            <p class="text-2xl font-semibold text-ink leading-snug mb-4">{{ detective.headline }}</p>
+
+            {% if detective.category_drivers %}
+            {# Mobile: stacked rows #}
+            <div class="md:hidden divide-y divide-hair">
+                {% for d in detective.category_drivers %}
+                <div class="flex items-center justify-between gap-3 py-3">
+                    <div class="min-w-0 flex-1">
+                        <p class="text-sm text-ink truncate">{{ d.name }}</p>
+                        <p class="text-xs text-muted">{{ money(d.cur) }} this month</p>
+                    </div>
+                    <span class="money text-sm text-accent-red-ink whitespace-nowrap">+{{ money(d.delta) }}</span>
+                </div>
                 {% endfor %}
             </div>
+
+            {# Desktop: table #}
+            <div class="hidden md:block overflow-x-auto">
+                <table class="w-full text-sm">
+                    <thead>
+                        <tr class="text-left text-xs uppercase tracking-wide text-muted">
+                            <th class="py-2 font-medium">Category</th>
+                            <th class="py-2 text-right font-medium">This month</th>
+                            <th class="py-2 text-right font-medium">Δ vs last</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-hair">
+                        {% for d in detective.category_drivers %}
+                        <tr>
+                            <td class="py-2 text-ink">{{ d.name }}</td>
+                            <td class="py-2 text-right money text-ink">{{ money(d.cur) }}</td>
+                            <td class="py-2 text-right money text-accent-red-ink">+{{ money(d.delta) }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            {% endif %}
+
+            {% if detective.merchant_drivers %}
+            <div class="mt-4 pt-4 border-t border-hair">
+                <p class="eyebrow mb-2">Top merchants driving it</p>
+                <div class="flex flex-wrap gap-2">
+                    {% for m in detective.merchant_drivers %}
+                    <span class="chip bg-hair text-ink-soft">
+                        {{ m.name }}
+                        <span class="money text-accent-red-ink ml-1">+{{ money(m.delta) }}</span>
+                    </span>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endif %}
         </div>
-        {% endif %}
     </section>
 
     {# ================= What changed vs your normal ================= #}
-    <section class="card p-5">
-        <p class="text-sm font-medium text-ink mb-3">What changed vs your normal</p>
+    <section class="reveal card p-5">
+        <p class="eyebrow flex items-center gap-1.5 mb-3">{{ icon('warning', 'h-3.5 w-3.5') }} What changed vs your normal</p>
         <div class="grid gap-5 sm:grid-cols-3">
             <div>
-                <p class="text-xs uppercase tracking-wide text-faint mb-2">New merchants</p>
+                <p class="text-xs uppercase tracking-wide text-muted mb-2">New merchants</p>
                 {% if diff.new_merchants %}
-                <ul class="space-y-1">
+                <ul class="space-y-1.5">
                     {% for m in diff.new_merchants[:6] %}
-                    <li class="text-sm text-ink truncate">{{ m }}</li>
-                    {% endfor %}
-                </ul>
-                {% else %}
-                <p class="text-sm text-faint">None</p>
-                {% endif %}
-            </div>
-            <div>
-                <p class="text-xs uppercase tracking-wide text-faint mb-2">Above normal</p>
-                {% if diff.above_normal %}
-                <ul class="space-y-1">
-                    {% for a in diff.above_normal[:6] %}
-                    <li class="text-sm">
-                        <span class="font-mono text-accent-amber-ink">₹{{ "{:,.0f}".format(a.spend) }}</span>
-                        <span class="text-faint"> vs ₹{{ "{:,.0f}".format(a.normal) }} normal</span>
+                    <li class="text-sm text-ink truncate flex items-center gap-1.5">
+                        <span class="chip bg-accent-blue text-accent-blue-ink shrink-0">{{ icon('sparkle', 'h-3 w-3') }}</span>
+                        <span class="truncate">{{ m }}</span>
                     </li>
                     {% endfor %}
                 </ul>
                 {% else %}
-                <p class="text-sm text-faint">None</p>
+                <p class="text-sm text-muted">None</p>
                 {% endif %}
             </div>
             <div>
-                <p class="text-xs uppercase tracking-wide text-faint mb-2">Newly recurring</p>
+                <p class="text-xs uppercase tracking-wide text-muted mb-2">Above normal</p>
+                {% if diff.above_normal %}
+                <ul class="space-y-1.5">
+                    {% for a in diff.above_normal[:6] %}
+                    <li class="text-sm">
+                        <span class="money text-accent-amber-ink">{{ money(a.spend) }}</span>
+                        <span class="text-muted"> vs {{ money(a.normal) }} normal</span>
+                    </li>
+                    {% endfor %}
+                </ul>
+                {% else %}
+                <p class="text-sm text-muted">None</p>
+                {% endif %}
+            </div>
+            <div>
+                <p class="text-xs uppercase tracking-wide text-muted mb-2">Newly recurring</p>
                 {% if diff.newly_recurring %}
-                <ul class="space-y-1">
+                <ul class="space-y-1.5">
                     {% for r in diff.newly_recurring[:6] %}
                     <li class="text-sm text-ink truncate">
                         {{ r.merchant_clean }}
-                        {% if r.expected_amount %}<span class="font-mono text-faint"> · ₹{{ "{:,.0f}".format(r.expected_amount) }}</span>{% endif %}
+                        {% if r.expected_amount %}<span class="money text-muted"> · {{ money(r.expected_amount) }}</span>{% endif %}
                     </li>
                     {% endfor %}
                 </ul>
                 {% else %}
-                <p class="text-sm text-faint">None</p>
+                <p class="text-sm text-muted">None</p>
                 {% endif %}
             </div>
         </div>
     </section>
 
     {# ================= Trip / event tag rollup ================= #}
-    <section class="card p-5">
-        <p class="text-sm font-medium text-ink mb-3">Trip / event rollup</p>
+    <section class="reveal card p-5">
+        <p class="eyebrow flex items-center gap-1.5 mb-3">{{ icon('tag', 'h-3.5 w-3.5') }} Trip / event rollup</p>
         <form hx-get="/insights" hx-target="body" hx-push-url="true" class="mb-4">
             <select name="tag" onchange="this.form.requestSubmit()" class="field">
                 <option value="">Choose a tag…</option>
@@ -130,20 +137,22 @@
         </form>
 
         {% if rollup %}
-        <div class="rounded-control bg-subtle px-4 py-3 mb-3">
-            <p class="text-xs uppercase tracking-wide text-faint">#{{ rollup.tag }}</p>
-            <p class="font-display text-2xl text-ink mt-0.5">₹{{ "{:,.0f}".format(rollup.total) }}</p>
+        <div class="shell mb-3">
+            <div class="core px-4 py-3">
+                <p class="eyebrow">#{{ rollup.tag }}</p>
+                <p class="money text-2xl text-ink mt-0.5">{{ money(rollup.total) }}</p>
+            </div>
         </div>
         <div class="divide-y divide-hair">
             {% for b in rollup.breakdown %}
             <div class="flex items-center justify-between py-2.5">
                 <span class="text-sm text-ink">{{ b.category }}</span>
-                <span class="font-mono text-sm text-muted">₹{{ "{:,.0f}".format(b.total) }}</span>
+                <span class="money text-sm text-muted">{{ money(b.total) }}</span>
             </div>
             {% endfor %}
         </div>
         {% elif selected_tag %}
-        <p class="text-sm text-faint">No spending tagged #{{ selected_tag }}.</p>
+        <p class="text-sm text-muted">No spending tagged #{{ selected_tag }}.</p>
         {% endif %}
     </section>
 </div>

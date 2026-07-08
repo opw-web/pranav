@@ -1,16 +1,16 @@
-# Graph Report - LENS project  (2026-07-07)
+# Graph Report - LENS project  (2026-07-08)
 
 ## Corpus Check
-- 62 files · ~31,800 words
+- 63 files · ~36,982 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 493 nodes · 697 edges · 88 communities (34 shown, 54 thin omitted)
-- Extraction: 89% EXTRACTED · 11% INFERRED · 0% AMBIGUOUS · INFERRED: 79 edges (avg confidence: 0.78)
+- 519 nodes · 736 edges · 82 communities (28 shown, 54 thin omitted)
+- Extraction: 89% EXTRACTED · 11% INFERRED · 0% AMBIGUOUS · INFERRED: 84 edges (avg confidence: 0.77)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `5133cc22`
+- Built from commit: `91f02d2f`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -83,7 +83,6 @@
 - [[_COMMUNITY_CurrentUser|CurrentUser]]
 - [[_COMMUNITY_quickadd_parser.py|quickadd_parser.py]]
 - [[_COMMUNITY_importer.py|importer.py]]
-- [[_COMMUNITY_session.py|session.py]]
 - [[_COMMUNITY_test_importer.py|test_importer.py]]
 - [[_COMMUNITY_detect_series_for_merchant|detect_series_for_merchant]]
 - [[_COMMUNITY_confirm|confirm]]
@@ -93,23 +92,18 @@
 - [[_COMMUNITY_LENS — the expense app that shows you why|LENS — the expense app that shows you *why*]]
 - [[_COMMUNITY_vercel.json|vercel.json]]
 - [[_COMMUNITY_4. Patterns (copy-paste)|4. Patterns (copy-paste)]]
-- [[_COMMUNITY_session.py|session.py]]
-- [[_COMMUNITY_LENS — V1 THE EXPENSE APP THAT SHOWS YOU WHY|LENS — V1: THE EXPENSE APP THAT SHOWS YOU *WHY*]]
-- [[_COMMUNITY_4. REQUIREMENTS|4. REQUIREMENTS]]
-- [[_COMMUNITY_5. THE UX PLAYBOOK (this is the product — treat as spec)|5. THE UX PLAYBOOK (this is the product — treat as spec)]]
-- [[_COMMUNITY_1. IDEA CONTEXT (read this first)|1. IDEA CONTEXT (read this first)]]
 
 ## God Nodes (most connected - your core abstractions)
 1. `CurrentUser` - 39 edges
 2. `7. DEVELOPER EVALUATION CHECKLIST (beginner-friendly — follow every step)` - 18 edges
-3. `get_grouped_tree()` - 13 edges
-4. `4. Patterns (copy-paste)` - 13 edges
+3. `6. Patterns (copy-paste)` - 15 edges
+4. `get_grouped_tree()` - 13 edges
 5. `build_quickadd_preview()` - 11 edges
 6. `LENS — V1: THE EXPENSE APP THAT SHOWS YOU *WHY*` - 11 edges
-7. `spending_detective()` - 10 edges
-8. `get_account_balances()` - 10 edges
-9. `analyze()` - 10 edges
-10. `create_txn()` - 9 edges
+7. `LENS Design System — "Soft Structuralism" (soft-premium)` - 11 edges
+8. `spending_detective()` - 10 edges
+9. `get_account_balances()` - 10 edges
+10. `analyze()` - 10 edges
 
 ## Surprising Connections (you probably didn't know these)
 - `Account` --uses--> `Base`  [INFERRED]
@@ -131,15 +125,15 @@
 - **Money-Movement Semantics (Transfer/Refund/Safe-to-Spend)** — lens_v1_build_plan_transfer, lens_v1_build_plan_refund, lens_v1_build_plan_safe_to_spend, lens_v1_build_plan_transactions_table [INFERRED 0.85]
 - **Graphify Auto-Refresh Pipeline** — graphify_setup_prompt_posttooluse_hook, graphify_setup_prompt_refresh_sh, graphify_setup_prompt_make_vault_py, graphify_setup_prompt_community_labeling [EXTRACTED 1.00]
 
-## Communities (88 total, 54 thin omitted)
+## Communities (82 total, 54 thin omitted)
 
 ### Community 0 - "Safe-to-Spend Core Concepts"
 Cohesion: 0.11
 Nodes (18): 7. DEVELOPER EVALUATION CHECKLIST (beginner-friendly — follow every step), Check 10: The Detective points at the real driver, Check 11: Trip rollup is correct, Check 12: Balances reconcile, Check 13: Import stays within serverless limits, Check 14: Cold start is acceptable, Check 15: Export round-trips (backup integrity), Check 16: Timezone / date correctness (+10 more)
 
 ### Community 8 - "Build Script Entry Point"
-Cohesion: 0.19
-Nodes (11): AsyncSession, Request, recap_page(), build_recap(), get_recap(), _period_bounds(), AsyncSession, date (+3 more)
+Cohesion: 0.09
+Nodes (24): AsyncSession, Request, recap_page(), export_csv(), export_json(), _fetch_rows(), AsyncSession, Request (+16 more)
 
 ### Community 9 - "Database Schema & Architecture"
 Cohesion: 0.16
@@ -170,16 +164,16 @@ Cohesion: 0.18
 Nodes (6): DeclarativeBase, Account, Base, Category, Tag, Transaction
 
 ### Community 63 - "App Entry Point"
-Cohesion: 0.29
-Nodes (5): lensApplyCategorySelection(), lensHighlight(), lensMove(), lensRows(), lensSelectCategory()
+Cohesion: 0.19
+Nodes (8): lensApplyCategorySelection(), lensHighlight(), lensInitTheme(), lensMove(), lensReflectThemeChoice(), lensRows(), lensSelectCategory(), lensSetTheme()
 
 ### Community 64 - "session.py"
 Cohesion: 0.23
 Nodes (13): build_quickadd_preview(), _flatten_tree(), _label_for(), _default_for_dateutil(), parse_quickadd(), ParsedQuickAdd, date, Deterministic tokenizer for the Quick-Add bar (§5.1). NOT AI — pure pattern matc (+5 more)
 
 ### Community 65 - "routes.py"
-Cohesion: 0.07
-Nodes (28): HTTPException, Vercel serverless entrypoint. Vercel's @vercel/python runtime serves the ASGI `a, get_current_user(), get_scoped_session(), Request, Verifies the Supabase JWT and extracts user_id (= auth.uid()), per §2.3 step 4., DB session for the current request: app-level scope (user.id) is layered     on, _refresh_access_token() (+20 more)
+Cohesion: 0.06
+Nodes (31): HTTPException, Vercel serverless entrypoint. Vercel's @vercel/python runtime serves the ASGI `a, get_current_user(), get_scoped_session(), Request, Verifies the Supabase JWT and extracts user_id (= auth.uid()), per §2.3 step 4., DB session for the current request: app-level scope (user.id) is layered     on, _refresh_access_token() (+23 more)
 
 ### Community 66 - "main.py"
 Cohesion: 0.16
@@ -197,10 +191,6 @@ Nodes (7): _call(), DB access over HTTPS (port 443) — a workaround for dev net
 Cohesion: 0.11
 Nodes (26): analyze(), bank_signature(), chunk_bounds(), _clean_amount(), decode_bytes(), dedupe_hash(), detect_amount_convention(), detect_date_format() (+18 more)
 
-### Community 73 - "session.py"
-Cohesion: 0.48
-Nodes (6): export_csv(), export_json(), _fetch_rows(), AsyncSession, Request, settings_page()
-
 ### Community 75 - "detect_series_for_merchant"
 Cohesion: 0.29
 Nodes (10): _amount_is_stable(), _classify_cadence(), detect_all(), detect_series_for_merchant(), DetectedSeries, date, Recurring-series detection (§4.3). The cadence/amount-stability analysis is pure, All amounts within ±tolerance of the median (subscriptions wobble a little). (+2 more)
@@ -214,8 +204,8 @@ Cohesion: 0.36
 Nodes (10): _monthly(), date, Pure-Python recurring-detection tests — no DB (§4.3, §7 recurring behavior)., test_detect_all_skips_empty_merchant(), test_detects_monthly_subscription(), test_detects_weekly(), test_rejects_irregular_interval(), test_rejects_wild_amount_variation() (+2 more)
 
 ### Community 79 - "2. ARCHITECTURE"
-Cohesion: 0.22
-Nodes (9): 2.1 Tech stack (install these exactly), 2.2 Accounts & keys you need, 2.3 Auth flow (Google via Supabase), 2.4 Folder structure (create this now), 2.5.1 RLS policies (MANDATORY — do not skip), 2.5 Database schema (run this SQL; adjust types as you like), 2.6 The SQL-first analytics rule (why no pandas), 2.7 Deployment notes (Vercel + serverless reality) (+1 more)
+Cohesion: 0.06
+Nodes (31): 1. IDEA CONTEXT (read this first), 2.1 Tech stack (install these exactly), 2.2 Accounts & keys you need, 2.3 Auth flow (Google via Supabase), 2.4 Folder structure (create this now), 2.5.1 RLS policies (MANDATORY — do not skip), 2.5 Database schema (run this SQL; adjust types as you like), 2.6 The SQL-first analytics rule (why no pandas) (+23 more)
 
 ### Community 80 - "LENS — the expense app that shows you *why*"
 Cohesion: 0.33
@@ -226,48 +216,28 @@ Cohesion: 0.33
 Nodes (5): builds, crons, routes, $schema, version
 
 ### Community 82 - "4. Patterns (copy-paste)"
-Cohesion: 0.08
-Nodes (23): 1. Color tokens → utilities, 2. Layout rules, 3. Buttons, 4. Patterns (copy-paste), 5. Do / Don't, Bottom sheet (mobile dialog; centers at md:+), Card, Category chip (user color preserved — do NOT theme-ify) (+15 more)
-
-### Community 83 - "session.py"
-Cohesion: 0.29
-Nodes (3): _fetch_jwks(), Verify a Supabase-issued JWT locally against the project's JWKS (ES256).     Rai, verify_access_token()
-
-### Community 84 - "LENS — V1: THE EXPENSE APP THAT SHOWS YOU *WHY*"
-Cohesion: 0.29
-Nodes (6): 3. GOALS, 6. TASKS (build in this order), 8. V1 GOAL (definition of done), ("LENS" is a working codename — a lens on your money. Rename freely.), LENS — V1: THE EXPENSE APP THAT SHOWS YOU *WHY*, Self-contained build document. Paste this entire file as your build/vibe-coding prompt.
-
-### Community 85 - "4. REQUIREMENTS"
-Cohesion: 0.29
-Nodes (7): 4.1 The categorizer (services/categorizer.py) — deterministic, learns from corrections, 4.2 The importer (services/importer.py), 4.3 Recurring detection (services/recurring_detector.py), 4.4 Analytics (services/analytics.py) — all SQL-first, 4.5 Routes (HTMX-first; most return HTML fragments, some JSON), 4.6 First-run onboarding (services on first login), 4. REQUIREMENTS
-
-### Community 86 - "5. THE UX PLAYBOOK (this is the product — treat as spec)"
-Cohesion: 0.40
-Nodes (5): 5.1 Data entry — the keyboard-first Quick-Add bar, 5.2 Category creation — never leave the flow, 5.3 Import — a wizard that gets smarter each time, 5.4 Dashboard — one number, then support, 5. THE UX PLAYBOOK (this is the product — treat as spec)
-
-### Community 87 - "1. IDEA CONTEXT (read this first)"
-Cohesion: 0.50
-Nodes (4): 1. IDEA CONTEXT (read this first), Non-negotiable project rules (apply to everything below), Product concepts you (the builder) need, in plain language, What V1 delivers when done
+Cohesion: 0.05
+Nodes (36): 10. Preserved contract (do not rename/remove), 1. Color tokens, 2. Double-bezel surfaces (`.shell` / `.core`), 3. Buttons (button-in-button ready), 4. Money & icons, 5. Layout rules, 6. Patterns (copy-paste), 7. Theme (light / dark / system) (+28 more)
 
 ## Knowledge Gaps
-- **115 isolated node(s):** `refresh.sh script`, `OBJC_DISABLE_INITIALIZE_FORK_SAFETY`, `GRAPHIFY_NO_BACKUP`, `Settings`, `build_css.sh script` (+110 more)
+- **126 isolated node(s):** `refresh.sh script`, `OBJC_DISABLE_INITIALIZE_FORK_SAFETY`, `GRAPHIFY_NO_BACKUP`, `Settings`, `build_css.sh script` (+121 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **54 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `CurrentUser` connect `CurrentUser` to `routes.py`, `main.py`, `Build Script Entry Point`, `Database Schema & Architecture`, `Backend Service Requirements`, `session.py`, `UX Playbook Spec`, `transactions.py`, `confirm`?**
-  _High betweenness centrality (0.202) - this node is a cross-community bridge._
+- **Why does `CurrentUser` connect `CurrentUser` to `routes.py`, `main.py`, `Build Script Entry Point`, `Database Schema & Architecture`, `Backend Service Requirements`, `UX Playbook Spec`, `transactions.py`, `confirm`?**
+  _High betweenness centrality (0.166) - this node is a cross-community bridge._
 - **Why does `recurring_page()` connect `confirm` to `CurrentUser`?**
-  _High betweenness centrality (0.031) - this node is a cross-community bridge._
+  _High betweenness centrality (0.028) - this node is a cross-community bridge._
 - **Why does `build_quickadd_preview()` connect `session.py` to `Database Schema & Architecture`, `Backend Service Requirements`, `CurrentUser`?**
-  _High betweenness centrality (0.029) - this node is a cross-community bridge._
+  _High betweenness centrality (0.027) - this node is a cross-community bridge._
 - **Are the 9 inferred relationships involving `get_grouped_tree()` (e.g. with `categories_page()` and `category_picker()`) actually correct?**
   _`get_grouped_tree()` has 9 INFERRED edges - model-reasoned connections that need verification._
 - **What connects `refresh.sh script`, `OBJC_DISABLE_INITIALIZE_FORK_SAFETY`, `GRAPHIFY_NO_BACKUP` to the rest of the system?**
-  _187 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _202 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Safe-to-Spend Core Concepts` be split into smaller, more focused modules?**
   _Cohesion score 0.1111111111111111 - nodes in this community are weakly interconnected._
-- **Should `transactions.py` be split into smaller, more focused modules?**
-  _Cohesion score 0.14285714285714285 - nodes in this community are weakly interconnected._
+- **Should `Build Script Entry Point` be split into smaller, more focused modules?**
+  _Cohesion score 0.09259259259259259 - nodes in this community are weakly interconnected._

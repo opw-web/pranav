@@ -1,17 +1,15 @@
 import uuid
-from pathlib import Path
 
 from fastapi import APIRouter, Depends, Form, Request
-from fastapi.templating import Jinja2Templates
 from sqlalchemy import text
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.auth.deps import CurrentUser, get_current_user, get_scoped_session
 from app.services.balances import get_account_balances, get_single_account_balance
 from app.services.reconcile import reconcile_account
+from app.templating import templates
 
 router = APIRouter()
-templates = Jinja2Templates(directory=Path(__file__).resolve().parent.parent / "templates")
 
 
 @router.get("/accounts")

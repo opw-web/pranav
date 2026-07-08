@@ -18,5 +18,6 @@ tags:
 - [[delete_category_route()]] - `contains` [EXTRACTED]
 - [[merge_categories_route()]] - `contains` [EXTRACTED]
 - [[rename_category_route()]] - `contains` [EXTRACTED]
+- [[templating.py]] - `imports_from` [EXTRACTED]
 
 #graphify/code #graphify/EXTRACTED #community/Backend_Service_Requirements

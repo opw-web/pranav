@@ -3,37 +3,61 @@
 {% block topbar_title %}Settings{% endblock %}
 {% block content %}
 <div class="max-w-lg mx-auto space-y-5">
-    <h1 class="hidden md:block text-lg font-semibold text-ink">Settings</h1>
+    <h1 class="hidden md:block text-xl font-semibold text-ink">Settings</h1>
+
+    {# ================= Account ================= #}
+    <div class="reveal shell">
+        <div class="core p-5 flex items-center gap-3">
+            <span class="flex items-center justify-center h-11 w-11 rounded-full bg-brand-soft text-brand shrink-0">
+                {{ icon('sparkle', 'h-5 w-5') }}
+            </span>
+            <div class="min-w-0">
+                <p class="text-sm font-medium text-ink truncate">{{ user.email if user and user.email else 'Signed in' }}</p>
+                <p class="text-xs text-muted">LENS keeps your data yours.</p>
+            </div>
+        </div>
+    </div>
 
     {# ================= Export & backup ================= #}
-    <div class="card p-5">
-        <p class="text-sm font-medium text-ink mb-1">Export &amp; backup</p>
+    <div class="reveal card p-5">
+        <p class="eyebrow mb-2">Export &amp; backup</p>
         <p class="text-sm text-muted mb-4">
             Download everything — every transaction with its account, category, and tag names. Re-importable.
         </p>
         <div class="flex flex-col sm:flex-row gap-2">
-            <a href="/settings/export" class="btn btn-primary flex-1 justify-center">Download CSV</a>
-            <a href="/settings/export.json" class="btn btn-secondary flex-1 justify-center">Download JSON</a>
+            <a href="/settings/export" class="btn btn-primary flex-1 justify-center">
+                {{ icon('upload', 'h-4 w-4') }} Download CSV
+            </a>
+            <a href="/settings/export.json" class="btn btn-secondary flex-1 justify-center">
+                Download JSON
+            </a>
         </div>
     </div>
 
     {# ================= Manage ================= #}
-    <div class="card overflow-hidden p-0">
-        <p class="text-xs uppercase tracking-wide text-faint px-4 pt-4 pb-2">Manage</p>
+    <div class="reveal card overflow-hidden p-0">
+        <p class="eyebrow px-4 pt-4 pb-2">Manage</p>
         <div class="flex flex-col divide-y divide-hair">
             <a href="/rules" class="list-row">
+                {{ icon('tag', 'h-4 w-4 text-muted') }}
                 <span class="flex-1 text-sm text-ink">Categorization rules</span>
-                <span class="text-faint" aria-hidden="true">›</span>
+                <span class="text-muted" aria-hidden="true">{{ icon('arrow-up-right', 'h-4 w-4') }}</span>
             </a>
             <a href="/recurring" class="list-row">
+                {{ icon('repeat', 'h-4 w-4 text-muted') }}
                 <span class="flex-1 text-sm text-ink">Recurring &amp; subscriptions</span>
-                <span class="text-faint" aria-hidden="true">›</span>
+                <span class="text-muted" aria-hidden="true">{{ icon('arrow-up-right', 'h-4 w-4') }}</span>
             </a>
             <a href="/recap/{{ current_period }}" class="list-row">
+                {{ icon('chart', 'h-4 w-4 text-muted') }}
                 <span class="flex-1 text-sm text-ink">This month's recap</span>
-                <span class="text-faint" aria-hidden="true">›</span>
+                <span class="text-muted" aria-hidden="true">{{ icon('arrow-up-right', 'h-4 w-4') }}</span>
             </a>
         </div>
     </div>
+
+    <p class="text-xs text-muted text-center px-4">
+        Theme (light / dark / auto) lives in the More menu — tap {{ icon('gear', 'h-3.5 w-3.5 inline align-text-bottom') }} on mobile or "More" on desktop.
+    </p>
 </div>
 {% endblock %}

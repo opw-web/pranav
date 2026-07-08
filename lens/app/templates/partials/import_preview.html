@@ -1,16 +1,16 @@
-<div class="space-y-4">
+<div data-wiz-step="3" class="reveal space-y-4">
     <div class="card p-4">
         <div class="grid grid-cols-3 gap-2 text-center">
             <div>
-                <p class="font-display text-2xl text-ink">{{ preview.to_import }}</p>
+                <p class="text-2xl font-semibold text-ink">{{ preview.to_import }}</p>
                 <p class="text-xs text-muted mt-0.5">to import</p>
             </div>
             <div>
-                <p class="font-display text-2xl text-accent-amber-ink">{{ preview.duplicates }}</p>
+                <p class="text-2xl font-semibold text-accent-amber-ink">{{ preview.duplicates }}</p>
                 <p class="text-xs text-muted mt-0.5">duplicates skipped</p>
             </div>
             <div>
-                <p class="font-display text-2xl text-accent-blue-ink">{{ preview.transfers }}</p>
+                <p class="text-2xl font-semibold text-accent-blue-ink">{{ preview.transfers }}</p>
                 <p class="text-xs text-muted mt-0.5">transfers linked</p>
             </div>
         </div>
@@ -18,7 +18,7 @@
 
     <div>
         {# Mobile: list-cards #}
-        <div class="md:hidden card divide-y divide-hair max-h-80 overflow-y-auto">
+        <div class="md:hidden shell"><div class="core divide-y divide-hair max-h-80 overflow-y-auto">
             {% for r in preview.rows[:100] %}
             {% set sign_cls = 'text-muted' if r.is_transfer else ('text-accent-green-ink' if r.type == 'income' else 'text-accent-red-ink') %}
             {% set sign_prefix = '' if r.is_transfer else ('+' if r.type == 'income' else '-') %}
@@ -28,17 +28,17 @@
                     <p class="text-xs text-muted truncate">{{ r.txn_date }}</p>
                 </div>
                 {% if r.is_duplicate %}
-                <span class="chip bg-accent-amber text-accent-amber-ink shrink-0">dup</span>
+                <span class="chip bg-accent-amber text-accent-amber-ink shrink-0">{{ icon('warning', 'h-3.5 w-3.5') }} dup</span>
                 {% elif r.is_transfer %}
-                <span class="chip bg-accent-blue text-accent-blue-ink shrink-0">↔ transfer</span>
+                <span class="chip bg-accent-blue text-accent-blue-ink shrink-0">{{ icon('repeat', 'h-3.5 w-3.5') }} transfer</span>
                 {% endif %}
-                <span class="font-mono text-sm whitespace-nowrap shrink-0 {{ sign_cls }}">{{ sign_prefix }}{{ "%.2f"|format(r.amount) }}</span>
+                <span class="money text-sm whitespace-nowrap shrink-0 {{ sign_cls }}">{{ sign_prefix }}{{ money(r.amount) }}</span>
             </div>
             {% endfor %}
-        </div>
+        </div></div>
 
         {# Desktop: table #}
-        <div class="hidden md:block card overflow-x-auto max-h-80 overflow-y-auto">
+        <div class="hidden md:block card overflow-x-auto max-h-80 overflow-y-auto p-0">
             <table class="text-sm w-full">
                 <thead class="sticky top-0 bg-surface">
                     <tr class="border-b border-hair">
@@ -53,12 +53,12 @@
                     {% set sign_cls = 'text-muted' if r.is_transfer else ('text-accent-green-ink' if r.type == 'income' else 'text-accent-red-ink') %}
                     {% set sign_prefix = '' if r.is_transfer else ('+' if r.type == 'income' else '-') %}
                     <tr class="{{ 'opacity-40' if r.is_duplicate }}">
-                        <td class="px-3 py-1.5 text-ink">{{ r.txn_date }}</td>
+                        <td class="px-3 py-1.5 text-ink whitespace-nowrap">{{ r.txn_date }}</td>
                         <td class="px-3 py-1.5 text-ink">{{ r.merchant_raw or '—' }}</td>
-                        <td class="px-3 py-1.5 text-right font-mono {{ sign_cls }}">{{ sign_prefix }}{{ "%.2f"|format(r.amount) }}</td>
+                        <td class="px-3 py-1.5 text-right money {{ sign_cls }}">{{ sign_prefix }}{{ money(r.amount) }}</td>
                         <td class="px-3 py-1.5 text-center">
-                            {% if r.is_duplicate %}<span class="chip bg-accent-amber text-accent-amber-ink">dup</span>
-                            {% elif r.is_transfer %}<span class="chip bg-accent-blue text-accent-blue-ink">↔</span>{% endif %}
+                            {% if r.is_duplicate %}<span class="chip bg-accent-amber text-accent-amber-ink">{{ icon('warning', 'h-3.5 w-3.5') }}</span>
+                            {% elif r.is_transfer %}<span class="chip bg-accent-blue text-accent-blue-ink">{{ icon('repeat', 'h-3.5 w-3.5') }}</span>{% endif %}
                         </td>
                     </tr>
                     {% endfor %}
@@ -66,7 +66,7 @@
             </table>
         </div>
         {% if preview.rows|length > 100 %}
-        <p class="text-xs text-faint mt-2 text-center">Showing first 100 of {{ preview.rows|length }} rows.</p>
+        <p class="text-xs text-muted mt-2 text-center">Showing first 100 of {{ preview.rows|length }} rows.</p>
         {% endif %}
     </div>
 

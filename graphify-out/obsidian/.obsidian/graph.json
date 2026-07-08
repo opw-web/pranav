@@ -582,13 +582,6 @@
       }
     },
     {
-      "query": "tag:#community/session.py",
-      "color": {
-        "a": 1,
-        "rgb": 7780274
-      }
-    },
-    {
       "query": "tag:#community/LENS_\u2014_V1:_THE_EXPENSE_APP_THAT_SHOWS_YOU_*WHY*",
       "color": {
         "a": 1,

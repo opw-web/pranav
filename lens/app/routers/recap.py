@@ -1,15 +1,13 @@
 from datetime import date
-from pathlib import Path
 
 from fastapi import APIRouter, Depends, Request
-from fastapi.templating import Jinja2Templates
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.auth.deps import CurrentUser, get_current_user, get_scoped_session
 from app.services.recap import get_recap
+from app.templating import templates
 
 router = APIRouter()
-templates = Jinja2Templates(directory=Path(__file__).resolve().parent.parent / "templates")
 
 
 @router.get("/recap/{period}")

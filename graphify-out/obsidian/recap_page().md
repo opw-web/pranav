@@ -2,7 +2,7 @@
 source_file: "lens/app/routers/recap.py"
 type: "code"
 community: "Build Script Entry Point"
-location: "L16"
+location: "L13"
 tags:
   - graphify/code
   - graphify/EXTRACTED

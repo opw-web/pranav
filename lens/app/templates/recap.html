@@ -5,45 +5,52 @@
 <div class="max-w-xl mx-auto space-y-5">
     <div class="flex items-center justify-between">
         <h1 class="hidden md:block text-lg font-semibold text-ink">Monthly recap</h1>
-        <span class="chip bg-subtle text-muted">{{ period }}</span>
+        <span class="pill">{{ icon('chart', 'h-3.5 w-3.5') }} {{ period }}</span>
+    </div>
+
+    {# ================= Headline card — the shareable one-liner, hero treatment ================= #}
+    <div class="reveal shell">
+        <div class="core p-6 text-center">
+            <p class="eyebrow mb-2">Your month in one line</p>
+            <p class="text-xl font-semibold text-ink leading-snug">{{ stats.headline }}</p>
+            <p class="text-xs text-muted mt-3">{{ stats.expense_count }} expense{{ 's' if stats.expense_count != 1 else '' }} recorded</p>
+        </div>
     </div>
 
     {# ================= Stat tiles: Spent / Income / Net ================= #}
-    <div class="grid grid-cols-3 gap-3">
+    <div class="reveal grid grid-cols-3 gap-3">
         <div class="card p-4 text-center">
-            <p class="text-xs uppercase tracking-wide text-faint">Spent</p>
-            <p class="font-display text-2xl text-accent-red-ink mt-1">₹{{ "{:,.0f}".format(stats.expense) }}</p>
+            <p class="eyebrow">Spent</p>
+            <p class="money text-2xl text-accent-red-ink mt-1">{{ money(stats.expense) }}</p>
         </div>
         <div class="card p-4 text-center">
-            <p class="text-xs uppercase tracking-wide text-faint">Income</p>
-            <p class="font-display text-2xl text-accent-green-ink mt-1">₹{{ "{:,.0f}".format(stats.income) }}</p>
+            <p class="eyebrow">Income</p>
+            <p class="money text-2xl text-accent-green-ink mt-1">{{ money(stats.income) }}</p>
         </div>
         <div class="card p-4 text-center">
-            <p class="text-xs uppercase tracking-wide text-faint">Net</p>
+            <p class="eyebrow">Net</p>
             {% set net_abs = stats.net if stats.net >= 0 else -stats.net %}
-            <p class="font-display text-2xl {{ 'text-accent-red-ink' if stats.net < 0 else 'text-accent-green-ink' }} mt-1">
-                {{ '-' if stats.net < 0 else '+' }}₹{{ "{:,.0f}".format(net_abs) }}
+            <p class="money text-2xl {{ 'text-accent-red-ink' if stats.net < 0 else 'text-accent-green-ink' }} mt-1">
+                {{ '-' if stats.net < 0 else '+' }}{{ money(net_abs) }}
             </p>
         </div>
     </div>
 
-    {# ================= Headline card — the shareable one-liner ================= #}
-    <div class="card p-6 text-center">
-        <p class="font-display text-xl text-ink leading-snug">{{ stats.headline }}</p>
-        <p class="text-xs text-faint mt-3">{{ stats.expense_count }} expense{{ 's' if stats.expense_count != 1 else '' }} recorded</p>
-    </div>
-
     {# ================= Top categories ================= #}
-    <div class="card p-5">
-        <p class="text-sm font-medium text-ink mb-2">Top categories</p>
+    <div class="reveal card p-5">
+        <p class="eyebrow flex items-center gap-1.5 mb-2">{{ icon('tag', 'h-3.5 w-3.5') }} Top categories</p>
+        {% if stats.top_categories %}
         <div class="divide-y divide-hair">
             {% for c in stats.top_categories %}
             <div class="flex items-center justify-between py-2.5">
                 <span class="text-sm text-ink">{{ c.category }}</span>
-                <span class="font-mono text-sm text-muted">₹{{ "{:,.0f}".format(c.total) }}</span>
+                <span class="money text-sm text-muted">{{ money(c.total) }}</span>
             </div>
             {% endfor %}
         </div>
+        {% else %}
+        <p class="text-sm text-muted text-center py-6">No spending recorded this period.</p>
+        {% endif %}
     </div>
 </div>
 {% endblock %}

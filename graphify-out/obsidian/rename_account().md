@@ -2,7 +2,7 @@
 source_file: "lens/app/routers/accounts.py"
 type: "code"
 community: "UX Playbook Spec"
-location: "L58"
+location: "L56"
 tags:
   - graphify/code
   - graphify/EXTRACTED

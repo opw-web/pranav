@@ -19,6 +19,7 @@ tags:
 - [[commit()]] - `contains` [EXTRACTED]
 - [[import_page()]] - `contains` [EXTRACTED]
 - [[preview()]] - `contains` [EXTRACTED]
+- [[templating.py]] - `imports_from` [EXTRACTED]
 - [[upload()]] - `contains` [EXTRACTED]
 
 #graphify/code #graphify/EXTRACTED #community/mainpy

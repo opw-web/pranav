@@ -15,11 +15,16 @@ tags:
 - [[lensApplyCategorySelection()]] - `contains` [EXTRACTED]
 - [[lensCloseSheet()]] - `contains` [EXTRACTED]
 - [[lensHighlight()]] - `contains` [EXTRACTED]
+- [[lensInitTheme()]] - `indirect_call` [INFERRED]
 - [[lensMove()]] - `contains` [EXTRACTED]
+- [[lensObserveReveals()]] - `indirect_call` [INFERRED]
 - [[lensOpenSheet()]] - `contains` [EXTRACTED]
+- [[lensReflectThemeChoice()]] - `contains` [EXTRACTED]
 - [[lensRowId()]] - `contains` [EXTRACTED]
 - [[lensRows()]] - `contains` [EXTRACTED]
 - [[lensSelectCategory()]] - `contains` [EXTRACTED]
+- [[lensSetTheme()]] - `contains` [EXTRACTED]
 - [[lensToggleQuickadd()]] - `contains` [EXTRACTED]
+- [[lensWizStep()]] - `contains` [EXTRACTED]
 
 #graphify/code #graphify/EXTRACTED #community/App_Entry_Point

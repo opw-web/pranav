@@ -1,19 +1,11 @@
-<div id="accounts-table" class="card overflow-hidden" role="table" aria-label="Accounts">
-    <div class="hidden md:grid grid-cols-[1.5fr_0.9fr_1fr_0.9fr_auto] gap-3 px-3 py-2 text-xs uppercase tracking-wide text-faint border-b border-hair" role="row">
-        <span role="columnheader">Name</span>
-        <span role="columnheader">Type</span>
-        <span role="columnheader" class="text-right">Balance</span>
-        <span role="columnheader">Spendable</span>
-        <span role="columnheader"></span>
+<div id="accounts-table" class="reveal grid gap-3 sm:grid-cols-2">
+    {% for a in accounts %}
+        {% include "partials/account_row.html" %}
+    {% endfor %}
+    {% if not accounts %}
+    <div class="sm:col-span-2 text-center py-16 max-w-sm mx-auto">
+        <p class="text-lg font-semibold text-ink mb-1">No accounts yet</p>
+        <p class="text-sm text-muted">Add your first one below to start tracking balances.</p>
     </div>
-    <div class="divide-y divide-hair">
-        {% for a in accounts %}
-            {% include "partials/account_row.html" %}
-        {% endfor %}
-        {% if not accounts %}
-        <div class="text-center py-12 px-4">
-            <p class="text-sm text-muted">No accounts yet — add one below.</p>
-        </div>
-        {% endif %}
-    </div>
+    {% endif %}
 </div>

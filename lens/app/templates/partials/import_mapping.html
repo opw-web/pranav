@@ -1,66 +1,70 @@
-{% if recognized %}
-<div class="rounded-control bg-accent-green text-accent-green-ink text-sm px-3 py-2 mb-4">
-    ✓ Recognized this bank's format — mapping pre-filled.
-</div>
-{% else %}
-<p class="text-sm text-muted mb-4">Confirm the column roles below.</p>
-{% endif %}
-
-<form hx-post="/import/preview" hx-target="#import-step" hx-swap="innerHTML"
-      hx-disabled-elt="find button[type=submit]"
-      hx-on::after-request="if (event.detail.successful) lensWizStep(3)"
-      class="card p-5 space-y-4">
-
-    <input type="hidden" name="account_id" value="{{ account_id }}" />
-    <input type="hidden" name="filename" value="{{ filename }}" />
-    <input type="hidden" name="file_b64" value="{{ file_b64 }}" />
-    <input type="hidden" name="delimiter" value="{{ info.delimiter }}" />
-    <input type="hidden" name="header_idx" value="{{ info.header_idx }}" />
-    <input type="hidden" name="date_format" value="{{ info.date_format or '' }}" />
-
-    <div>
-        <p class="text-sm font-medium text-ink mb-2">Map the columns</p>
-        <div class="grid grid-cols-2 gap-3">
-            {% for role in roles %}
-            <label class="block">
-                <span class="block text-xs text-muted mb-1">{{ role|capitalize }}</span>
-                <select name="map_{{ role }}" class="field text-sm" onchange="lensMapHighlight()">
-                    <option value="">— none —</option>
-                    {% for col in info.header %}
-                    <option value="{{ col }}" {% if info.mapping.get(role) == col %}selected{% endif %}>{{ col }}</option>
-                    {% endfor %}
-                </select>
-            </label>
-            {% endfor %}
-        </div>
+<div data-wiz-step="2" class="reveal shell">
+<div class="core p-5 space-y-4">
+    {% if recognized %}
+    <div class="rounded-control bg-accent-green text-accent-green-ink text-sm px-3 py-2 flex items-center gap-2">
+        {{ icon('check', 'h-4 w-4 shrink-0') }} Recognized this bank's format — mapping pre-filled.
     </div>
+    {% else %}
+    <p class="text-sm text-muted">Confirm the column roles below.</p>
+    {% endif %}
 
-    <div>
-        <p class="text-xs text-muted mb-2">Raw preview — mapped columns are highlighted.</p>
-        <div class="overflow-x-auto rounded-control border border-hair">
-            <table class="text-xs border-collapse w-full">
-                <thead>
-                    <tr>
+    <form hx-post="/import/preview" hx-target="#import-step" hx-swap="innerHTML"
+          hx-disabled-elt="find button[type=submit]"
+          hx-on::after-request="if (event.detail.successful) lensWizStep(3)"
+          class="space-y-4">
+
+        <input type="hidden" name="account_id" value="{{ account_id }}" />
+        <input type="hidden" name="filename" value="{{ filename }}" />
+        <input type="hidden" name="file_b64" value="{{ file_b64 }}" />
+        <input type="hidden" name="delimiter" value="{{ info.delimiter }}" />
+        <input type="hidden" name="header_idx" value="{{ info.header_idx }}" />
+        <input type="hidden" name="date_format" value="{{ info.date_format or '' }}" />
+
+        <div>
+            <p class="text-sm font-medium text-ink mb-2">Map the columns</p>
+            <div class="grid grid-cols-2 gap-3">
+                {% for role in roles %}
+                <label class="block">
+                    <span class="field-label">{{ role|capitalize }}</span>
+                    <select name="map_{{ role }}" class="field text-sm" onchange="lensMapHighlight()">
+                        <option value="">— none —</option>
                         {% for col in info.header %}
-                        <th data-col-idx="{{ loop.index0 }}" class="border-b border-hair px-2 py-1.5 text-left font-medium text-muted whitespace-nowrap transition-colors">{{ col }}</th>
+                        <option value="{{ col }}" {% if info.mapping.get(role) == col %}selected{% endif %}>{{ col }}</option>
                         {% endfor %}
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for row in info.preview_rows %}
-                    <tr>
-                        {% for cell in row %}
-                        <td data-col-idx="{{ loop.index0 }}" class="border-b border-hair px-2 py-1 whitespace-nowrap text-ink transition-colors">{{ cell }}</td>
-                        {% endfor %}
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
+                    </select>
+                </label>
+                {% endfor %}
+            </div>
         </div>
-    </div>
 
-    <button type="submit" class="btn btn-primary w-full">Preview import →</button>
-</form>
+        <div>
+            <p class="text-xs text-muted mb-2">Raw preview — mapped columns are highlighted.</p>
+            <div class="overflow-x-auto rounded-control border border-hair">
+                <table class="text-xs border-collapse w-full">
+                    <thead>
+                        <tr>
+                            {% for col in info.header %}
+                            <th data-col-idx="{{ loop.index0 }}" class="border-b border-hair px-2 py-1.5 text-left font-medium text-muted whitespace-nowrap transition-colors">{{ col }}</th>
+                            {% endfor %}
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for row in info.preview_rows %}
+                        <tr>
+                            {% for cell in row %}
+                            <td data-col-idx="{{ loop.index0 }}" class="border-b border-hair px-2 py-1 whitespace-nowrap text-ink transition-colors">{{ cell }}</td>
+                            {% endfor %}
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary w-full">Preview import {{ icon('arrow-up-right', 'h-4 w-4') }}</button>
+    </form>
+</div>
+</div>
 
 <script>
 // Live-highlight the raw preview columns that match the current role

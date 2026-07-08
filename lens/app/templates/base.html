@@ -6,6 +6,17 @@
     <title>{% block title %}LENS{% endblock %}</title>
     <link rel="stylesheet" href="/static/css/app.css" />
     <style>[x-cloak]{display:none!important}</style>
+    <script>
+        /* Theme init runs before paint to avoid a light/dark flash. */
+        (function () {
+            try {
+                var saved = localStorage.getItem('lens-theme');
+                if (saved === 'dark' || saved === 'light') {
+                    document.documentElement.setAttribute('data-theme', saved);
+                }
+            } catch (e) {}
+        })();
+    </script>
     <script src="/static/js/htmx.min.js" defer></script>
     <script src="/static/js/alpine.min.js" defer></script>
 </head>
@@ -13,138 +24,172 @@
 
 <div class="min-h-full flex flex-col">
 
-    {# ===================================================================
-       TOP APP BAR
-       Mobile: wordmark + contextual title + "+" quick-add affordance.
-       md:+  : wordmark + inline quick-add bar + full nav links.
-       =================================================================== #}
-    <header class="sticky top-0 z-30 bg-surface/90 backdrop-blur border-b border-hair">
-        <div class="mx-auto max-w-5xl w-full px-4 h-14 flex items-center gap-3">
-            <a href="/" class="font-display text-xl tracking-tight text-ink shrink-0">LENS</a>
+    {# =====================================================================
+       DESKTOP: floating island top nav (wordmark, links, quick-add, avatar).
+       MOBILE : slim top bar with wordmark + contextual title only; nav lives
+                in the floating bottom tabbar / More sheet instead.
+       ===================================================================== #}
+    <header class="sticky top-0 z-30 px-3 pt-3 md:px-6 md:pt-4">
+        <div class="mx-auto max-w-6xl w-full">
 
-            {# Contextual title (mobile only). #}
-            <div class="flex-1 md:hidden text-sm font-medium text-ink truncate text-center">
-                {% block topbar_title %}{% endblock %}
+            {# --- Mobile top bar --------------------------------------- #}
+            <div class="md:hidden shell">
+                <div class="core h-12 px-3 flex items-center gap-3">
+                    <a href="/" class="font-semibold tracking-tight text-ink shrink-0">LENS</a>
+                    <div class="flex-1 text-sm font-medium text-ink-soft truncate text-center">
+                        {% block topbar_title %}{% endblock %}
+                    </div>
+                    <button type="button" onclick="lensToggleQuickadd()" aria-label="Quick add"
+                            class="shrink-0 h-9 w-9 flex items-center justify-center rounded-control text-ink-soft hover:text-ink hover:bg-hair">
+                        {{ icon('plus', 'h-5 w-5') }}
+                    </button>
+                </div>
             </div>
 
-            {# --- Single quick-add form (ONE #quickadd-bar) ---------------
-               md:+ : shown inline in the bar (md:flex, occupies flex-1).
-               mobile: absolutely-positioned slide-up panel, hidden until the
-               "+" affordance / center tab calls lensToggleQuickadd(). #}
-            <div id="quickadd-shell"
-                 class="hidden md:flex md:flex-1 md:static md:top-auto md:z-auto md:border-0 md:shadow-none md:bg-transparent md:px-0 md:py-0
-                        absolute inset-x-0 top-14 z-20 bg-surface border-b border-hair shadow-pop px-4 py-3">
-                <form hx-post="/txn/quickadd" hx-target="#quickadd-result" hx-swap="innerHTML" class="w-full md:max-w-xl">
-                    <input
-                        id="quickadd-bar"
-                        name="raw"
-                        type="text"
-                        autocomplete="off"
-                        placeholder="Add a transaction… e.g. 450 swiggy lunch  (press 'a' to focus)"
-                        class="field"
-                        hx-post="/txn/quickadd/preview"
-                        hx-trigger="keyup changed delay:150ms"
-                        hx-target="#quickadd-preview"
-                        hx-swap="innerHTML"
-                    />
-                </form>
-            </div>
-
-            {# Desktop nav links (md:+). #}
-            <nav class="hidden md:flex items-center gap-4 text-sm shrink-0">
-                <a href="/txn" class="text-muted hover:text-ink">Transactions</a>
-                <a href="/insights" class="text-muted hover:text-ink">Insights</a>
-                <a href="/categories" class="text-muted hover:text-ink">Categories</a>
-                <a href="/accounts" class="text-muted hover:text-ink">Accounts</a>
-                <a href="/import" class="text-muted hover:text-ink">Import</a>
-                <a href="/recurring" class="text-muted hover:text-ink">Recurring</a>
-                <a href="/settings" class="text-muted hover:text-ink">Settings</a>
-                <a href="/logout" class="text-faint hover:text-ink">Logout</a>
+            {# --- Desktop island nav ------------------------------------- #}
+            <nav class="hidden md:flex island-nav" aria-label="Primary">
+                <a href="/" class="font-semibold tracking-tight text-ink shrink-0 mr-1">LENS</a>
+                <a href="/" class="{{ 'is-active' if active_tab == 'home' }}">Home</a>
+                <a href="/txn" class="{{ 'is-active' if active_tab == 'txn' }}">Txns</a>
+                <a href="/insights" class="{{ 'is-active' if active_tab == 'insights' }}">Insights</a>
+                <a href="/recurring" class="{{ 'is-active' if active_tab == 'recurring' }}">Recurring</a>
+                <a href="/accounts" class="{{ 'is-active' if active_tab == 'accounts' }}">Accounts</a>
+                <button type="button" onclick="lensOpenSheet('more-sheet')" class="text-muted hover:text-ink">More</button>
+                <span class="flex-1"></span>
+                <button type="button" onclick="lensToggleQuickadd()"
+                        class="btn btn-primary !min-h-9 !py-1.5 !px-4 text-sm">
+                    {{ icon('plus', 'h-4 w-4') }} Add
+                </button>
             </nav>
-
-            {# Mobile "+" affordance in the bar. #}
-            <button type="button" onclick="lensToggleQuickadd()" aria-label="Quick add"
-                    class="md:hidden shrink-0 h-9 w-9 flex items-center justify-center rounded-control text-xl text-muted hover:text-ink hover:bg-subtle">+</button>
         </div>
 
-        {# Quick-add live preview region (shared by mobile + desktop). #}
-        <div id="quickadd-preview" class="mx-auto max-w-5xl w-full px-4 text-xs text-muted empty:hidden"></div>
+        {# --- Quick-add: premium glass/double-bezel island -----------------
+           ONE #quickadd-bar / #quickadd-shell pair shared by mobile + desktop.
+           Mobile: hidden by default, revealed as a floating island below the
+           top bar via lensToggleQuickadd(). Desktop: same island, toggled
+           open from the "Add" button (defaults hidden so the nav stays calm).
+           ------------------------------------------------------------------ #}
+        <div id="quickadd-shell" class="hidden mx-auto max-w-6xl w-full mt-2">
+            <div class="shell">
+                <div class="core p-3">
+                    <form hx-post="/txn/quickadd" hx-target="#quickadd-result" hx-swap="innerHTML" class="w-full">
+                        <input
+                            id="quickadd-bar"
+                            name="raw"
+                            type="text"
+                            autocomplete="off"
+                            placeholder="Add a transaction… e.g. 450 swiggy lunch  (press 'a' to focus)"
+                            class="field !border-0 !shadow-none !bg-transparent !px-1"
+                            hx-post="/txn/quickadd/preview"
+                            hx-trigger="keyup changed delay:150ms"
+                            hx-target="#quickadd-preview"
+                            hx-swap="innerHTML"
+                        />
+                    </form>
+                    <div id="quickadd-preview" class="px-1 pt-1 text-xs text-muted empty:hidden"></div>
+                </div>
+            </div>
+        </div>
     </header>
 
-    {# ===================================================================
-       MAIN CONTENT — extra bottom padding clears the fixed tab bar on mobile.
-       =================================================================== #}
-    <main class="flex-1 mx-auto max-w-5xl w-full px-4 py-5 pb-28 md:pb-8">
+    {# =====================================================================
+       MAIN CONTENT — extra bottom padding clears the floating tab bar.
+       ===================================================================== #}
+    <main class="flex-1 mx-auto max-w-6xl w-full px-3 md:px-6 py-5 pb-32 md:pb-12">
         <div id="quickadd-result"></div>
         <div id="learn-offer-region"></div>
         {% block content %}{% endblock %}
     </main>
 
-    {# ===================================================================
-       BOTTOM TAB BAR (mobile only)
-       Home · Transactions · center "+" · Insights · More(sheet)
-       =================================================================== #}
+    {# =====================================================================
+       BOTTOM TAB BAR (mobile only) — Home · Txns · center + · Insights · More
+       ===================================================================== #}
     <nav class="tabbar md:hidden" aria-label="Primary">
         <a href="/" class="tabbar-item {{ 'is-active' if active_tab == 'home' }}">
-            <span aria-hidden="true" class="text-lg leading-none">⌂</span>
+            {{ icon('home', 'h-5 w-5') }}
             <span>Home</span>
         </a>
         <a href="/txn" class="tabbar-item {{ 'is-active' if active_tab == 'txn' }}">
-            <span aria-hidden="true" class="text-lg leading-none">≣</span>
+            {{ icon('receipt', 'h-5 w-5') }}
             <span>Txns</span>
         </a>
         <button type="button" onclick="lensToggleQuickadd()" aria-label="Quick add" class="tabbar-item">
             <span aria-hidden="true"
-                  class="flex items-center justify-center h-11 w-11 -mt-4 rounded-full bg-brand text-brand-ink text-2xl leading-none shadow-pop">+</span>
+                  class="flex items-center justify-center h-12 w-12 -mt-6 rounded-full bg-brand text-brand-ink shadow-pop">
+                {{ icon('plus', 'h-6 w-6') }}
+            </span>
         </button>
         <a href="/insights" class="tabbar-item {{ 'is-active' if active_tab == 'insights' }}">
-            <span aria-hidden="true" class="text-lg leading-none">◔</span>
+            {{ icon('chart', 'h-5 w-5') }}
             <span>Insights</span>
         </a>
         <button type="button" onclick="lensOpenSheet('more-sheet')" class="tabbar-item">
-            <span aria-hidden="true" class="text-lg leading-none">⋯</span>
+            {{ icon('gear', 'h-5 w-5') }}
             <span>More</span>
         </button>
     </nav>
 
-    {# ===================================================================
-       "MORE" BOTTOM SHEET (mobile nav overflow)
-       =================================================================== #}
+    {# =====================================================================
+       "MORE" BOTTOM SHEET — nav overflow + theme toggle.
+       ===================================================================== #}
     <div id="more-sheet" x-cloak class="sheet-backdrop hidden"
          onclick="if(event.target===this) lensCloseSheet('more-sheet')">
         <div class="sheet" role="dialog" aria-label="More">
             <div class="sheet-grabber"></div>
-            <p class="text-xs uppercase tracking-wide text-faint px-1 pb-2">Menu</p>
+            <p class="eyebrow px-1 pb-2">Menu</p>
             <div class="flex flex-col">
-                <a href="/categories" class="list-row" onclick="lensCloseSheet('more-sheet')">Categories</a>
-                <a href="/accounts"   class="list-row" onclick="lensCloseSheet('more-sheet')">Accounts</a>
-                <a href="/import"     class="list-row" onclick="lensCloseSheet('more-sheet')">Import</a>
-                <a href="/recurring"  class="list-row" onclick="lensCloseSheet('more-sheet')">Recurring</a>
-                <a href="/settings"   class="list-row" onclick="lensCloseSheet('more-sheet')">Settings</a>
-                <a href="/logout"     class="list-row text-accent-red-ink" onclick="lensCloseSheet('more-sheet')">Logout</a>
+                <a href="/categories" class="list-row" onclick="lensCloseSheet('more-sheet')">
+                    {{ icon('tag', 'h-4 w-4 text-muted') }}<span>Categories</span>
+                </a>
+                <a href="/accounts" class="list-row" onclick="lensCloseSheet('more-sheet')">
+                    {{ icon('wallet', 'h-4 w-4 text-muted') }}<span>Accounts</span>
+                </a>
+                <a href="/import" class="list-row" onclick="lensCloseSheet('more-sheet')">
+                    {{ icon('upload', 'h-4 w-4 text-muted') }}<span>Import</span>
+                </a>
+                <a href="/recurring" class="list-row md:hidden" onclick="lensCloseSheet('more-sheet')">
+                    {{ icon('repeat', 'h-4 w-4 text-muted') }}<span>Recurring</span>
+                </a>
+                <a href="/settings" class="list-row" onclick="lensCloseSheet('more-sheet')">
+                    {{ icon('gear', 'h-4 w-4 text-muted') }}<span>Settings</span>
+                </a>
+
+                <div class="list-row" role="group" aria-label="Theme">
+                    {{ icon('sparkle', 'h-4 w-4 text-muted') }}
+                    <span class="flex-1">Theme</span>
+                    <div class="segment" role="tablist">
+                        <button type="button" class="segment-item" data-theme-choice="light" onclick="lensSetTheme('light')" role="tab" aria-selected="false">Light</button>
+                        <button type="button" class="segment-item" data-theme-choice="dark" onclick="lensSetTheme('dark')" role="tab" aria-selected="false">Dark</button>
+                        <button type="button" class="segment-item" data-theme-choice="system" onclick="lensSetTheme('system')" role="tab" aria-selected="false">Auto</button>
+                    </div>
+                </div>
+
+                <a href="/logout" class="list-row text-accent-red-ink" onclick="lensCloseSheet('more-sheet')">
+                    {{ icon('x', 'h-4 w-4') }}<span>Logout</span>
+                </a>
             </div>
         </div>
     </div>
 
     {# Toast region — above the tab bar on mobile, bottom-right on desktop. #}
-    <div id="toast-region" class="fixed bottom-24 md:bottom-4 right-4 flex flex-col gap-2 z-[60]"></div>
+    <div id="toast-region" class="fixed bottom-28 md:bottom-4 right-4 left-4 md:left-auto flex flex-col gap-2 z-[60]"></div>
 
     {# Keyboard cheatsheet modal (behavior unchanged). #}
-    <div id="lens-cheatsheet" class="hidden fixed inset-0 z-[70] flex items-center justify-center bg-black/40"
+    <div id="lens-cheatsheet" x-cloak class="hidden fixed inset-0 z-[70] flex items-center justify-center bg-black/40 p-4"
          onclick="this.classList.add('hidden')">
-        <div class="card p-6 text-sm w-80" onclick="event.stopPropagation()">
+        <div class="card p-6 text-sm w-80 max-w-full" onclick="event.stopPropagation()">
             <h3 class="font-medium text-ink mb-3">Keyboard shortcuts</h3>
-            <dl class="grid grid-cols-[auto_1fr] gap-x-3 gap-y-1 text-muted">
-                <dt class="font-mono text-ink">a</dt><dd>Focus quick-add bar</dd>
-                <dt class="font-mono text-ink">/</dt><dd>Search</dd>
-                <dt class="font-mono text-ink">j / k</dt><dd>Move down / up</dd>
-                <dt class="font-mono text-ink">e / c</dt><dd>Edit row / set category</dd>
-                <dt class="font-mono text-ink">t</dt><dd>Tag row</dd>
-                <dt class="font-mono text-ink">x</dt><dd>Select row</dd>
-                <dt class="font-mono text-ink">u</dt><dd>Undo</dd>
-                <dt class="font-mono text-ink">?</dt><dd>This cheatsheet</dd>
+            <dl class="grid grid-cols-[auto_1fr] gap-x-3 gap-y-1.5 text-muted">
+                <dt><span class="kbd">a</span></dt><dd>Focus quick-add bar</dd>
+                <dt><span class="kbd">/</span></dt><dd>Search</dd>
+                <dt><span class="kbd">j</span> <span class="kbd">k</span></dt><dd>Move down / up</dd>
+                <dt><span class="kbd">e</span> <span class="kbd">c</span></dt><dd>Edit row / set category</dd>
+                <dt><span class="kbd">t</span></dt><dd>Tag row</dd>
+                <dt><span class="kbd">x</span></dt><dd>Select row</dd>
+                <dt><span class="kbd">u</span></dt><dd>Undo</dd>
+                <dt><span class="kbd">?</span></dt><dd>This cheatsheet</dd>
             </dl>
-            <p class="text-xs text-faint mt-3">Press <span class="font-mono">Esc</span> or click outside to close.</p>
+            <p class="text-xs text-muted mt-3">Press <span class="kbd">Esc</span> or click outside to close.</p>
         </div>
     </div>
 </div>

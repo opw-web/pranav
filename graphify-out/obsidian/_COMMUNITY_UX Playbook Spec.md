@@ -35,12 +35,13 @@ SORT file.name ASC
 
 ## Connections to other communities
 - 7 edges to [[_COMMUNITY_CurrentUser]]
+- 1 edge to [[_COMMUNITY_confirm]]
 - 1 edge to [[_COMMUNITY_transactions.py]]
-- 1 edge to [[_COMMUNITY_session.py_2]]
+- 1 edge to [[_COMMUNITY_session.py_1]]
 
 ## Top bridge nodes
 - [[get_account_balances()]] - degree 10, connects to 3 communities
+- [[accounts.py]] - degree 6, connects to 1 community
 - [[reconcile()]] - degree 6, connects to 1 community
 - [[list_accounts()]] - degree 5, connects to 1 community
 - [[create_account()]] - degree 5, connects to 1 community
-- [[rename_account()]] - degree 5, connects to 1 community

@@ -41,11 +41,12 @@ SORT file.name ASC
 
 ## Connections to other communities
 - 4 edges to [[_COMMUNITY_CurrentUser]]
+- 1 edge to [[_COMMUNITY_confirm]]
 - 1 edge to [[_COMMUNITY_Database Schema & Architecture]]
 
 ## Top bridge nodes
+- [[import_.py]] - degree 9, connects to 1 community
 - [[upload()]] - degree 7, connects to 1 community
 - [[preview()]] - degree 7, connects to 1 community
 - [[commit()]] - degree 7, connects to 1 community
 - [[commit_chunk()]] - degree 6, connects to 1 community
-- [[import_page()]] - degree 5, connects to 1 community

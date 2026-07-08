@@ -17,5 +17,6 @@ tags:
 - [[list_accounts()]] - `contains` [EXTRACTED]
 - [[reconcile()]] - `contains` [EXTRACTED]
 - [[rename_account()]] - `contains` [EXTRACTED]
+- [[templating.py]] - `imports_from` [EXTRACTED]
 
 #graphify/code #graphify/EXTRACTED #community/UX_Playbook_Spec

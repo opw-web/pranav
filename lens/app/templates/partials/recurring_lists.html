@@ -1,46 +1,52 @@
 <div id="recurring-lists" class="space-y-6">
     {% if detected %}
-    <section>
+    <section class="reveal">
         <div class="flex items-center justify-between mb-2">
-            <h2 class="text-sm font-medium text-ink">Detected — confirm to track</h2>
+            <p class="eyebrow flex items-center gap-1.5">{{ icon('sparkle', 'h-3.5 w-3.5') }} Detected — confirm to track</p>
             <span class="chip bg-accent-blue text-accent-blue-ink">{{ detected|length }} new</span>
         </div>
-        <div class="card divide-y divide-hair">
+        <div class="shell"><div class="core divide-y divide-hair">
             {% for s in detected %}
             <div class="list-row">
+                <span class="flex items-center justify-center h-9 w-9 rounded-control bg-accent-blue text-accent-blue-ink shrink-0">
+                    {{ icon('repeat', 'h-4 w-4') }}
+                </span>
                 <div class="min-w-0 flex-1">
                     <p class="text-sm text-ink truncate">{{ s.merchant_clean }}</p>
-                    <p class="text-xs text-muted truncate">{{ s.cadence }} · ~₹{{ "%.0f"|format(s.expected_amount) }} · last seen {{ s.last_seen_date }}</p>
+                    <p class="text-xs text-muted truncate">{{ s.cadence }} · <span class="money">{{ money(s.expected_amount) }}</span> · last seen {{ s.last_seen_date }}</p>
                 </div>
                 <form hx-post="/recurring/{{ s.id }}/confirm" hx-target="#recurring-lists" hx-swap="outerHTML" class="shrink-0">
-                    <button type="submit" class="btn btn-primary text-xs">Confirm</button>
+                    <button type="submit" class="btn btn-primary !min-h-9 !py-1.5 !px-3 text-xs">
+                        {{ icon('check', 'h-3.5 w-3.5') }} Confirm
+                    </button>
                 </form>
             </div>
             {% endfor %}
-        </div>
+        </div></div>
     </section>
     {% endif %}
 
-    <section>
-        <h2 class="text-sm font-medium text-ink mb-2">Upcoming</h2>
+    <section class="reveal">
+        <p class="eyebrow mb-2">Upcoming</p>
         {% if upcoming %}
-        <div class="card divide-y divide-hair">
+        <div class="card divide-y divide-hair p-0">
             {% for s in upcoming %}
             <div class="list-row">
                 <p class="text-sm text-ink truncate flex-1">{{ s.merchant_clean }}</p>
-                <p class="text-xs text-muted whitespace-nowrap">due {{ s.next_due_date }} · <span class="font-mono">₹{{ "%.0f"|format(s.expected_amount) }}</span></p>
+                <span class="chip bg-accent-amber text-accent-amber-ink shrink-0">due {{ s.next_due_date }}</span>
+                <span class="money text-sm text-ink whitespace-nowrap">{{ money(s.expected_amount) }}</span>
             </div>
             {% endfor %}
         </div>
         {% else %}
-        <p class="text-sm text-faint py-3">Nothing due soon.</p>
+        <p class="text-sm text-muted py-3">Nothing due soon.</p>
         {% endif %}
     </section>
 
-    <section>
-        <h2 class="text-sm font-medium text-ink mb-2">Active</h2>
+    <section class="reveal">
+        <p class="eyebrow mb-2">Active</p>
         {% if active %}
-        <div class="card divide-y divide-hair">
+        <div class="card divide-y divide-hair p-0">
             {% for s in active %}
             <div class="list-row">
                 <p class="text-sm text-ink truncate flex-1">{{ s.merchant_clean }}</p>
@@ -49,7 +55,7 @@
             {% endfor %}
         </div>
         {% else %}
-        <p class="text-sm text-faint py-3">No active subscriptions yet.</p>
+        <p class="text-sm text-muted py-3">No active subscriptions yet.</p>
         {% endif %}
     </section>
 </div>

@@ -1,35 +1,45 @@
 <div id="category-tree-wrapper"{% if oob %} hx-swap-oob="true"{% endif %}>
 
 {# Mobile: card list (md:hidden) ------------------------------------- #}
-<div class="md:hidden card divide-y divide-hair">
+<div class="md:hidden shell">
+<div class="core divide-y divide-hair">
+    <div class="flex items-center gap-3 min-h-[44px] px-3 py-2">
+        <span class="h-2 w-2 rounded-full shrink-0 bg-hair-strong" aria-hidden="true"></span>
+        <span class="flex-1 text-sm text-muted">Uncategorized</span>
+        <span class="text-xs text-muted shrink-0">system</span>
+    </div>
     {% for g in tree %}
     <div class="py-1">
-        <div class="flex items-center gap-2 min-h-[44px] px-3">
-            <span class="text-base shrink-0" aria-hidden="true">{{ g.icon if g.icon else '🏷️' }}</span>
+        <div class="flex items-center gap-3 min-h-[44px] px-3">
+            <span class="h-2.5 w-2.5 rounded-full shrink-0" aria-hidden="true"
+                  style="background: {{ g.color if g.color else 'var(--color-muted)' }}"></span>
             <form hx-patch="/categories/{{ g.id }}" hx-target="#category-tree-wrapper" hx-swap="outerHTML" class="flex-1 min-w-0">
                 <input name="name" value="{{ g.name }}"
-                       class="w-full bg-transparent border-none text-sm font-medium focus:outline-none focus:underline p-0"
-                       style="color: {{ g.color if g.color else 'var(--color-ink)' }}" />
+                       class="w-full bg-transparent border-none text-sm font-medium text-ink focus:outline-none focus:underline p-0" />
             </form>
-            <span class="text-xs text-faint shrink-0">{{ g.usage_count }}</span>
+            <span class="text-xs text-muted shrink-0 money">{{ g.usage_count }}</span>
             <button hx-delete="/categories/{{ g.id }}" hx-target="#category-tree-wrapper" hx-swap="outerHTML"
                     hx-confirm="Delete '{{ g.name }}'? Its transactions become Uncategorized."
                     aria-label="Delete {{ g.name }}"
-                    class="shrink-0 h-11 w-11 flex items-center justify-center rounded-control text-faint hover:text-accent-red-ink hover:bg-subtle">✕</button>
+                    class="shrink-0 h-11 w-11 flex items-center justify-center rounded-control text-muted hover:text-accent-red-ink hover:bg-hair">
+                {{ icon('trash', 'h-4 w-4') }}
+            </button>
         </div>
         {% for child in g.children %}
-        <div class="flex items-center gap-2 min-h-[44px] pl-9 pr-3">
-            <span class="text-sm shrink-0" aria-hidden="true">{{ child.icon if child.icon else '🏷️' }}</span>
+        <div class="flex items-center gap-3 min-h-[44px] pl-9 pr-3">
+            <span class="h-2 w-2 rounded-full shrink-0" aria-hidden="true"
+                  style="background: {{ child.color if child.color else 'var(--color-muted)' }}"></span>
             <form hx-patch="/categories/{{ child.id }}" hx-target="#category-tree-wrapper" hx-swap="outerHTML" class="flex-1 min-w-0">
                 <input name="name" value="{{ child.name }}"
-                       class="w-full bg-transparent border-none text-sm focus:outline-none focus:underline p-0"
-                       style="color: {{ child.color if child.color else 'var(--color-muted)' }}" />
+                       class="w-full bg-transparent border-none text-sm text-ink-soft focus:outline-none focus:underline p-0" />
             </form>
-            <span class="text-xs text-faint shrink-0">{{ child.usage_count }}</span>
+            <span class="text-xs text-muted shrink-0 money">{{ child.usage_count }}</span>
             <button hx-delete="/categories/{{ child.id }}" hx-target="#category-tree-wrapper" hx-swap="outerHTML"
                     hx-confirm="Delete '{{ child.name }}'? Its transactions become Uncategorized."
                     aria-label="Delete {{ child.name }}"
-                    class="shrink-0 h-11 w-11 flex items-center justify-center rounded-control text-faint hover:text-accent-red-ink hover:bg-subtle">✕</button>
+                    class="shrink-0 h-11 w-11 flex items-center justify-center rounded-control text-muted hover:text-accent-red-ink hover:bg-hair">
+                {{ icon('trash', 'h-4 w-4') }}
+            </button>
         </div>
         {% endfor %}
     </div>
@@ -40,43 +50,58 @@
     </div>
     {% endif %}
 </div>
+</div>
 
 {# Desktop: table (hidden md:block) ----------------------------------- #}
 <div class="hidden md:block card overflow-x-auto">
 <table class="w-full border-collapse text-sm">
     <tbody>
+        <tr class="border-b border-hair">
+            <td class="py-2 px-3 w-6"><span class="h-2 w-2 rounded-full inline-block bg-hair-strong" aria-hidden="true"></span></td>
+            <td class="py-2 px-3 text-muted">Uncategorized</td>
+            <td class="py-2 px-3 text-xs text-muted">system</td>
+            <td class="py-2 px-3"></td>
+        </tr>
     {% for g in tree %}
         <tr class="border-b border-hair">
-            <td class="py-1.5 px-3 w-6">{{ g.icon if g.icon else '🏷️' }}</td>
-            <td class="py-1.5 px-3">
+            <td class="py-2 px-3 w-6">
+                <span class="h-2.5 w-2.5 rounded-full inline-block" aria-hidden="true"
+                      style="background: {{ g.color if g.color else 'var(--color-muted)' }}"></span>
+            </td>
+            <td class="py-2 px-3">
                 <form hx-patch="/categories/{{ g.id }}" hx-target="#category-tree-wrapper" hx-swap="outerHTML">
                     <input name="name" value="{{ g.name }}"
-                           class="bg-transparent border-none text-sm font-medium focus:outline-none focus:underline"
-                           style="color: {{ g.color if g.color else 'var(--color-ink)' }}" />
+                           class="bg-transparent border-none text-sm font-medium text-ink focus:outline-none focus:underline" />
                 </form>
             </td>
-            <td class="py-1.5 px-3 text-xs text-faint">{{ g.usage_count }} txns</td>
-            <td class="py-1.5 px-3 text-right">
+            <td class="py-2 px-3 text-xs text-muted money">{{ g.usage_count }} txns</td>
+            <td class="py-2 px-3 text-right">
                 <button hx-delete="/categories/{{ g.id }}" hx-target="#category-tree-wrapper" hx-swap="outerHTML"
                         hx-confirm="Delete '{{ g.name }}'? Its transactions become Uncategorized."
-                        class="text-xs text-faint hover:text-accent-red-ink">Delete</button>
+                        class="text-xs text-muted hover:text-accent-red-ink inline-flex items-center gap-1">
+                    {{ icon('trash', 'h-3.5 w-3.5') }} Delete
+                </button>
             </td>
         </tr>
         {% for child in g.children %}
         <tr class="border-b border-hair">
-            <td class="py-1 px-3 pl-8 w-6 text-xs">{{ child.icon if child.icon else '🏷️' }}</td>
-            <td class="py-1 px-3">
+            <td class="py-1.5 px-3 pl-8 w-6">
+                <span class="h-2 w-2 rounded-full inline-block" aria-hidden="true"
+                      style="background: {{ child.color if child.color else 'var(--color-muted)' }}"></span>
+            </td>
+            <td class="py-1.5 px-3">
                 <form hx-patch="/categories/{{ child.id }}" hx-target="#category-tree-wrapper" hx-swap="outerHTML">
                     <input name="name" value="{{ child.name }}"
-                           class="bg-transparent border-none text-sm focus:outline-none focus:underline"
-                           style="color: {{ child.color if child.color else 'var(--color-muted)' }}" />
+                           class="bg-transparent border-none text-sm text-ink-soft focus:outline-none focus:underline" />
                 </form>
             </td>
-            <td class="py-1 px-3 text-xs text-faint">{{ child.usage_count }} txns</td>
-            <td class="py-1 px-3 text-right">
+            <td class="py-1.5 px-3 text-xs text-muted money">{{ child.usage_count }} txns</td>
+            <td class="py-1.5 px-3 text-right">
                 <button hx-delete="/categories/{{ child.id }}" hx-target="#category-tree-wrapper" hx-swap="outerHTML"
                         hx-confirm="Delete '{{ child.name }}'? Its transactions become Uncategorized."
-                        class="text-xs text-faint hover:text-accent-red-ink">Delete</button>
+                        class="text-xs text-muted hover:text-accent-red-ink inline-flex items-center gap-1">
+                    {{ icon('trash', 'h-3.5 w-3.5') }} Delete
+                </button>
             </td>
         </tr>
         {% endfor %}

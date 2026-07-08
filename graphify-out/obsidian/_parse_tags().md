@@ -2,7 +2,7 @@
 source_file: "lens/app/routers/transactions.py"
 type: "code"
 community: "CurrentUser"
-location: "L30"
+location: "L27"
 tags:
   - graphify/code
   - graphify/EXTRACTED

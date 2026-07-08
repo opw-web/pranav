@@ -5,16 +5,21 @@
 {% block content %}
 <div class="space-y-4">
 
-    <div class="flex items-center justify-between">
-        <h1 class="font-display text-xl text-ink hidden md:block">Transactions</h1>
-        <button type="button" onclick="lensOpenSheet('add-txn-sheet')" class="btn btn-secondary md:ml-auto">+ Add manually</button>
+    <div class="flex items-center justify-between reveal">
+        <h1 class="font-semibold text-xl text-ink hidden md:block">Transactions</h1>
+        <button type="button" onclick="lensOpenSheet('add-txn-sheet')" class="btn btn-secondary md:ml-auto">
+            {{ icon('plus', 'h-4 w-4') }} Add manually
+        </button>
     </div>
 
     {# --- Filter / search bar --------------------------------------------- #}
     {% set qsuffix = ('&q=' ~ filters.q) if filters.q else '' %}
-    <form method="get" action="/txn" class="flex flex-col gap-2 md:flex-row md:items-center md:gap-3">
-        <input type="text" name="q" value="{{ filters.q or '' }}" placeholder="Search merchant or notes…"
-               class="field md:max-w-xs" />
+    <form method="get" action="/txn" class="flex flex-col gap-2 md:flex-row md:items-center md:gap-3 reveal">
+        <div class="relative md:max-w-xs w-full">
+            <span class="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-muted">{{ icon('search', 'h-4 w-4') }}</span>
+            <input type="text" name="q" value="{{ filters.q or '' }}" placeholder="Search merchant or notes…"
+                   class="field pl-9" />
+        </div>
         <div class="segment overflow-x-auto" role="tablist">
             <a href="/txn{{ ('?q=' ~ filters.q) if filters.q else '' }}"
                class="segment-item {{ 'is-active' if not filters.type }}" aria-selected="{{ 'true' if not filters.type else 'false' }}">All</a>
@@ -26,19 +31,22 @@
                class="segment-item {{ 'is-active' if filters.type == 'transfer' }}" aria-selected="{{ 'true' if filters.type == 'transfer' else 'false' }}">Transfer</a>
         </div>
         <a href="/txn?uncategorized=true{{ qsuffix }}"
-           class="text-xs shrink-0 {{ 'text-accent-blue-ink font-medium' if filters.uncategorized else 'text-muted hover:text-ink' }}">
-            {{ '✓ ' if filters.uncategorized else '' }}Uncategorized only
+           class="chip shrink-0 {{ 'bg-accent-blue text-accent-blue-ink font-medium' if filters.uncategorized else 'bg-hair text-muted hover:text-ink' }}">
+            {% if filters.uncategorized %}{{ icon('check', 'h-3.5 w-3.5') }}{% endif %}
+            Uncategorized only
         </a>
     </form>
 
     {# --- Bulk action bar + table: both inside #txn-bulk-form so hx-include="closest form"
          on the buttons below picks up every checked txn_ids checkbox from the table. --- #}
     <form id="txn-bulk-form" class="space-y-3">
-        <div class="card flex items-center gap-2 px-3 py-2 text-xs flex-wrap">
-            <span class="text-faint">Bulk:</span>
+        <div class="card flex items-center gap-2 px-3 py-2 text-xs flex-wrap reveal">
+            <span class="text-muted">Bulk:</span>
             <button type="button" hx-post="/txn/bulk" hx-vals='{"action":"delete"}' hx-target="#txn-table" hx-swap="outerHTML"
                     hx-include="closest form" hx-confirm="Delete all selected transactions?"
-                    class="text-accent-red-ink hover:underline min-h-[32px] px-1">Delete selected</button>
+                    class="text-accent-red-ink hover:underline min-h-[32px] px-1 inline-flex items-center gap-1">
+                {{ icon('trash', 'h-3.5 w-3.5') }} Delete selected
+            </button>
             <span class="text-hair-strong">|</span>
             <span class="text-muted">Set category:</span>
             <select name="bulk_category_id" class="field w-auto min-h-0 py-1 px-2 text-xs">
@@ -46,7 +54,7 @@
                 {% for c in categories %}<option value="{{ c.id }}">{{ c.label }}</option>{% endfor %}
             </select>
             <button type="button" hx-post="/txn/bulk" hx-vals='{"action":"category"}' hx-target="#txn-table" hx-swap="outerHTML"
-                    hx-include="closest form" class="text-ink hover:underline min-h-[32px] px-1">Apply</button>
+                    hx-include="closest form" class="text-ink hover:underline min-h-[32px] px-1 font-medium">Apply</button>
         </div>
 
         {% include "partials/txn_table.html" %}
@@ -64,13 +72,13 @@
               class="space-y-3">
             <div class="grid grid-cols-2 gap-3">
                 <div>
-                    <label class="block text-xs text-muted mb-1">Account</label>
+                    <label class="field-label">Account</label>
                     <select name="account_id" required class="field">
                         {% for a in accounts %}<option value="{{ a.id }}">{{ a.name }}</option>{% endfor %}
                     </select>
                 </div>
                 <div>
-                    <label class="block text-xs text-muted mb-1">Type</label>
+                    <label class="field-label">Type</label>
                     <select name="type" required class="field">
                         <option value="expense">Expense</option>
                         <option value="income">Income</option>
@@ -81,37 +89,41 @@
             </div>
             <div class="grid grid-cols-2 gap-3">
                 <div>
-                    <label class="block text-xs text-muted mb-1">Amount</label>
-                    <input name="amount" type="number" step="0.01" required class="field font-mono" />
+                    <label class="field-label">Amount</label>
+                    <input name="amount" type="number" step="0.01" required class="field money" />
                 </div>
                 <div>
-                    <label class="block text-xs text-muted mb-1">Date</label>
+                    <label class="field-label">Date</label>
                     <input name="txn_date" type="date" value="{{ today }}" required class="field" />
                 </div>
             </div>
             <div>
-                <label class="block text-xs text-muted mb-1">Merchant</label>
+                <label class="field-label">Merchant</label>
                 <input name="merchant_clean" type="text" class="field" />
             </div>
             <div class="relative" x-data="{ open: false }">
-                <label class="block text-xs text-muted mb-1">Category</label>
+                <label class="field-label">Category</label>
                 <input type="hidden" name="category_id" id="new-txn-category-id" />
                 <button type="button"
                         @click="open = !open; window.lensCategoryTarget = {type: 'new', idFieldId: 'new-txn-category-id', labelFieldId: 'new-txn-category-label'}"
                         class="field w-full flex items-center justify-between">
                     <span id="new-txn-category-label">Uncategorized</span>
-                    <span aria-hidden="true" class="text-faint">▾</span>
+                    {{ icon('caret-down', 'h-4 w-4 text-muted') }}
                 </button>
                 <div x-show="open" x-cloak x-on:click.outside="open = false" class="absolute z-10 mt-1 w-full">
-                    <input type="text" placeholder="Search or create…" autocomplete="off"
-                           hx-get="/category-picker" hx-trigger="keyup changed delay:150ms, focus"
-                           hx-target="#new-txn-picker-slot" hx-swap="innerHTML"
-                           class="field mb-1" />
-                    <div id="new-txn-picker-slot"></div>
+                    <div class="shell">
+                    <div class="core p-2">
+                        <input type="text" placeholder="Search or create…" autocomplete="off"
+                               hx-get="/category-picker" hx-trigger="keyup changed delay:150ms, focus"
+                               hx-target="#new-txn-picker-slot" hx-swap="innerHTML"
+                               class="field mb-1" />
+                        <div id="new-txn-picker-slot"></div>
+                    </div>
+                    </div>
                 </div>
             </div>
             <div>
-                <label class="block text-xs text-muted mb-1">To account (transfer only)</label>
+                <label class="field-label">To account (transfer only)</label>
                 <select name="transfer_account_id" class="field">
                     <option value="">—</option>
                     {% for a in accounts %}<option value="{{ a.id }}">{{ a.name }}</option>{% endfor %}
@@ -119,11 +131,11 @@
             </div>
             <div class="grid grid-cols-2 gap-3">
                 <div>
-                    <label class="block text-xs text-muted mb-1">Notes</label>
+                    <label class="field-label">Notes</label>
                     <input name="notes" type="text" class="field" />
                 </div>
                 <div>
-                    <label class="block text-xs text-muted mb-1">Tags</label>
+                    <label class="field-label">Tags</label>
                     <input name="tags" type="text" placeholder="goa,trip" class="field" />
                 </div>
             </div>

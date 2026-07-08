@@ -39,13 +39,14 @@ SORT file.name ASC
 
 ## Connections to other communities
 - 3 edges to [[_COMMUNITY_CurrentUser]]
+- 1 edge to [[_COMMUNITY_confirm]]
 - 1 edge to [[_COMMUNITY_Backend Service Requirements]]
 - 1 edge to [[_COMMUNITY_main.py]]
-- 1 edge to [[_COMMUNITY_session.py_2]]
+- 1 edge to [[_COMMUNITY_session.py_1]]
 
 ## Top bridge nodes
 - [[categorize()]] - degree 5, connects to 2 communities
 - [[learn()]] - degree 7, connects to 1 community
 - [[resolve_category_key()]] - degree 6, connects to 1 community
+- [[rules.py]] - degree 5, connects to 1 community
 - [[rules_page()]] - degree 5, connects to 1 community
-- [[delete_rule()]] - degree 5, connects to 1 community

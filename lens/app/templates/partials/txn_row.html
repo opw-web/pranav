@@ -1,7 +1,7 @@
-{% set amt_color = 'text-accent-red-ink' if t.type == 'expense' else ('text-accent-green-ink' if t.type in ('income', 'refund') else 'text-muted') %}
+{% set amt_color = 'text-accent-red-ink' if t.type == 'expense' else ('text-accent-green-ink' if t.type == 'income' else 'text-muted') %}
 {% set amt_sign = '-' if t.type == 'expense' else ('+' if t.type in ('income', 'refund') else '') %}
 <tr id="txn-row-{{ t.id }}"
-    class="flex items-start gap-2 px-3 py-3 border-b border-hair last:border-b-0 hover:bg-subtle
+    class="flex items-start gap-2 px-3 py-3 border-b border-hair last:border-b-0 hover:bg-hair/40 transition-colors
            md:table-row md:flex-none md:gap-0 md:px-0 md:py-0 md:border-b md:border-hair">
     {# --- col 1: checkbox (always visible; shared by mobile + desktop) --- #}
     <td class="shrink-0 md:table-cell md:w-8 md:py-2 md:px-2 md:align-middle">
@@ -15,18 +15,18 @@
         hx-get="/txn/{{ t.id }}/edit" hx-target="#txn-row-{{ t.id }}" hx-swap="outerHTML">
         <div class="flex items-start justify-between gap-2">
             <p class="text-sm text-ink font-medium truncate">{{ t.merchant_clean or t.merchant_raw or '—' }}</p>
-            <span class="font-mono text-sm whitespace-nowrap shrink-0 {{ amt_color }}">
-                {{ amt_sign }}{{ t.currency }} {{ "%.2f"|format(t.amount) }}
+            <span class="money text-sm whitespace-nowrap shrink-0 {{ amt_color }}">
+                {{ amt_sign }}{{ money(t.amount, t.currency) }}
             </span>
         </div>
-        <div class="flex items-center gap-2 mt-1 flex-wrap">
+        <div class="flex items-center gap-1.5 mt-1.5 flex-wrap">
             <p class="text-xs text-muted truncate">{{ t.txn_date }} · {{ t.account_name }}</p>
             {% if t.category_name %}
             <span class="chip shrink-0" style="background: {{ t.category_color }}22; color: {{ t.category_color }}">
                 {{ t.category_name }}
             </span>
             {% else %}
-            <span class="chip bg-subtle text-faint shrink-0">Uncategorized</span>
+            <span class="chip bg-hair text-muted shrink-0">Uncategorized</span>
             {% endif %}
         </div>
         {% if t.type == 'transfer' %}
@@ -34,38 +34,38 @@
         {% endif %}
         {% if t.tags_csv or t.notes %}
         <div class="flex items-center gap-1 mt-1.5 flex-wrap">
-            {% if t.tags_csv %}{% for tag in t.tags_csv.split(',') %}<span class="chip bg-subtle text-muted">#{{ tag }}</span>{% endfor %}{% endif %}
-            {% if t.notes %}<span class="text-xs text-faint truncate">{{ t.notes }}</span>{% endif %}
+            {% if t.tags_csv %}{% for tag in t.tags_csv.split(',') %}<span class="chip bg-hair text-muted">#{{ tag }}</span>{% endfor %}{% endif %}
+            {% if t.notes %}<span class="text-xs text-muted truncate">{{ t.notes }}</span>{% endif %}
         </div>
         {% endif %}
     </td>
 
     {# --- desktop-only individual columns (hidden below md) --- #}
-    <td class="hidden md:table-cell md:py-2 md:px-3 md:whitespace-nowrap md:cursor-pointer md:text-ink"
+    <td class="hidden md:table-cell md:py-2.5 md:px-3 md:whitespace-nowrap md:cursor-pointer md:text-ink md:text-sm"
         hx-get="/txn/{{ t.id }}/edit" hx-target="#txn-row-{{ t.id }}" hx-swap="outerHTML">
         {{ t.txn_date }}
     </td>
-    <td class="hidden md:table-cell md:py-2 md:px-3 md:text-muted md:whitespace-nowrap">{{ t.account_name }}</td>
-    <td class="hidden md:table-cell md:py-2 md:px-3 md:cursor-pointer md:text-ink"
+    <td class="hidden md:table-cell md:py-2.5 md:px-3 md:text-muted md:text-sm md:whitespace-nowrap">{{ t.account_name }}</td>
+    <td class="hidden md:table-cell md:py-2.5 md:px-3 md:cursor-pointer md:text-ink md:text-sm"
         hx-get="/txn/{{ t.id }}/edit" hx-target="#txn-row-{{ t.id }}" hx-swap="outerHTML">
         {{ t.merchant_clean or t.merchant_raw or '—' }}
     </td>
-    <td class="hidden md:table-cell md:py-2 md:px-3 md:cursor-pointer"
+    <td class="hidden md:table-cell md:py-2.5 md:px-3 md:cursor-pointer"
         hx-get="/txn/{{ t.id }}/edit" hx-target="#txn-row-{{ t.id }}" hx-swap="outerHTML">
         {% if t.category_name %}
         <span class="chip" style="background: {{ t.category_color }}22; color: {{ t.category_color }}">
             {{ (t.parent_category_name ~ ' › ') if t.parent_category_name else '' }}{{ t.category_name }}
         </span>
         {% else %}
-        <span class="chip bg-subtle text-faint">Uncategorized</span>
+        <span class="chip bg-hair text-muted">Uncategorized</span>
         {% endif %}
     </td>
-    <td class="hidden md:table-cell md:py-2 md:px-3 md:text-right md:font-mono md:whitespace-nowrap {{ amt_color }}">
-        {{ amt_sign }}{{ t.currency }} {{ "%.2f"|format(t.amount) }}
-        {% if t.type == 'transfer' %}<span class="block text-xs text-faint">→ {{ t.transfer_account_name }}</span>{% endif %}
+    <td class="hidden md:table-cell md:py-2.5 md:px-3 md:text-right {{ amt_color }}">
+        <span class="money text-sm whitespace-nowrap">{{ amt_sign }}{{ money(t.amount, t.currency) }}</span>
+        {% if t.type == 'transfer' %}<span class="block text-xs text-muted font-sans">→ {{ t.transfer_account_name }}</span>{% endif %}
     </td>
-    <td class="hidden md:table-cell md:py-2 md:px-3 md:text-muted">
-        {% if t.tags_csv %}{% for tag in t.tags_csv.split(',') %}<span class="chip bg-subtle text-muted mr-1">#{{ tag }}</span>{% endfor %}{% endif %}
+    <td class="hidden md:table-cell md:py-2.5 md:px-3 md:text-muted md:text-sm">
+        {% if t.tags_csv %}{% for tag in t.tags_csv.split(',') %}<span class="chip bg-hair text-muted mr-1">#{{ tag }}</span>{% endfor %}{% endif %}
         {{ t.notes or '' }}
     </td>
 
@@ -73,15 +73,15 @@
     <td class="shrink-0 md:table-cell md:w-10 md:py-2 md:px-2 md:text-right">
         <button type="button" hx-delete="/txn/{{ t.id }}" hx-target="#txn-row-{{ t.id }}" hx-swap="outerHTML"
                 aria-label="Delete transaction"
-                class="h-11 w-11 md:h-8 md:w-8 flex items-center justify-center rounded-control text-faint hover:text-accent-red-ink hover:bg-subtle">
-            <span aria-hidden="true" class="text-lg md:text-base leading-none">×</span>
+                class="h-11 w-11 md:h-8 md:w-8 flex items-center justify-center rounded-control text-muted hover:text-accent-red-ink hover:bg-hair">
+            {{ icon('trash', 'h-4 w-4') }}
         </button>
     </td>
 </tr>
 {% if is_duplicate_warning %}
 <tr id="txn-row-{{ t.id }}-dupwarn" class="block md:table-row">
     <td colspan="8" class="block md:table-cell text-xs text-accent-amber-ink bg-accent-amber px-3 py-1.5">
-        Looks similar to another transaction on the same day — added anyway.
+        {{ icon('warning', 'h-3.5 w-3.5 inline -mt-0.5 mr-1') }}Looks similar to another transaction on the same day — added anyway.
     </td>
 </tr>
 {% endif %}

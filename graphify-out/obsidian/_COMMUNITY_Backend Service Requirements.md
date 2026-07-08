@@ -42,12 +42,13 @@ SORT file.name ASC
 
 ## Connections to other communities
 - 7 edges to [[_COMMUNITY_CurrentUser]]
+- 1 edge to [[_COMMUNITY_confirm]]
 - 1 edge to [[_COMMUNITY_Database Schema & Architecture]]
-- 1 edge to [[_COMMUNITY_session.py_2]]
+- 1 edge to [[_COMMUNITY_session.py_1]]
 
 ## Top bridge nodes
 - [[get_grouped_tree()]] - degree 13, connects to 3 communities
+- [[categories.py]] - degree 7, connects to 1 community
 - [[category_picker()]] - degree 6, connects to 1 community
 - [[create_category_route()]] - degree 6, connects to 1 community
 - [[rename_category_route()]] - degree 6, connects to 1 community
-- [[merge_categories_route()]] - degree 6, connects to 1 community

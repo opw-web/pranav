@@ -2,7 +2,7 @@
 source_file: "lens/app/auth/routes.py"
 type: "code"
 community: "routes.py"
-location: "L79"
+location: "L76"
 tags:
   - graphify/code
   - graphify/EXTRACTED

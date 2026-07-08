@@ -2,7 +2,7 @@
 source_file: "lens/app/routers/rules.py"
 type: "rationale"
 community: "Database Schema & Architecture"
-location: "L49"
+location: "L47"
 tags:
   - graphify/rationale
   - graphify/EXTRACTED

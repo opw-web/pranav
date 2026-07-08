@@ -1,9 +1,12 @@
 {% macro option_row(c) %}
-<li class="list-row cursor-pointer hover:bg-subtle {{ 'pl-9' if c.is_child else '' }}"
+<li class="list-row cursor-pointer {{ 'pl-9' if c.is_child else '' }}"
     data-category-id="{{ c.id }}" data-category-name="{{ c.label if c.label else c.name }}"
-    onclick="lensSelectCategory(this)">
-    <span class="text-base shrink-0" aria-hidden="true">{{ c.icon if c.icon else '🏷️' }}</span>
-    <span class="text-sm truncate flex-1 min-w-0" style="color: {{ c.color if c.color else 'var(--color-ink)' }}">{{ c.label if c.label else c.name }}</span>
-    {% if c.usage_count %}<span class="text-xs text-faint shrink-0">{{ c.usage_count }}×</span>{% endif %}
+    onclick="lensSelectCategory(this)"
+    role="option" tabindex="0"
+    onkeydown="if(event.key==='Enter'){lensSelectCategory(this)}">
+    <span class="h-2 w-2 rounded-full shrink-0" aria-hidden="true"
+          style="background: {{ c.color if c.color else 'var(--color-muted)' }}"></span>
+    <span class="text-sm truncate flex-1 min-w-0 text-ink">{{ c.label if c.label else c.name }}</span>
+    {% if c.usage_count %}<span class="text-xs text-muted shrink-0 money">{{ c.usage_count }}×</span>{% endif %}
 </li>
 {% endmacro %}

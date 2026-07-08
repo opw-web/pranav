@@ -1,9 +1,7 @@
 from datetime import date
-from pathlib import Path
 
 from fastapi import APIRouter, Depends, Form, Request
 from fastapi.responses import HTMLResponse
-from fastapi.templating import Jinja2Templates
 from sqlalchemy import text
 from sqlalchemy.ext.asyncio import AsyncSession
 
@@ -22,9 +20,9 @@ from app.services.transactions import (
     soft_delete_transaction,
     update_transaction,
 )
+from app.templating import templates
 
 router = APIRouter()
-templates = Jinja2Templates(directory=Path(__file__).resolve().parent.parent / "templates")
 
 
 def _parse_tags(raw: str | None) -> list[str]:

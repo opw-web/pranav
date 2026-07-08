@@ -2,19 +2,17 @@ import json
 import urllib.error
 import urllib.parse
 import urllib.request
-from pathlib import Path
 
 from fastapi import APIRouter, Request
 from fastapi.responses import RedirectResponse
-from fastapi.templating import Jinja2Templates
 
 from app.auth import session as session_mod
 from app.config import settings
 from app.database import get_scoped_db
 from app.services.onboarding import ensure_onboarded
+from app.templating import templates
 
 router = APIRouter()
-templates = Jinja2Templates(directory=Path(__file__).resolve().parent.parent / "templates")
 
 
 @router.get("/login")

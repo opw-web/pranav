@@ -1,20 +1,28 @@
 ---
 type: community
-members: 7
+members: 15
 ---
 
 # session.py
 
-**Members:** 7 nodes
+**Members:** 15 nodes
 
 ## Members
-- [[AsyncSession_8]] - code
-- [[Request_11]] - code
-- [[_fetch_rows()]] - code - lens/app/routers/settings.py
-- [[export_csv()]] - code - lens/app/routers/settings.py
-- [[export_json()]] - code - lens/app/routers/settings.py
-- [[settings.py]] - code - lens/app/routers/settings.py
-- [[settings_page()]] - code - lens/app/routers/settings.py
+- [[AsyncSession_16]] - code
+- [[Deterministic tokenizer for the Quick-Add bar (§5.1). NOT AI — pure pattern matc]] - rationale - lens/app/services/quickadd_parser.py
+- [[ParsedQuickAdd]] - code - lens/app/services/quickadd_parser.py
+- [[Ties the deterministic parser + categorizer + accountcategory token resolution]] - rationale - lens/app/services/quickadd.py
+- [[_default_for_dateutil()]] - code - lens/app/services/quickadd_parser.py
+- [[_flatten_tree()]] - code - lens/app/services/quickadd.py
+- [[_label_for()]] - code - lens/app/services/quickadd.py
+- [[_resolve_account()]] - code - lens/app/services/quickadd.py
+- [[_resolve_forced_category()]] - code - lens/app/services/quickadd.py
+- [[_try_parse_date()]] - code - lens/app/services/quickadd_parser.py
+- [[build_quickadd_preview()]] - code - lens/app/services/quickadd.py
+- [[date_3]] - code
+- [[parse_quickadd()]] - code - lens/app/services/quickadd_parser.py
+- [[quickadd.py]] - code - lens/app/services/quickadd.py
+- [[quickadd_parser.py]] - code - lens/app/services/quickadd_parser.py
 
 ## Live Query (requires Dataview plugin)
 
@@ -24,9 +32,11 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-- 3 edges to [[_COMMUNITY_CurrentUser]]
+- 2 edges to [[_COMMUNITY_CurrentUser]]
+- 1 edge to [[_COMMUNITY_UX Playbook Spec]]
+- 1 edge to [[_COMMUNITY_Backend Service Requirements]]
+- 1 edge to [[_COMMUNITY_Database Schema & Architecture]]
 
 ## Top bridge nodes
-- [[export_csv()]] - degree 4, connects to 1 community
-- [[export_json()]] - degree 4, connects to 1 community
-- [[settings_page()]] - degree 3, connects to 1 community
+- [[build_quickadd_preview()]] - degree 11, connects to 3 communities
+- [[_resolve_account()]] - degree 4, connects to 1 community

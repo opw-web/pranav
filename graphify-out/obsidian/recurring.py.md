@@ -14,5 +14,6 @@ tags:
 ## Connections
 - [[confirm()]] - `contains` [EXTRACTED]
 - [[recurring_page()]] - `contains` [EXTRACTED]
+- [[templating.py]] - `imports_from` [EXTRACTED]
 
 #graphify/code #graphify/EXTRACTED #community/confirm

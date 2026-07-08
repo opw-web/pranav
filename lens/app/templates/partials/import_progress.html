@@ -1,10 +1,17 @@
-<div class="card p-5">
+<div data-wiz-step="4" class="reveal card p-5">
     {% if not done %}
-    <p class="text-sm text-ink mb-2">Importing… <span class="font-mono">{{ processed }} / {{ total }}</span></p>
-    <div class="w-full bg-subtle rounded-full h-2 mb-1 overflow-hidden">
-        <div class="bg-ink h-2 rounded-full transition-all" style="width: {{ (processed / total * 100) if total else 100 }}%"></div>
+    <p class="text-sm text-ink mb-3 flex items-center justify-between">
+        <span>Importing…</span>
+        <span class="money text-ink">{{ processed }} / {{ total }}</span>
+    </p>
+    <div class="w-full bg-hair rounded-full h-2 mb-2 overflow-hidden">
+        <div class="bg-brand h-2 rounded-full transition-all duration-500" style="width: {{ (processed / total * 100) if total else 100 }}%"></div>
     </div>
-    <p class="text-xs text-faint">Hang tight — large files import in chunks.</p>
+    <div class="space-y-2 mt-4" aria-hidden="true">
+        <div class="skeleton h-3 w-2/3"></div>
+        <div class="skeleton h-3 w-1/2"></div>
+    </div>
+    <p class="text-xs text-muted mt-3">Hang tight — large files import in chunks.</p>
 
     {# Auto-fire the next chunk on load — keeps each request small enough
        to stay under serverless time limits (§2.7). Do not remove hx-trigger="load". #}
@@ -24,16 +31,23 @@
         <input type="hidden" name="running_review" value="{{ needs_review }}" />
     </form>
     {% else %}
-    <p class="font-display text-xl text-ink mb-1">Import complete</p>
-    <p class="text-sm text-muted mb-5">
-        Imported <strong class="text-ink">{{ imported }}</strong> ·
-        Skipped <strong class="text-ink">{{ skipped }}</strong> duplicates ·
-        <strong class="text-ink">{{ needs_review }}</strong> need a category.
-    </p>
-    <div class="flex flex-col sm:flex-row gap-2">
+    <div class="flex items-center gap-3 mb-3">
+        <span class="flex items-center justify-center h-11 w-11 rounded-full bg-accent-green text-accent-green-ink shrink-0">
+            {{ icon('check', 'h-5 w-5') }}
+        </span>
+        <div>
+            <p class="text-lg font-semibold text-ink">Import complete</p>
+            <p class="text-sm text-muted">
+                <strong class="text-ink">{{ imported }}</strong> imported ·
+                <strong class="text-ink">{{ skipped }}</strong> duplicates skipped ·
+                <strong class="text-ink">{{ needs_review }}</strong> need a category
+            </p>
+        </div>
+    </div>
+    <div class="flex flex-col sm:flex-row gap-2 mt-4">
         {% if needs_review %}
         <a href="/txn?uncategorized=1" class="btn btn-primary w-full sm:w-auto">
-            Review {{ needs_review }} uncategorized →
+            Review {{ needs_review }} uncategorized {{ icon('arrow-up-right', 'h-4 w-4') }}
         </a>
         {% endif %}
         <a href="/txn?account_id={{ account_id }}" class="btn btn-secondary w-full sm:w-auto">

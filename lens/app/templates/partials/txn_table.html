@@ -1,28 +1,31 @@
-<div class="card overflow-hidden md:overflow-x-auto" id="txn-table">
-    <table class="w-full block md:table text-sm">
-        <thead class="hidden md:table-header-group">
-            <tr class="text-left text-xs uppercase tracking-wide text-faint border-b border-hair">
-                <th class="py-2 px-2 font-medium"></th>
-                <th class="py-2 px-3 font-medium">Date</th>
-                <th class="py-2 px-3 font-medium">Account</th>
-                <th class="py-2 px-3 font-medium">Merchant</th>
-                <th class="py-2 px-3 font-medium">Category</th>
-                <th class="py-2 px-3 font-medium text-right">Amount</th>
-                <th class="py-2 px-3 font-medium">Notes / Tags</th>
-                <th class="py-2 px-2 font-medium"></th>
-            </tr>
-        </thead>
-        <tbody id="txn-tbody" class="block md:table-row-group">
-            {% for t in txns %}
-                {% include "partials/txn_row.html" %}
-            {% endfor %}
-            {% if not txns %}
-            <tr class="block md:table-row">
-                <td colspan="8" class="block md:table-cell text-center text-sm text-faint py-16">
-                    No transactions yet. Try <span class="font-mono">a</span> to quick-add.
-                </td>
-            </tr>
-            {% endif %}
-        </tbody>
-    </table>
+<div class="shell md:shadow-none md:bg-transparent md:p-0" id="txn-table">
+    <div class="core overflow-hidden md:overflow-x-auto md:shadow-card md:border md:border-hair">
+        <table class="w-full block md:table text-sm">
+            <thead class="hidden md:table-header-group">
+                <tr class="text-left text-xs uppercase tracking-wide text-muted border-b border-hair">
+                    <th class="py-2.5 px-2 font-medium"></th>
+                    <th class="py-2.5 px-3 font-medium">Date</th>
+                    <th class="py-2.5 px-3 font-medium">Account</th>
+                    <th class="py-2.5 px-3 font-medium">Merchant</th>
+                    <th class="py-2.5 px-3 font-medium">Category</th>
+                    <th class="py-2.5 px-3 font-medium text-right">Amount</th>
+                    <th class="py-2.5 px-3 font-medium">Notes / Tags</th>
+                    <th class="py-2.5 px-2 font-medium"></th>
+                </tr>
+            </thead>
+            <tbody id="txn-tbody" class="block md:table-row-group">
+                {% for t in txns %}
+                    {% include "partials/txn_row.html" %}
+                {% endfor %}
+                {% if not txns %}
+                <tr class="block md:table-row">
+                    <td colspan="8" class="block md:table-cell text-center py-16">
+                        <p class="text-sm font-medium text-ink mb-1">No transactions yet</p>
+                        <p class="text-xs text-muted">Press <span class="kbd">a</span> or tap + to quick-add.</p>
+                    </td>
+                </tr>
+                {% endif %}
+            </tbody>
+        </table>
+    </div>
 </div>

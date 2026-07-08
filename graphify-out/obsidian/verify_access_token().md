@@ -1,12 +1,12 @@
 ---
 source_file: "lens/app/auth/session.py"
 type: "code"
-community: "session.py"
+community: "routes.py"
 location: "L32"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/sessionpy
+  - community/routespy
 ---
 
 # verify_access_token()
@@ -16,4 +16,4 @@ tags:
 - [[_fetch_jwks()]] - `calls` [EXTRACTED]
 - [[session.py]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/sessionpy
+#graphify/code #graphify/EXTRACTED #community/routespy

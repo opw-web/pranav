@@ -2,18 +2,16 @@ import csv
 import io
 import json
 from datetime import date
-from pathlib import Path
 
 from fastapi import APIRouter, Depends, Request
 from fastapi.responses import StreamingResponse
-from fastapi.templating import Jinja2Templates
 from sqlalchemy import text
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.auth.deps import CurrentUser, get_current_user, get_scoped_session
+from app.templating import templates
 
 router = APIRouter()
-templates = Jinja2Templates(directory=Path(__file__).resolve().parent.parent / "templates")
 
 # Full row with human-readable names (not just ids) so the backup restores standalone (Check 15).
 _EXPORT_SQL = """

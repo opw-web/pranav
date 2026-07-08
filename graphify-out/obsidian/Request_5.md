@@ -1,11 +1,11 @@
 ---
 source_file: ""
 type: "code"
-community: "transactions.py"
+community: "confirm"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/transactionspy
+  - community/confirm
 ---
 
 # Request
@@ -13,4 +13,4 @@ tags:
 ## Connections
 - [[dashboard()]] - `references` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/transactionspy
+#graphify/code #graphify/EXTRACTED #community/confirm

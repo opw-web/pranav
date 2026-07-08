@@ -16,5 +16,6 @@ tags:
 - [[delete_rule()]] - `contains` [EXTRACTED]
 - [[learn()]] - `contains` [EXTRACTED]
 - [[rules_page()]] - `contains` [EXTRACTED]
+- [[templating.py]] - `imports_from` [EXTRACTED]
 
 #graphify/code #graphify/EXTRACTED #community/Database_Schema__Architecture

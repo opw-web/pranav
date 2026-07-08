@@ -167,7 +167,91 @@ document.addEventListener("keydown", (e) => {
     document.getElementById("more-sheet")?.classList.add("hidden");
     const shell = document.getElementById("quickadd-shell");
     const bar = document.getElementById("quickadd-bar");
-    if (shell && bar && window.matchMedia("(max-width: 767px)").matches && !bar.value) {
+    if (shell && bar && !bar.value) {
         shell.classList.add("hidden");
     }
 });
+
+// ============================================================================
+// Theme (light / dark / system), written to `data-theme` + localStorage so
+// the CSS `:root[data-theme="dark"]` / `[data-theme="light"]` overrides in
+// input.css win over the OS `prefers-color-scheme` in both directions.
+// ============================================================================
+const LENS_THEME_KEY = "lens-theme";
+
+function lensSetTheme(choice) {
+    if (choice === "system") {
+        document.documentElement.removeAttribute("data-theme");
+        try { localStorage.removeItem(LENS_THEME_KEY); } catch (e) {}
+    } else {
+        document.documentElement.setAttribute("data-theme", choice);
+        try { localStorage.setItem(LENS_THEME_KEY, choice); } catch (e) {}
+    }
+    lensReflectThemeChoice();
+}
+
+function lensReflectThemeChoice() {
+    let current = "system";
+    try { current = localStorage.getItem(LENS_THEME_KEY) || "system"; } catch (e) {}
+    document.querySelectorAll("[data-theme-choice]").forEach((btn) => {
+        const active = btn.getAttribute("data-theme-choice") === current;
+        btn.classList.toggle("is-active", active);
+        btn.setAttribute("aria-selected", active ? "true" : "false");
+    });
+}
+
+function lensInitTheme() {
+    // The inline <script> in base.html already applies the saved theme before
+    // paint (avoids a flash); this just syncs the More-sheet segment UI.
+    lensReflectThemeChoice();
+}
+
+document.addEventListener("DOMContentLoaded", lensInitTheme);
+
+// ============================================================================
+// Scroll-reveal: fades/slides `.reveal` elements in once they enter the
+// viewport. Respects prefers-reduced-motion via the CSS rule that neutralizes
+// the transition; the class toggle itself is harmless either way.
+// ============================================================================
+if ("IntersectionObserver" in window) {
+    const lensRevealObserver = new IntersectionObserver(
+        (entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("is-visible");
+                    lensRevealObserver.unobserve(entry.target);
+                }
+            });
+        },
+        { threshold: 0.1, rootMargin: "0px 0px -40px 0px" }
+    );
+
+    function lensObserveReveals() {
+        document.querySelectorAll(".reveal:not(.is-visible)").forEach((el) => lensRevealObserver.observe(el));
+    }
+
+    document.addEventListener("DOMContentLoaded", lensObserveReveals);
+    // Re-scan after HTMX swaps content in (new `.reveal` nodes from partials).
+    document.body.addEventListener("htmx:afterSwap", lensObserveReveals);
+} else {
+    // No IO support: just show everything.
+    document.addEventListener("DOMContentLoaded", () => {
+        document.querySelectorAll(".reveal").forEach((el) => el.classList.add("is-visible"));
+    });
+}
+
+// ============================================================================
+// Wizard step helper (multi-step forms, e.g. the import wizard). Shows the
+// step whose element has `data-wiz-step === n` and hides the rest; toggles
+// a matching `.segment-item`/progress dot with `data-wiz-dot === n` if present.
+// ============================================================================
+function lensWizStep(n) {
+    document.querySelectorAll("[data-wiz-step]").forEach((el) => {
+        const step = Number(el.getAttribute("data-wiz-step"));
+        el.classList.toggle("hidden", step !== Number(n));
+    });
+    document.querySelectorAll("[data-wiz-dot]").forEach((el) => {
+        const step = Number(el.getAttribute("data-wiz-dot"));
+        el.classList.toggle("is-active", step === Number(n));
+    });
+}

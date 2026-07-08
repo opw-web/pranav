@@ -1,12 +1,12 @@
 ---
 source_file: "lens/app/routers/dashboard.py"
 type: "code"
-community: "transactions.py"
-location: "L18"
+community: "confirm"
+location: "L16"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/transactionspy
+  - community/confirm
 ---
 
 # dashboard()
@@ -21,4 +21,4 @@ tags:
 - [[spending_detective()]] - `calls` [INFERRED]
 - [[upcoming()]] - `calls` [INFERRED]
 
-#graphify/code #graphify/EXTRACTED #community/transactionspy
+#graphify/code #graphify/EXTRACTED #community/confirm

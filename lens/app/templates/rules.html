@@ -3,14 +3,14 @@
 {% block topbar_title %}Rules{% endblock %}
 {% block content %}
 <div class="max-w-2xl mx-auto space-y-4">
-    <div>
-        <h1 class="hidden md:block text-lg font-semibold text-ink mb-1">Categorization rules</h1>
+    <div class="reveal">
+        <h1 class="hidden md:block text-xl font-semibold text-ink mb-1">Categorization rules</h1>
         <p class="text-sm text-muted">
             These run before the shipped merchant dictionary, so your corrections always win.
             Lower priority numbers run first.
         </p>
     </div>
-    <div class="card overflow-hidden p-0">
+    <div class="reveal card overflow-hidden p-0">
         {% include "partials/rules_table.html" %}
     </div>
 </div>

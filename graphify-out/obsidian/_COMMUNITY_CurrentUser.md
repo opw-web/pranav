@@ -53,13 +53,13 @@ SORT file.name ASC
 ## Connections to other communities
 - 7 edges to [[_COMMUNITY_UX Playbook Spec]]
 - 7 edges to [[_COMMUNITY_Backend Service Requirements]]
+- 4 edges to [[_COMMUNITY_confirm]]
 - 4 edges to [[_COMMUNITY_main.py]]
 - 3 edges to [[_COMMUNITY_routes.py]]
-- 3 edges to [[_COMMUNITY_transactions.py]]
 - 3 edges to [[_COMMUNITY_Database Schema & Architecture]]
-- 3 edges to [[_COMMUNITY_session.py_1]]
-- 2 edges to [[_COMMUNITY_confirm]]
-- 2 edges to [[_COMMUNITY_session.py_2]]
+- 3 edges to [[_COMMUNITY_session.py]]
+- 2 edges to [[_COMMUNITY_session.py_1]]
+- 1 edge to [[_COMMUNITY_transactions.py]]
 - 1 edge to [[_COMMUNITY_Build Script Entry Point]]
 
 ## Top bridge nodes

@@ -1,15 +1,13 @@
-from pathlib import Path
 
 from fastapi import APIRouter, Depends, Form, Request
-from fastapi.templating import Jinja2Templates
 from sqlalchemy import text
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.auth.deps import CurrentUser, get_current_user, get_scoped_session
 from app.services.categorizer import back_apply_rule, learn_rule
+from app.templating import templates
 
 router = APIRouter()
-templates = Jinja2Templates(directory=Path(__file__).resolve().parent.parent / "templates")
 
 
 async def _rules_with_names(db: AsyncSession, user_id: str):

@@ -1,18 +1,19 @@
 {% if learn_offer %}
 <div id="learn-offer" hx-swap-oob="innerHTML:#learn-offer-region">
-    <div class="rounded-control bg-accent-blue text-accent-blue-ink px-4 py-2.5 text-sm flex items-center gap-3 flex-wrap">
-        <span>Always categorize <strong>{{ learn_offer.merchant }}</strong> as
+    <div class="reveal card flex items-center gap-3 px-4 py-3 text-sm flex-wrap bg-accent-blue text-accent-blue-ink border-0">
+        {{ icon('sparkle', 'h-4 w-4 shrink-0') }}
+        <span class="flex-1 min-w-[12rem]">Always categorize <strong>{{ learn_offer.merchant }}</strong> as
             <strong>{{ learn_offer.category_name }}</strong>?</span>
-        <form hx-post="/rules/learn" hx-swap="none" class="flex items-center gap-2 flex-wrap"
+        <form hx-post="/rules/learn" hx-swap="none" class="flex items-center gap-3 flex-wrap"
               hx-on::after-request="document.getElementById('learn-offer')?.remove()">
             <input type="hidden" name="txn_id" value="{{ learn_offer.txn_id }}" />
             <input type="hidden" name="category_id" value="{{ learn_offer.category_id }}" />
-            <label class="flex items-center gap-1 text-xs">
-                <input type="checkbox" name="back_apply" checked class="h-4 w-4" /> also fix past matches
+            <label class="flex items-center gap-1.5 text-xs">
+                <input type="checkbox" name="back_apply" checked class="h-4 w-4 rounded accent-ink" /> also fix past matches
             </label>
-            <button type="submit" class="rounded-control bg-accent-blue-ink text-brand-ink px-3 py-1 text-xs font-medium">Yes</button>
+            <button type="submit" class="btn btn-primary !min-h-8 !py-1 !px-3 text-xs">Yes</button>
         </form>
-        <button class="text-xs underline" onclick="document.getElementById('learn-offer').remove()">No</button>
+        <button type="button" aria-label="Dismiss" class="text-xs underline shrink-0" onclick="document.getElementById('learn-offer').remove()">No</button>
     </div>
 </div>
 {% endif %}

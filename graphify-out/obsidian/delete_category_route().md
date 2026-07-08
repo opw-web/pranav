@@ -2,7 +2,7 @@
 source_file: "lens/app/routers/categories.py"
 type: "code"
 community: "Backend Service Requirements"
-location: "L107"
+location: "L105"
 tags:
   - graphify/code
   - graphify/EXTRACTED

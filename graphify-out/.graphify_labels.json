@@ -72,7 +72,6 @@
   "70": "CurrentUser",
   "71": "quickadd_parser.py",
   "72": "importer.py",
-  "73": "session.py",
   "74": "test_importer.py",
   "75": "detect_series_for_merchant",
   "76": "confirm",
@@ -81,10 +80,5 @@
   "79": "2. ARCHITECTURE",
   "80": "LENS — the expense app that shows you *why*",
   "81": "vercel.json",
-  "82": "4. Patterns (copy-paste)",
-  "83": "session.py",
-  "84": "LENS — V1: THE EXPENSE APP THAT SHOWS YOU *WHY*",
-  "85": "4. REQUIREMENTS",
-  "86": "5. THE UX PLAYBOOK (this is the product — treat as spec)",
-  "87": "1. IDEA CONTEXT (read this first)"
+  "82": "4. Patterns (copy-paste)"
 }

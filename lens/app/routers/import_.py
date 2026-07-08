@@ -1,10 +1,8 @@
 import base64
 import json
 import uuid
-from pathlib import Path
 
 from fastapi import APIRouter, Depends, Form, Request, UploadFile
-from fastapi.templating import Jinja2Templates
 from sqlalchemy import text
 from sqlalchemy.ext.asyncio import AsyncSession
 
@@ -16,9 +14,9 @@ from app.services.import_commit import (
     recall_column_mapping,
     save_column_mapping,
 )
+from app.templating import templates
 
 router = APIRouter()
-templates = Jinja2Templates(directory=Path(__file__).resolve().parent.parent / "templates")
 
 ROLES = ["date", "amount", "debit", "credit", "desc"]
 

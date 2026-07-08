@@ -1,4 +1,4 @@
-<tr id="txn-row-{{ t.id }}" class="flex flex-col gap-3 p-3 bg-subtle
+<tr id="txn-row-{{ t.id }}" class="flex flex-col gap-3 p-3 bg-brand-soft/40
     md:table-row md:flex-none md:gap-0 md:p-0" x-data="{ categoryOpen: false }">
     {# checkbox column — kept functional (not just a spacer) so bulk-select state
        and the 'x' keyboard shortcut (app.js: lensActiveRow.querySelector("input[type='checkbox']"))
@@ -10,58 +10,62 @@
     </td>
 
     <td class="md:table-cell md:py-2 md:px-2">
-        <label class="block text-xs text-muted mb-1 md:hidden">Date</label>
+        <label class="field-label md:hidden">Date</label>
         <input type="date" name="txn_date" value="{{ t.txn_date }}"
                hx-patch="/txn/{{ t.id }}" hx-trigger="change" hx-target="#txn-row-{{ t.id }}" hx-swap="outerHTML"
-               class="field md:w-32 md:min-h-0 md:py-1 md:text-sm" />
-        <p class="text-xs text-faint mt-1 md:hidden">{{ t.account_name }}</p>
+               class="field md:w-32 md:min-h-0 md:py-1.5 md:text-sm" />
+        <p class="text-xs text-muted mt-1 md:hidden">{{ t.account_name }}</p>
     </td>
-    <td class="hidden md:table-cell md:py-2 md:px-3 md:text-muted md:whitespace-nowrap">{{ t.account_name }}</td>
+    <td class="hidden md:table-cell md:py-2 md:px-3 md:text-muted md:text-sm md:whitespace-nowrap">{{ t.account_name }}</td>
 
     <td class="md:table-cell md:py-2 md:px-2">
-        <label class="block text-xs text-muted mb-1 md:hidden">Merchant</label>
+        <label class="field-label md:hidden">Merchant</label>
         <input type="text" name="merchant_clean" value="{{ t.merchant_clean or '' }}" placeholder="Merchant"
                hx-patch="/txn/{{ t.id }}" hx-trigger="blur" hx-target="#txn-row-{{ t.id }}" hx-swap="outerHTML"
-               class="field md:w-32 md:min-h-0 md:py-1 md:text-sm" />
+               class="field md:w-32 md:min-h-0 md:py-1.5 md:text-sm" />
     </td>
 
     <td class="relative md:table-cell md:py-2 md:px-2">
-        <label class="block text-xs text-muted mb-1 md:hidden">Category</label>
+        <label class="field-label md:hidden">Category</label>
         <button type="button"
                 @click="categoryOpen = !categoryOpen; window.lensCategoryTarget = {type: 'txn', id: '{{ t.id }}'}"
-                class="field w-full flex items-center justify-between md:w-auto md:min-h-0 md:py-1 md:px-2 md:text-xs">
-            <span>{{ t.category_name or 'Uncategorized' }}</span>
-            <span aria-hidden="true" class="text-faint">▾</span>
+                class="field w-full flex items-center justify-between md:w-auto md:min-h-0 md:py-1.5 md:px-2 md:text-xs">
+            <span class="truncate">{{ t.category_name or 'Uncategorized' }}</span>
+            {{ icon('caret-down', 'h-3.5 w-3.5 text-muted shrink-0') }}
         </button>
         <div x-show="categoryOpen" x-cloak x-on:click.outside="categoryOpen = false"
              class="absolute z-10 mt-1 w-full sm:w-64">
-            <input type="text" placeholder="Search or create…" autocomplete="off"
-                   hx-get="/category-picker" hx-trigger="keyup changed delay:150ms, focus"
-                   hx-target="#picker-slot-{{ t.id }}" hx-swap="innerHTML"
-                   class="field mb-1 md:min-h-0 md:py-1 md:text-xs" />
-            <div id="picker-slot-{{ t.id }}"></div>
+            <div class="shell">
+            <div class="core p-2">
+                <input type="text" placeholder="Search or create…" autocomplete="off"
+                       hx-get="/category-picker" hx-trigger="keyup changed delay:150ms, focus"
+                       hx-target="#picker-slot-{{ t.id }}" hx-swap="innerHTML"
+                       class="field mb-1 md:min-h-0 md:py-1.5 md:text-xs" />
+                <div id="picker-slot-{{ t.id }}"></div>
+            </div>
+            </div>
         </div>
     </td>
 
     <td class="md:table-cell md:py-2 md:px-2">
-        <label class="block text-xs text-muted mb-1 md:hidden">Amount</label>
+        <label class="field-label md:hidden">Amount</label>
         <input type="number" step="0.01" name="amount" value="{{ t.amount }}"
                hx-patch="/txn/{{ t.id }}" hx-trigger="blur" hx-target="#txn-row-{{ t.id }}" hx-swap="outerHTML"
-               class="field font-mono md:w-24 md:min-h-0 md:py-1 md:text-sm md:text-right" />
+               class="field money md:w-24 md:min-h-0 md:py-1.5 md:text-sm md:text-right" />
     </td>
 
     <td class="flex flex-col gap-2 md:table-cell md:flex-row md:py-2 md:px-2">
         <div>
-            <label class="block text-xs text-muted mb-1 md:hidden">Notes</label>
+            <label class="field-label md:hidden">Notes</label>
             <input type="text" name="notes" value="{{ t.notes or '' }}" placeholder="Notes"
                    hx-patch="/txn/{{ t.id }}" hx-trigger="blur" hx-target="#txn-row-{{ t.id }}" hx-swap="outerHTML"
-                   class="field md:w-24 md:min-h-0 md:py-1 md:text-sm" />
+                   class="field md:w-24 md:min-h-0 md:py-1.5 md:text-sm" />
         </div>
         <div>
-            <label class="block text-xs text-muted mb-1 md:hidden">Tags</label>
+            <label class="field-label md:hidden">Tags</label>
             <input type="text" name="tags" value="{{ t.tags_csv or '' }}" placeholder="tags,comma"
                    hx-patch="/txn/{{ t.id }}" hx-trigger="blur" hx-target="#txn-row-{{ t.id }}" hx-swap="outerHTML"
-                   class="field md:w-24 md:min-h-0 md:py-1 md:text-sm" />
+                   class="field md:w-24 md:min-h-0 md:py-1.5 md:text-sm" />
         </div>
     </td>
 

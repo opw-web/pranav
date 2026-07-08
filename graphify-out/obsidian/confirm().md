@@ -2,7 +2,7 @@
 source_file: "lens/app/routers/recurring.py"
 type: "code"
 community: "confirm"
-location: "L29"
+location: "L27"
 tags:
   - graphify/code
   - graphify/EXTRACTED

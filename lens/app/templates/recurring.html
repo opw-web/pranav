@@ -1,10 +1,11 @@
 {% extends "base.html" %}
 {% block title %}Recurring — LENS{% endblock %}
+{% set active_tab = 'recurring' %}
 {% block topbar_title %}Recurring{% endblock %}
 {% block content %}
 <div class="max-w-2xl mx-auto space-y-5">
-    <div>
-        <h1 class="hidden md:block font-display text-xl text-ink mb-1">Recurring &amp; subscriptions</h1>
+    <div class="reveal">
+        <h1 class="hidden md:block text-xl font-semibold text-ink mb-1">Recurring &amp; subscriptions</h1>
         <p class="text-sm text-muted">Detected from your history. Confirm the ones you want tracked — nothing is auto-added.</p>
     </div>
     {% include "partials/recurring_lists.html" %}

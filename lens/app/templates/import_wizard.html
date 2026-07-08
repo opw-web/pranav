@@ -3,43 +3,30 @@
 {% block topbar_title %}Import{% endblock %}
 {% block content %}
 <div class="max-w-2xl mx-auto space-y-5">
-    <div>
-        <h1 class="hidden md:block font-display text-xl text-ink mb-1">Import a bank statement</h1>
+    <div class="reveal">
+        <h1 class="hidden md:block text-xl font-semibold text-ink mb-1">Import a bank statement</h1>
         <p class="text-sm text-muted">Drop a CSV. LENS detects the format, remembers it, and auto-categorizes.</p>
     </div>
 
     {# ---------------------------------------------------------------
-       Step indicator. Purely visual — updated client-side by
-       lensWizStep(n) below, called from each step's hx-on::after-request.
+       Step indicator. Purely visual — driven by the shared lensWizStep(n)
+       helper in app.js, which shows the [data-wiz-step=n] element and
+       toggles .is-active on [data-wiz-dot=n] elements. Called from each
+       step's hx-on::after-request below and in the swapped-in partials.
        --------------------------------------------------------------- #}
-    <ol class="flex items-start w-full" aria-label="Import steps">
-        <li class="flex items-center flex-1">
-            <div class="flex flex-col items-center gap-1 shrink-0 w-14">
-                <span data-wiz-dot="1" class="h-7 w-7 rounded-full flex items-center justify-center text-xs font-medium bg-ink text-brand-ink">1</span>
-                <span data-wiz-label="1" class="text-[10px] leading-none text-center text-ink">Upload</span>
+    <ol class="reveal flex items-start w-full" aria-label="Import steps">
+        {% for n, label in [(1, 'Upload'), (2, 'Map'), (3, 'Preview'), (4, 'Import')] %}
+        <li class="flex items-center {{ 'flex-1' if not loop.last else '' }}">
+            <div class="flex flex-col items-center gap-1.5 shrink-0 w-16">
+                <span data-wiz-dot="{{ n }}"
+                      class="h-8 w-8 rounded-full flex items-center justify-center text-xs font-medium bg-hair text-muted transition-colors [&.is-active]:bg-ink [&.is-active]:text-brand-ink {{ 'is-active' if n == 1 }}">{{ n }}</span>
+                <span class="text-[11px] leading-none text-center text-muted">{{ label }}</span>
             </div>
-            <div data-wiz-line="1" class="h-px flex-1 mx-1 -mt-4 bg-hair"></div>
+            {% if not loop.last %}
+            <div class="h-px flex-1 mx-1 -mt-5 bg-hair"></div>
+            {% endif %}
         </li>
-        <li class="flex items-center flex-1">
-            <div class="flex flex-col items-center gap-1 shrink-0 w-14">
-                <span data-wiz-dot="2" class="h-7 w-7 rounded-full flex items-center justify-center text-xs font-medium bg-subtle text-faint">2</span>
-                <span data-wiz-label="2" class="text-[10px] leading-none text-center text-faint">Map</span>
-            </div>
-            <div data-wiz-line="2" class="h-px flex-1 mx-1 -mt-4 bg-hair"></div>
-        </li>
-        <li class="flex items-center flex-1">
-            <div class="flex flex-col items-center gap-1 shrink-0 w-14">
-                <span data-wiz-dot="3" class="h-7 w-7 rounded-full flex items-center justify-center text-xs font-medium bg-subtle text-faint">3</span>
-                <span data-wiz-label="3" class="text-[10px] leading-none text-center text-faint">Preview</span>
-            </div>
-            <div data-wiz-line="3" class="h-px flex-1 mx-1 -mt-4 bg-hair"></div>
-        </li>
-        <li class="flex items-center">
-            <div class="flex flex-col items-center gap-1 shrink-0 w-14">
-                <span data-wiz-dot="4" class="h-7 w-7 rounded-full flex items-center justify-center text-xs font-medium bg-subtle text-faint">4</span>
-                <span data-wiz-label="4" class="text-[10px] leading-none text-center text-faint">Import</span>
-            </div>
-        </li>
+        {% endfor %}
     </ol>
 
     {# ---------------------------------------------------------------
@@ -47,67 +34,42 @@
        partial); hidden client-side once analysis succeeds and the
        mapping step lands in #import-step.
        --------------------------------------------------------------- #}
-    <div id="wiz-step1" class="card p-5">
-        <p class="text-sm font-medium text-ink mb-3">Choose account &amp; file</p>
-        <form hx-post="/import/upload" hx-target="#import-step" hx-swap="innerHTML"
-              hx-encoding="multipart/form-data"
-              hx-disabled-elt="find button[type=submit]"
-              hx-on::after-request="if (event.detail.successful) lensWizStep(2)"
-              class="space-y-4">
-            <label class="block">
-                <span class="block text-xs text-muted mb-1">Target account</span>
-                <select name="account_id" required class="field">
-                    {% for a in accounts %}<option value="{{ a.id }}">{{ a.name }}</option>{% endfor %}
-                </select>
-            </label>
-
-            <div>
-                <span class="block text-xs text-muted mb-1">CSV file</span>
-                <label for="import-file"
-                       class="flex flex-col items-center justify-center gap-2 rounded-card border-2 border-dashed border-hair-strong bg-subtle/60 px-4 py-10 text-center cursor-pointer active:bg-subtle transition-colors">
-                    <span class="text-2xl" aria-hidden="true">⇪</span>
-                    <span id="import-filename" class="text-sm text-ink font-medium">Tap to choose a CSV file</span>
-                    <span id="import-filehint" class="text-xs text-faint">or drag &amp; drop</span>
+    <div id="wiz-step1" data-wiz-step="1" class="reveal shell">
+        <div class="core p-5">
+            <p class="text-sm font-medium text-ink mb-4">Choose account &amp; file</p>
+            <form hx-post="/import/upload" hx-target="#import-step" hx-swap="innerHTML"
+                  hx-encoding="multipart/form-data"
+                  hx-disabled-elt="find button[type=submit]"
+                  hx-on::after-request="if (event.detail.successful) lensWizStep(2)"
+                  class="space-y-4">
+                <label class="block">
+                    <span class="field-label">Target account</span>
+                    <select name="account_id" required class="field">
+                        {% for a in accounts %}<option value="{{ a.id }}">{{ a.name }}</option>{% endfor %}
+                    </select>
                 </label>
-                <input id="import-file" type="file" name="file" accept=".csv,text/csv" required class="sr-only"
-                       onchange="document.getElementById('import-filename').textContent = this.files[0] ? this.files[0].name : 'Tap to choose a CSV file'; document.getElementById('import-filehint').classList.toggle('hidden', !!this.files[0]);" />
-            </div>
 
-            <button type="submit" class="btn btn-primary w-full">Analyze file</button>
-        </form>
+                <div>
+                    <span class="field-label">CSV file</span>
+                    {# Tactile double-bezel dropzone: shell + inner dashed core. #}
+                    <label for="import-file" class="shell block cursor-pointer">
+                        <div class="core flex flex-col items-center justify-center gap-2 rounded-card border-2 border-dashed border-hair-strong px-4 py-10 text-center transition-colors hover:bg-brand-soft/40 active:scale-[.99]">
+                            <span class="flex items-center justify-center h-11 w-11 rounded-full bg-brand-soft text-brand">
+                                {{ icon('upload', 'h-5 w-5') }}
+                            </span>
+                            <span id="import-filename" class="text-sm text-ink font-medium">Tap to choose a CSV file</span>
+                            <span id="import-filehint" class="text-xs text-muted">or drag &amp; drop</span>
+                        </div>
+                    </label>
+                    <input id="import-file" type="file" name="file" accept=".csv,text/csv" required class="sr-only"
+                           onchange="document.getElementById('import-filename').textContent = this.files[0] ? this.files[0].name : 'Tap to choose a CSV file'; document.getElementById('import-filehint').classList.toggle('hidden', !!this.files[0]);" />
+                </div>
+
+                <button type="submit" class="btn btn-primary w-full">Analyze file</button>
+            </form>
+        </div>
     </div>
 
     <div id="import-step"></div>
 </div>
-
-<script>
-// Purely cosmetic step-indicator sync — called from hx-on::after-request
-// handlers in this file and in partials/import_mapping.html /
-// import_preview.html. Global on purpose: those partials swap into
-// #import-step's innerHTML and need to reach this function.
-function lensWizStep(n) {
-    document.getElementById('wiz-step1')?.classList.toggle('hidden', n > 1);
-    document.querySelectorAll('[data-wiz-dot]').forEach(function (el) {
-        var i = parseInt(el.dataset.wizDot, 10);
-        el.classList.remove('bg-ink', 'text-brand-ink', 'bg-subtle', 'text-faint');
-        if (i <= n) {
-            el.classList.add('bg-ink', 'text-brand-ink');
-            el.textContent = i < n ? '✓' : String(i);
-        } else {
-            el.classList.add('bg-subtle', 'text-faint');
-            el.textContent = String(i);
-        }
-    });
-    document.querySelectorAll('[data-wiz-label]').forEach(function (el) {
-        var i = parseInt(el.dataset.wizLabel, 10);
-        el.classList.toggle('text-ink', i <= n);
-        el.classList.toggle('text-faint', i > n);
-    });
-    document.querySelectorAll('[data-wiz-line]').forEach(function (el) {
-        var i = parseInt(el.dataset.wizLine, 10);
-        el.classList.toggle('bg-ink', i < n);
-        el.classList.toggle('bg-hair', i >= n);
-    });
-}
-</script>
 {% endblock %}

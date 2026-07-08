@@ -1,14 +1,22 @@
 {% if mode == "error" %}
-<div class="rounded-control bg-accent-red text-accent-red-ink text-xs px-3 py-2 mt-1">
-    {% if p.parsed.errors %}{{ p.parsed.errors[0] }}{% else %}Couldn't add that — check the amount and try again.{% endif %}
+<div class="rounded-control bg-accent-red text-accent-red-ink text-xs px-3 py-2 mt-1.5 flex items-center gap-2 reveal">
+    {{ icon('warning', 'h-3.5 w-3.5 shrink-0') }}
+    <span>{% if p.parsed.errors %}{{ p.parsed.errors[0] }}{% else %}Couldn't add that — check the amount and try again.{% endif %}</span>
 </div>
 {% else %}
-<div class="text-xs text-muted py-1 flex items-center gap-1 flex-wrap">
-    <span class="font-mono text-ink">₹{{ "%.2f"|format(p.parsed.amount) if p.parsed.amount is not none else "?" }}</span>
-    <span>· {{ p.merchant_clean or "no merchant" }}</span>
-    <span>· {{ p.category_label }}</span>
-    <span>· {{ p.parsed.txn_date }}</span>
-    <span>· {{ p.account.name if p.account else "no account" }}</span>
-    {% if p.parsed.tags %}<span>· {% for t in p.parsed.tags %}#{{ t }} {% endfor %}</span>{% endif %}
+<div class="text-xs text-muted py-1.5 px-1 flex items-center gap-x-2 gap-y-1 flex-wrap reveal">
+    <span class="money text-ink font-medium">{{ money(p.parsed.amount, p.account.currency if p.account else 'INR') if p.parsed.amount is not none else '?' }}</span>
+    <span class="text-hair-strong">·</span>
+    <span>{{ p.merchant_clean or "no merchant" }}</span>
+    <span class="text-hair-strong">·</span>
+    <span class="chip bg-hair text-muted">{{ p.category_label }}</span>
+    <span class="text-hair-strong">·</span>
+    <span>{{ p.parsed.txn_date }}</span>
+    <span class="text-hair-strong">·</span>
+    <span>{{ p.account.name if p.account else "no account" }}</span>
+    {% if p.parsed.tags %}
+    <span class="text-hair-strong">·</span>
+    {% for t in p.parsed.tags %}<span class="chip bg-hair text-muted">#{{ t }}</span>{% endfor %}
+    {% endif %}
 </div>
 {% endif %}

@@ -4,70 +4,91 @@
 {% block topbar_title %}Home{% endblock %}
 {% block content %}
 {% if empty %}
-<div class="text-center py-16 max-w-sm mx-auto">
-    <p class="font-display text-2xl text-ink mb-1">Welcome to LENS</p>
+<div class="reveal text-center py-16 max-w-sm mx-auto">
+    <div class="shell inline-block mb-6">
+        <div class="core p-5">
+            {{ icon('sparkle', 'h-8 w-8 text-brand') }}
+        </div>
+    </div>
+    <p class="text-2xl font-semibold text-ink mb-1">Welcome to LENS</p>
     <p class="text-sm text-muted mb-8">Let's get your money in. Two ways to start:</p>
     <div class="flex flex-col gap-3">
-        <a href="/import" class="btn btn-primary w-full">Import a bank statement</a>
-        <button type="button" onclick="lensToggleQuickadd()" class="btn btn-secondary w-full">Add your first transaction</button>
+        <a href="/import" class="btn btn-primary w-full">{{ icon('upload', 'h-4 w-4') }} Import a bank statement</a>
+        <button type="button" onclick="lensToggleQuickadd()" class="btn btn-secondary w-full">{{ icon('plus', 'h-4 w-4') }} Add your first transaction</button>
     </div>
-    <p class="text-xs text-faint mt-6">Tip: press <span class="font-mono">a</span> anywhere to quick-add.</p>
+    <p class="text-xs text-muted mt-6">Tip: press <span class="kbd">a</span> anywhere to quick-add.</p>
 </div>
 {% else %}
 <div class="space-y-5">
 
-    <!-- Hero: safe-to-spend — tap to reveal the breakdown (never a naked number) -->
-    <div x-data="{ open: false }" class="card p-6">
-        <button type="button" class="w-full flex items-baseline justify-between gap-3 text-left" @click="open = !open" :aria-expanded="open.toString()">
-            <div class="min-w-0">
-                <p class="text-xs uppercase tracking-wide text-faint">Safe to spend · rest of month</p>
-                <p class="font-display text-5xl leading-none mt-2 {{ 'text-accent-red-ink' if sts.safe_to_spend < 0 else 'text-ink' }}">
-                    ₹{{ "{:,.0f}".format(sts.safe_to_spend) }}
-                </p>
-            </div>
-            <span class="shrink-0 text-xs text-muted underline decoration-hair" x-text="open ? 'hide breakdown' : 'how?'"></span>
-        </button>
-        <div x-show="open" x-cloak class="mt-4 pt-4 border-t border-hair text-sm space-y-1.5 text-muted">
-            <div class="flex justify-between"><span>Spendable balance</span><span class="font-mono text-ink">₹{{ "{:,.0f}".format(sts.spendable_balance) }}</span></div>
-            <div class="flex justify-between"><span>− Upcoming committed (bills/subs)</span><span class="font-mono text-ink">₹{{ "{:,.0f}".format(sts.upcoming_committed) }}</span></div>
-            <div class="flex justify-between"><span>− Essential spend still expected</span><span class="font-mono text-ink">₹{{ "{:,.0f}".format(sts.essential_remaining) }}</span></div>
-            <div class="flex justify-between font-medium text-ink pt-1.5 border-t border-hair">
-                <span>= Safe to spend</span><span class="font-mono">₹{{ "{:,.0f}".format(sts.safe_to_spend) }}</span>
+    <!-- Hero: safe-to-spend — double-bezel shell/core, tap to reveal the breakdown -->
+    <div class="reveal shell">
+        <div x-data="{ open: false }" class="core p-6">
+            <button type="button" class="w-full flex items-start justify-between gap-3 text-left" @click="open = !open" :aria-expanded="open.toString()">
+                <div class="min-w-0">
+                    <p class="eyebrow">Safe to spend · rest of month</p>
+                    <p class="money text-5xl leading-none mt-2 {{ 'text-accent-red-ink' if sts.safe_to_spend < 0 else 'text-ink' }}">
+                        {{ money(sts.safe_to_spend) }}
+                    </p>
+                </div>
+                <span class="shrink-0 flex items-center gap-1 text-xs text-muted mt-1.5">
+                    <span x-text="open ? 'hide' : 'how?'"></span>
+                    <span :class="open ? 'rotate-180' : ''" class="transition-transform duration-200">{{ icon('caret-down', 'h-3.5 w-3.5') }}</span>
+                </span>
+            </button>
+            <div x-show="open" x-cloak x-transition class="mt-4 pt-4 border-t border-hair text-sm space-y-2 text-muted">
+                <div class="flex justify-between"><span>Spendable balance</span><span class="money text-ink">{{ money(sts.spendable_balance) }}</span></div>
+                <div class="flex justify-between"><span>&minus; Upcoming committed (bills/subs)</span><span class="money text-ink">{{ money(sts.upcoming_committed) }}</span></div>
+                <div class="flex justify-between"><span>&minus; Essential spend still expected</span><span class="money text-ink">{{ money(sts.essential_remaining) }}</span></div>
+                <div class="flex justify-between font-medium text-ink pt-2 border-t border-hair">
+                    <span>= Safe to spend</span><span class="money {{ 'text-accent-red-ink' if sts.safe_to_spend < 0 else 'text-ink' }}">{{ money(sts.safe_to_spend) }}</span>
+                </div>
             </div>
         </div>
     </div>
 
-    <!-- This month vs normal: templated Detective callout -->
-    <div class="card p-5">
-        <div class="flex items-center justify-between mb-1">
-            <h2 class="text-sm font-medium text-ink">This month vs your normal</h2>
-            <a href="/insights" class="text-xs text-accent-blue-ink">what changed →</a>
-        </div>
-        <p class="text-sm text-muted">{{ detective.headline }}</p>
-        <p class="text-xs text-faint mt-1">
-            ₹{{ "{:,.0f}".format(detective.cur_total) }} spent so far · ₹{{ "{:,.0f}".format(detective.prev_total) }} last month
-        </p>
-    </div>
+    <!-- Bento: detective callout + upcoming committed -->
+    <div class="grid gap-4 md:grid-cols-5">
 
-    {% if upcoming %}
-    <div class="card p-5">
-        <h2 class="text-sm font-medium text-ink mb-1">Upcoming committed payments</h2>
-        <div class="divide-y divide-hair -mx-5">
-            {% for s in upcoming %}
-            <div class="flex items-center justify-between gap-3 px-5 py-2.5 text-sm">
-                <span class="text-ink truncate">{{ s.merchant_clean }}</span>
-                <span class="text-muted font-mono text-xs whitespace-nowrap">due {{ s.next_due_date }} · ₹{{ "%.0f"|format(s.expected_amount or 0) }}</span>
+        <!-- This month vs normal: templated Detective callout -->
+        <div class="reveal card p-5 md:col-span-3">
+            <div class="flex items-center justify-between mb-2">
+                <p class="eyebrow flex items-center gap-1.5">{{ icon('sparkle', 'h-3.5 w-3.5') }} This month vs your normal</p>
+                <a href="/insights" class="text-xs text-brand font-medium whitespace-nowrap">what changed →</a>
             </div>
-            {% endfor %}
+            <p class="text-sm text-ink-soft leading-snug">{{ detective.headline }}</p>
+            <div class="flex items-center gap-4 mt-3 pt-3 border-t border-hair text-xs text-muted">
+                <span class="money">{{ money(detective.cur_total) }} <span class="font-sans text-muted">so far</span></span>
+                <span class="money">{{ money(detective.prev_total) }} <span class="font-sans text-muted">last month</span></span>
+            </div>
+        </div>
+
+        <!-- Upcoming committed payments -->
+        <div class="reveal card p-5 md:col-span-2">
+            <p class="eyebrow flex items-center gap-1.5 mb-2">{{ icon('repeat', 'h-3.5 w-3.5') }} Upcoming</p>
+            {% if upcoming %}
+            <div class="divide-y divide-hair -mx-5">
+                {% for s in upcoming[:4] %}
+                <div class="flex items-center justify-between gap-3 px-5 py-2.5">
+                    <span class="text-sm text-ink truncate">{{ s.merchant_clean }}</span>
+                    <div class="text-right shrink-0">
+                        <p class="money text-sm text-ink">{{ money(s.expected_amount or 0) }}</p>
+                        <p class="text-xs text-muted whitespace-nowrap">due {{ s.next_due_date }}</p>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            {% else %}
+            <p class="text-sm text-muted py-4 text-center">Nothing due soon.</p>
+            {% endif %}
         </div>
     </div>
-    {% endif %}
 
     <!-- Recent activity (inline-editable rows) -->
-    <div class="card p-5">
+    <div class="reveal card p-5">
         <div class="flex items-center justify-between mb-2">
-            <h2 class="text-sm font-medium text-ink">Recent activity</h2>
-            <a href="/txn" class="text-xs text-accent-blue-ink">all transactions →</a>
+            <p class="eyebrow flex items-center gap-1.5">{{ icon('receipt', 'h-3.5 w-3.5') }} Recent activity</p>
+            <a href="/txn" class="text-xs text-brand font-medium whitespace-nowrap">all transactions →</a>
         </div>
         {% if recent %}
         <div class="overflow-hidden md:overflow-x-auto -mx-5 px-5">

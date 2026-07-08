@@ -2,7 +2,7 @@
 <div class="core p-5 space-y-4">
     {% if recognized %}
     <div class="rounded-control bg-accent-green text-accent-green-ink text-sm px-3 py-2 flex items-center gap-2">
-        {{ icon('check', 'h-4 w-4 shrink-0') }} Recognized this bank's format — mapping pre-filled.
+        {{ icon('check', 'h-4 w-4 shrink-0') }} Recognized this bank's format - mapping pre-filled.
     </div>
     {% else %}
     <p class="text-sm text-muted">Confirm the column roles below.</p>
@@ -27,7 +27,7 @@
                 <label class="block">
                     <span class="field-label">{{ role|capitalize }}</span>
                     <select name="map_{{ role }}" class="field text-sm" onchange="lensMapHighlight()">
-                        <option value="">— none —</option>
+                        <option value="">- none -</option>
                         {% for col in info.header %}
                         <option value="{{ col }}" {% if info.mapping.get(role) == col %}selected{% endif %}>{{ col }}</option>
                         {% endfor %}
@@ -38,7 +38,7 @@
         </div>
 
         <div>
-            <p class="text-xs text-muted mb-2">Raw preview — mapped columns are highlighted.</p>
+            <p class="text-xs text-muted mb-2">Raw preview - mapped columns are highlighted.</p>
             <div class="overflow-x-auto rounded-control border border-hair">
                 <table class="text-xs border-collapse w-full">
                     <thead>

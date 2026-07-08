@@ -1,12 +1,12 @@
 {% extends "base.html" %}
-{% block title %}Insights — LENS{% endblock %}
+{% block title %}Insights - LENS{% endblock %}
 {% set active_tab = 'insights' %}
 {% block topbar_title %}Insights{% endblock %}
 {% block content %}
 <div class="max-w-3xl mx-auto space-y-5">
     <h1 class="hidden md:block text-lg font-semibold text-ink">Insights</h1>
 
-    {# ================= Spending Detective — the "aha" moment ================= #}
+    {# ================= Spending Detective - the "aha" moment ================= #}
     <section class="reveal shell">
         <div class="core p-5">
             {% set pct_abs = detective.pct_change if detective.pct_change >= 0 else -detective.pct_change %}

@@ -14,7 +14,7 @@
     <td class="md:hidden flex-1 min-w-0"
         hx-get="/txn/{{ t.id }}/edit" hx-target="#txn-row-{{ t.id }}" hx-swap="outerHTML">
         <div class="flex items-start justify-between gap-2">
-            <p class="text-sm text-ink font-medium truncate">{{ t.merchant_clean or t.merchant_raw or '—' }}</p>
+            <p class="text-sm text-ink font-medium truncate">{{ t.merchant_clean or t.merchant_raw or '-' }}</p>
             <span class="money text-sm whitespace-nowrap shrink-0 {{ amt_color }}">
                 {{ amt_sign }}{{ money(t.amount, t.currency) }}
             </span>
@@ -48,7 +48,7 @@
     <td class="hidden md:table-cell md:py-2.5 md:px-3 md:text-muted md:text-sm md:whitespace-nowrap">{{ t.account_name }}</td>
     <td class="hidden md:table-cell md:py-2.5 md:px-3 md:cursor-pointer md:text-ink md:text-sm"
         hx-get="/txn/{{ t.id }}/edit" hx-target="#txn-row-{{ t.id }}" hx-swap="outerHTML">
-        {{ t.merchant_clean or t.merchant_raw or '—' }}
+        {{ t.merchant_clean or t.merchant_raw or '-' }}
     </td>
     <td class="hidden md:table-cell md:py-2.5 md:px-3 md:cursor-pointer"
         hx-get="/txn/{{ t.id }}/edit" hx-target="#txn-row-{{ t.id }}" hx-swap="outerHTML">
@@ -81,7 +81,7 @@
 {% if is_duplicate_warning %}
 <tr id="txn-row-{{ t.id }}-dupwarn" class="block md:table-row">
     <td colspan="8" class="block md:table-cell text-xs text-accent-amber-ink bg-accent-amber px-3 py-1.5">
-        {{ icon('warning', 'h-3.5 w-3.5 inline -mt-0.5 mr-1') }}Looks similar to another transaction on the same day — added anyway.
+        {{ icon('warning', 'h-3.5 w-3.5 inline -mt-0.5 mr-1') }}Looks similar to another transaction on the same day - added anyway.
     </td>
 </tr>
 {% endif %}

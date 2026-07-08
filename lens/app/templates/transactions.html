@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% block title %}Transactions — LENS{% endblock %}
+{% block title %}Transactions - LENS{% endblock %}
 {% set active_tab = 'txn' %}
 {% block topbar_title %}Transactions{% endblock %}
 {% block content %}
@@ -125,7 +125,7 @@
             <div>
                 <label class="field-label">To account (transfer only)</label>
                 <select name="transfer_account_id" class="field">
-                    <option value="">—</option>
+                    <option value="">-</option>
                     {% for a in accounts %}<option value="{{ a.id }}">{{ a.name }}</option>{% endfor %}
                 </select>
             </div>

@@ -93,7 +93,7 @@
     </header>
 
     {# =====================================================================
-       MAIN CONTENT — extra bottom padding clears the floating tab bar.
+       MAIN CONTENT - extra bottom padding clears the floating tab bar.
        ===================================================================== #}
     <main class="flex-1 mx-auto max-w-6xl w-full px-3 md:px-6 py-5 pb-32 md:pb-12">
         <div id="quickadd-result"></div>
@@ -102,7 +102,7 @@
     </main>
 
     {# =====================================================================
-       BOTTOM TAB BAR (mobile only) — Home · Txns · center + · Insights · More
+       BOTTOM TAB BAR (mobile only) - Home · Txns · center + · Insights · More
        ===================================================================== #}
     <nav class="tabbar md:hidden" aria-label="Primary">
         <a href="/" class="tabbar-item {{ 'is-active' if active_tab == 'home' }}">
@@ -130,7 +130,7 @@
     </nav>
 
     {# =====================================================================
-       "MORE" BOTTOM SHEET — nav overflow + theme toggle.
+       "MORE" BOTTOM SHEET - nav overflow + theme toggle.
        ===================================================================== #}
     <div id="more-sheet" x-cloak class="sheet-backdrop hidden"
          onclick="if(event.target===this) lensCloseSheet('more-sheet')">
@@ -171,7 +171,7 @@
         </div>
     </div>
 
-    {# Toast region — above the tab bar on mobile, bottom-right on desktop. #}
+    {# Toast region - above the tab bar on mobile, bottom-right on desktop. #}
     <div id="toast-region" class="fixed bottom-28 md:bottom-4 right-4 left-4 md:left-auto flex flex-col gap-2 z-[60]"></div>
 
     {# Keyboard cheatsheet modal (behavior unchanged). #}

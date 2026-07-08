@@ -24,7 +24,7 @@
             {% set sign_prefix = '' if r.is_transfer else ('+' if r.type == 'income' else '-') %}
             <div class="list-row {{ 'opacity-40' if r.is_duplicate }}">
                 <div class="min-w-0 flex-1">
-                    <p class="text-sm text-ink truncate">{{ r.merchant_raw or '—' }}</p>
+                    <p class="text-sm text-ink truncate">{{ r.merchant_raw or '-' }}</p>
                     <p class="text-xs text-muted truncate">{{ r.txn_date }}</p>
                 </div>
                 {% if r.is_duplicate %}
@@ -54,7 +54,7 @@
                     {% set sign_prefix = '' if r.is_transfer else ('+' if r.type == 'income' else '-') %}
                     <tr class="{{ 'opacity-40' if r.is_duplicate }}">
                         <td class="px-3 py-1.5 text-ink whitespace-nowrap">{{ r.txn_date }}</td>
-                        <td class="px-3 py-1.5 text-ink">{{ r.merchant_raw or '—' }}</td>
+                        <td class="px-3 py-1.5 text-ink">{{ r.merchant_raw or '-' }}</td>
                         <td class="px-3 py-1.5 text-right money {{ sign_cls }}">{{ sign_prefix }}{{ money(r.amount) }}</td>
                         <td class="px-3 py-1.5 text-center">
                             {% if r.is_duplicate %}<span class="chip bg-accent-amber text-accent-amber-ink">{{ icon('warning', 'h-3.5 w-3.5') }}</span>

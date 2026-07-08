@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% block title %}Import — LENS{% endblock %}
+{% block title %}Import - LENS{% endblock %}
 {% block topbar_title %}Import{% endblock %}
 {% block content %}
 <div class="max-w-2xl mx-auto space-y-5">
@@ -9,7 +9,7 @@
     </div>
 
     {# ---------------------------------------------------------------
-       Step indicator. Purely visual — driven by the shared lensWizStep(n)
+       Step indicator. Purely visual - driven by the shared lensWizStep(n)
        helper in app.js, which shows the [data-wiz-step=n] element and
        toggles .is-active on [data-wiz-dot=n] elements. Called from each
        step's hx-on::after-request below and in the swapped-in partials.
@@ -30,7 +30,7 @@
     </ol>
 
     {# ---------------------------------------------------------------
-       Step 1 — upload. Stays server-rendered here (never a swapped
+       Step 1 - upload. Stays server-rendered here (never a swapped
        partial); hidden client-side once analysis succeeds and the
        mapping step lands in #import-step.
        --------------------------------------------------------------- #}

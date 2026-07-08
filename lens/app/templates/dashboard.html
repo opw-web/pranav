@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% block title %}Dashboard — LENS{% endblock %}
+{% block title %}Dashboard - LENS{% endblock %}
 {% set active_tab = 'home' %}
 {% block topbar_title %}Home{% endblock %}
 {% block content %}
@@ -21,7 +21,7 @@
 {% else %}
 <div class="space-y-5">
 
-    <!-- Hero: safe-to-spend — double-bezel shell/core, tap to reveal the breakdown -->
+    <!-- Hero: safe-to-spend - double-bezel shell/core, tap to reveal the breakdown -->
     <div class="reveal shell">
         <div x-data="{ open: false }" class="core p-6">
             <button type="button" class="w-full flex items-start justify-between gap-3 text-left" @click="open = !open" :aria-expanded="open.toString()">

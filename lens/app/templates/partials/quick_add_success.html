@@ -1,7 +1,7 @@
 <div class="rounded-control bg-accent-green text-accent-green-ink text-xs px-3 py-2.5 mt-1.5 flex items-center gap-2 flex-wrap reveal">
     {{ icon('check', 'h-4 w-4 shrink-0') }}
     <span>Added <span class="money font-medium">{{ money(p.parsed.amount, p.account.currency if p.account else 'INR') }}</span>
-        · {{ p.merchant_clean or "—" }} · {{ p.category_label }}
+        · {{ p.merchant_clean or "-" }} · {{ p.category_label }}
     · {{ p.parsed.txn_date }} · {{ p.account.name if p.account else '' }}</span>
     {% if is_duplicate_warning %}
     <span class="chip bg-accent-amber text-accent-amber-ink">{{ icon('warning', 'h-3 w-3') }} looks similar to another transaction today</span>

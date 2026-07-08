@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% block title %}Categories — LENS{% endblock %}
+{% block title %}Categories - LENS{% endblock %}
 {% block topbar_title %}Categories{% endblock %}
 {% block content %}
 <div class="max-w-2xl mx-auto space-y-5">
@@ -49,10 +49,10 @@
 </div>
 
 {# ============================================================
-   CATEGORY PICKER — mobile bottom sheet (§5.2 marquee flow).
+   CATEGORY PICKER - mobile bottom sheet (§5.2 marquee flow).
    Live search hx-get="/category-picker"; create-on-the-fly is the
    top row when there's no exact match. This is the "demo" call site
-   (window.lensCategoryTarget stays null) — selection just reports
+   (window.lensCategoryTarget stays null) - selection just reports
    into #category-picker-selection above; see app.js.
    ============================================================ #}
 <div id="category-picker-sheet" x-cloak class="sheet-backdrop hidden"

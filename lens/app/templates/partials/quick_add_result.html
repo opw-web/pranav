@@ -1,7 +1,7 @@
 {% if mode == "error" %}
 <div class="rounded-control bg-accent-red text-accent-red-ink text-xs px-3 py-2 mt-1.5 flex items-center gap-2 reveal">
     {{ icon('warning', 'h-3.5 w-3.5 shrink-0') }}
-    <span>{% if p.parsed.errors %}{{ p.parsed.errors[0] }}{% else %}Couldn't add that — check the amount and try again.{% endif %}</span>
+    <span>{% if p.parsed.errors %}{{ p.parsed.errors[0] }}{% else %}Couldn't add that - check the amount and try again.{% endif %}</span>
 </div>
 {% else %}
 <div class="text-xs text-muted py-1.5 px-1 flex items-center gap-x-2 gap-y-1 flex-wrap reveal">

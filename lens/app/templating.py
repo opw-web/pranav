@@ -7,6 +7,7 @@ Jinja2Templates(). Import `templates` here instead of building a new one.
 from pathlib import Path
 
 from fastapi.templating import Jinja2Templates
+from markupsafe import Markup
 
 TEMPLATES_DIR = Path(__file__).resolve().parent / "templates"
 
@@ -49,12 +50,13 @@ def money(value, currency: str = "INR") -> str:
 _SPRITE_URL = "/static/icons/sprite.svg"
 
 
-def icon(name: str, css_class: str = "h-5 w-5") -> str:
+def icon(name: str, css_class: str = "h-5 w-5") -> Markup:
     """Return an inline <svg><use> referencing the vendored Phosphor sprite.
 
-    Usage in templates: {{ icon('home') }} or {{ icon('trash', 'h-4 w-4 text-accent-red-ink') }}
+    Returns Markup so Jinja renders the SVG instead of HTML-escaping it into
+    visible text. Usage: {{ icon('home') }} or {{ icon('trash', 'h-4 w-4 text-accent-red-ink') }}
     """
-    return (
+    return Markup(
         f'<svg class="{css_class}" aria-hidden="true" focusable="false">'
         f'<use href="{_SPRITE_URL}#icon-{name}"></use></svg>'
     )

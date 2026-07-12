@@ -18,6 +18,13 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.services.categories import get_grouped_tree
 
+
+class CategoryNotFoundError(ValueError):
+    """Raised when a category_id doesn't exist for the calling user (§WS4a
+    ownership check) - mirrors MaxDepthError in services/categories.py so
+    routers can catch it the same way."""
+
+
 FUZZY_THRESHOLD = 88
 # User-taught rules must beat the shipped seed. Seed matches are applied at runtime
 # (not stored as rules), so any user rule with priority < 100 wins by construction;
@@ -184,10 +191,24 @@ async def add_keyword(
 
     Idempotent per (user, pattern), same upsert shape as learn_rule: re-adding the
     same keyword (even to a different category) just repoints the existing rule
-    rather than piling up duplicates. Returns None for an empty/whitespace keyword."""
+    rather than piling up duplicates. Returns None for an empty/whitespace keyword.
+
+    Validates that category_id belongs to user_id before writing anything - same
+    ownership check create_category runs on parent_id - so a crafted request can't
+    attach a keyword rule to another user's category. Raises CategoryNotFoundError
+    (not a silent no-op) if it doesn't."""
     pattern = normalize_keyword(keyword)
     if not pattern:
         return None
+
+    owned = (
+        await session.execute(
+            text("SELECT 1 FROM categories WHERE id = :cid AND user_id = :uid"),
+            {"cid": category_id, "uid": user_id},
+        )
+    ).scalar()
+    if owned is None:
+        raise CategoryNotFoundError("Category not found")
 
     existing = (
         await session.execute(

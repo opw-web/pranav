@@ -12,7 +12,7 @@ from app.services.categories import (
     rename_category,
     search_with_keywords,
 )
-from app.services.categorizer import add_keyword, list_keywords, remove_keyword
+from app.services.categorizer import CategoryNotFoundError, add_keyword, list_keywords, remove_keyword
 from app.templating import templates
 
 router = APIRouter()
@@ -132,8 +132,13 @@ async def add_keywords_route(
     """Add one reason keyword (Form `keyword`) or several at once (comma-separated
     Form `keywords`) to a category (§WS4a). Returns the re-rendered keyword chips
     for just this category."""
-    for kw in (keywords or keyword).split(","):
-        await add_keyword(db, user.id, category_id, kw)
+    try:
+        for kw in (keywords or keyword).split(","):
+            await add_keyword(db, user.id, category_id, kw)
+    except CategoryNotFoundError:
+        return templates.TemplateResponse(
+            request, "partials/toast.html", {"message": "Category not found.", "kind": "error"}
+        )
     chips = await list_keywords(db, user.id, category_id)
     return templates.TemplateResponse(
         request, "partials/category_keywords.html",

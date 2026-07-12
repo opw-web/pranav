@@ -51,7 +51,15 @@ function lensQuickaddSuggest(el) {
         });
     }
 }
-document.getElementById("quickadd-bar")?.addEventListener("keydown", () => {
+// Uses "input" (fires only when the field's value actually changes - typing,
+// backspace, paste) rather than "keydown" (fires on every key, including the
+// bare Enter that submits the form). The form has no submit button - Enter in
+// this input is the only way to commit - so a "keydown" listener here would
+// clear the override on that very Enter press, before the browser serializes
+// the form, silently discarding a tapped suggestion chip. "input" leaves the
+// override intact through Enter-to-submit while still clearing it the moment
+// the reason text is actually edited to something else.
+document.getElementById("quickadd-bar")?.addEventListener("input", () => {
     const override = document.getElementById("quickadd-category-override-id");
     if (override && override.value) override.value = "";
 });

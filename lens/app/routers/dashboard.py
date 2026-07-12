@@ -20,9 +20,20 @@ async def _scoped(user_id: str, fn, *args, **kwargs):
     concurrent use, so independent queries that we want to run in parallel each get
     their own session rather than sharing one — cheap now that connections are pooled
     (see app/database.py), and each still runs `SET LOCAL ROLE` / `SET LOCAL
-    request.jwt.claim.sub` exactly as get_scoped_db always has."""
-    async for session in get_scoped_db(user_id):
+    request.jwt.claim.sub` exactly as get_scoped_db always has.
+
+    Cleanup is explicit (anext + finally: aclose()) rather than `async for ... return`,
+    which would abandon the generator mid-yield and leave the transaction
+    COMMIT/ROLLBACK and connection release to depend on GC-triggered async-generator
+    finalization. Each call owns its own generator, so if a sibling branch in an
+    asyncio.gather raises, this branch's connection is still released deterministically
+    by its own `finally` — nothing strands on another branch's failure."""
+    gen = get_scoped_db(user_id)
+    session = await anext(gen)
+    try:
         return await fn(session, *args, **kwargs)
+    finally:
+        await gen.aclose()
 
 
 @router.get("/")
@@ -42,13 +53,19 @@ async def dashboard(
         # First-run empty state — never a blank grid (§4.6, Check 17)
         return templates.TemplateResponse(request, "dashboard.html", {"empty": True, "user": user})
 
-    # These four are independent of each other's results — run concurrently, each on
-    # its own scoped session/connection (see _scoped above).
+    # These four are independent of each other's results — run concurrently. Three get
+    # their own scoped session/connection (see _scoped above); the fourth reuses the
+    # request's already-open `db` session instead of opening a 5th connection. That's
+    # safe here because exactly one coroutine (this one) touches `db` — the other three
+    # run on their own separate connections, so there's no concurrent use of a single
+    # AsyncSession. This bounds peak per-request connections at 4 (1 open `db` + 3
+    # `_scoped`) instead of 5, so two concurrent dashboard loads no longer exhaust a
+    # pool_size=5/max_overflow=5 engine (see app/database.py).
     sts, detective, due, recent = await asyncio.gather(
         _scoped(user.id, safe_to_spend, user.id),
         _scoped(user.id, spending_detective, user.id),
         _scoped(user.id, upcoming, user.id, within_days=14),
-        _scoped(user.id, list_transactions, user.id, {}, limit=8),
+        list_transactions(db, user.id, {}, limit=8),
     )
 
     return templates.TemplateResponse(

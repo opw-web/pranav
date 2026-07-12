@@ -33,6 +33,12 @@ _connect_args = {
 _pool_size = int(os.environ.get("DB_POOL_SIZE", "5"))
 _max_overflow = int(os.environ.get("DB_MAX_OVERFLOW", "5"))
 _pool_recycle = int(os.environ.get("DB_POOL_RECYCLE_SECONDS", "300"))
+# SQLAlchemy's default pool_timeout is 30s: a request that can't check out a
+# connection would hang silently for 30s before erroring. With a per-request peak of
+# ~4 connections (see routers/dashboard.py) and pool_size+max_overflow=10 by default,
+# pool exhaustion is a real possibility under load, not just a theoretical one — fail
+# fast and visibly instead. Configurable in case a deployment needs more slack.
+_pool_timeout = int(os.environ.get("DB_POOL_TIMEOUT_SECONDS", "10"))
 
 engine = create_async_engine(
     settings.database_url,
@@ -40,6 +46,7 @@ engine = create_async_engine(
     pool_size=_pool_size,
     max_overflow=_max_overflow,
     pool_recycle=_pool_recycle,
+    pool_timeout=_pool_timeout,
     pool_pre_ping=True,
     connect_args=_connect_args,
 )

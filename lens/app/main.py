@@ -20,8 +20,8 @@ from app.routers.rules import router as rules_router
 from app.routers.settings import router as settings_router
 from app.routers.transactions import router as transactions_router
 
-logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger("lens.timing")
+logger.setLevel(logging.INFO)
 
 BASE_DIR = Path(__file__).resolve().parent
 

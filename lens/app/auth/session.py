@@ -17,6 +17,14 @@ _JWKS_TTL = 3600
 
 
 async def _fetch_jwks() -> dict:
+    # A fresh httpx.AsyncClient per call (here, in _refresh_access_token, and in the
+    # OAuth exchange in auth/routes.py) is intentional, not an oversight: the app runs
+    # on Vercel serverless (see api/index.py), where a module-level shared AsyncClient
+    # would be bound to whichever event loop was active when it was created, and a warm
+    # lambda handling a later invocation on a different loop can then fail with
+    # "attached to a different loop" errors on the auth path. These calls are cold and
+    # infrequent (login, refresh, and JWKS itself is cache-TTL'd for 1h above), so the
+    # keep-alive benefit of sharing a client isn't worth that production risk.
     now = time.time()
     if _jwks_cache["keys"] and now - _jwks_cache["fetched_at"] < _JWKS_TTL:
         return _jwks_cache

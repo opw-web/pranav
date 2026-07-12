@@ -132,7 +132,7 @@
     {# =====================================================================
        "MORE" BOTTOM SHEET - nav overflow + theme toggle.
        ===================================================================== #}
-    <div id="more-sheet" x-cloak class="sheet-backdrop hidden"
+    <div id="more-sheet" class="sheet-backdrop hidden"
          onclick="if(event.target===this) lensCloseSheet('more-sheet')">
         <div class="sheet" role="dialog" aria-label="More">
             <div class="sheet-grabber"></div>
@@ -175,7 +175,7 @@
     <div id="toast-region" class="fixed bottom-28 md:bottom-4 right-4 left-4 md:left-auto flex flex-col gap-2 z-[60]"></div>
 
     {# Keyboard cheatsheet modal (behavior unchanged). #}
-    <div id="lens-cheatsheet" x-cloak class="hidden fixed inset-0 z-[70] flex items-center justify-center bg-black/40 p-4"
+    <div id="lens-cheatsheet" class="hidden fixed inset-0 z-[70] flex items-center justify-center bg-black/40 p-4"
          onclick="this.classList.add('hidden')">
         <div class="card p-6 text-sm w-80 max-w-full" onclick="event.stopPropagation()">
             <h3 class="font-medium text-ink mb-3">Keyboard shortcuts</h3>

@@ -32,6 +32,30 @@ function lensSelectCategory(el) {
     lensApplyCategorySelection(el.getAttribute("data-category-id"), el.getAttribute("data-category-name"));
 }
 
+// Quick-add keyword-prefix suggestion chip (§WS4b): tapping "fuel -> Utilities"
+// sets the hidden category_override_id field (the single source of truth the
+// >/!  forced-category token also resolves through server-side - see
+// _resolve_category_override in quickadd.py) and re-fetches the preview so the
+// resolved category updates immediately. A real keystroke in the bar (below)
+// clears the override again so a later edit isn't silently pinned to a stale tap.
+function lensQuickaddSuggest(el) {
+    const id = el.getAttribute("data-category-id");
+    const override = document.getElementById("quickadd-category-override-id");
+    const bar = document.getElementById("quickadd-bar");
+    if (override) override.value = id;
+    if (bar) {
+        htmx.ajax("POST", "/txn/quickadd/preview", {
+            target: "#quickadd-preview",
+            swap: "innerHTML",
+            source: bar,
+        });
+    }
+}
+document.getElementById("quickadd-bar")?.addEventListener("keydown", () => {
+    const override = document.getElementById("quickadd-category-override-id");
+    if (override && override.value) override.value = "";
+});
+
 // Full keyboard map (§5.1): a add · / search · j/k move · e edit · c set category ·
 // t tag · x select · u undo · ? cheatsheet. Row navigation walks the transaction table.
 let lensActiveRow = null;

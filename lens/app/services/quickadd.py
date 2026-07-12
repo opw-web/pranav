@@ -7,9 +7,11 @@ from sqlalchemy import text
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.services.balances import get_account_balances
-from app.services.categories import get_grouped_tree
+from app.services.categories import get_grouped_tree, search_with_keywords
 from app.services.categorizer import categorize
 from app.services.quickadd_parser import ParsedQuickAdd, parse_quickadd
+
+MAX_SUGGESTIONS = 4
 
 
 def _flatten_tree(tree):
@@ -63,12 +65,28 @@ def _label_for(flat_categories: list[dict], category_id: str | None) -> str | No
     return match["label"] if match else None
 
 
-async def build_quickadd_preview(session: AsyncSession, user_id: str, raw: str) -> dict:
+def _resolve_category_override(flat_categories: list[dict], override_id: str | None):
+    """A tapped keyword-suggestion chip (§WS4b) sets this by category id. It takes
+    top priority over a `>`/`!` forced-category token so a chip tap and a typed
+    token can never disagree about the resulting category - the chip wins because
+    tapping it is the more explicit, later action. Returns None (falling through to
+    the normal `>token`/auto-categorize resolution) if override_id is blank or
+    doesn't resolve to one of this user's own categories (e.g. a tampered request -
+    flat_categories is already scoped to user_id via get_grouped_tree)."""
+    if not override_id or not flat_categories:
+        return None
+    return next((c for c in flat_categories if c["id"] == str(override_id)), None)
+
+
+async def build_quickadd_preview(
+    session: AsyncSession, user_id: str, raw: str, category_override_id: str | None = None
+) -> dict:
     parsed: ParsedQuickAdd = parse_quickadd(raw)
     tree = await get_grouped_tree(session, user_id)
     flat_categories = _flatten_tree(tree)
 
     account = await _resolve_account(session, user_id, parsed.account_token)
+    override = _resolve_category_override(flat_categories, category_override_id)
     forced = _resolve_forced_category(flat_categories, parsed.category_token)
 
     category_id = None
@@ -76,7 +94,10 @@ async def build_quickadd_preview(session: AsyncSession, user_id: str, raw: str) 
     merchant_clean = parsed.merchant_token
     confidence = "none"
 
-    if forced:
+    if override:
+        category_id = override["id"]
+        category_label = override["label"]
+    elif forced:
         category_id = forced["id"]
         category_label = forced["label"]
     elif parsed.merchant_token:
@@ -88,6 +109,16 @@ async def build_quickadd_preview(session: AsyncSession, user_id: str, raw: str) 
         if label:
             category_label = label
 
+    suggestions = []
+    if parsed.merchant_token:
+        # Reuses WS4a's search_with_keywords - do not reimplement keyword matching.
+        # Only the keyword hits (not plain name matches) become chips, since those
+        # are what carry the "pattern -> category" pairing the UI shows.
+        _, keyword_hits, _ = await search_with_keywords(
+            session, user_id, parsed.merchant_token, limit=MAX_SUGGESTIONS
+        )
+        suggestions = keyword_hits[:MAX_SUGGESTIONS]
+
     return {
         "parsed": parsed,
         "account": account,
@@ -95,4 +126,5 @@ async def build_quickadd_preview(session: AsyncSession, user_id: str, raw: str) 
         "category_label": category_label,
         "merchant_clean": merchant_clean,
         "confidence": confidence,
+        "suggestions": suggestions,
     }

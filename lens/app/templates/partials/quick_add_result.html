@@ -19,4 +19,19 @@
     {% for t in p.parsed.tags %}<span class="chip bg-hair text-muted">#{{ t }}</span>{% endfor %}
     {% endif %}
 </div>
+{% if p.suggestions %}
+{# Keyword-prefix category suggestions (§WS4b): tapping a chip sets the hidden
+   category_override_id field, which build_quickadd_preview() treats as the
+   single source of truth over any typed >/! forced-category token. #}
+<div class="flex flex-wrap items-center gap-1.5 px-1 pb-1.5 reveal">
+    {% for s in p.suggestions %}
+    <button type="button"
+            class="chip bg-hair text-muted hover:text-ink"
+            data-category-id="{{ s.id }}"
+            onclick="lensQuickaddSuggest(this)">
+        <span class="text-muted">{{ s.matched_keyword }} &rarr;</span> {{ s.label }}
+    </button>
+    {% endfor %}
+</div>
+{% endif %}
 {% endif %}

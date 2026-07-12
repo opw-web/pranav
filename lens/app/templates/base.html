@@ -73,6 +73,11 @@
             <div class="shell">
                 <div class="core p-3">
                     <form hx-post="/txn/quickadd" hx-target="#quickadd-result" hx-swap="innerHTML" class="w-full">
+                        {# Set by a tapped keyword-suggestion chip (§WS4b, see lensQuickaddSuggest in
+                           app.js). Lives in this form so both the preview hx-post (fired from the
+                           input below) and the commit hx-post (fired from this form) include it -
+                           one field, one source of truth alongside the raw text's own >/! token. #}
+                        <input type="hidden" id="quickadd-category-override-id" name="category_override_id" value="" />
                         <input
                             id="quickadd-bar"
                             name="raw"

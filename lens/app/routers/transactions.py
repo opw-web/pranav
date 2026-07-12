@@ -229,12 +229,13 @@ async def bulk_action(
 async def quickadd_preview(
     request: Request,
     raw: str = Form(""),
+    category_override_id: str = Form(""),
     user: CurrentUser = Depends(get_current_user),
     db: AsyncSession = Depends(get_scoped_session),
 ):
     if not raw.strip():
         return HTMLResponse("")
-    preview = await build_quickadd_preview(db, user.id, raw)
+    preview = await build_quickadd_preview(db, user.id, raw, category_override_id=category_override_id or None)
     return templates.TemplateResponse(request, "partials/quick_add_result.html", {"p": preview, "mode": "preview"})
 
 
@@ -242,10 +243,11 @@ async def quickadd_preview(
 async def quickadd_commit(
     request: Request,
     raw: str = Form(...),
+    category_override_id: str = Form(""),
     user: CurrentUser = Depends(get_current_user),
     db: AsyncSession = Depends(get_scoped_session),
 ):
-    preview = await build_quickadd_preview(db, user.id, raw)
+    preview = await build_quickadd_preview(db, user.id, raw, category_override_id=category_override_id or None)
     parsed = preview["parsed"]
 
     if parsed.amount is None or preview["account"] is None:

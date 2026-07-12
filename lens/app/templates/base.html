@@ -51,6 +51,7 @@
                 <a href="/" class="font-semibold tracking-tight text-ink shrink-0 mr-1">LENS</a>
                 <a href="/" class="{{ 'is-active' if active_tab == 'home' }}">Home</a>
                 <a href="/txn" class="{{ 'is-active' if active_tab == 'txn' }}">Txns</a>
+                <a href="/stats" class="{{ 'is-active' if active_tab == 'stats' }}">Stats</a>
                 <a href="/insights" class="{{ 'is-active' if active_tab == 'insights' }}">Insights</a>
                 <a href="/recurring" class="{{ 'is-active' if active_tab == 'recurring' }}">Recurring</a>
                 <a href="/accounts" class="{{ 'is-active' if active_tab == 'accounts' }}">Accounts</a>
@@ -107,7 +108,7 @@
     </main>
 
     {# =====================================================================
-       BOTTOM TAB BAR (mobile only) - Home · Txns · center + · Insights · More
+       BOTTOM TAB BAR (mobile only) - Home · Txns · center + · Stats · More
        ===================================================================== #}
     <nav class="tabbar md:hidden" aria-label="Primary">
         <a href="/" class="tabbar-item {{ 'is-active' if active_tab == 'home' }}">
@@ -124,9 +125,9 @@
                 {{ icon('plus', 'h-6 w-6') }}
             </span>
         </button>
-        <a href="/insights" class="tabbar-item {{ 'is-active' if active_tab == 'insights' }}">
+        <a href="/stats" class="tabbar-item {{ 'is-active' if active_tab == 'stats' }}">
             {{ icon('chart', 'h-5 w-5') }}
-            <span>Insights</span>
+            <span>Stats</span>
         </a>
         <button type="button" onclick="lensOpenSheet('more-sheet')" class="tabbar-item">
             {{ icon('gear', 'h-5 w-5') }}
@@ -143,6 +144,9 @@
             <div class="sheet-grabber"></div>
             <p class="eyebrow px-1 pb-2">Menu</p>
             <div class="flex flex-col">
+                <a href="/insights" class="list-row md:hidden" onclick="lensCloseSheet('more-sheet')">
+                    {{ icon('sparkle', 'h-4 w-4 text-muted') }}<span>Insights</span>
+                </a>
                 <a href="/categories" class="list-row" onclick="lensCloseSheet('more-sheet')">
                     {{ icon('tag', 'h-4 w-4 text-muted') }}<span>Categories</span>
                 </a>

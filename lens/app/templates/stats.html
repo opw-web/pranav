@@ -1,0 +1,135 @@
+{% extends "base.html" %}
+{% block title %}Stats - LENS{% endblock %}
+{% set active_tab = 'stats' %}
+{% block topbar_title %}Stats{% endblock %}
+{% block content %}
+
+{# ============================================================================
+   Chart color slots (dataviz skill, references/palette.md) — categorical
+   palette in fixed hue order, defined once as CSS custom properties so the
+   donut + legend below stay theme-aware via the app's existing two-trigger
+   pattern (prefers-color-scheme + explicit data-theme override). Never cycled;
+   assigned by rank, not reassigned when the ranking changes.
+   ========================================================================== #}
+<style>
+    .viz-root {
+        --series-1: #2a78d6; /* blue */
+        --series-2: #1baf7a; /* aqua */
+        --series-3: #eda100; /* yellow */
+        --series-4: #008300; /* green */
+        --series-5: #4a3aa7; /* violet */
+        --series-6: #e34948; /* red */
+        --series-7: #e87ba4; /* magenta */
+        --series-other: #b6b2a6; /* neutral fold — never a generated 9th hue */
+    }
+    @media (prefers-color-scheme: dark) {
+        :root:not([data-theme="light"]) .viz-root {
+            --series-1: #3987e5;
+            --series-2: #199e70;
+            --series-3: #c98500;
+            --series-4: #008300;
+            --series-5: #9085e9;
+            --series-6: #e66767;
+            --series-7: #d55181;
+            --series-other: #56534a;
+        }
+    }
+    :root[data-theme="dark"] .viz-root {
+        --series-1: #3987e5;
+        --series-2: #199e70;
+        --series-3: #c98500;
+        --series-4: #008300;
+        --series-5: #9085e9;
+        --series-6: #e66767;
+        --series-7: #d55181;
+        --series-other: #56534a;
+    }
+</style>
+
+<div class="viz-root max-w-3xl mx-auto space-y-5">
+    <h1 class="hidden md:block text-lg font-semibold text-ink">Stats</h1>
+
+    {% if empty %}
+    <div class="reveal text-center py-16 max-w-sm mx-auto">
+        <div class="shell inline-block mb-6">
+            <div class="core p-5">
+                {{ icon('chart', 'h-8 w-8 text-brand') }}
+            </div>
+        </div>
+        <p class="text-2xl font-semibold text-ink mb-1">Nothing to chart yet</p>
+        <p class="text-sm text-muted mb-8">Add a few transactions and your spending breakdown will show up here.</p>
+        <button type="button" onclick="lensToggleQuickadd()" class="btn btn-primary w-full">{{ icon('plus', 'h-4 w-4') }} Add your first transaction</button>
+    </div>
+    {% else %}
+
+    {# ================= Category breakdown - donut ================= #}
+    <section class="reveal card p-5">
+        <p class="eyebrow flex items-center gap-1.5 mb-4">{{ icon('chart', 'h-3.5 w-3.5') }} This month by category</p>
+
+        {% if donut.total > 0 %}
+        <div class="flex flex-col sm:flex-row items-center gap-6">
+            <div class="shrink-0 w-48 max-w-full overflow-x-auto">
+                <svg viewBox="{{ donut.viewbox }}" role="img" aria-label="Spending by category this month" class="w-48 h-48">
+                    <g transform="rotate(-90 {{ donut.center }} {{ donut.center }})">
+                        {% for seg in donut.segments %}
+                        <circle
+                            cx="{{ donut.center }}" cy="{{ donut.center }}" r="{{ donut.radius }}"
+                            fill="none" stroke="{{ seg.color_var }}" stroke-width="{{ donut.stroke }}"
+                            stroke-dasharray="{{ seg.dasharray }}" stroke-dashoffset="{{ seg.dashoffset }}"
+                        >
+                            <title>{{ seg.name }}</title>
+                        </circle>
+                        {% endfor %}
+                    </g>
+                    <text x="{{ donut.center }}" y="{{ donut.center - 6 }}" text-anchor="middle" class="fill-muted" style="font-size:11px;">This month</text>
+                    <text x="{{ donut.center }}" y="{{ donut.center + 16 }}" text-anchor="middle" class="fill-ink money" style="font-size:18px; font-weight:600;">{{ money(donut.total) }}</text>
+                </svg>
+            </div>
+
+            {# Legend - the dependable identity channel; always present for 2+ series #}
+            <div class="w-full min-w-0 divide-y divide-hair">
+                {% for l in donut.legend %}
+                <div class="flex items-center justify-between gap-3 py-2">
+                    <div class="flex items-center gap-2 min-w-0">
+                        <span class="shrink-0 h-2.5 w-2.5 rounded-full" style="background-color:{{ l.color_var }};"></span>
+                        <span class="text-sm text-ink truncate">{{ l.name }}</span>
+                    </div>
+                    <div class="shrink-0 flex items-baseline gap-2">
+                        <span class="money text-sm text-ink">{{ money(l.total) }}</span>
+                        <span class="text-xs text-muted w-10 text-right">{{ l.pct }}%</span>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% else %}
+        <p class="text-sm text-muted">No expenses recorded yet this month.</p>
+        {% endif %}
+    </section>
+
+    {# ================= Monthly trend - bar ================= #}
+    <section class="reveal card p-5">
+        <p class="eyebrow flex items-center gap-1.5 mb-4">{{ icon('arrow-up-right', 'h-3.5 w-3.5') }} Monthly spend, last {{ trend.months|length }} months</p>
+
+        {% if trend.bars %}
+        <div class="w-full overflow-x-auto">
+            <svg viewBox="{{ trend.viewbox }}" role="img" aria-label="Total spend per month, last {{ trend.months|length }} months" class="w-full h-auto min-w-[280px]" preserveAspectRatio="xMidYMid meet">
+                <line x1="0" y1="{{ trend.baseline_y }}" x2="320" y2="{{ trend.baseline_y }}" class="stroke-hair-strong" stroke-width="1" />
+                {% for b in trend.bars %}
+                <rect x="{{ b.x }}" y="{{ b.y }}" width="{{ b.width }}" height="{{ b.height }}" rx="4" class="fill-brand">
+                    <title>{{ b.month_label }}: {{ money(b.total) }}</title>
+                </rect>
+                {% if b.is_last %}
+                <text x="{{ b.label_x }}" y="{{ b.cap_y }}" text-anchor="middle" class="fill-ink money" style="font-size:11px; font-weight:600;">{{ money(b.total) }}</text>
+                {% endif %}
+                <text x="{{ b.label_x }}" y="{{ trend.baseline_y + 16 }}" text-anchor="middle" class="fill-muted" style="font-size:10px;">{{ b.month_label }}</text>
+                {% endfor %}
+            </svg>
+        </div>
+        {% else %}
+        <p class="text-sm text-muted">Not enough history yet — check back after your first full month.</p>
+        {% endif %}
+    </section>
+    {% endif %}
+</div>
+{% endblock %}

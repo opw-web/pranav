@@ -18,6 +18,7 @@ from app.routers.recap import router as recap_router
 from app.routers.recurring import router as recurring_router
 from app.routers.rules import router as rules_router
 from app.routers.settings import router as settings_router
+from app.routers.stats import router as stats_router
 from app.routers.transactions import router as transactions_router
 
 logger = logging.getLogger("lens.timing")
@@ -54,6 +55,7 @@ app.include_router(dashboard_router)
 app.include_router(insights_router)
 app.include_router(recap_router)
 app.include_router(settings_router)
+app.include_router(stats_router)
 
 
 @app.exception_handler(HTTPException)

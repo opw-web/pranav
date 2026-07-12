@@ -7,11 +7,12 @@ from app.services.categories import (
     MaxDepthError,
     create_category,
     delete_category,
-    fuzzy_search,
     get_grouped_tree,
     merge_categories,
     rename_category,
+    search_with_keywords,
 )
+from app.services.categorizer import add_keyword, list_keywords, remove_keyword
 from app.templating import templates
 
 router = APIRouter()
@@ -36,15 +37,21 @@ async def category_picker(
 ):
     query = q.strip()
     if query:
-        results, exact_match = await fuzzy_search(db, user.id, query)
+        results, keyword_hits, exact_match = await search_with_keywords(db, user.id, query)
         return templates.TemplateResponse(
             request, "partials/category_picker.html",
-            {"query": query, "results": results, "exact_match": exact_match, "groups": []},
+            {
+                "query": query,
+                "results": results,
+                "keyword_hits": keyword_hits,
+                "exact_match": exact_match,
+                "groups": [],
+            },
         )
     groups = await get_grouped_tree(db, user.id)
     return templates.TemplateResponse(
         request, "partials/category_picker.html",
-        {"query": "", "results": [], "exact_match": True, "groups": groups},
+        {"query": "", "results": [], "keyword_hits": [], "exact_match": True, "groups": groups},
     )
 
 
@@ -111,3 +118,40 @@ async def delete_category_route(
     await delete_category(db, user.id, category_id)
     tree = await get_grouped_tree(db, user.id)
     return templates.TemplateResponse(request, "partials/category_tree.html", {"tree": tree})
+
+
+@router.post("/categories/{category_id}/keywords")
+async def add_keywords_route(
+    request: Request,
+    category_id: str,
+    keyword: str = Form(""),
+    keywords: str = Form(""),
+    user: CurrentUser = Depends(get_current_user),
+    db: AsyncSession = Depends(get_scoped_session),
+):
+    """Add one reason keyword (Form `keyword`) or several at once (comma-separated
+    Form `keywords`) to a category (§WS4a). Returns the re-rendered keyword chips
+    for just this category."""
+    for kw in (keywords or keyword).split(","):
+        await add_keyword(db, user.id, category_id, kw)
+    chips = await list_keywords(db, user.id, category_id)
+    return templates.TemplateResponse(
+        request, "partials/category_keywords.html",
+        {"category_id": category_id, "keywords": chips},
+    )
+
+
+@router.delete("/categories/{category_id}/keywords/{rule_id}")
+async def remove_keyword_route(
+    request: Request,
+    category_id: str,
+    rule_id: str,
+    user: CurrentUser = Depends(get_current_user),
+    db: AsyncSession = Depends(get_scoped_session),
+):
+    await remove_keyword(db, user.id, rule_id)
+    chips = await list_keywords(db, user.id, category_id)
+    return templates.TemplateResponse(
+        request, "partials/category_keywords.html",
+        {"category_id": category_id, "keywords": chips},
+    )

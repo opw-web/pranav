@@ -23,6 +23,11 @@ FUZZY_THRESHOLD = 88
 # (not stored as rules), so any user rule with priority < 100 wins by construction;
 # we default learned rules to 50 to leave headroom above and below for manual tuning.
 LEARNED_RULE_PRIORITY = 50
+# Explicit "reason keywords" a user attaches to a category (§WS4a) are a stronger
+# signal than an auto-learned merchant rule, so they run first: lower than
+# LEARNED_RULE_PRIORITY (50) and the shipped seed (100), but with headroom below
+# for anything more explicit still.
+USER_KEYWORD_PRIORITY = 40
 
 
 def slugify(name: str) -> str:
@@ -161,6 +166,91 @@ async def learn_rule(
             },
         )
     return {"rule_id": rule_id, "pattern": pattern}
+
+
+def normalize_keyword(keyword: str) -> str:
+    """Lowercase + strip a raw keyword input (§WS4a). Pulled out as a pure function
+    so the empty/whitespace/casing rules are independently testable without a DB."""
+    return keyword.strip().lower()
+
+
+async def add_keyword(
+    session: AsyncSession, user_id: str, category_id: str, keyword: str
+) -> dict | None:
+    """Attach a reason keyword to a category (§WS4a). Stored as a plain 'contains'
+    categorization rule with set_merchant=NULL (we never rewrite the user's merchant
+    text for a keyword match) and priority=USER_KEYWORD_PRIORITY, so categorize()
+    picks it up automatically - no separate keyword table needed.
+
+    Idempotent per (user, pattern), same upsert shape as learn_rule: re-adding the
+    same keyword (even to a different category) just repoints the existing rule
+    rather than piling up duplicates. Returns None for an empty/whitespace keyword."""
+    pattern = normalize_keyword(keyword)
+    if not pattern:
+        return None
+
+    existing = (
+        await session.execute(
+            text(
+                "SELECT id FROM categorization_rules "
+                "WHERE user_id = :uid AND match_type = 'contains' AND lower(pattern) = :pat"
+            ),
+            {"uid": user_id, "pat": pattern},
+        )
+    ).scalar()
+
+    if existing:
+        await session.execute(
+            text(
+                "UPDATE categorization_rules "
+                "SET set_category_id = :cid, set_merchant = NULL, priority = :prio WHERE id = :id"
+            ),
+            {"cid": category_id, "prio": USER_KEYWORD_PRIORITY, "id": existing},
+        )
+        rule_id = str(existing)
+    else:
+        rule_id = str(uuid.uuid4())
+        await session.execute(
+            text(
+                "INSERT INTO categorization_rules "
+                "(id, user_id, match_type, pattern, set_merchant, set_category_id, priority) "
+                "VALUES (:id, :uid, 'contains', :pat, NULL, :cid, :prio)"
+            ),
+            {
+                "id": rule_id,
+                "uid": user_id,
+                "pat": pattern,
+                "cid": category_id,
+                "prio": USER_KEYWORD_PRIORITY,
+            },
+        )
+    return {"id": rule_id, "pattern": pattern}
+
+
+async def list_keywords(session: AsyncSession, user_id: str, category_id: str) -> list[dict]:
+    """Keyword-ish rules for one category, for display on the category management
+    page. This is every 'contains' rule targeting the category - including any
+    auto-learned merchant rule (learn_rule) for it, which genuinely is a
+    keyword->category mapping too; we don't try to separate the two (§WS4a)."""
+    rows = (
+        await session.execute(
+            text(
+                "SELECT id, pattern FROM categorization_rules "
+                "WHERE user_id = :uid AND set_category_id = :cid AND match_type = 'contains' "
+                "ORDER BY pattern"
+            ),
+            {"uid": user_id, "cid": category_id},
+        )
+    ).mappings().all()
+    return [dict(row) for row in rows]
+
+
+async def remove_keyword(session: AsyncSession, user_id: str, rule_id: str) -> None:
+    """Delete a keyword (or any contains rule) by id, scoped to the owning user."""
+    await session.execute(
+        text("DELETE FROM categorization_rules WHERE id = :id AND user_id = :uid"),
+        {"id": rule_id, "uid": user_id},
+    )
 
 
 async def back_apply_rule(

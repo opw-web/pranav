@@ -1,3 +1,4 @@
+{% from "partials/_category_macros.html" import keyword_chips %}
 <div id="category-tree-wrapper"{% if oob %} hx-swap-oob="true"{% endif %}>
 
 {# Mobile: card list (md:hidden) ------------------------------------- #}
@@ -25,6 +26,7 @@
                 {{ icon('trash', 'h-4 w-4') }}
             </button>
         </div>
+        <div class="pl-9 pr-3 pb-1.5">{{ keyword_chips(g.id, g.keywords) }}</div>
         {% for child in g.children %}
         <div class="flex items-center gap-3 min-h-[44px] pl-9 pr-3">
             <span class="h-2 w-2 rounded-full shrink-0" aria-hidden="true"
@@ -41,6 +43,7 @@
                 {{ icon('trash', 'h-4 w-4') }}
             </button>
         </div>
+        <div class="pl-14 pr-3 pb-1.5">{{ keyword_chips(child.id, child.keywords) }}</div>
         {% endfor %}
     </div>
     {% endfor %}
@@ -83,6 +86,10 @@
                 </button>
             </td>
         </tr>
+        <tr class="border-b border-hair">
+            <td class="py-1.5 px-3"></td>
+            <td class="py-1.5 px-3" colspan="3">{{ keyword_chips(g.id, g.keywords) }}</td>
+        </tr>
         {% for child in g.children %}
         <tr class="border-b border-hair">
             <td class="py-1.5 px-3 pl-8 w-6">
@@ -103,6 +110,10 @@
                     {{ icon('trash', 'h-3.5 w-3.5') }} Delete
                 </button>
             </td>
+        </tr>
+        <tr class="border-b border-hair">
+            <td class="py-1.5 px-3"></td>
+            <td class="py-1.5 px-3 pl-8" colspan="3">{{ keyword_chips(child.id, child.keywords) }}</td>
         </tr>
         {% endfor %}
     {% endfor %}

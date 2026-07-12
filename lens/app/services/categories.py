@@ -35,6 +35,14 @@ class MaxDepthError(ValueError):
     pass
 
 
+_KEYWORDS_SQL = """
+SELECT id, pattern, set_category_id AS category_id
+FROM categorization_rules
+WHERE user_id = :uid AND match_type = 'contains' AND set_category_id IS NOT NULL
+ORDER BY pattern
+"""
+
+
 async def _all_categories_with_usage(session: AsyncSession, user_id: str):
     result = await session.execute(text(_USAGE_SQL), {"uid": user_id})
     return result.mappings().all()
@@ -43,9 +51,20 @@ async def _all_categories_with_usage(session: AsyncSession, user_id: str):
 async def get_grouped_tree(session: AsyncSession, user_id: str):
     """Default (no-query) picker view: top-level groups ranked by their own +
     children's usage, each with children ranked by their own usage. Satisfies
-    'recent & frequent on top' + 'parents with indented children' (§5.2)."""
+    'recent & frequent on top' + 'parents with indented children' (§5.2).
+
+    Each node also carries its reason `keywords` (§WS4a) - fetched in one extra
+    query here so every caller (the category management page, quick-add, the
+    seed-key resolver) sees the same shape without an N+1 per category."""
     rows = await _all_categories_with_usage(session, user_id)
-    by_id = {row["id"]: dict(row, children=[]) for row in rows}
+    by_id = {row["id"]: dict(row, children=[], keywords=[]) for row in rows}
+
+    kw_rows = await session.execute(text(_KEYWORDS_SQL), {"uid": user_id})
+    for kw in kw_rows.mappings().all():
+        node = by_id.get(kw["category_id"])
+        if node is not None:
+            node["keywords"].append({"id": kw["id"], "pattern": kw["pattern"]})
+
     top_level = []
     for row in rows:
         node = by_id[row["id"]]
@@ -84,6 +103,48 @@ async def fuzzy_search(session: AsyncSession, user_id: str, query: str, limit: i
 
     exact_match = any(r["name"].lower() == query.strip().lower() for r in rows)
     return results, exact_match
+
+
+def keyword_matches(pattern: str, query: str) -> bool:
+    """A reason keyword 'matches' a picker query if the (lowercased, stripped) query
+    is a substring of the keyword pattern - e.g. query 'fu' matches pattern 'fuel'.
+    Pure so the picker's match rule is independently testable without a DB."""
+    q = query.strip().lower()
+    return bool(q) and q in pattern.lower()
+
+
+async def search_with_keywords(session: AsyncSession, user_id: str, query: str, limit: int = 20):
+    """Picker search (§WS4a): the existing name-based fuzzy_search, plus any
+    category whose reason keyword matches the query as a substring (case-
+    insensitive - typing "fu" surfaces a category keyworded "fuel"). Keyword hits
+    are de-duplicated against the name results and tagged with `matched_keyword`
+    so the picker can show why they showed up. Returns (results, keyword_hits, exact_match)."""
+    results, exact_match = await fuzzy_search(session, user_id, query, limit=limit)
+    seen_ids = {str(row["id"]) for row in results}
+
+    q = query.strip().lower()
+    keyword_hits = []
+    if q:
+        rows = await _all_categories_with_usage(session, user_id)
+        by_id = {row["id"]: row for row in rows}
+        kw_rows = (
+            await session.execute(text(_KEYWORDS_SQL), {"uid": user_id})
+        ).mappings().all()
+        for kw in kw_rows:
+            category_id = kw["category_id"]
+            if category_id is None or str(category_id) in seen_ids or not keyword_matches(kw["pattern"], q):
+                continue
+            cat = by_id.get(category_id)
+            if cat is None:
+                continue
+            parent = by_id.get(cat["parent_id"]) if cat["parent_id"] else None
+            label = f"{parent['name']} › {cat['name']}" if parent else cat["name"]
+            keyword_hits.append(
+                dict(cat, label=label, is_child=parent is not None, matched_keyword=kw["pattern"])
+            )
+            seen_ids.add(str(category_id))
+
+    return results, keyword_hits, exact_match
 
 
 async def create_category(

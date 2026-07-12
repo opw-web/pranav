@@ -14,7 +14,8 @@
 
     {% if query %}
         {% for c in results %}{{ option_row(c) }}{% endfor %}
-        {% if not results and exact_match %}
+        {% for c in keyword_hits %}{{ option_row(c) }}{% endfor %}
+        {% if not results and not keyword_hits and exact_match %}
         <li class="px-2 py-8 text-sm text-muted text-center">No matches.</li>
         {% endif %}
     {% else %}

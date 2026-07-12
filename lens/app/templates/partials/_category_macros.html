@@ -6,7 +6,35 @@
     onkeydown="if(event.key==='Enter'){lensSelectCategory(this)}">
     <span class="h-2 w-2 rounded-full shrink-0" aria-hidden="true"
           style="background: {{ c.color if c.color else 'var(--color-muted)' }}"></span>
-    <span class="text-sm truncate flex-1 min-w-0 text-ink">{{ c.label if c.label else c.name }}</span>
+    <span class="text-sm truncate flex-1 min-w-0 text-ink">
+        {{ c.label if c.label else c.name }}
+        {% if c.matched_keyword %}<span class="text-xs text-muted font-normal">matches &ldquo;{{ c.matched_keyword }}&rdquo;</span>{% endif %}
+    </span>
     {% if c.usage_count %}<span class="text-xs text-muted shrink-0 money">{{ c.usage_count }}×</span>{% endif %}
 </li>
+{% endmacro %}
+
+{# Reason-keyword chips for one category (§WS4a): existing keywords with a per-chip
+   remove, plus a tiny inline add input. Self-contained (id + hx-target match), so it
+   renders the same whether embedded in the category tree or returned standalone from
+   the add/remove keyword endpoints. #}
+{% macro keyword_chips(category_id, keywords) %}
+<div id="category-keywords-{{ category_id }}" class="flex flex-wrap items-center gap-1.5">
+    {% for k in keywords or [] %}
+    <span class="chip bg-hair text-muted gap-1">
+        {{ k.pattern }}
+        <button type="button"
+                hx-delete="/categories/{{ category_id }}/keywords/{{ k.id }}"
+                hx-target="#category-keywords-{{ category_id }}" hx-swap="outerHTML"
+                aria-label="Remove keyword {{ k.pattern }}"
+                class="text-muted hover:text-accent-red-ink leading-none">&times;</button>
+    </span>
+    {% endfor %}
+    <form hx-post="/categories/{{ category_id }}/keywords"
+          hx-target="#category-keywords-{{ category_id }}" hx-swap="outerHTML"
+          class="inline-flex items-center">
+        <input type="text" name="keyword" placeholder="+ keyword" autocomplete="off"
+               class="bg-transparent border-none text-xs text-muted focus:outline-none focus:text-ink w-16 focus:w-24 transition-[width] p-0" />
+    </form>
+</div>
 {% endmacro %}

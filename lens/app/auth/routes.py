@@ -1,8 +1,6 @@
-import json
-import urllib.error
 import urllib.parse
-import urllib.request
 
+import httpx
 from fastapi import APIRouter, Request
 from fastapi.responses import RedirectResponse
 
@@ -47,16 +45,16 @@ async def auth_callback(request: Request):
     if error or not code or not verifier:
         return RedirectResponse(f"/login?error={urllib.parse.quote(error or 'missing_code')}")
 
-    token_req = urllib.request.Request(
-        f"{settings.supabase_url}/auth/v1/token?grant_type=pkce",
-        data=json.dumps({"auth_code": code, "code_verifier": verifier}).encode(),
-        headers={"apikey": settings.supabase_anon_key, "Content-Type": "application/json"},
-        method="POST",
-    )
     try:
-        with urllib.request.urlopen(token_req, timeout=10) as r:
-            token_data = json.loads(r.read())
-    except urllib.error.HTTPError:
+        async with httpx.AsyncClient(timeout=10) as client:
+            resp = await client.post(
+                f"{settings.supabase_url}/auth/v1/token?grant_type=pkce",
+                json={"auth_code": code, "code_verifier": verifier},
+                headers={"apikey": settings.supabase_anon_key, "Content-Type": "application/json"},
+            )
+            resp.raise_for_status()
+            token_data = resp.json()
+    except httpx.HTTPStatusError:
         return RedirectResponse("/login?error=token_exchange_failed")
 
     access_token = token_data["access_token"]

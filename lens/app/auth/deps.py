@@ -1,7 +1,6 @@
-import json
-import urllib.request
 from dataclasses import dataclass
 
+import httpx
 import jwt
 from fastapi import Depends, HTTPException, Request, Response
 
@@ -16,16 +15,16 @@ class CurrentUser:
     email: str | None
 
 
-def _refresh_access_token(refresh_token: str) -> dict | None:
-    req = urllib.request.Request(
-        f"{settings.supabase_url}/auth/v1/token?grant_type=refresh_token",
-        data=json.dumps({"refresh_token": refresh_token}).encode(),
-        headers={"apikey": settings.supabase_anon_key, "Content-Type": "application/json"},
-        method="POST",
-    )
+async def _refresh_access_token(refresh_token: str) -> dict | None:
     try:
-        with urllib.request.urlopen(req, timeout=5) as resp:
-            return json.loads(resp.read())
+        async with httpx.AsyncClient(timeout=5) as client:
+            resp = await client.post(
+                f"{settings.supabase_url}/auth/v1/token?grant_type=refresh_token",
+                json={"refresh_token": refresh_token},
+                headers={"apikey": settings.supabase_anon_key, "Content-Type": "application/json"},
+            )
+            resp.raise_for_status()
+            return resp.json()
     except Exception:
         return None
 
@@ -39,12 +38,12 @@ async def get_current_user(request: Request, response: Response) -> CurrentUser:
     claims = None
     if access_token:
         try:
-            claims = session_mod.verify_access_token(access_token)
+            claims = await session_mod.verify_access_token(access_token)
         except jwt.PyJWTError:
             claims = None
 
     if claims is None and refresh_token:
-        refreshed = _refresh_access_token(refresh_token)
+        refreshed = await _refresh_access_token(refresh_token)
         if refreshed and "access_token" in refreshed:
             session_mod.set_session_cookies(
                 response,
@@ -53,7 +52,7 @@ async def get_current_user(request: Request, response: Response) -> CurrentUser:
                 secure=session_mod.is_secure_request(request),
             )
             try:
-                claims = session_mod.verify_access_token(refreshed["access_token"])
+                claims = await session_mod.verify_access_token(refreshed["access_token"])
             except jwt.PyJWTError:
                 claims = None
 

@@ -2,9 +2,8 @@ import base64
 import hashlib
 import secrets
 import time
-import urllib.request
-import json as _json
 
+import httpx
 import jwt
 
 from app.config import settings
@@ -17,29 +16,31 @@ _jwks_cache: dict = {"keys": [], "fetched_at": 0}
 _JWKS_TTL = 3600
 
 
-def _fetch_jwks() -> dict:
+async def _fetch_jwks() -> dict:
     now = time.time()
     if _jwks_cache["keys"] and now - _jwks_cache["fetched_at"] < _JWKS_TTL:
         return _jwks_cache
     url = f"{settings.supabase_url}/auth/v1/.well-known/jwks.json"
-    with urllib.request.urlopen(url, timeout=5) as resp:
-        data = _json.loads(resp.read())
+    async with httpx.AsyncClient(timeout=5) as client:
+        resp = await client.get(url)
+        resp.raise_for_status()
+        data = resp.json()
     _jwks_cache["keys"] = data["keys"]
     _jwks_cache["fetched_at"] = now
     return _jwks_cache
 
 
-def verify_access_token(token: str) -> dict:
+async def verify_access_token(token: str) -> dict:
     """Verify a Supabase-issued JWT locally against the project's JWKS (ES256).
     Raises jwt.PyJWTError on any invalid/expired/mismatched-signature token."""
     header = jwt.get_unverified_header(token)
     kid = header.get("kid")
-    jwks = _fetch_jwks()
+    jwks = await _fetch_jwks()
     matching = [k for k in jwks["keys"] if k.get("kid") == kid]
     if not matching:
         # kid rotated since our cache: force refresh once.
         _jwks_cache["fetched_at"] = 0
-        jwks = _fetch_jwks()
+        jwks = await _fetch_jwks()
         matching = [k for k in jwks["keys"] if k.get("kid") == kid]
     if not matching:
         raise jwt.InvalidTokenError("Unknown signing key")

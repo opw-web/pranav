@@ -3,6 +3,7 @@ uvicorn[standard]
 jinja2
 sqlalchemy[asyncio]
 asyncpg
+httpx
 supabase
 alembic
 charset-normalizer

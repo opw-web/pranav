@@ -3,9 +3,14 @@ import uuid
 
 from sqlalchemy import text
 from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker, create_async_engine
-from sqlalchemy.pool import AsyncAdaptedQueuePool
+from sqlalchemy.pool import AsyncAdaptedQueuePool, NullPool
 
 from app.config import settings
+
+# Vercel sets VERCEL=1 in every deployment (build and runtime) for its serverless
+# functions. We use this to detect the serverless environment (lens/api/index.py,
+# served by @vercel/python) and pick a pool strategy accordingly — see below.
+IS_SERVERLESS = bool(os.environ.get("VERCEL"))
 
 # Supabase's direct DB host (db.<ref>.supabase.co) is IPv6-only on newer projects and
 # flaky over IPv6 on many networks; the Supavisor pooler gives a stable IPv4 endpoint and
@@ -40,16 +45,38 @@ _pool_recycle = int(os.environ.get("DB_POOL_RECYCLE_SECONDS", "300"))
 # fast and visibly instead. Configurable in case a deployment needs more slack.
 _pool_timeout = int(os.environ.get("DB_POOL_TIMEOUT_SECONDS", "10"))
 
-engine = create_async_engine(
-    settings.database_url,
-    poolclass=AsyncAdaptedQueuePool,
-    pool_size=_pool_size,
-    max_overflow=_max_overflow,
-    pool_recycle=_pool_recycle,
-    pool_timeout=_pool_timeout,
-    pool_pre_ping=True,
-    connect_args=_connect_args,
-)
+if IS_SERVERLESS:
+    # asyncpg connections are bound to the event loop that created them. Vercel's
+    # serverless runtime can freeze/thaw and reuse a warm container across separate
+    # invocations, each of which may get its own event loop — a persistent
+    # client-side pool (AsyncAdaptedQueuePool) would hand back a connection created
+    # on a now-closed loop, and asyncpg raises RuntimeError ("attached to a
+    # different loop") when it's used, surfacing as a 500 on every DB-backed route.
+    # NullPool opens a fresh connection per checkout and closes it on release, so
+    # every connection lives entirely within a single request's event loop — no
+    # cross-invocation reuse, no cross-loop connections. pool_size/max_overflow/
+    # pool_recycle/pool_timeout/pool_pre_ping are QueuePool-family options and don't
+    # apply to NullPool, so they're intentionally omitted here.
+    engine = create_async_engine(
+        settings.database_url,
+        poolclass=NullPool,
+        connect_args=_connect_args,
+    )
+else:
+    # Off serverless (e.g. a long-lived server process) the event loop is stable
+    # for the process lifetime, so a persistent client-side pool is safe and lets
+    # us reuse warm TCP/TLS connections to Supavisor instead of paying a fresh
+    # handshake per request (see comment above on _pool_size etc.).
+    engine = create_async_engine(
+        settings.database_url,
+        poolclass=AsyncAdaptedQueuePool,
+        pool_size=_pool_size,
+        max_overflow=_max_overflow,
+        pool_recycle=_pool_recycle,
+        pool_timeout=_pool_timeout,
+        pool_pre_ping=True,
+        connect_args=_connect_args,
+    )
 async_session = async_sessionmaker(engine, class_=AsyncSession, expire_on_commit=False)
 
 

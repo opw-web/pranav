@@ -1,0 +1,26 @@
+{# Savings recommendation card (§WS6) — included on dashboard + stats when user has transactions. #}
+<section class="reveal card p-5">
+    <div class="flex items-center justify-between gap-3 mb-2">
+        <p class="eyebrow flex items-center gap-1.5">{{ icon('sparkle', 'h-3.5 w-3.5') }} Savings</p>
+        {% if not savings.has_income %}
+        <a href="/settings" class="text-xs text-brand font-medium whitespace-nowrap">set income →</a>
+        {% endif %}
+    </div>
+
+    {% if savings.has_income %}
+    <p class="money text-3xl leading-none {{ 'text-accent-red-ink' if savings.recommended < 0 else 'text-ink' }}">
+        {{ money(savings.recommended) }}
+    </p>
+    <p class="text-xs text-muted mt-1">recommended monthly savings</p>
+    <p class="text-sm text-ink-soft leading-snug mt-3">{{ savings.guidance }}</p>
+    {% if savings.savings_goal is not none %}
+    <div class="flex items-center justify-between gap-3 mt-3 pt-3 border-t border-hair text-xs text-muted">
+        <span>Your savings goal</span>
+        <span class="money text-ink">{{ money(savings.savings_goal) }}</span>
+    </div>
+    {% endif %}
+    {% else %}
+    <p class="text-sm text-muted">{{ savings.guidance }}</p>
+    <a href="/settings" class="btn btn-secondary w-full mt-4 justify-center">Add monthly income</a>
+    {% endif %}
+</section>

@@ -58,3 +58,8 @@ async def ensure_onboarded(session: AsyncSession, user_id: str):
         ),
         {"id": str(uuid.uuid4()), "uid": user_id},
     )
+
+    await session.execute(
+        text("INSERT INTO user_settings (user_id) VALUES (:uid) ON CONFLICT (user_id) DO NOTHING"),
+        {"uid": user_id},
+    )

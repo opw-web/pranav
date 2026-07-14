@@ -3,15 +3,33 @@ import io
 import json
 from datetime import date
 
-from fastapi import APIRouter, Depends, Request
-from fastapi.responses import StreamingResponse
+from fastapi import APIRouter, Depends, Form, Request
+from fastapi.responses import RedirectResponse, StreamingResponse
 from sqlalchemy import text
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.auth.deps import CurrentUser, get_current_user, get_scoped_session
+from app.services.savings import get_user_settings, save_user_settings
 from app.templating import templates
 
 router = APIRouter()
+
+
+def _parse_optional_amount(raw: str | None) -> float | None:
+    """Parse a form value into a non-negative float, or None for "no value".
+
+    Never raises: unparseable input (e.g. "abc") or a negative number is treated
+    as "no change" rather than 500ing the request.
+    """
+    if raw is None or str(raw).strip() == "":
+        return None
+    try:
+        value = float(raw)
+    except (TypeError, ValueError):
+        return None
+    if value < 0:
+        return None
+    return value
 
 # Full row with human-readable names (not just ids) so the backup restores standalone (Check 15).
 _EXPORT_SQL = """
@@ -40,10 +58,39 @@ _COLUMNS = [
 
 
 @router.get("/settings")
-async def settings_page(request: Request, user: CurrentUser = Depends(get_current_user)):
+async def settings_page(
+    request: Request,
+    user: CurrentUser = Depends(get_current_user),
+    db: AsyncSession = Depends(get_scoped_session),
+):
+    prefs = await get_user_settings(db, user.id)
     return templates.TemplateResponse(
-        request, "settings.html", {"user": user, "current_period": date.today().strftime("%Y-%m")}
+        request,
+        "settings.html",
+        {
+            "user": user,
+            "current_period": date.today().strftime("%Y-%m"),
+            "monthly_income": prefs["monthly_income"],
+            "savings_goal": prefs["savings_goal"],
+            "saved": request.query_params.get("saved") == "1",
+        },
     )
+
+
+@router.post("/settings/income")
+async def save_income_settings(
+    monthly_income: str = Form(""),
+    savings_goal: str = Form(""),
+    user: CurrentUser = Depends(get_current_user),
+    db: AsyncSession = Depends(get_scoped_session),
+):
+    await save_user_settings(
+        db,
+        user.id,
+        _parse_optional_amount(monthly_income),
+        _parse_optional_amount(savings_goal),
+    )
+    return RedirectResponse("/settings?saved=1", status_code=303)
 
 
 async def _fetch_rows(db: AsyncSession, user_id: str):

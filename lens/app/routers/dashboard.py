@@ -7,6 +7,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from app.auth.deps import CurrentUser, get_current_user, get_scoped_session
 from app.database import get_scoped_db
 from app.services.analytics import safe_to_spend, spending_detective
+from app.services.savings import savings_recommendation
 from app.services.recurring import upcoming
 from app.services.transactions import list_transactions
 from app.templating import templates
@@ -67,9 +68,18 @@ async def dashboard(
         _scoped(user.id, upcoming, user.id, within_days=14),
         list_transactions(db, user.id, {}, limit=8),
     )
+    savings = await savings_recommendation(db, user.id)
 
     return templates.TemplateResponse(
         request,
         "dashboard.html",
-        {"empty": False, "user": user, "sts": sts, "detective": detective, "upcoming": due, "recent": recent},
+        {
+            "empty": False,
+            "user": user,
+            "sts": sts,
+            "detective": detective,
+            "upcoming": due,
+            "recent": recent,
+            "savings": savings,
+        },
     )

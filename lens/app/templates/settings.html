@@ -18,6 +18,32 @@
         </div>
     </div>
 
+    {# ================= Income & savings (§WS6) ================= #}
+    <div class="reveal card p-5">
+        <p class="eyebrow mb-2">Income &amp; savings</p>
+        <p class="text-sm text-muted mb-4">
+            Your monthly income powers the savings recommendation on Home and Stats.
+        </p>
+        {% if saved %}
+        <p class="text-sm text-brand mb-4">Saved.</p>
+        {% endif %}
+        <form action="/settings/income" method="post" class="space-y-4">
+            <label class="block">
+                <span class="field-label">Monthly income</span>
+                <input name="monthly_income" type="number" step="0.01" min="0"
+                       value="{{ monthly_income if monthly_income is not none else '' }}"
+                       placeholder="e.g. 85000" class="field" />
+            </label>
+            <label class="block">
+                <span class="field-label">Savings goal <span class="text-muted font-normal">(optional)</span></span>
+                <input name="savings_goal" type="number" step="0.01" min="0"
+                       value="{{ savings_goal if savings_goal is not none else '' }}"
+                       placeholder="e.g. 15000" class="field" />
+            </label>
+            <button type="submit" class="btn btn-primary w-full justify-center">Save</button>
+        </form>
+    </div>
+
     {# ================= Export & backup ================= #}
     <div class="reveal card p-5">
         <p class="eyebrow mb-2">Export &amp; backup</p>
